@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../shared/contexts/AuthContext'
 import { Shield, Eye, EyeOff, Building, User, Settings, Zap } from 'lucide-react'
 
 const Auth = () => {
