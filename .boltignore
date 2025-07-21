@@ -4,13 +4,8 @@ src/**
 # Always allow core (entry point files)
 !src/core/**
 
-# Allow shared if absolutely needed
-# !src/modules/shared/**
+# Allow shared for common components/utilities
+!src/modules/shared/**
 
-# Uncomment ONE module at a time to load it
-
-# For Admin module:
-# !src/modules/admin/**
-
-# For User module:
- !src/modules/user/**
+# Allow User module
+!src/modules/user/**
