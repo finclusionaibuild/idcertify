@@ -28,7 +28,7 @@ import {
   FileText,
   Info
 } from 'lucide-react'
-import { mockTransactions, mockUsers, getUserDisplayName } from '../lib/mockData'
+import { mockTransactions, mockUsers, getUserDisplayName } from '../shared/lib/mockData'
 
 interface Transaction {
   id: string
