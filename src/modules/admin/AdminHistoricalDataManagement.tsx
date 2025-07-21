@@ -23,7 +23,7 @@ import {
   Shield,
   MapPin
 } from 'lucide-react'
-import { mockHistoricalRecords, mockUsers, getUserDisplayName } from '../lib/mockData'
+import { mockHistoricalRecords, mockUsers, getUserDisplayName } from '../shared/lib/mockData'
 
 interface HistoricalRecord {
   id: string

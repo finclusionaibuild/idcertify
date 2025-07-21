@@ -46,7 +46,7 @@ import {
   ArrowUpRight,
   ArrowDownRight,
 } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../shared/contexts/AuthContext'
 import { Link } from 'react-router-dom'
 
 interface VerificationJob {
@@ -727,7 +727,6 @@ const OrganisationDashboard = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       <div className="flex items-center space-x-2">
                         <span className="text-green-600">{job.successCount}</span>
-                          onClick={() => window.location.href = '/organisation/bulk-upload'}
                         <span className="text-red-600">{job.failureCount}</span>
                       </div>
                     </td>
