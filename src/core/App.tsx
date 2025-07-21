@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from '../modules/shared/contexts/AuthContext'
 import Layout from '../modules/shared/components/Layout'
 import AuthGuard from '../modules/shared/components/AuthGuard'
-import Auth from './pages/Auth'
+import Auth from '../modules/user/Auth'
 import DemoLogin from './pages/DemoLogin'
 import Dashboard from './pages/Dashboard'
 import Onboarding from './pages/Onboarding'
