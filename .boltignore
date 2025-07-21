@@ -10,7 +10,7 @@ src/**
 # Uncomment ONE module at a time to load it
 
 # For Admin module:
- !src/modules/admin/**
+# !src/modules/admin/**
 
 # For User module:
-# !src/modules/user/**
+ !src/modules/user/**
