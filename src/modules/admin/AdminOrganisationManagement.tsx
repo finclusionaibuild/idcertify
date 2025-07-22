@@ -36,7 +36,7 @@ import {
   FileSpreadsheet,
   BarChart3
 } from 'lucide-react'
-import { mockUsers } from '../lib/mockData'
+import { mockUsers } from '../shared/lib/mockData'
 
 interface OrganisationFilters {
   status: string
