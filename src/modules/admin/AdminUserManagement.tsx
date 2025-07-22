@@ -31,7 +31,7 @@ import {
   Award,
   Settings
 } from 'lucide-react'
-import { mockUsers } from '../lib/mockData'
+import { mockUsers } from '../shared/lib/mockData'
 
 interface UserFilters {
   role: string

@@ -47,7 +47,7 @@ import {
   Key
 } from 'lucide-react'
 import { useDropzone } from 'react-dropzone'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from './contexts/AuthContext'
 
 interface Document {
   id: string
