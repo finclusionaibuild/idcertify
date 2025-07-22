@@ -25,7 +25,7 @@ import {
   Download,
   Send
 } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from './contexts/AuthContext'
 
 const Attestation = () => {
   const { profile } = useAuth()
