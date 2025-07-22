@@ -29,7 +29,7 @@ import {
   UserCheck, 
   Award
 } from 'lucide-react'
-import { mockUsers, getUserDisplayName } from '../lib/mockData'
+import { mockUsers, getUserDisplayName } from '../lib/mockData';
 
 const ProfileManagement = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'fields' | 'templates' | 'settings'>('overview')
