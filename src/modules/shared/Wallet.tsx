@@ -31,7 +31,7 @@ import {
   Target,
   Zap
 } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from './contexts/AuthContext'
 
 interface Transaction {
   id: string
