@@ -3,7 +3,10 @@ src/**
 
 # Always allow core (entry point files)
 !src/core/**
-
+!src/modules/shared/**
+!src/components/shared/**
+!src/lib/**
+!src/contexts/**
 # Allow shared for common components/utilities
 !src/modules/shared/**
 
