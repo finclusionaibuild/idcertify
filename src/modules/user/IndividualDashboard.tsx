@@ -30,7 +30,7 @@ import {
   Target,
   Zap
 } from 'lucide-react'
-import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from '../lib/mockData'
+import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from '../shared/lib/mockData'
 
 const IndividualDashboard = () => {
   const { profile } = useAuth()
