@@ -1,28 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  FileText, 
-  Upload, 
-  Download, 
-  Eye, 
-  Edit, 
-  Trash2, 
-  Search, 
-  Filter, 
-  FolderPlus,
-  Archive,
-  Share2,
-  Lock,
-  Unlock,
-  Calendar,
-  User,
-  Tag,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  FileImage,
-  FilePdf,
-  FileSpreadsheet
-} from 'lucide-react';
+import { FileText, Upload, Download, Eye, Edit, Trash2, Search, Filter, FolderPlus, Archive, Share2, Lock, Unlock, Calendar, User, Tag, AlertTriangle, CheckCircle, Clock, FileImage, File as FilePdf, FileSpreadsheet } from 'lucide-react';
 
 interface Document {
   id: string;
