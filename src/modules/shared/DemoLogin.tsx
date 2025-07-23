@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from "./contexts/AuthContext";
 import { Shield, User, Building, Settings, ArrowRight, Eye } from 'lucide-react'
-import { mockUsers } from '../lib/mockData'
+import { mockUsers } from "./lib/mockData";
 
 const DemoLogin = () => {
   const [loading, setLoading] = useState<string | null>(null)
