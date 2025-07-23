@@ -185,6 +185,15 @@ const SuperAdminDashboard = () => {
             <Settings className="w-4 h-4 mr-2" />
             System Settings
           </button>
+          {activeSection === 'ticketing' && <AdminTicketingSystem />}
+          {activeSection === 'whitelabel' && <AdminWhiteLabelCustomization />}
+          {activeSection === 'multiregional' && <AdminMultiRegionalManagement />}
+          {activeSection === 'referrals' && <AdminReferralManagement />}
+          {activeSection === 'rewards' && <AdminRewardManagement />}
+          {activeSection === 'ratings' && <AdminRatingsManagement />}
+          {activeSection === 'documents' && <AdminDocumentManagement />}
+          {activeSection === 'content' && <AdminContentManagement />}
+          {activeSection === 'backup' && <AdminBackupRecovery />}
         </div>
       </div>
 
