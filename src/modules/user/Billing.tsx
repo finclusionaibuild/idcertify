@@ -36,7 +36,7 @@ import {
   TrendingUp,
   Settings
 } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from "@shared/contexts/AuthContext";
 
 interface SubscriptionPlan {
   id: string
