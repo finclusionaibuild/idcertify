@@ -25,7 +25,10 @@ import {
   Archive,
   MessageSquare,
   Brush,
-  History
+  History,
+  Activity,
+  User,
+  Code
 } from 'lucide-react';
 
 // Import existing admin components
@@ -71,6 +74,13 @@ const SuperAdminDashboard: React.FC = () => {
     { name: 'Security Center', icon: Shield, path: '/admin/security' },
   ];
 
+  // Management navigation links
+  const managementNavigation = [
+    { name: 'Settings', icon: Settings, path: '/admin/settings' },
+    { name: 'Notifications', icon: Bell, path: '/admin/notifications' },
+    { name: 'Reports', icon: FileText, path: '/admin/reports' },
+    { name: 'Subscriptions', icon: CreditCard, path: '/admin/subscriptions' },
+    { name: 'Multi-Regional', icon: Globe, path: '/admin/multiregional' },
     { name: 'KYC/KYB Management', icon: UserCheck, path: '/admin/kyc-kyb' },
     { name: 'Organisation Management', icon: Building, path: '/admin/organisations' },
   ];
