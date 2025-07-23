@@ -36,8 +36,8 @@ import {
   ArrowDown,
   MoreHorizontal
 } from 'lucide-react'
-import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from '../lib/mockData'
-import VerificationTrendsChart from '../components/VerificationTrendsChart'
+import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from "@shared/lib/mockData";
+import VerificationTrendsChart from "@shared/components/VerificationTrendsChart";
 import IndividualDashboard from './IndividualDashboard'
 import OrganisationDashboard from './OrganisationDashboard'
 
