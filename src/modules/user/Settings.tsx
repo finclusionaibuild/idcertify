@@ -25,7 +25,7 @@ import {
   Download,
   Trash2
 } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from "@shared/contexts/AuthContext";
 
 const Settings = () => {
   const { profile, signOut, updateProfile } = useAuth()
