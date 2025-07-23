@@ -31,7 +31,7 @@ import {
   CreditCard,
   Zap
 } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from "@shared/contexts/AuthContext";
 import { getTrustScoreBadge } from '../lib/mockData'
 
 const TrustScore = () => {
