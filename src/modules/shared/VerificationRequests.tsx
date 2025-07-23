@@ -31,8 +31,8 @@ import {
   Star,
   MessageSquare
 } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
-import { mockVerificationRequests, mockDocuments } from '../lib/mockData'
+import { useAuth } from "./contexts/AuthContext";
+import { mockVerificationRequests, mockDocuments } from "./lib/mockData";
 import { Link, useNavigate } from 'react-router-dom'
 
 interface VerificationRequest {
