@@ -17,11 +17,9 @@ import {
   MessageSquare,
   Ticket,
   Palette,
-  Globe,
   Gift,
   Star,
-  FileText,
-  Layout
+  Layout,
   Eye, 
   Edit, 
   Trash2, 
