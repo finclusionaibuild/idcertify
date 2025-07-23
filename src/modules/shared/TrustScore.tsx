@@ -32,7 +32,7 @@ import {
   Zap
 } from 'lucide-react'
 import { useAuth } from "@shared/contexts/AuthContext";
-import { getTrustScoreBadge } from '../lib/mockData'
+import { getTrustScoreBadge } from "./lib/mockData";
 
 const TrustScore = () => {
   const { profile } = useAuth()
