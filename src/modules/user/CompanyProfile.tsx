@@ -35,7 +35,7 @@ import {
   Bell,
   HelpCircle
 } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from "@shared/contexts/AuthContext";
 
 interface CompanyInfo {
   companyName: string
