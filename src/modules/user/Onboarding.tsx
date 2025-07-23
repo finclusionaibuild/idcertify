@@ -13,7 +13,7 @@ import {
   HelpCircle,
   AlertTriangle
 } from 'lucide-react'
-import OnboardingTour from '../components/OnboardingTour'
+import OnboardingTour from "@shared/components/OnboardingTour";
 
 const Onboarding = () => {
   const { profile, updateProfile } = useAuth()
