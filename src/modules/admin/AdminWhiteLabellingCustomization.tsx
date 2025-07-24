@@ -23,7 +23,6 @@ import {
   Share as ShareIcon,
 } from '@mui/icons-material';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import UndoIcon from '@mui/icons-material/Undo';

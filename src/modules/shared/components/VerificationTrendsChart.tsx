@@ -5,10 +5,8 @@ import {
   BarChartIcon,
   Grid
 } from '@mui/material';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useState } from 'react';
-import { Calendar, Download, RefreshCw } from 'lucide-react';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import PeopleIcon from '@mui/icons-material/People';
 

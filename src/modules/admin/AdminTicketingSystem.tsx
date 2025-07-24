@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { 
-  Ticket, 
-  MessageSquare, 
-  Clock, 
-  CheckCircle, 
-  AlertCircle, 
-  User, 
-  Calendar,
-  Filter,
-  Search,
-  Plus,
-  Eye,
-  Edit,
+  AddIcon,
+  SearchIcon,
+  FilterListIcon,
+  MessageIcon,
+  AccessTimeIcon,
+  CheckCircleIcon,
+  WarningIcon,
+  PersonIcon,
+  CalendarTodayIcon,
+  VisibilityIcon,
+  EditIcon
+} from '@mui/icons-material';
   Trash2
 } from 'lucide-react';
 
