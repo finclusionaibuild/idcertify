@@ -12,6 +12,7 @@ interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
+  signIn: (email: string, password: string) => Promise<void>;
   isLoading: boolean;
   isAuthenticated: boolean;
 }
@@ -95,13 +96,31 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     window.location.href = '/';
   };
 
+  const signIn = async (email: string, password: string) => {
+    try {
+      // Mock authentication - in a real app, this would call your API
+      const mockUser: User = {
+        id: '1',
+        name: 'Demo User',
+        email: email,
+        role: 'user'
+      };
+      
+      setUser(mockUser);
+      localStorage.setItem('user', JSON.stringify(mockUser));
+    } catch (error) {
+      throw new Error('Authentication failed');
+    }
+  };
+
   const value: AuthContextType = {
     user,
     login,
     logout,
     isLoading,
     isAuthenticated: !!user,
-  };
+    logout,
+    signIn
 
   return (
     <AuthContext.Provider value={value}>
