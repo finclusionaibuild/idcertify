@@ -29,32 +29,30 @@ import ShieldIcon from '@mui/icons-material/Security';
 import ZapIcon from '@mui/icons-material/FlashOn';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import BellIcon from '@mui/icons-material/Notifications';
-import ShowChartIcon from '@mui/icons-material/ShowChart';
-import DnsIcon from '@mui/icons-material/Dns';
-import StorageIcon from '@mui/icons-material/Storage';
-import WarningIcon from '@mui/icons-material/Warning';
-import CancelIcon from '@mui/icons-material/Cancel';
-import RefreshIcon from '@mui/icons-material/Refresh';
+import ActivityIcon from '@mui/icons-material/Timeline';
+import ServerIcon from '@mui/icons-material/Storage';
+import DatabaseIcon from '@mui/icons-material/Storage';
+import CpuIcon from '@mui/icons-material/Memory';
+import HardDriveIcon from '@mui/icons-material/Storage';
+import WifiIcon from '@mui/icons-material/Wifi';
+import ShieldIcon from '@mui/icons-material/Security';
+import AlertTriangleIcon from '@mui/icons-material/Warning';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import XCircleIcon from '@mui/icons-material/Cancel';
+import ClockIcon from '@mui/icons-material/Schedule';
+import ZapIcon from '@mui/icons-material/FlashOn';
+import UsersIcon from '@mui/icons-material/People';
+import GlobeIcon from '@mui/icons-material/Public';
+import LockIcon from '@mui/icons-material/Lock';
+import UnlockIcon from '@mui/icons-material/LockOpen';
 import SettingsIcon from '@mui/icons-material/Settings';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { 
-  Activity, 
-  Server, 
-  Database, 
-  Globe, 
-  Cpu, 
-  HardDrive, 
-  RefreshCw, 
-  Download, 
-  AlertTriangle, 
-  CheckCircle, 
-  Clock, 
-  BarChart3, 
-  TrendingUp, 
-  TrendingDown, 
-  Calendar, 
-  Filter, 
+import RefreshCwIcon from '@mui/icons-material/Refresh';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import BarChart3Icon from '@mui/icons-material/BarChart';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import BellIcon from '@mui/icons-material/Notifications';
   Search, 
   Info, 
   Settings,
