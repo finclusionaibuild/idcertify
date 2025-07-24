@@ -56,6 +56,7 @@ import {
   TrendingUp,
   Search,
   Download
+} from 'lucide-react';
 import UploadIcon from '@mui/icons-material/Upload';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import WarningIcon from '@mui/icons-material/Warning';
