@@ -256,7 +256,7 @@ export default function Layout() {
                     }
                   `}
                 >
-                  <div className="flex items-center">
+                  <div className="flex items-center text-left">
                     <GroupIcon className="w-5 h-5 mr-3 flex-shrink-0" />
                     {group.name}
                   </div>
