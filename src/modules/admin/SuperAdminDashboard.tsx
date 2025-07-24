@@ -17,11 +17,6 @@ import {
   Palette,
   Gift,
   Star,
-  Palette,
-  Gift,
-  Star,
-  ThumbsUp,
-  Layout,
   ThumbsUp,
   Layout,
   HardDrive,
@@ -30,10 +25,7 @@ import {
   Archive,
   MessageSquare,
   Brush,
-  History,
-  Activity,
-  User,
-  Code
+  History
 } from 'lucide-react';
 
 // Import existing admin components
@@ -81,9 +73,9 @@ const SuperAdminDashboard: React.FC = () => {
 
   // Management navigation links
   const managementNavigation = [
-    { name: 'Settings', icon: Settings, path: '/admin/settings' },
+    { name: 'System Settings', icon: Settings, path: '/admin/settings' },
     { name: 'Notifications', icon: Bell, path: '/admin/notifications' },
-    { name: 'Reports', icon: FileText, path: '/admin/reports' },
+    { name: 'Reports & Analytics', icon: FileText, path: '/admin/reports' },
     { name: 'Subscriptions', icon: CreditCard, path: '/admin/subscriptions' },
     { name: 'Multi-Regional', icon: Globe, path: '/admin/multiregional' },
     { name: 'KYC/KYB Management', icon: UserCheck, path: '/admin/kyc-kyb' },
@@ -100,19 +92,6 @@ const SuperAdminDashboard: React.FC = () => {
     { name: 'Document Management', icon: FileText, path: '/admin/documents' },
     { name: 'Content Management', icon: Layout, path: '/admin/content' },
     { name: 'Backup & Recovery', icon: HardDrive, path: '/admin/backup-recovery' },
-    { name: 'System Health Check', icon: Activity, path: '/admin/system-health' },
-    { name: 'Subscription Management', icon: CreditCard, path: '/admin/subscription' },
-    { name: 'System Log Configuration', icon: FileText, path: '/admin/system-log' },
-    { name: 'Profile Management', icon: User, path: '/admin/profile-management' },
-    { name: 'Developer Tools', icon: Code, path: '/admin/developer' },
-    { name: 'Security Center', icon: Shield, path: '/admin/security' },
-    { name: 'Database Management', icon: Database, path: '/admin/database' },
-    { name: 'White Label & Customization', icon: Palette, path: '/admin/whitelabel' },
-    { name: 'Referrals Management', icon: Gift, path: '/admin/referrals' },
-    { name: 'Reward Management', icon: Star, path: '/admin/rewards' },
-    { name: 'Ratings Management', icon: ThumbsUp, path: '/admin/ratings' },
-    { name: 'Document Management', icon: FileText, path: '/admin/documents' },
-    { name: 'Content Management', icon: Layout, path: '/admin/content' },
     { name: 'Email Templates', icon: Mail, path: '/admin/email-templates' },
     { name: 'Integration Management', icon: Zap, path: '/admin/integrations' },
     { name: 'Historical Data', icon: Archive, path: '/admin/historical-data' },
@@ -187,12 +166,6 @@ const SuperAdminDashboard: React.FC = () => {
             <Route path="/admin/health" element={<SystemHealthCheck />} />
             <Route path="/admin/security" element={<AdminSecurityCenter />} />
             
-            <Route path="/admin/whitelabel" element={<AdminWhiteLabelCustomization />} />
-            <Route path="/admin/referrals" element={<AdminReferralManagement />} />
-            <Route path="/admin/rewards" element={<AdminRewardManagement />} />
-            <Route path="/admin/ratings" element={<AdminRatingsManagement />} />
-            <Route path="/admin/documents" element={<AdminDocumentManagement />} />
-            <Route path="/admin/content" element={<AdminContentManagement />} />
             {/* Management Routes */}
             <Route path="/admin/settings" element={<AdminSystemSettings />} />
             <Route path="/admin/notifications" element={<AdminNotificationManagement />} />
