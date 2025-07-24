@@ -32,6 +32,14 @@ import AdminSystemSettings from '../modules/admin/AdminSystemSettings'
 import AdminHistoricalDataManagement from '../modules/admin/AdminHistoricalDataManagement'
 import AdminAnalytics from '../modules/admin/AdminAnalytics'
 import SuperAdminDashboard from '../modules/admin/SuperAdminDashboard'
+import EmployerManagement from '../modules/admin/EmployerManagement'
+import EmployeeManagementSystem from '../modules/admin/EmployeeManagementSystem'
+import SureAMLManagement from '../modules/admin/SureAMLManagement'
+import SureComplianceManagement from '../modules/admin/SureComplianceManagement'
+import DataMonitoringManagement from '../modules/admin/DataMonitoringManagement'
+import CompanyManagement from '../modules/admin/CompanyManagement'
+import HelpSupport from '../modules/admin/HelpSupport'
+import DownTimeTracker from '../modules/admin/DownTimeTracker'
 import AdminTransactionManagement from '../modules/admin/AdminTransactionManagement'
 import AdminApprovalWorkflow from '../modules/admin/AdminApprovalWorkflow'
 import RBACManagement from '../modules/shared/RBACManagement'
@@ -382,28 +390,82 @@ function App() {
                 <AdminTicketingSystemManagement />
               </AuthGuard>
             } />
-            
-            <Route path="admin/system-health" element={
+
+            <Route path="admin/employer-management" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SystemHealthCheck />
+                <EmployerManagement />
               </AuthGuard>
             } />
-            
-            <Route path="admin/subscription" element={
+
+            <Route path="admin/employee-management" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SubscriptionManagement />
+                <EmployeeManagementSystem />
               </AuthGuard>
             } />
-            
-            <Route path="admin/system-log" element={
+
+            <Route path="admin/verification-management" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SystemLogConfiguration />
+                <VerificationRequests />
               </AuthGuard>
             } />
-            
-            <Route path="admin/profile-management" element={
+
+            <Route path="admin/trust-score-management" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <ProfileManagement />
+                <TrustScore />
+              </AuthGuard>
+            } />
+
+            <Route path="admin/document-vault-management" element={
+              <AuthGuard roles={['admin']} permissions={['admin.super']}>
+                <DocumentVault />
+              </AuthGuard>
+            } />
+
+            <Route path="admin/attestation-management" element={
+              <AuthGuard roles={['admin']} permissions={['admin.super']}>
+                <Attestation />
+              </AuthGuard>
+            } />
+
+            <Route path="admin/biobank-management" element={
+              <AuthGuard roles={['admin']} permissions={['admin.super']}>
+                <Biobank />
+              </AuthGuard>
+            } />
+
+            <Route path="admin/sure-aml-management" element={
+              <AuthGuard roles={['admin']} permissions={['admin.super']}>
+                <SureAMLManagement />
+              </AuthGuard>
+            } />
+
+            <Route path="admin/sure-compliance-management" element={
+              <AuthGuard roles={['admin']} permissions={['admin.super']}>
+                <SureComplianceManagement />
+              </AuthGuard>
+            } />
+
+            <Route path="admin/data-monitoring-management" element={
+              <AuthGuard roles={['admin']} permissions={['admin.super']}>
+                <DataMonitoringManagement />
+              </AuthGuard>
+            } />
+
+            <Route path="admin/company-management" element={
+              <AuthGuard roles={['admin']} permissions={['admin.super']}>
+                <CompanyManagement />
+              </AuthGuard>
+            } />
+
+            <Route path="admin/help-support" element={
+              <AuthGuard roles={['admin']} permissions={['admin.super']}>
+                <HelpSupport />
+              </AuthGuard>
+            } />
+
+            <Route path="admin/downtime-tracker" element={
+              <AuthGuard roles={['admin']} permissions={['admin.super']}>
+                <DownTimeTracker />
               </AuthGuard>
             } />
             
