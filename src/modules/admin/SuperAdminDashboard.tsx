@@ -1,24 +1,40 @@
 import React from 'react';
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleIcon from '@mui/icons-material/People';
-import BusinessIcon from '@mui/icons-material/Business';
-import PublicIcon from '@mui/icons-material/Public';
-import StorageIcon from '@mui/icons-material/Storage';
-import SecurityIcon from '@mui/icons-material/Security';
-import SettingsIcon from '@mui/icons-material/Settings';
-import DescriptionIcon from '@mui/icons-material/Description';
-import PaymentIcon from '@mui/icons-material/Payment';
-import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
-import WarningIcon from '@mui/icons-material/Warning';
-import ChatIcon from '@mui/icons-material/Chat';
-import PaletteIcon from '@mui/icons-material/Palette';
-import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import WebAssetIcon from '@mui/icons-material/WebAsset';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import LogoutIcon from '@mui/icons-material/Logout';
+import {
+  LayoutDashboard,
+  Users,
+  Shield,
+  Settings,
+  BarChart3,
+  Database,
+  Bell,
+  FileText,
+  CreditCard,
+  Globe,
+  UserCheck,
+  Building,
+  Ticket,
+  Palette,
+  Gift,
+  Star,
+  Palette,
+  Gift,
+  Star,
+  ThumbsUp,
+  Layout,
+  ThumbsUp,
+  Layout,
+  HardDrive,
+  Mail,
+  Zap,
+  Archive,
+  MessageSquare,
+  Brush,
+  History,
+  Activity,
+  User,
+  Code
+} from 'lucide-react';
 
 // Import existing admin components
 import AdminAnalytics from './AdminAnalytics';
@@ -72,37 +88,6 @@ const SuperAdminDashboard: React.FC = () => {
     { name: 'Multi-Regional', icon: Globe, path: '/admin/multiregional' },
     { name: 'KYC/KYB Management', icon: UserCheck, path: '/admin/kyc-kyb' },
     { name: 'Organisation Management', icon: Building, path: '/admin/organisations' },
-  ];
-
-  const coreManagementLinks = [
-    { name: 'Dashboard', icon: DashboardIcon, path: '/admin' },
-    { name: 'User Management', icon: PeopleIcon, path: '/admin/users' },
-    { name: 'Organisations', icon: BusinessIcon, path: '/admin/organisations' },
-    { name: 'Regional Management', icon: PublicIcon, path: '/admin/regional' },
-    { name: 'Historical Data', icon: StorageIcon, path: '/admin/historical' },
-  ];
-
-  const advancedManagementLinks = [
-    { name: 'White Label & Customization', icon: PaletteIcon, path: '/admin/whitelabel' },
-    { name: 'Multi Regional Management', icon: PublicIcon, path: '/admin/multiregional' },
-    { name: 'Referrals Management', icon: CardGiftcardIcon, path: '/admin/referrals' },
-    { name: 'Reward Management', icon: EmojiEventsIcon, path: '/admin/rewards' },
-    { name: 'Ratings Management', icon: ThumbUpIcon, path: '/admin/ratings' },
-    { name: 'Document Management', icon: DescriptionIcon, path: '/admin/documents' },
-    { name: 'Content Management', icon: WebAssetIcon, path: '/admin/content' },
-    { name: 'Backup & Recovery', icon: CloudUploadIcon, path: '/admin/backup-recovery' },
-    { name: 'RBAC Management', icon: SecurityIcon, path: '/admin/rbac' },
-    { name: 'KYC/KYB Management', icon: VerifiedUserIcon, path: '/admin/kyc' },
-    { name: 'System Settings', icon: SettingsIcon, path: '/admin/settings' },
-    { name: 'Security Center', icon: SecurityIcon, path: '/admin/security' },
-    { name: 'Analytics & Reports', icon: DashboardIcon, path: '/admin/analytics' },
-    { name: 'Ticketing System', icon: ChatIcon, path: '/admin/tickets' },
-    { name: 'White Label & Customization', icon: PaletteIcon, path: '/admin/whitelabel' },
-    { name: 'Referrals Management', icon: CardGiftcardIcon, path: '/admin/referrals' },
-    { name: 'Reward Management', icon: EmojiEventsIcon, path: '/admin/rewards' },
-    { name: 'Ratings Management', icon: ThumbUpIcon, path: '/admin/ratings' },
-    { name: 'Document Management', icon: DescriptionIcon, path: '/admin/documents' },
-    { name: 'Content Management', icon: WebAssetIcon, path: '/admin/content' },
   ];
 
   // Advanced Management navigation links (New Features)
@@ -185,17 +170,6 @@ const SuperAdminDashboard: React.FC = () => {
             {renderNavSection('Management', managementNavigation)}
             {renderNavSection('Advanced Management', advancedManagementNavigation)}
           </nav>
-
-          {/* Logout Button */}
-          <div className="p-4 border-t border-gray-200">
-            <button
-              onClick={handleLogout}
-              className="flex items-center space-x-3 w-full px-3 py-2 text-left text-gray-300 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
-            >
-              <LogoutIcon className="h-5 w-5" />
-              <span>Logout</span>
-            </button>
-          </div>
         </div>
       </div>
 

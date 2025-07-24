@@ -1,8 +1,5 @@
 import { useState } from 'react'
-import { Calendar, Download, RefreshCw } from 'lucide-react'
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import BarChartIcon from '@mui/icons-material/BarChart';
+import { TrendingUp, Calendar, Download, RefreshCw } from 'lucide-react'
 
 interface ChartDataPoint {
   month: string
@@ -321,7 +318,7 @@ const VerificationTrendsChart = () => {
                 fill="#22c55e"
                 opacity="0.1"
               />
-              <TrendingUpIcon className="w-4 h-4" x="8" y="8" fill="#22c55e" />
+              <TrendingUp className="w-4 h-4" x="8" y="8" fill="#22c55e" />
               <text x="28" y="20" className="text-xs fill-green-600 font-medium">+12%</text>
             </g>
           </svg>

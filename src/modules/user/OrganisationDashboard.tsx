@@ -46,12 +46,6 @@ import {
   ArrowUpRight,
   ArrowDownRight,
 } from 'lucide-react'
-import BusinessIcon from '@mui/icons-material/Business';
-import PeopleIcon from '@mui/icons-material/People';
-import DescriptionIcon from '@mui/icons-material/Description';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SettingsIcon from '@mui/icons-material/Settings';
 import { useAuth } from '../shared/contexts/AuthContext'
 import { Link } from 'react-router-dom'
 
