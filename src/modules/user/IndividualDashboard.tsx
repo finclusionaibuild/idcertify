@@ -166,7 +166,7 @@ const IndividualDashboard = () => {
           
           <div className="space-y-3">
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+              <CheckCircleIcon className="w-5 h-5 text-green-500" />
               <span className="text-sm text-gray-700">ID Verified</span>
             </div>
             <div className="flex items-center space-x-3">
@@ -174,7 +174,7 @@ const IndividualDashboard = () => {
               <span className="text-sm text-gray-700">Address Pending</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+              <CheckCircleIcon className="w-5 h-5 text-green-500" />
               <span className="text-sm text-gray-700">1 Guarantor Verified</span>
             </div>
             
@@ -256,7 +256,7 @@ const IndividualDashboard = () => {
             <div className="space-y-4">
               {[
                 {
-                  icon: CheckCircle,
+                  icon: CheckCircleIcon,
                   color: 'text-green-500',
                   title: 'ABC Bank verified your NIN',
                   status: 'Approved',
@@ -280,7 +280,7 @@ const IndividualDashboard = () => {
                   statusColor: 'bg-yellow-100 text-yellow-800'
                 },
                 {
-                  icon: CheckCircle,
+                  icon: CheckCircleIcon,
                   color: 'text-green-500',
                   title: 'University of Lagos verified your degree certificate',
                   status: 'Approved',

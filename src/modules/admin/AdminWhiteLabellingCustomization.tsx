@@ -21,8 +21,7 @@ import {
   Favorite as FavoriteIcon,
   Bookmark as BookmarkIcon,
   Share as ShareIcon,
-} from '@mui/icons-material'
-import PaletteIcon from '@mui/icons-material/Palette';
+} from '@mui/icons-material';
 import TextFieldsIcon from '@mui/icons-material/TextFields';
 import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
 import PublicIcon from '@mui/icons-material/Public';

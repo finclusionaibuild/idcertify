@@ -25,31 +25,6 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { 
   User, 
-  Mail, 
-  Phone, 
-  MapPin,
-  Calendar,
-  Building,
-  Shield,
-  Star,
-  TrendingUp,
-  Download,
-  Upload,
-  Settings,
-  FileText,
-  Plus,
-  Search,
-  Filter,
-  Edit,
-  Trash2,
-  Eye,
-  CheckCircle,
-  XCircle,
-  Save,
-  X
-} from 'lucide-react';
-import PeopleIcon from '@mui/icons-material/People';
-import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
