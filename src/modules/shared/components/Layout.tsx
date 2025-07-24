@@ -184,7 +184,7 @@ export default function Layout() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
         <div 
@@ -194,9 +194,10 @@ export default function Layout() {
       )}
 
       {/* Sidebar */}
-      <div className={`fixed inset-y-0 left-0 z-50 w-80 bg-primary-600 text-white shadow-xl transition-transform duration-300 ease-in-out flex flex-col lg:translate-x-0 lg:static lg:inset-0 ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}>
+      <div className={`
+        fixed inset-y-0 left-0 z-50 w-80 bg-primary-600 transform transition-transform duration-300 ease-in-out flex flex-col lg:translate-x-0 lg:static lg:inset-0
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}>
         <div className="flex items-center justify-between h-16 px-6 bg-primary-700">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
