@@ -3,6 +3,7 @@ import { useAuth } from '../shared/contexts/AuthContext'
 import PersonIcon from '@mui/icons-material/Person';
 import DescriptionIcon from '@mui/icons-material/Description';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import {
   XCircle,
   AlertCircle,
   Plus,
@@ -21,7 +22,12 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
   Star,
   Award,
   Target,
-  Zap
+  Zap,
+  User,
+  FileText,
+  Shield,
+  Clock,
+  Wallet
 } from 'lucide-react'
 import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from '../shared/lib/mockData'
 
