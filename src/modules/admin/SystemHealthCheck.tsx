@@ -1,4 +1,14 @@
 import React, { useState } from 'react'
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import DnsIcon from '@mui/icons-material/Dns';
+import StorageIcon from '@mui/icons-material/Storage';
+import WifiIcon from '@mui/icons-material/Wifi';
+import WarningIcon from '@mui/icons-material/Warning';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import SettingsIcon from '@mui/icons-material/Settings';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import { 
   Activity, 
   Server, 
