@@ -38,7 +38,6 @@ import {
   X,
   FileText
 } from '@mui/icons-material'
-import UploadIcon from '@mui/icons-material/Upload';
 import WarningIcon from '@mui/icons-material/Warning';
 import { useDropzone } from 'react-dropzone'
 

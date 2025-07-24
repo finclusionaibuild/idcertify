@@ -22,10 +22,8 @@ import {
   Bookmark as BookmarkIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';
-import BrushIcon from '@mui/icons-material/Brush';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import UndoIcon from '@mui/icons-material/Undo';

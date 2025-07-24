@@ -5,7 +5,6 @@ import {
   BarChartIcon,
   Grid
 } from '@mui/material';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useState } from 'react';

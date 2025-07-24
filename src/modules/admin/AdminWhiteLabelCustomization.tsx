@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
-import { 
-  Palette, 
-  Upload, 
-  Eye, 
-  Save, 
-  RefreshCw, 
-  Monitor, 
-  Smartphone, 
-  Tablet,
-  Settings,
-  Image,
-  Type,
-  Layout,
-  Globe,
-  Mail,
-  Phone
-} from 'lucide-react';
-
+import PaletteIcon from '@mui/icons-material/Palette';
+import TextFieldsIcon from '@mui/icons-material/TextFields';
+import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
+import ImageIcon from '@mui/icons-material/Image';
+import PublicIcon from '@mui/icons-material/Public';
+import SettingsIcon from '@mui/icons-material/Settings';
+import SaveIcon from '@mui/icons-material/Save';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
 interface BrandingConfig {
   id: string;
   clientName: string;

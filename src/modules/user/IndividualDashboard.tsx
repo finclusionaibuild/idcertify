@@ -29,7 +29,6 @@ import {
   IconButton,
   Tooltip
 } from '@mui/material';
-import SecurityIcon from '@mui/icons-material/Security';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
