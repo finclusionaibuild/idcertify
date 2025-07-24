@@ -1,34 +1,12 @@
-import React from 'react';
-import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
-import {
-  LayoutDashboard,
-  Users,
-  Shield,
-  Settings,
-  BarChart3,
-  Database,
-  Bell,
-  FileText,
-  CreditCard,
-  Globe,
-  UserCheck,
-  Building,
-  Ticket,
-  Palette,
-  Gift,
-  Star,
-  ThumbsUp,
-  Layout,
-  HardDrive,
-  Mail,
-  Zap,
-  Archive,
-  MessageSquare,
-  Brush,
-  History
+import React, { useState } from 'react';
+import { 
+  LayoutDashboard, Users, Building2, Shield, FileText, Activity, 
+  CreditCard, Settings, Database, Globe, Clock, Headphones, 
+  Palette, Gift, Star, FolderOpen, Edit3, Mail, Plug, 
+  UserCheck, HardDrive, BarChart3, TrendingUp
 } from 'lucide-react';
 
-// Import existing admin components
+// Import all the admin components
 import AdminAnalytics from './AdminAnalytics';
 import AdminUserManagement from './AdminUserManagement';
 import RBACManagement from './RBACManagement';
@@ -55,83 +33,119 @@ import AdminEmailTemplateManagement from './AdminEmailTemplateManagement';
 import AdminIntegrationManagement from './AdminIntegrationManagement';
 import AdminHistoricalDataManagement from './AdminHistoricalDataManagement';
 import AdminTicketingSystemManagement from './AdminTicketingSystemManagement';
-import AdminWhiteLabellingCustomization from './AdminWhiteLabellingCustomization';
 import AdminBackgroundCheckManagement from './AdminBackgroundCheckManagement';
 
 const SuperAdminDashboard: React.FC = () => {
-  const location = useLocation();
+  const [activeTab, setActiveTab] = useState('dashboard');
 
-  // Core navigation links
-  const coreNavigation = [
-    { name: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
-    { name: 'Analytics', icon: BarChart3, path: '/admin/analytics' },
-    { name: 'User Management', icon: Users, path: '/admin/users' },
-    { name: 'RBAC Management', icon: Shield, path: '/admin/rbac' },
-    { name: 'System Health', icon: Database, path: '/admin/health' },
-    { name: 'Security Center', icon: Shield, path: '/admin/security' },
+  const navigationItems = [
+    {
+      section: 'Overview',
+      items: [
+        { name: 'Dashboard', icon: LayoutDashboard, path: 'dashboard' },
+      ]
+    },
+    {
+      section: 'User & Access Management',
+      items: [
+        { name: 'User Management', icon: Users, path: 'user-management' },
+        { name: 'Organisations', icon: Building2, path: 'organisations' },
+        { name: 'RBAC Management', icon: Shield, path: 'rbac' },
+        { name: 'KYC/KYB Management', icon: FileText, path: 'kyc-kyb' },
+      ]
+    },
+    {
+      section: 'System Operations',
+      items: [
+        { name: 'System Health Check', icon: Activity, path: 'system-health' },
+        { name: 'System Log & Configuration', icon: Settings, path: 'system-logs' },
+        { name: 'Regional Management', icon: Globe, path: 'regional' },
+        { name: 'Backup & Recovery', icon: HardDrive, path: 'backup-recovery' },
+      ]
+    },
+    {
+      section: 'Financial & Subscriptions',
+      items: [
+        { name: 'Subscription Management', icon: CreditCard, path: 'subscriptions' },
+      ]
+    },
+    {
+      section: 'Data & Analytics',
+      items: [
+        { name: 'Historical Data', icon: Database, path: 'historical-data' },
+        { name: 'Analytics & Reports', icon: BarChart3, path: 'analytics' },
+        { name: 'Report Analytics', icon: TrendingUp, path: 'report-analytics' },
+      ]
+    },
+    {
+      section: 'Feature Management',
+      items: [
+        { name: 'Background Checks', icon: UserCheck, path: 'background-checks' },
+        { name: 'Content Management', icon: Edit3, path: 'content-management' },
+        { name: 'Document Management', icon: FolderOpen, path: 'document-management' },
+        { name: 'Email Templates', icon: Mail, path: 'email-templates' },
+        { name: 'Integration Management', icon: Plug, path: 'integration-management' },
+        { name: 'Ratings Management', icon: Star, path: 'ratings-management' },
+        { name: 'Referrals Management', icon: Gift, path: 'referral-management' },
+        { name: 'Reward Management', icon: Gift, path: 'reward-management' },
+        { name: 'Ticketing System', icon: Headphones, path: 'ticketing-system' },
+        { name: 'White Label Customization', icon: Palette, path: 'white-label-customization' },
+      ]
+    }
   ];
 
-  // Management navigation links
-  const managementNavigation = [
-    { name: 'System Settings', icon: Settings, path: '/admin/settings' },
-    { name: 'Notifications', icon: Bell, path: '/admin/notifications' },
-    { name: 'Reports & Analytics', icon: FileText, path: '/admin/reports' },
-    { name: 'Subscriptions', icon: CreditCard, path: '/admin/subscriptions' },
-    { name: 'Multi-Regional', icon: Globe, path: '/admin/multiregional' },
-    { name: 'KYC/KYB Management', icon: UserCheck, path: '/admin/kyc-kyb' },
-    { name: 'Organisation Management', icon: Building, path: '/admin/organisations' },
-  ];
-
-  // Advanced Management navigation links (New Features)
-  const advancedManagementNavigation = [
-    { name: 'Ticketing System', icon: Ticket, path: '/admin/ticketing' },
-    { name: 'White Label & Customization', icon: Palette, path: '/admin/whitelabel' },
-    { name: 'Referrals Management', icon: Gift, path: '/admin/referrals' },
-    { name: 'Reward Management', icon: Star, path: '/admin/rewards' },
-    { name: 'Ratings Management', icon: ThumbsUp, path: '/admin/ratings' },
-    { name: 'Document Management', icon: FileText, path: '/admin/documents' },
-    { name: 'Content Management', icon: Layout, path: '/admin/content' },
-    { name: 'Backup & Recovery', icon: HardDrive, path: '/admin/backup-recovery' },
-    { name: 'Email Templates', icon: Mail, path: '/admin/email-templates' },
-    { name: 'Integration Management', icon: Zap, path: '/admin/integrations' },
-    { name: 'Historical Data', icon: Archive, path: '/admin/historical-data' },
-    { name: 'Ticketing System Mgmt', icon: MessageSquare, path: '/admin/ticketing-mgmt' },
-    { name: 'White Labelling', icon: Brush, path: '/admin/white-labelling' },
-    { name: 'Background Checks', icon: History, path: '/admin/background-checks' },
-  ];
-
-  const renderNavSection = (title: string, links: typeof coreNavigation) => (
-    <div className="mb-8">
-      <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-3 mb-3">
-        {title}
-      </h3>
-      <div className="space-y-1">
-        {links.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.path}
-            className={({ isActive }) =>
-              `group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
-                isActive
-                  ? 'bg-primary-100 text-primary-700 border-r-2 border-primary-500'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-              }`
-            }
-          >
-            <item.icon
-              className={`mr-3 h-5 w-5 transition-colors duration-200 ${
-                location.pathname === item.path
-                  ? 'text-primary-500'
-                  : 'text-gray-400 group-hover:text-gray-500'
-              }`}
-              aria-hidden="true"
-            />
-            {item.name}
-          </NavLink>
-        ))}
-      </div>
-    </div>
-  );
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'dashboard':
+        return <div className="p-6"><h1 className="text-2xl font-bold">Super Admin Dashboard</h1></div>;
+      case 'user-management':
+        return <AdminUserManagement />;
+      case 'organisations':
+        return <AdminOrganisationManagement />;
+      case 'rbac':
+        return <RBACManagement />;
+      case 'kyc-kyb':
+        return <KYC_KYB_Management />;
+      case 'system-health':
+        return <SystemHealthCheck />;
+      case 'system-logs':
+        return <SystemLogConfiguration />;
+      case 'regional':
+        return <RegionalManagement />;
+      case 'backup-recovery':
+        return <AdminBackupRecovery />;
+      case 'subscriptions':
+        return <SubscriptionManagement />;
+      case 'historical-data':
+        return <AdminHistoricalDataManagement />;
+      case 'analytics':
+        return <AdminAnalytics />;
+      case 'report-analytics':
+        return <AdminReportAnalytics />;
+      case 'background-checks':
+        return <AdminBackgroundCheckManagement />;
+      case 'content-management':
+        return <AdminContentManagement />;
+      case 'document-management':
+        return <AdminDocumentManagement />;
+      case 'email-templates':
+        return <AdminEmailTemplateManagement />;
+      case 'integration-management':
+        return <AdminIntegrationManagement />;
+      case 'ratings-management':
+        return <AdminRatingsManagement />;
+      case 'referral-management':
+        return <AdminReferralManagement />;
+      case 'reward-management':
+        return <AdminRewardManagement />;
+      case 'ticketing-system':
+        return <AdminTicketingSystem />;
+      case 'white-label-customization':
+        return <AdminWhiteLabelCustomization />;
+      default:
+        return <div className="p-6"><h1 className="text-2xl font-bold">Super Admin Dashboard</h1></div>;
+    }
+  };
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -144,10 +158,40 @@ const SuperAdminDashboard: React.FC = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-4 py-6 overflow-y-auto">
-            {renderNavSection('Core', coreNavigation)}
-            {renderNavSection('Management', managementNavigation)}
-            {renderNavSection('Advanced Management', advancedManagementNavigation)}
+          <nav className="flex-1 px-2 py-4 overflow-y-auto">
+            {navigationItems.map((section, sectionIndex) => (
+              <div key={sectionIndex} className="mb-6">
+                <h3 className="px-4 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  {section.section}
+                </h3>
+                <div className="space-y-1">
+                  {section.items.map((item, itemIndex) => {
+                    const isActive = activeTab === item.path;
+                    return (
+                      <button
+                        key={itemIndex}
+                        onClick={() => setActiveTab(item.path)}
+                        className={`w-full group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
+                          isActive
+                            ? 'bg-primary-100 text-primary-700 border-r-2 border-primary-500'
+                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        }`}
+                      >
+                        <item.icon
+                          className={`mr-3 h-5 w-5 transition-colors duration-200 ${
+                            isActive
+                              ? 'text-primary-500'
+                              : 'text-gray-400 group-hover:text-gray-500'
+                          }`}
+                          aria-hidden="true"
+                        />
+                        {item.name}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </nav>
         </div>
       </div>
@@ -155,42 +199,7 @@ const SuperAdminDashboard: React.FC = () => {
       {/* Main Content */}
       <div className="flex-1 overflow-hidden">
         <div className="h-full overflow-y-auto">
-          <Routes>
-            {/* Default Dashboard */}
-            <Route path="/admin" element={<AdminAnalytics />} />
-            
-            {/* Core Routes */}
-            <Route path="/admin/analytics" element={<AdminAnalytics />} />
-            <Route path="/admin/users" element={<AdminUserManagement />} />
-            <Route path="/admin/rbac" element={<RBACManagement />} />
-            <Route path="/admin/health" element={<SystemHealthCheck />} />
-            <Route path="/admin/security" element={<AdminSecurityCenter />} />
-            
-            {/* Management Routes */}
-            <Route path="/admin/settings" element={<AdminSystemSettings />} />
-            <Route path="/admin/notifications" element={<AdminNotificationManagement />} />
-            <Route path="/admin/reports" element={<AdminReportAnalytics />} />
-            <Route path="/admin/subscriptions" element={<SubscriptionManagement />} />
-            <Route path="/admin/multiregional" element={<AdminMultiRegionalManagement />} />
-            <Route path="/admin/kyc-kyb" element={<KYC_KYB_Management />} />
-            <Route path="/admin/organisations" element={<AdminOrganisationManagement />} />
-            
-            {/* Advanced Management Routes (New Features) */}
-            <Route path="/admin/ticketing" element={<AdminTicketingSystem />} />
-            <Route path="/admin/whitelabel" element={<AdminWhiteLabelCustomization />} />
-            <Route path="/admin/referrals" element={<AdminReferralManagement />} />
-            <Route path="/admin/rewards" element={<AdminRewardManagement />} />
-            <Route path="/admin/ratings" element={<AdminRatingsManagement />} />
-            <Route path="/admin/documents" element={<AdminDocumentManagement />} />
-            <Route path="/admin/content" element={<AdminContentManagement />} />
-            <Route path="/admin/backup-recovery" element={<AdminBackupRecovery />} />
-            <Route path="/admin/email-templates" element={<AdminEmailTemplateManagement />} />
-            <Route path="/admin/integrations" element={<AdminIntegrationManagement />} />
-            <Route path="/admin/historical-data" element={<AdminHistoricalDataManagement />} />
-            <Route path="/admin/ticketing-mgmt" element={<AdminTicketingSystemManagement />} />
-            <Route path="/admin/white-labelling" element={<AdminWhiteLabellingCustomization />} />
-            <Route path="/admin/background-checks" element={<AdminBackgroundCheckManagement />} />
-          </Routes>
+          {renderContent()}
         </div>
       </div>
     </div>
