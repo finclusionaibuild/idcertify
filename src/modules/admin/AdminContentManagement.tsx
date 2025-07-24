@@ -1,3 +1,14 @@
+  import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Table,
   TableBody,
   TableCell,
   TableContainer,
@@ -32,6 +43,14 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+
+interface ContentPage {
+  id: string;
+  title: string;
+  slug: string;
+  type: 'page' | 'blog' | 'help' | 'legal' | 'landing';
+  status: 'draft' | 'published' | 'scheduled' | 'archived';
+  content: string;
   excerpt?: string;
   featuredImage?: string;
   seoTitle?: string;
@@ -697,23 +716,22 @@ const AdminContentManagement: React.FC = () => {
                     <button className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
                       Cancel
                     </button>
-  Card,
                     <button className="px-4 py-2 text-white bg-primary-600 rounded-lg hover:bg-primary-700 flex items-center gap-2">
-  CardContent,
+                      Save Changes
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="prose max-w-none">
+                  <div dangerouslySetInnerHTML={{ __html: selectedPage.content }} />
+                </div>
+              )}
             </div>
-  Typography,
           </div>
-  Button,
         </div>
-  TextField,
       )}
-  Select,
     </div>
-  MenuItem,
   );
-  FormControl,
 };
-  InputLabel,
 
-  Table,
 export default AdminContentManagement;
