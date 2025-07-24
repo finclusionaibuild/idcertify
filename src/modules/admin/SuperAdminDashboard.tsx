@@ -17,6 +17,7 @@ import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import WebAssetIcon from '@mui/icons-material/WebAsset';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 // Import existing admin components
@@ -82,6 +83,14 @@ const SuperAdminDashboard: React.FC = () => {
   ];
 
   const advancedManagementLinks = [
+    { name: 'White Label & Customization', icon: PaletteIcon, path: '/admin/whitelabel' },
+    { name: 'Multi Regional Management', icon: PublicIcon, path: '/admin/multiregional' },
+    { name: 'Referrals Management', icon: CardGiftcardIcon, path: '/admin/referrals' },
+    { name: 'Reward Management', icon: EmojiEventsIcon, path: '/admin/rewards' },
+    { name: 'Ratings Management', icon: ThumbUpIcon, path: '/admin/ratings' },
+    { name: 'Document Management', icon: DescriptionIcon, path: '/admin/documents' },
+    { name: 'Content Management', icon: WebAssetIcon, path: '/admin/content' },
+    { name: 'Backup & Recovery', icon: CloudUploadIcon, path: '/admin/backup-recovery' },
     { name: 'RBAC Management', icon: SecurityIcon, path: '/admin/rbac' },
     { name: 'KYC/KYB Management', icon: VerifiedUserIcon, path: '/admin/kyc' },
     { name: 'System Settings', icon: SettingsIcon, path: '/admin/settings' },
