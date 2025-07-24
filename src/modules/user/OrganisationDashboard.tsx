@@ -119,6 +119,9 @@ interface VerificationJob {
   successCount: number
   failureCount: number
   progress: number
+  estimatedCompletion?: string
+}
+
 interface TrustScoreAlert {
   id: string
   userId: string
