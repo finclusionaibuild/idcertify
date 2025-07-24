@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
+import ShieldIcon from '@mui/icons-material/Security';
+import AwardIcon from '@mui/icons-material/EmojiEvents';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import UsersIcon from '@mui/icons-material/People';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import AlertTriangleIcon from '@mui/icons-material/Warning';
+import StarIcon from '@mui/icons-material/Star';
+import ArrowRightIcon from '@mui/icons-material/ArrowForward';
+import ZapIcon from '@mui/icons-material/Flash';
 import { 
-  Award, 
   TrendingUp, 
   Shield, 
   FileText, 
