@@ -11,17 +11,34 @@ import AddIcon from '@mui/icons-material/Add';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import WarningIcon from '@mui/icons-material/Warning';
 import {
-  XCircle,
-  AlertCircle,
-  Plus,
-  Eye,
-  TrendingUp,
-  Download,
-  Upload,
-  CreditCard,
-  History,
-  HelpCircle,
-  MessageCircle,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Grid,
+  Box,
+  LinearProgress,
+  Chip,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Avatar,
+  Paper,
+  Alert,
+  IconButton,
+  Tooltip
+} from '@mui/material';
+import PersonIcon from '@mui/icons-material/Person';
+import SecurityIcon from '@mui/icons-material/Security';
+import DescriptionIcon from '@mui/icons-material/Description';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AddIcon from '@mui/icons-material/Add';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DownloadIcon from '@mui/icons-material/Download';
   ExternalLink,
   ChevronRight,
   Building,

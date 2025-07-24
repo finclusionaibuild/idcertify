@@ -1,30 +1,51 @@
-import React, { useState } from 'react'
-import { 
-  CreditCard, 
-  DollarSign, 
-  Calendar, 
-  Users, 
-  Settings, 
-  Edit, 
-  Trash2, 
-  Plus, 
-  Download, 
-  Eye, 
-  CheckCircle, 
-  XCircle, 
-  Clock, 
-  Search, 
-  Filter, 
-  RefreshCw, 
-  ArrowUp, 
-  ArrowDown, 
-  BarChart3, 
-  TrendingUp, 
-  AlertTriangle, 
-  Info, 
-  Save, 
-  X
-} from 'lucide-react'
+import React, { useState, useEffect } from 'react';
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Chip,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Grid,
+  Box,
+  IconButton,
+  Tooltip,
+  Alert
+} from '@mui/material';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import UsersIcon from '@mui/icons-material/People';
+import CalendarIcon from '@mui/icons-material/CalendarToday';
+import DollarSignIcon from '@mui/icons-material/AttachMoney';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import AlertCircleIcon from '@mui/icons-material/Error';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import SearchIcon from '@mui/icons-material/Search';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import SettingsIcon from '@mui/icons-material/Settings';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import MailIcon from '@mui/icons-material/Mail';
 
 interface Subscription {
   id: string
