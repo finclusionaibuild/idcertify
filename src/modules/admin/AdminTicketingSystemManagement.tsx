@@ -32,12 +32,10 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import MessageSquareIcon from '@mui/icons-material/Chat';
 import UsersIcon from '@mui/icons-material/People';
-import MessageSquareIcon from '@mui/icons-material/Chat';
 import ClockIcon from '@mui/icons-material/Schedule';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import AlertTriangleIcon from '@mui/icons-material/Warning';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ZapIcon from '@mui/icons-material/FlashOn';
+import {
   XCircle, 
   Clock, 
   User, 
@@ -60,7 +58,14 @@ import ZapIcon from '@mui/icons-material/FlashOn';
   TrendingUp,
   PieChart,
   Target,
-  Zap
+  Zap,
+  Download,
+  Plus,
+  Eye,
+  Edit,
+  MoreHorizontal,
+  MessageSquare,
+  Trash2
 } from 'lucide-react'
 
 interface Ticket {
@@ -204,7 +209,7 @@ const AdminTicketingSystemManagement = () => {
       case 'in_progress':
         return <RefreshCw className="w-5 h-5 text-blue-500" />
       case 'resolved':
-        return <CheckCircle className="w-5 h-5 text-green-500" />
+        return <CheckCircleIcon className="w-5 h-5 text-green-500" />
       case 'closed':
         return <XCircle className="w-5 h-5 text-gray-500" />
       case 'reopened':
@@ -332,7 +337,7 @@ const AdminTicketingSystemManagement = () => {
           {
             title: 'Resolved Today',
             value: tickets.filter(t => t.status === 'resolved' && new Date(t.resolvedAt || '').toDateString() === new Date().toDateString()).length,
-            icon: CheckCircle,
+            icon: CheckCircleIcon,
             color: 'bg-green-500',
             description: 'Tickets resolved today'
           },
