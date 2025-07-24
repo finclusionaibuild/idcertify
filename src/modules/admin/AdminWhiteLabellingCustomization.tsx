@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import PaletteIcon from '@mui/icons-material/Palette';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import SaveIcon from '@mui/icons-material/Save';
+import UploadIcon from '@mui/icons-material/Upload';
+import DownloadIcon from '@mui/icons-material/Download';
 import { 
-  Palette, 
   Type, 
   Image, 
   Globe, 
   Mail, 
-  Save, 
   RefreshCw, 
   Upload, 
   Eye, 
@@ -142,7 +145,7 @@ const AdminWhiteLabellingCustomization = () => {
             Preview Changes
           </button>
           <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center">
-            <Save className="w-4 h-4 mr-2" />
+            <SaveIcon className="w-4 h-4 mr-2" />
             Save All Customizations
           </button>
         </div>
@@ -167,7 +170,7 @@ const AdminWhiteLabellingCustomization = () => {
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
-            <Palette className="w-4 h-4" />
+            <PaletteIcon className="w-4 h-4" />
             <span>Branding</span>
           </button>
           <button
@@ -331,7 +334,7 @@ const AdminWhiteLabellingCustomization = () => {
               {loading ? (
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
-                <Save className="w-4 h-4 mr-2" />
+                <SaveIcon className="w-4 h-4 mr-2" />
               )}
               Save Branding
             </button>
@@ -440,7 +443,7 @@ const AdminWhiteLabellingCustomization = () => {
               {loading ? (
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
-                <Save className="w-4 h-4 mr-2" />
+                <SaveIcon className="w-4 h-4 mr-2" />
               )}
               Save Layout
             </button>
@@ -532,7 +535,7 @@ const AdminWhiteLabellingCustomization = () => {
               {loading ? (
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
-                <Save className="w-4 h-4 mr-2" />
+                <SaveIcon className="w-4 h-4 mr-2" />
               )}
               Save Notifications
             </button>
@@ -629,7 +632,7 @@ const AdminWhiteLabellingCustomization = () => {
               {loading ? (
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
-                <Save className="w-4 h-4 mr-2" />
+                <SaveIcon className="w-4 h-4 mr-2" />
               )}
               Save Domains
             </button>
@@ -674,7 +677,7 @@ const AdminWhiteLabellingCustomization = () => {
                 {loading ? (
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                 ) : (
-                  <Save className="w-4 h-4 mr-2" />
+                  <SaveIcon className="w-4 h-4 mr-2" />
                 )}
                 Save Advanced Settings
               </button>

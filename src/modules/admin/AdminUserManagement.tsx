@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+import PeopleIcon from '@mui/icons-material/People';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import BlockIcon from '@mui/icons-material/Block';
 import { 
-  Users, 
-  Search, 
-  Filter, 
   Download, 
-  Plus, 
-  Eye, 
-  Edit, 
-  Trash2, 
   MoreHorizontal, 
   CheckCircle, 
   XCircle, 
@@ -216,7 +217,7 @@ const AdminUserManagement = () => {
             Export Users
           </button>
           <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center">
-            <Plus className="w-4 h-4 mr-2" />
+            <AddIcon className="w-4 h-4 mr-2" />
             Add User
           </button>
         </div>
@@ -228,7 +229,7 @@ const AdminUserManagement = () => {
           {
             title: 'Total Users',
             value: mockUsers.length,
-            icon: Users,
+            icon: PeopleIcon,
             color: 'bg-blue-500',
             description: 'All registered users'
           },
@@ -274,7 +275,7 @@ const AdminUserManagement = () => {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between space-y-4 lg:space-y-0 lg:space-x-4">
           <div className="flex items-center space-x-4 flex-1">
             <div className="relative flex-1 max-w-md">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <SearchIcon className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search users by name or email..."
@@ -475,10 +476,10 @@ const AdminUserManagement = () => {
                         }}
                         className="text-primary-600 hover:text-primary-900"
                       >
-                        <Eye className="w-4 h-4" />
+                        <VisibilityIcon className="w-4 h-4" />
                       </button>
                       <button className="text-blue-600 hover:text-blue-900">
-                        <Edit className="w-4 h-4" />
+                        <EditIcon className="w-4 h-4" />
                       </button>
                       <button 
                         onClick={() => {
@@ -487,7 +488,7 @@ const AdminUserManagement = () => {
                         }}
                         className="text-red-600 hover:text-red-900"
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <DeleteIcon className="w-4 h-4" />
                       </button>
                       <button className="text-gray-400 hover:text-gray-600">
                         <MoreHorizontal className="w-4 h-4" />
@@ -502,7 +503,7 @@ const AdminUserManagement = () => {
         
         {filteredUsers.length === 0 && (
           <div className="text-center py-12">
-            <Users className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+            <PeopleIcon className="w-12 h-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-medium text-gray-900 mb-2">No users found</h3>
             <p className="text-gray-600">
               Try adjusting your search or filter criteria
@@ -697,11 +698,11 @@ const AdminUserManagement = () => {
                   }}
                   className="border border-red-300 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-red-50 transition-colors flex items-center"
                 >
-                  <Trash2 className="w-4 h-4 mr-2" />
+                  <DeleteIcon className="w-4 h-4 mr-2" />
                   Delete User
                 </button>
                 <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center">
-                  <Edit className="w-4 h-4 mr-2" />
+                  <EditIcon className="w-4 h-4 mr-2" />
                   Edit User
                 </button>
               </div>
@@ -756,7 +757,7 @@ const AdminUserManagement = () => {
                   {loading ? (
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                   ) : (
-                    <Trash2 className="w-4 h-4 mr-2" />
+                    <DeleteIcon className="w-4 h-4 mr-2" />
                   )}
                   Delete User
                 </button>
