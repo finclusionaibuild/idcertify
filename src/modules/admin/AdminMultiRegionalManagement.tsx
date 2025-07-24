@@ -1,22 +1,58 @@
-import React, { useState } from 'react';
-import { 
-  Globe, 
-  Database, 
-  Users, 
-  Key, 
-  Shield, 
-  Server, 
-  MapPin, 
-  Settings,
-  Plus,
-  Edit,
-  Trash2,
-  Eye,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Activity
-} from 'lucide-react';
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Grid,
+  Box,
+  Chip,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton,
+  Menu,
+  MenuItem,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  Switch,
+  FormControlLabel,
+  Alert,
+  Tabs,
+  Tab,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  Tooltip
+} from '@mui/material';
+import PublicIcon from '@mui/icons-material/Public';
+import PeopleIcon from '@mui/icons-material/People';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import BusinessIcon from '@mui/icons-material/Business';
+import SecurityIcon from '@mui/icons-material/Security';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ErrorIcon from '@mui/icons-material/Error';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import SearchIcon from '@mui/icons-material/Search';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 interface Region {
   id: string;
