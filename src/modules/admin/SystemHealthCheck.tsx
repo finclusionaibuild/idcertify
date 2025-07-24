@@ -1,76 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  Typography,
-  Grid,
-  Box,
-  Chip,
-  LinearProgress,
-  Alert,
-  Button,
-  IconButton,
-  Tooltip,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Tabs,
-  Tab,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon
-} from '@mui/material';
-import ActivityIcon from '@mui/icons-material/Timeline';
-import ServerIcon from '@mui/icons-material/Storage';
-import DatabaseIcon from '@mui/icons-material/Storage';
-import WifiIcon from '@mui/icons-material/Wifi';
-import AlertTriangleIcon from '@mui/icons-material/Warning';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ClockIcon from '@mui/icons-material/AccessTime';
-import UsersIcon from '@mui/icons-material/People';
-import HardDriveIcon from '@mui/icons-material/Storage';
-import CpuIcon from '@mui/icons-material/Memory';
-import MemoryStickIcon from '@mui/icons-material/Memory';
-import NetworkIcon from '@mui/icons-material/NetworkCheck';
-import ShieldIcon from '@mui/icons-material/Security';
-import ZapIcon from '@mui/icons-material/FlashOn';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import XCircleIcon from '@mui/icons-material/Cancel';
-import GlobeIcon from '@mui/icons-material/Public';
-import LockIcon from '@mui/icons-material/Lock';
-import UnlockIcon from '@mui/icons-material/LockOpen';
-import SettingsIcon from '@mui/icons-material/Settings';
-import RefreshCwIcon from '@mui/icons-material/Refresh';
-import DownloadIcon from '@mui/icons-material/Download';
-import UploadIcon from '@mui/icons-material/Upload';
-import BarChart3Icon from '@mui/icons-material/BarChart';
-import BellIcon from '@mui/icons-material/Notifications';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import {
+import React, { useState } from 'react'
+import { 
+  Activity, 
+  Server, 
+  Database, 
+  Globe, 
+  Cpu, 
+  HardDrive, 
+  RefreshCw, 
+  Download, 
+  AlertTriangle, 
+  CheckCircle, 
+  Clock, 
+  BarChart3, 
+  TrendingUp, 
+  TrendingDown, 
+  Calendar, 
+  Filter, 
   Search, 
   Info, 
-  Settings
-} from 'lucide-react';
+  Settings,
+  Bell
+} from 'lucide-react'
 
 const SystemHealthCheck = () => {
-  const [selectedTimeframe, setSelectedTimeframe] = useState('24hours');
-  const [refreshing, setRefreshing] = useState(false);
+  const [selectedTimeframe, setSelectedTimeframe] = useState('24hours')
+  const [refreshing, setRefreshing] = useState(false)
 
   const handleRefresh = () => {
-    setRefreshing(true);
+    setRefreshing(true)
     // Simulate refresh
     setTimeout(() => {
-      setRefreshing(false);
-    }, 1500);
-  };
+      setRefreshing(false)
+    }, 1500)
+  }
 
   return (
     <div className="space-y-6">
@@ -373,7 +335,7 @@ const SystemHealthCheck = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SystemHealthCheck;
+export default SystemHealthCheck

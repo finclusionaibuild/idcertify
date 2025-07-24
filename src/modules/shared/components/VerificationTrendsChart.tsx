@@ -1,23 +1,18 @@
-import React from 'react';
-import {
-  TrendingUpIcon,
-  TrendingDownIcon,
-  BarChartIcon,
-  Grid
-} from '@mui/material';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { useState } from 'react';
-import PeopleIcon from '@mui/icons-material/People';
+import { useState } from 'react'
+import { Calendar, Download, RefreshCw } from 'lucide-react'
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import BarChartIcon from '@mui/icons-material/BarChart';
 
 interface ChartDataPoint {
-  month: string;
-  value: number;
-  label: string;
+  month: string
+  value: number
+  label: string
 }
 
 const VerificationTrendsChart = () => {
-  const [selectedTimeframe, setSelectedTimeframe] = useState('Monthly');
-  const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
+  const [selectedTimeframe, setSelectedTimeframe] = useState('Monthly')
+  const [hoveredPoint, setHoveredPoint] = useState<number | null>(null)
 
   // Sample data points for the chart
   const chartData: ChartDataPoint[] = [
@@ -33,64 +28,64 @@ const VerificationTrendsChart = () => {
     { month: 'Oct', value: 36000, label: '36K' },
     { month: 'Nov', value: 39000, label: '39K' },
     { month: 'Dec', value: 35000, label: '35K' }
-  ];
+  ]
 
-  const maxValue = Math.max(...chartData.map(d => d.value));
-  const minValue = Math.min(...chartData.map(d => d.value));
-  const range = maxValue - minValue;
+  const maxValue = Math.max(...chartData.map(d => d.value))
+  const minValue = Math.min(...chartData.map(d => d.value))
+  const range = maxValue - minValue
 
   // Generate SVG path for the curve
   const generatePath = () => {
-    const width = 760;
-    const height = 200;
-    const padding = 40;
+    const width = 760
+    const height = 200
+    const padding = 40
 
     const points = chartData.map((point, index) => {
-      const x = padding + (index * (width - 2 * padding)) / (chartData.length - 1);
-      const y = height - padding - ((point.value - minValue) / range) * (height - 2 * padding);
-      return { x, y, value: point.value, month: point.month, label: point.label };
-    });
+      const x = padding + (index * (width - 2 * padding)) / (chartData.length - 1)
+      const y = height - padding - ((point.value - minValue) / range) * (height - 2 * padding)
+      return { x, y, value: point.value, month: point.month, label: point.label }
+    })
 
     // Create smooth curve using quadratic bezier curves
-    let path = `M ${points[0].x} ${points[0].y}`;
+    let path = `M ${points[0].x} ${points[0].y}`
     
     for (let i = 1; i < points.length; i++) {
-      const prev = points[i - 1];
-      const curr = points[i];
+      const prev = points[i - 1]
+      const curr = points[i]
       
       if (i === 1) {
         // First curve
-        const cp1x = prev.x + (curr.x - prev.x) * 0.5;
-        const cp1y = prev.y;
-        path += ` Q ${cp1x} ${cp1y} ${curr.x} ${curr.y}`;
+        const cp1x = prev.x + (curr.x - prev.x) * 0.5
+        const cp1y = prev.y
+        path += ` Q ${cp1x} ${cp1y} ${curr.x} ${curr.y}`
       } else if (i === points.length - 1) {
         // Last curve
-        const cp1x = prev.x + (curr.x - prev.x) * 0.5;
-        const cp1y = curr.y;
-        path += ` Q ${cp1x} ${cp1y} ${curr.x} ${curr.y}`;
+        const cp1x = prev.x + (curr.x - prev.x) * 0.5
+        const cp1y = curr.y
+        path += ` Q ${cp1x} ${cp1y} ${curr.x} ${curr.y}`
       } else {
         // Middle curves
-        const cp1x = prev.x + (curr.x - prev.x) * 0.5;
-        const cp1y = prev.y + (curr.y - prev.y) * 0.3;
-        path += ` Q ${cp1x} ${cp1y} ${curr.x} ${curr.y}`;
+        const cp1x = prev.x + (curr.x - prev.x) * 0.5
+        const cp1y = prev.y + (curr.y - prev.y) * 0.3
+        path += ` Q ${cp1x} ${cp1y} ${curr.x} ${curr.y}`
       }
     }
 
-    return { path, points };
-  };
+    return { path, points }
+  }
 
-  const { path, points } = generatePath();
+  const { path, points } = generatePath()
 
   // Generate grid lines
   const generateGridLines = () => {
-    const width = 760;
-    const height = 200;
-    const padding = 40;
-    const gridLines = [];
+    const width = 760
+    const height = 200
+    const padding = 40
+    const gridLines = []
 
     // Horizontal grid lines (5 lines)
     for (let i = 0; i <= 5; i++) {
-      const y = padding + (i * (height - 2 * padding)) / 5;
+      const y = padding + (i * (height - 2 * padding)) / 5
       gridLines.push(
         <line
           key={`h-${i}`}
@@ -101,12 +96,12 @@ const VerificationTrendsChart = () => {
           stroke="#f1f5f9"
           strokeWidth="1"
         />
-      );
+      )
     }
 
     // Vertical grid lines
     chartData.forEach((_, index) => {
-      const x = padding + (index * (width - 2 * padding)) / (chartData.length - 1);
+      const x = padding + (index * (width - 2 * padding)) / (chartData.length - 1)
       gridLines.push(
         <line
           key={`v-${index}`}
@@ -117,22 +112,22 @@ const VerificationTrendsChart = () => {
           stroke="#f1f5f9"
           strokeWidth="1"
         />
-      );
-    });
+      )
+    })
 
-    return gridLines;
-  };
+    return gridLines
+  }
 
   // Y-axis labels
   const generateYAxisLabels = () => {
-    const height = 200;
-    const padding = 40;
-    const labels = [];
+    const height = 200
+    const padding = 40
+    const labels = []
 
     for (let i = 0; i <= 5; i++) {
-      const value = minValue + (range * (5 - i)) / 5;
-      const y = padding + (i * (height - 2 * padding)) / 5;
-      const formattedValue = value >= 1000 ? `${(value / 1000).toFixed(0)}K` : value.toString();
+      const value = minValue + (range * (5 - i)) / 5
+      const y = padding + (i * (height - 2 * padding)) / 5
+      const formattedValue = value >= 1000 ? `${(value / 1000).toFixed(0)}K` : value.toString()
       
       labels.push(
         <text
@@ -144,11 +139,11 @@ const VerificationTrendsChart = () => {
         >
           {formattedValue}
         </text>
-      );
+      )
     }
 
-    return labels;
-  };
+    return labels
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 border border-gray-200">
@@ -213,7 +208,7 @@ const VerificationTrendsChart = () => {
 
             {/* X-axis labels */}
             {chartData.map((point, index) => {
-              const x = 40 + (index * (760 - 80)) / (chartData.length - 1);
+              const x = 40 + (index * (760 - 80)) / (chartData.length - 1)
               return (
                 <text
                   key={`x-${index}`}
@@ -224,7 +219,7 @@ const VerificationTrendsChart = () => {
                 >
                   {point.month}
                 </text>
-              );
+              )
             })}
 
             {/* Area fill */}
@@ -365,7 +360,7 @@ const VerificationTrendsChart = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VerificationTrendsChart;
+export default VerificationTrendsChart

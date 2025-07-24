@@ -1,31 +1,3 @@
-  import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  TextField,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Chip,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  IconButton,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Grid,
-  Alert,
-  Tooltip
-} from '@mui/material';
 import React, { useState } from 'react'
 import { 
   FileText, 
@@ -33,40 +5,25 @@ import {
   Download, 
   RefreshCw, 
   Filter, 
-  Search,
-  Clock,
-  Globe,
-  Lock,
-  Database,
-  User,
-  Server,
+  Search, 
+  Calendar, 
+  AlertTriangle, 
+  CheckCircle, 
+  Info, 
+  Save, 
+  X, 
+  Plus, 
+  Trash2, 
+  Edit, 
+  Eye, 
+  Clock, 
+  Server, 
+  Database, 
+  Globe, 
+  Lock, 
   Bell,
-  CheckCircle,
-  Save,
-  X
-} from 'lucide-react';
-import SettingsIcon from '@mui/icons-material/Settings';
-import StorageIcon from '@mui/icons-material/Storage';
-import SecurityIcon from '@mui/icons-material/Security';
-import WarningIcon from '@mui/icons-material/Warning';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import SearchIcon from '@mui/icons-material/Search';
-import DownloadIcon from '@mui/icons-material/Download';
-import DeleteIcon from '@mui/icons-material/Delete';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import DnsIcon from '@mui/icons-material/Dns';
-import ShowChartIcon from '@mui/icons-material/ShowChart';
-import DescriptionIcon from '@mui/icons-material/Description';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import ErrorIcon from '@mui/icons-material/Error';
-import InfoIcon from '@mui/icons-material/Info';
-import CancelIcon from '@mui/icons-material/Cancel';
-import DatabaseIcon from '@mui/icons-material/Storage';
-import ShieldIcon from '@mui/icons-material/Shield';
+  User
+} from 'lucide-react'
 
 const SystemLogConfiguration = () => {
   const [activeTab, setActiveTab] = useState<'logs' | 'settings' | 'retention'>('logs')

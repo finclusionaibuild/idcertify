@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
-import BarChartIcon from '@mui/icons-material/BarChart';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import PeopleIcon from '@mui/icons-material/People';
-import BusinessIcon from '@mui/icons-material/Business';
-import DescriptionIcon from '@mui/icons-material/Description';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import WarningIcon from '@mui/icons-material/Warning';
-import DownloadIcon from '@mui/icons-material/Download';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import SearchIcon from '@mui/icons-material/Search';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import StorageIcon from '@mui/icons-material/Storage';
-import SettingsIcon from '@mui/icons-material/Settings';
 import {
+  BarChart3,
+  TrendingUp,
+  TrendingDown,
+  Users,
+  Shield,
+  DollarSign,
+  FileText,
+  Download,
+  RefreshCw,
+  Filter,
+  Search,
+  Calendar,
+  Eye,
+  MoreHorizontal,
+  Info,
+  AlertTriangle,
+  CheckCircle,
+  XCircle,
   Clock,
   User,
   Building,
@@ -28,15 +29,7 @@ import {
   Bell,
   ArrowUp,
   ArrowDown,
-  Settings,
-  Download,
-  RefreshCw,
-  FileText,
-  CheckCircle,
-  Eye,
-  DollarSign,
-  BarChart3,
-  AlertTriangle
+  Settings
 } from 'lucide-react'
 
 const AdminReportAnalytics = () => {

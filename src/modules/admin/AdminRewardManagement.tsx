@@ -1,48 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  TextField,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Chip,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Grid,
-  Box,
-  IconButton,
-  Tooltip,
-  Alert
-} from '@mui/material';
-import GiftIcon from '@mui/icons-material/CardGiftcard';
-import StarIcon from '@mui/icons-material/Star';
-import TrophyIcon from '@mui/icons-material/EmojiEvents';
-import UsersIcon from '@mui/icons-material/People';
-import CalendarIcon from '@mui/icons-material/CalendarToday';
-import DollarSignIcon from '@mui/icons-material/AttachMoney';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import AwardIcon from '@mui/icons-material/WorkspacePremium';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import SearchIcon from '@mui/icons-material/Search';
-import SettingsIcon from '@mui/icons-material/Settings';
-import FlashOnIcon from '@mui/icons-material/FlashOn';
+import React, { useState } from 'react';
+import { 
+  Award, 
+  Gift, 
+  Star, 
+  Trophy, 
+  Target, 
+  TrendingUp, 
+  Users, 
+  Calendar,
+  Plus,
+  Edit,
+  Trash2,
+  Eye,
+  Filter,
+  Search,
+  Settings,
+  Zap
+} from 'lucide-react';
 
 interface RewardProgram {
   id: string;
@@ -175,12 +149,12 @@ const AdminRewardManagement: React.FC = () => {
 
   const getRewardTypeIcon = (type: string) => {
     switch (type) {
-      case 'points': return <StarIcon className="w-4 h-4" />;
-      case 'badges': return <AwardIcon className="w-4 h-4" />;
-      case 'cashback': return <GiftIcon className="w-4 h-4" />;
-      case 'discount': return <DollarSignIcon className="w-4 h-4" />;
-      case 'premium': return <FlashOnIcon className="w-4 h-4" />;
-      default: return <GiftIcon className="w-4 h-4" />;
+      case 'points': return <Star className="w-4 h-4" />;
+      case 'badges': return <Award className="w-4 h-4" />;
+      case 'cashback': return <Gift className="w-4 h-4" />;
+      case 'discount': return <Target className="w-4 h-4" />;
+      case 'premium': return <Zap className="w-4 h-4" />;
+      default: return <Gift className="w-4 h-4" />;
     }
   };
 
@@ -212,7 +186,7 @@ const AdminRewardManagement: React.FC = () => {
           onClick={() => setShowProgramModal(true)}
           className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 flex items-center gap-2"
         >
-          <AddIcon className="w-4 h-4" />
+          <Plus className="w-4 h-4" />
           Create Program
         </button>
       </div>
@@ -221,11 +195,11 @@ const AdminRewardManagement: React.FC = () => {
       <div className="border-b border-gray-200">
         <nav className="flex space-x-8">
           {[
-            { id: 'overview', label: 'Overview', icon: TrendingUpIcon },
-            { id: 'programs', label: 'Programs', icon: GiftIcon },
-            { id: 'rewards', label: 'User Rewards', icon: AwardIcon },
-            { id: 'tiers', label: 'Reward Tiers', icon: TrophyIcon },
-            { id: 'analytics', label: 'Analytics', icon: DollarSignIcon }
+            { id: 'overview', label: 'Overview', icon: TrendingUp },
+            { id: 'programs', label: 'Programs', icon: Gift },
+            { id: 'rewards', label: 'User Rewards', icon: Award },
+            { id: 'tiers', label: 'Reward Tiers', icon: Trophy },
+            { id: 'analytics', label: 'Analytics', icon: Target }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -256,7 +230,7 @@ const AdminRewardManagement: React.FC = () => {
                     {programs.filter(p => p.isActive).length}
                   </p>
                 </div>
-                <GiftIcon className="w-8 h-8 text-primary-600" />
+                <Gift className="w-8 h-8 text-primary-600" />
               </div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-soft border">
@@ -265,7 +239,7 @@ const AdminRewardManagement: React.FC = () => {
                   <p className="text-sm font-medium text-gray-600">Total Points Distributed</p>
                   <p className="text-2xl font-bold text-gray-900">{getTotalPointsDistributed().toLocaleString()}</p>
                 </div>
-                <StarIcon className="w-8 h-8 text-yellow-600" />
+                <Star className="w-8 h-8 text-yellow-600" />
               </div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-soft border">
@@ -274,7 +248,7 @@ const AdminRewardManagement: React.FC = () => {
                   <p className="text-sm font-medium text-gray-600">Active Users</p>
                   <p className="text-2xl font-bold text-gray-900">{getActiveUsers()}</p>
                 </div>
-                <UsersIcon className="w-8 h-8 text-blue-600" />
+                <Users className="w-8 h-8 text-blue-600" />
               </div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-soft border">
@@ -283,7 +257,7 @@ const AdminRewardManagement: React.FC = () => {
                   <p className="text-sm font-medium text-gray-600">Redemption Rate</p>
                   <p className="text-2xl font-bold text-gray-900">73%</p>
                 </div>
-                <TrophyIcon className="w-8 h-8 text-green-600" />
+                <Trophy className="w-8 h-8 text-green-600" />
               </div>
             </div>
           </div>
@@ -351,7 +325,7 @@ const AdminRewardManagement: React.FC = () => {
                         onClick={() => setSelectedProgram(program)}
                         className="text-blue-600 hover:text-blue-800"
                       >
-                        <VisibilityIcon className="w-4 h-4" />
+                        <Eye className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
@@ -378,15 +352,15 @@ const AdminRewardManagement: React.FC = () => {
                   <div className="mt-4 pt-4 border-t">
                     <div className="flex items-center gap-2">
                       <button className="text-blue-600 hover:text-blue-800 text-sm">
-                        <EditIcon className="w-4 h-4 inline mr-1" />
+                        <Edit className="w-4 h-4 inline mr-1" />
                         Edit
                       </button>
                       <button className="text-gray-600 hover:text-gray-800 text-sm">
-                        <SettingsIcon className="w-4 h-4 inline mr-1" />
+                        <Settings className="w-4 h-4 inline mr-1" />
                         Configure
                       </button>
                       <button className="text-red-600 hover:text-red-800 text-sm">
-                        <DeleteIcon className="w-4 h-4 inline mr-1" />
+                        <Trash2 className="w-4 h-4 inline mr-1" />
                         Delete
                       </button>
                     </div>
@@ -405,7 +379,7 @@ const AdminRewardManagement: React.FC = () => {
           <div className="bg-white p-4 rounded-lg shadow-soft border">
             <div className="flex flex-wrap gap-4 items-center">
               <div className="flex items-center gap-2">
-                <SearchIcon className="w-4 h-4 text-gray-400" />
+                <Search className="w-4 h-4 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Search users..."
@@ -416,7 +390,7 @@ const AdminRewardManagement: React.FC = () => {
               </div>
               
               <div className="flex items-center gap-2">
-                <FilterListIcon className="w-4 h-4 text-gray-400" />
+                <Filter className="w-4 h-4 text-gray-400" />
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
@@ -479,10 +453,10 @@ const AdminRewardManagement: React.FC = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex items-center gap-2">
                           <button className="text-blue-600 hover:text-blue-900">
-                            <VisibilityIcon className="w-4 h-4" />
+                            <Eye className="w-4 h-4" />
                           </button>
                           <button className="text-green-600 hover:text-green-900">
-                            <GiftIcon className="w-4 h-4" />
+                            <Gift className="w-4 h-4" />
                           </button>
                         </div>
                       </td>
@@ -511,7 +485,7 @@ const AdminRewardManagement: React.FC = () => {
                       className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center"
                       style={{ backgroundColor: `${tier.color}20` }}
                     >
-                      <TrophyIcon className="w-8 h-8" style={{ color: tier.color }} />
+                      <Trophy className="w-8 h-8" style={{ color: tier.color }} />
                     </div>
                     <h4 className="text-xl font-bold text-gray-900 mb-2">{tier.name}</h4>
                     <p className="text-sm text-gray-600 mb-4">
@@ -520,14 +494,14 @@ const AdminRewardManagement: React.FC = () => {
                     <div className="space-y-2">
                       {tier.benefits.map((benefit, index) => (
                         <div key={index} className="flex items-center gap-2 text-sm text-gray-700">
-                          <StarIcon className="w-4 h-4 text-yellow-500" />
+                          <Star className="w-4 h-4 text-yellow-500" />
                           <span>{benefit}</span>
                         </div>
                       ))}
                     </div>
                     <div className="mt-4 pt-4 border-t">
                       <button className="text-blue-600 hover:text-blue-800 text-sm">
-                        <EditIcon className="w-4 h-4 inline mr-1" />
+                        <Edit className="w-4 h-4 inline mr-1" />
                         Edit Tier
                       </button>
                     </div>

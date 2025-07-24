@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import CloseIcon from '@mui/icons-material/Close';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import React, { useState } from 'react'
+import { X, ArrowRight, ArrowLeft } from 'lucide-react'
 
 interface OnboardingTourProps {
   isOpen: boolean
@@ -57,7 +54,7 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose }) => {
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
         >
-          <CloseIcon className="w-5 h-5" />
+          <X className="w-5 h-5" />
         </button>
 
         {/* Step indicator */}
@@ -93,24 +90,15 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose }) => {
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
-            <ArrowBackIcon className="w-4 h-4 mr-2" />
+            <ArrowLeft className="w-4 h-4 mr-2" />
             Previous
           </button>
           <button
             onClick={nextStep}
             className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors flex items-center"
           >
-            {currentStep === tourSteps.length - 1 ? (
-              <>
-                <CheckCircleIcon className="w-4 h-4 mr-2" />
-                Finish
-              </>
-            ) : (
-              <>
-                Next
-                <ArrowForwardIcon className="w-4 h-4 ml-2" />
-              </>
-            )}
+            {currentStep === tourSteps.length - 1 ? 'Finish' : 'Next'}
+            {currentStep < tourSteps.length - 1 && <ArrowRight className="w-4 h-4 ml-2" />}
           </button>
         </div>
       </div>

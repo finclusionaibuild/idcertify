@@ -1,26 +1,5 @@
 import React, { useState } from 'react';
-import DescriptionIcon from '@mui/icons-material/Description';
-import UploadIcon from '@mui/icons-material/Upload';
-import DownloadIcon from '@mui/icons-material/Download';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import ShareIcon from '@mui/icons-material/Share';
-import LockIcon from '@mui/icons-material/Lock';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import PersonIcon from '@mui/icons-material/Person';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import WarningIcon from '@mui/icons-material/Warning';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import ImageIcon from '@mui/icons-material/Image';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import GridOnIcon from '@mui/icons-material/GridOn';
+import { FileText, Upload, Download, Eye, Edit, Trash2, Search, Filter, FolderPlus, Archive, Share2, Lock, Unlock, Calendar, User, Tag, AlertTriangle, CheckCircle, Clock, FileImage, File as FilePdf, FileSpreadsheet } from 'lucide-react';
 
 interface Document {
   id: string;
@@ -122,10 +101,10 @@ const AdminDocumentManagement: React.FC = () => {
 
   const getFileIcon = (type: string) => {
     switch (type) {
-      case 'pdf': return <PictureAsPdfIcon className="w-5 h-5 text-red-600" />;
-      case 'image': return <ImageIcon className="w-5 h-5 text-blue-600" />;
-      case 'spreadsheet': return <GridOnIcon className="w-5 h-5 text-green-600" />;
-      default: return <DescriptionIcon className="w-5 h-5 text-gray-600" />;
+      case 'pdf': return <FilePdf className="w-5 h-5 text-red-600" />;
+      case 'image': return <FileImage className="w-5 h-5 text-blue-600" />;
+      case 'spreadsheet': return <FileSpreadsheet className="w-5 h-5 text-green-600" />;
+      default: return <FileText className="w-5 h-5 text-gray-600" />;
     }
   };
 
@@ -141,11 +120,11 @@ const AdminDocumentManagement: React.FC = () => {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'active': return <CheckCircleIcon className="w-4 h-4" />;
-      case 'archived': return <ArchiveIcon className="w-4 h-4" />;
-      case 'pending': return <AccessTimeIcon className="w-4 h-4" />;
-      case 'rejected': return <WarningIcon className="w-4 h-4" />;
-      default: return <DescriptionIcon className="w-4 h-4" />;
+      case 'active': return <CheckCircle className="w-4 h-4" />;
+      case 'archived': return <Archive className="w-4 h-4" />;
+      case 'pending': return <Clock className="w-4 h-4" />;
+      case 'rejected': return <AlertTriangle className="w-4 h-4" />;
+      default: return <FileText className="w-4 h-4" />;
     }
   };
 
@@ -189,11 +168,11 @@ const AdminDocumentManagement: React.FC = () => {
             onClick={() => setShowUploadModal(true)}
             className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 flex items-center gap-2"
           >
-            <UploadIcon className="w-4 h-4" />
+            <Upload className="w-4 h-4" />
             Upload Document
           </button>
           <button className="bg-secondary-600 text-white px-4 py-2 rounded-lg hover:bg-secondary-700 flex items-center gap-2">
-            <CreateNewFolderIcon className="w-4 h-4" />
+            <FolderPlus className="w-4 h-4" />
             New Folder
           </button>
         </div>
@@ -203,10 +182,10 @@ const AdminDocumentManagement: React.FC = () => {
       <div className="border-b border-gray-200">
         <nav className="flex space-x-8">
           {[
-            { id: 'documents', label: 'Documents', icon: DescriptionIcon },
-            { id: 'folders', label: 'Folders', icon: CreateNewFolderIcon },
-            { id: 'analytics', label: 'Analytics', icon: CalendarTodayIcon },
-            { id: 'settings', label: 'Settings', icon: EditIcon }
+            { id: 'documents', label: 'Documents', icon: FileText },
+            { id: 'folders', label: 'Folders', icon: FolderPlus },
+            { id: 'analytics', label: 'Analytics', icon: Calendar },
+            { id: 'settings', label: 'Settings', icon: Edit }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -235,7 +214,7 @@ const AdminDocumentManagement: React.FC = () => {
                   <p className="text-sm font-medium text-gray-600">Total Documents</p>
                   <p className="text-2xl font-bold text-gray-900">{documents.length}</p>
                 </div>
-                <DescriptionIcon className="w-8 h-8 text-primary-600" />
+                <FileText className="w-8 h-8 text-primary-600" />
               </div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-soft border">
@@ -246,7 +225,7 @@ const AdminDocumentManagement: React.FC = () => {
                     {formatFileSize(documents.reduce((sum, doc) => sum + doc.size, 0))}
                   </p>
                 </div>
-                <ArchiveIcon className="w-8 h-8 text-blue-600" />
+                <Archive className="w-8 h-8 text-blue-600" />
               </div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-soft border">
@@ -257,7 +236,7 @@ const AdminDocumentManagement: React.FC = () => {
                     {documents.reduce((sum, doc) => sum + doc.downloadCount, 0)}
                   </p>
                 </div>
-                <DownloadIcon className="w-8 h-8 text-green-600" />
+                <Download className="w-8 h-8 text-green-600" />
               </div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-soft border">
@@ -268,7 +247,7 @@ const AdminDocumentManagement: React.FC = () => {
                     {documents.filter(doc => doc.isEncrypted).length}
                   </p>
                 </div>
-                <LockIcon className="w-8 h-8 text-yellow-600" />
+                <Lock className="w-8 h-8 text-yellow-600" />
               </div>
             </div>
           </div>
@@ -277,7 +256,7 @@ const AdminDocumentManagement: React.FC = () => {
           <div className="bg-white p-4 rounded-lg shadow-soft border">
             <div className="flex flex-wrap gap-4 items-center">
               <div className="flex items-center gap-2">
-                <SearchIcon className="w-4 h-4 text-gray-400" />
+                <Search className="w-4 h-4 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Search documents..."
@@ -288,7 +267,7 @@ const AdminDocumentManagement: React.FC = () => {
               </div>
               
               <div className="flex items-center gap-2">
-                <FilterListIcon className="w-4 h-4 text-gray-400" />
+                <Filter className="w-4 h-4 text-gray-400" />
                 <select
                   value={filterCategory}
                   onChange={(e) => setFilterCategory(e.target.value)}
@@ -363,14 +342,14 @@ const AdminDocumentManagement: React.FC = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center gap-2">
                           {document.isEncrypted ? (
-                            <LockIcon className="w-4 h-4 text-yellow-600" title="Encrypted" />
+                            <Lock className="w-4 h-4 text-yellow-600" title="Encrypted" />
                           ) : (
-                            <LockOpenIcon className="w-4 h-4 text-gray-400" title="Not encrypted" />
+                            <Unlock className="w-4 h-4 text-gray-400" title="Not encrypted" />
                           )}
                           {document.isPublic ? (
-                            <ShareIcon className="w-4 h-4 text-green-600" title="Public" />
+                            <Share2 className="w-4 h-4 text-green-600" title="Public" />
                           ) : (
-                            <PersonIcon className="w-4 h-4 text-gray-400" title="Private" />
+                            <User className="w-4 h-4 text-gray-400" title="Private" />
                           )}
                         </div>
                       </td>
@@ -386,16 +365,16 @@ const AdminDocumentManagement: React.FC = () => {
                             onClick={() => setSelectedDocument(document)}
                             className="text-blue-600 hover:text-blue-900"
                           >
-                            <VisibilityIcon className="w-4 h-4" />
+                            <Eye className="w-4 h-4" />
                           </button>
                           <button className="text-green-600 hover:text-green-900">
-                            <DownloadIcon className="w-4 h-4" />
+                            <Download className="w-4 h-4" />
                           </button>
                           <button className="text-gray-600 hover:text-gray-900">
-                            <EditIcon className="w-4 h-4" />
+                            <Edit className="w-4 h-4" />
                           </button>
                           <button className="text-red-600 hover:text-red-900">
-                            <DeleteIcon className="w-4 h-4" />
+                            <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
                       </td>
@@ -422,7 +401,7 @@ const AdminDocumentManagement: React.FC = () => {
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                          <CreateNewFolderIcon className="w-6 h-6 text-primary-600" />
+                          <FolderPlus className="w-6 h-6 text-primary-600" />
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900">{folder.name}</h4>
@@ -431,9 +410,9 @@ const AdminDocumentManagement: React.FC = () => {
                       </div>
                       <div className="flex items-center gap-2">
                         {folder.isPublic ? (
-                          <ShareIcon className="w-4 h-4 text-green-600" title="Public folder" />
+                          <Share2 className="w-4 h-4 text-green-600" title="Public folder" />
                         ) : (
-                          <LockIcon className="w-4 h-4 text-gray-400" title="Private folder" />
+                          <Lock className="w-4 h-4 text-gray-400" title="Private folder" />
                         )}
                       </div>
                     </div>
@@ -442,15 +421,15 @@ const AdminDocumentManagement: React.FC = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <button className="text-blue-600 hover:text-blue-800 text-sm">
-                        <VisibilityIcon className="w-4 h-4 inline mr-1" />
+                        <Eye className="w-4 h-4 inline mr-1" />
                         Open
                       </button>
                       <button className="text-gray-600 hover:text-gray-800 text-sm">
-                        <EditIcon className="w-4 h-4 inline mr-1" />
+                        <Edit className="w-4 h-4 inline mr-1" />
                         Edit
                       </button>
                       <button className="text-red-600 hover:text-red-800 text-sm">
-                        <DeleteIcon className="w-4 h-4 inline mr-1" />
+                        <Trash2 className="w-4 h-4 inline mr-1" />
                         Delete
                       </button>
                     </div>
@@ -619,7 +598,7 @@ const AdminDocumentManagement: React.FC = () => {
                 <div className="flex flex-wrap gap-2">
                   {selectedDocument.tags.map((tag) => (
                     <span key={tag} className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full flex items-center gap-1">
-                      <LocalOfferIcon className="w-3 h-3" />
+                      <Tag className="w-3 h-3" />
                       {tag}
                     </span>
                   ))}
@@ -647,11 +626,11 @@ const AdminDocumentManagement: React.FC = () => {
                   Edit Details
                 </button>
                 <button className="px-4 py-2 text-white bg-green-600 rounded-lg hover:bg-green-700 flex items-center gap-2">
-                  <DownloadIcon className="w-4 h-4" />
+                  <Download className="w-4 h-4" />
                   Download
                 </button>
                 <button className="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center gap-2">
-                  <ShareIcon className="w-4 h-4" />
+                  <Share2 className="w-4 h-4" />
                   Share
                 </button>
               </div>

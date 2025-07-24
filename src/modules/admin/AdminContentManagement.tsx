@@ -1,48 +1,34 @@
-  import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  TextField,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Chip,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Grid,
-  Box,
-  IconButton,
-  Tooltip,
-  Alert
-} from '@mui/material';
 import React, { useState } from 'react';
-import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import RefreshIcon from '@mui/icons-material/Refresh';
+import { 
+  Globe, 
+  Edit, 
+  Eye, 
+  Save, 
+  Plus, 
+  Trash2, 
+  Image, 
+  Type, 
+  Layout, 
+  Settings,
+  Monitor,
+  Smartphone,
+  Tablet,
+  Search,
+  Filter,
+  Calendar,
+  User,
+  Tag,
+  ExternalLink,
+  Copy,
+  RefreshCw
+} from 'lucide-react';
 
 interface ContentPage {
   id: string;
   title: string;
   slug: string;
   type: 'page' | 'blog' | 'help' | 'legal' | 'landing';
-  status: 'draft' | 'published' | 'scheduled' | 'archived';
+  status: 'published' | 'draft' | 'scheduled' | 'archived';
   content: string;
   excerpt?: string;
   featuredImage?: string;
@@ -710,13 +696,25 @@ const AdminContentManagement: React.FC = () => {
                       Cancel
                     </button>
                     <button className="px-4 py-2 text-white bg-primary-600 rounded-lg hover:bg-primary-700 flex items-center gap-2">
+                      <Save className="w-4 h-4" />
                       Save Changes
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="prose max-w-none">
-                  <div dangerouslySetInnerHTML={{ __html: selectedPage.content }} />
+                <div 
+                  className={`mx-auto bg-white rounded-lg shadow-medium overflow-hidden ${
+                    previewMode === 'desktop' ? 'max-w-6xl' : 
+                    previewMode === 'tablet' ? 'max-w-2xl' : 'max-w-sm'
+                  }`}
+                >
+                  <div className="p-6">
+                    <h1 className="text-3xl font-bold mb-4">{selectedPage.title}</h1>
+                    <div 
+                      className="prose max-w-none"
+                      dangerouslySetInnerHTML={{ __html: selectedPage.content }}
+                    />
+                  </div>
                 </div>
               )}
             </div>

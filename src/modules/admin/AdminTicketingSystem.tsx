@@ -1,45 +1,19 @@
 import React, { useState } from 'react';
 import { 
-  AddIcon,
-  SearchIcon,
-  FilterListIcon,
-  MessageIcon,
-  AccessTimeIcon,
-  CheckCircleIcon,
-  WarningIcon,
-  PersonIcon,
-  CalendarTodayIcon,
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  TextField,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Chip,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  IconButton,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Grid,
-  Alert,
-  Tooltip
-} from '@mui/material';
-import LabelIcon from '@mui/icons-material/Label';
-import ChatIcon from '@mui/icons-material/Chat';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import EditIcon from '@mui/icons-material/Edit';
+  Ticket, 
+  MessageSquare, 
+  Clock, 
+  CheckCircle, 
+  AlertCircle, 
+  User, 
+  Calendar,
+  Filter,
+  Search,
+  Plus,
+  Eye,
+  Edit,
+  Trash2
+} from 'lucide-react';
 
 interface TicketData {
   id: string;

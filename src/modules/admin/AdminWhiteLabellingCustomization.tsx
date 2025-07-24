@@ -1,31 +1,31 @@
 import React, { useState } from 'react'
-import {
-  Palette as PaletteIcon,
-  Save as SaveIcon,
-  Upload as UploadIcon,
-  Visibility as VisibilityIcon,
-  Download as DownloadIcon,
-  Settings as SettingsIcon,
-  Image as ImageIcon,
-  TextFields as TextFieldsIcon,
-  ViewQuilt as ViewQuiltIcon,
-  Smartphone as SmartphoneIcon,
-  Monitor as MonitorIcon,
-  Tablet as TabletIcon,
-  Public as PublicIcon,
-  Code as CodeIcon,
-  Brush as BrushIcon,
-  Layers as LayersIcon,
-  Flash as FlashIcon,
-  Star as StarIcon,
-  Favorite as FavoriteIcon,
-  Bookmark as BookmarkIcon,
-  Share as ShareIcon,
-} from '@mui/icons-material';
-import FlashOnIcon from '@mui/icons-material/FlashOn';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import UndoIcon from '@mui/icons-material/Undo';
+import PaletteIcon from '@mui/icons-material/Palette';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import SaveIcon from '@mui/icons-material/Save';
+import UploadIcon from '@mui/icons-material/Upload';
+import DownloadIcon from '@mui/icons-material/Download';
+import { 
+  Type, 
+  Image, 
+  Globe, 
+  Mail, 
+  RefreshCw, 
+  Upload, 
+  Eye, 
+  X, 
+  CheckCircle, 
+  AlertTriangle, 
+  Info, 
+  Settings,
+  Code,
+  LayoutDashboard,
+  Bell,
+  User,
+  Building,
+  FileText,
+  Lock,
+  Users
+} from 'lucide-react'
 
 const AdminWhiteLabellingCustomization = () => {
   const [activeTab, setActiveTab] = useState<'branding' | 'layout' | 'notifications' | 'domains' | 'advanced'>('branding')

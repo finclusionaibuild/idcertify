@@ -1,60 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../shared/contexts/AuthContext'
-import PersonIcon from '@mui/icons-material/Person';
-import SecurityIcon from '@mui/icons-material/Security';
-import DescriptionIcon from '@mui/icons-material/Description';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SettingsIcon from '@mui/icons-material/Settings';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import AddIcon from '@mui/icons-material/Add';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import WarningIcon from '@mui/icons-material/Warning';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import DownloadIcon from '@mui/icons-material/Download';
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  Grid,
-  Box,
-  Chip,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  IconButton,
-  LinearProgress,
-  Alert,
-  Tabs,
-  Tab,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Tooltip
-} from '@mui/material';
-import LaunchIcon from '@mui/icons-material/Launch';
-import {
+import { 
+  Shield, 
+  FileText, 
   Clock,
   Wallet,
-  XCircle,
-  Eye,
-  Upload,
-  MessageCircle,
+  Bell,
+  CheckCircle,
   AlertCircle,
+  XCircle,
   User,
-  FileText,
-  Shield,
-  Award,
-  Building,
+  Calendar,
+  ArrowRight,
+  Plus,
+  Eye,
+  TrendingUp,
+  Download,
+  Upload,
+  CreditCard,
+  History,
+  HelpCircle,
+  MessageCircle,
+  ExternalLink,
   ChevronRight,
-  Users
+  Building,
+  Users,
+  Star,
+  Award,
+  Target,
+  Zap
 } from 'lucide-react'
 import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from '../shared/lib/mockData'
 
@@ -193,7 +167,7 @@ const IndividualDashboard = () => {
           
           <div className="space-y-3">
             <div className="flex items-center space-x-3">
-              <CheckCircleIcon className="w-5 h-5 text-green-500" />
+              <CheckCircle className="w-5 h-5 text-green-500" />
               <span className="text-sm text-gray-700">ID Verified</span>
             </div>
             <div className="flex items-center space-x-3">
@@ -201,12 +175,12 @@ const IndividualDashboard = () => {
               <span className="text-sm text-gray-700">Address Pending</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircleIcon className="w-5 h-5 text-green-500" />
+              <CheckCircle className="w-5 h-5 text-green-500" />
               <span className="text-sm text-gray-700">1 Guarantor Verified</span>
             </div>
             
             <button className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors flex items-center mt-4">
-              <TrendingUpIcon className="w-4 h-4 mr-2" />
+              <TrendingUp className="w-4 h-4 mr-2" />
               Improve Trust Score
             </button>
           </div>
@@ -283,7 +257,7 @@ const IndividualDashboard = () => {
             <div className="space-y-4">
               {[
                 {
-                  icon: CheckCircleIcon,
+                  icon: CheckCircle,
                   color: 'text-green-500',
                   title: 'ABC Bank verified your NIN',
                   status: 'Approved',
@@ -307,7 +281,7 @@ const IndividualDashboard = () => {
                   statusColor: 'bg-yellow-100 text-yellow-800'
                 },
                 {
-                  icon: CheckCircleIcon,
+                  icon: CheckCircle,
                   color: 'text-green-500',
                   title: 'University of Lagos verified your degree certificate',
                   status: 'Approved',

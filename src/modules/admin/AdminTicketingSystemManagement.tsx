@@ -1,41 +1,15 @@
 import React, { useState } from 'react'
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Divider,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  IconButton,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Tooltip
-} from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import MessageIcon from '@mui/icons-material/Message';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ErrorIcon from '@mui/icons-material/Error';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import FlashOnIcon from '@mui/icons-material/FlashOn';
-import MessageSquareIcon from '@mui/icons-material/Chat';
-import UsersIcon from '@mui/icons-material/People';
-import ClockIcon from '@mui/icons-material/Schedule';
-import AlertTriangleIcon from '@mui/icons-material/Warning';
-import ZapIcon from '@mui/icons-material/FlashOn';
-import {
+import { 
+  MessageSquare, 
+  Search, 
+  Filter, 
+  Download, 
+  Plus, 
+  Eye, 
+  Edit, 
+  Trash2, 
+  MoreHorizontal, 
+  CheckCircle, 
   XCircle, 
   Clock, 
   User, 
@@ -58,14 +32,7 @@ import {
   TrendingUp,
   PieChart,
   Target,
-  Zap,
-  Download,
-  Plus,
-  Eye,
-  Edit,
-  MoreHorizontal,
-  MessageSquare,
-  Trash2
+  Zap
 } from 'lucide-react'
 
 interface Ticket {
@@ -209,7 +176,7 @@ const AdminTicketingSystemManagement = () => {
       case 'in_progress':
         return <RefreshCw className="w-5 h-5 text-blue-500" />
       case 'resolved':
-        return <CheckCircleIcon className="w-5 h-5 text-green-500" />
+        return <CheckCircle className="w-5 h-5 text-green-500" />
       case 'closed':
         return <XCircle className="w-5 h-5 text-gray-500" />
       case 'reopened':
@@ -337,7 +304,7 @@ const AdminTicketingSystemManagement = () => {
           {
             title: 'Resolved Today',
             value: tickets.filter(t => t.status === 'resolved' && new Date(t.resolvedAt || '').toDateString() === new Date().toDateString()).length,
-            icon: CheckCircleIcon,
+            icon: CheckCircle,
             color: 'bg-green-500',
             description: 'Tickets resolved today'
           },

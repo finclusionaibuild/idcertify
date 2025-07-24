@@ -13,17 +13,46 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import DownloadIcon from '@mui/icons-material/Download';
-import UploadIcon from '@mui/icons-material/Upload';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import SecurityIcon from '@mui/icons-material/Security';
-import WarningIcon from '@mui/icons-material/Warning';
 import PersonIcon from '@mui/icons-material/Person';
 import BusinessIcon from '@mui/icons-material/Business';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
-import ShowChartIcon from '@mui/icons-material/ShowChart';
+import SecurityIcon from '@mui/icons-material/Security';
+import StarIcon from '@mui/icons-material/Star';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DescriptionIcon from '@mui/icons-material/Description';
+import { 
+  User, 
+  Mail, 
+  Phone, 
+  Calendar, 
+  MapPin, 
+  Building, 
+  Shield, 
+  Edit, 
+  Save, 
+  X, 
+  Eye, 
+  EyeOff, 
+  CheckCircle, 
+  XCircle, 
+  Clock, 
+  AlertTriangle, 
+  Search, 
+  Filter, 
+  Download, 
+  Plus, 
+  Trash2, 
+  RefreshCw, 
+  Lock, 
+  Unlock, 
+  Settings, 
+  FileText, 
+  UserCheck, 
+  Award
+} from 'lucide-react'
 import { mockUsers } from "@shared/lib/mockData";
 
 

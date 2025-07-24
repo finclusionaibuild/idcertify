@@ -1,79 +1,16 @@
-CardHeader,
-  Typography,
-  Grid,
-  Box,
-  Chip,
-  Button,
-  IconButton,
-  TextField,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Avatar,
-  LinearProgress,
-  Divider,
-  Tooltip,
-  Badge,
-  Alert,
-  Tab,
-  Tabs,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Switch,
-  FormControlLabel,
-  Alert,
-  Tabs,
-  Tab,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Tooltip,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions
-} from '@mui/material';
-import Building2Icon from '@mui/icons-material/Business';
-import UsersIcon from '@mui/icons-material/People';
-import ShieldIcon from '@mui/icons-material/Security';
-import FileTextIcon from '@mui/icons-material/Description';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import AlertCircleIcon from '@mui/icons-material/Error';
 import React, { useState, useEffect } from 'react'
-import {
-  People as PeopleIcon,
-  Description as DescriptionIcon,
-  CheckCircle as CheckCircleIcon,
-  AccessTime as AccessTimeIcon,
-  Warning as WarningIcon,
-  TrendingUp as TrendingUpIcon,
-  BarChart as BarChartIcon,
-  Add as AddIcon,
-  Search as SearchIcon,
-  FilterList as FilterListIcon
-} from '@mui/icons-material';
-import {
+import { 
+  Search, 
+  Shield, 
+  Users, 
+  Clock, 
+  AlertTriangle,
+  CheckCircle,
+  TrendingUp,
+  BarChart3,
+  FileText,
+  Upload,
+  Download,
   Plus,
   Eye,
   Settings,
@@ -108,108 +45,13 @@ import {
   HelpCircle,
   ArrowUpRight,
   ArrowDownRight,
-  Shield,
-  Clock,
-  Upload,
-  CheckCircle,
-  AlertTriangle,
-  BarChart3,
-  Users,
-  TrendingUp,
-  Search,
-  Download
-} from 'lucide-react';
-import UploadIcon from '@mui/icons-material/Upload';
-import ClockIcon from '@mui/icons-material/AccessTime';
-import PlusIcon from '@mui/icons-material/Add';
-import SearchIcon from '@mui/icons-material/Search';
-import FilterIcon from '@mui/icons-material/FilterList';
-import DownloadIcon from '@mui/icons-material/Download';
+} from 'lucide-react'
+import BusinessIcon from '@mui/icons-material/Business';
+import PeopleIcon from '@mui/icons-material/People';
+import DescriptionIcon from '@mui/icons-material/Description';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
-import BellIcon from '@mui/icons-material/Notifications';
-import EyeIcon from '@mui/icons-material/Visibility';
-import EditIcon from '@mui/icons-material/Edit';
-import Trash2Icon from '@mui/icons-material/Delete';
-import MoreVerticalIcon from '@mui/icons-material/MoreVert';
-import UserPlusIcon from '@mui/icons-material/PersonAdd';
-import FileCheckIcon from '@mui/icons-material/AssignmentTurnedIn';
-import AwardIcon from '@mui/icons-material/EmojiEvents';
-import TargetIcon from '@mui/icons-material/GpsFixed';
-import BarChart3Icon from '@mui/icons-material/BarChart';
-import CalendarIcon from '@mui/icons-material/CalendarToday';
-import MailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
-import MapPinIcon from '@mui/icons-material/LocationOn';
-import GlobeIcon from '@mui/icons-material/Public';
-import StarIcon from '@mui/icons-material/Star';
-import ZapIcon from '@mui/icons-material/FlashOn';
-import ActivityIcon from '@mui/icons-material/Timeline';
-import DollarSignIcon from '@mui/icons-material/AttachMoney';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
-import PieChartIcon from '@mui/icons-material/PieChart';
-import LineChartIcon from '@mui/icons-material/ShowChart';
-import ArrowUpIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownIcon from '@mui/icons-material/ArrowDownward';
-import RefreshCwIcon from '@mui/icons-material/Refresh';
-import FileUpIcon from '@mui/icons-material/CloudUpload';
-import DatabaseIcon from '@mui/icons-material/Storage';
-import ServerIcon from '@mui/icons-material/Dns';
-import CloudIcon from '@mui/icons-material/Cloud';
-import LockIcon from '@mui/icons-material/Lock';
-import UnlockIcon from '@mui/icons-material/LockOpen';
-import KeyIcon from '@mui/icons-material/VpnKey';
-import UserCheckIcon from '@mui/icons-material/PersonOutline';
-import UserXIcon from '@mui/icons-material/PersonOff';
-import AlertTriangleIcon from '@mui/icons-material/Warning';
-import InfoIcon from '@mui/icons-material/Info';
-import HelpCircleIcon from '@mui/icons-material/Help';
-import ExternalLinkIcon from '@mui/icons-material/OpenInNew';
-import CopyIcon from '@mui/icons-material/ContentCopy';
-import ShareIcon from '@mui/icons-material/Share';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import TagIcon from '@mui/icons-material/Label';
-import FolderIcon from '@mui/icons-material/Folder';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import TrashIcon from '@mui/icons-material/Delete';
-import RotateCcwIcon from '@mui/icons-material/Undo';
-import WarningIcon from '@mui/icons-material/Warning';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import ShowChartIcon from '@mui/icons-material/ShowChart';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PublicIcon from '@mui/icons-material/Public';
-import StarIcon from '@mui/icons-material/Star';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import GpsFixedIcon from '@mui/icons-material/GpsFixed';
-import FlashOnIcon from '@mui/icons-material/FlashOn';
-import WorkIcon from '@mui/icons-material/Work';
-import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
-import VerifiedIcon from '@mui/icons-material/Verified';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import ErrorIcon from '@mui/icons-material/Error';
-import InfoIcon from '@mui/icons-material/Info';
-import HelpIcon from '@mui/icons-material/Help';
-import LaunchIcon from '@mui/icons-material/Launch';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import ShareIcon from '@mui/icons-material/Share';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import FlagIcon from '@mui/icons-material/Flag';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import LayersIcon from '@mui/icons-material/Layers';
-import GridViewIcon from '@mui/icons-material/GridView';
-import ListIcon from '@mui/icons-material/List';
-import PieChartIcon from '@mui/icons-material/PieChart';
-import TimelineIcon from '@mui/icons-material/Timeline';
 import { useAuth } from '../shared/contexts/AuthContext'
 import { Link } from 'react-router-dom'
 
@@ -224,6 +66,15 @@ interface VerificationJob {
   failureCount: number
   progress: number
   estimatedCompletion?: string
+}
+
+interface TeamActivity {
+  id: string
+  user: string
+  action: string
+  timestamp: string
+  type: 'verification' | 'upload' | 'approval' | 'system'
+  details?: string
 }
 
 interface TrustScoreAlert {
@@ -989,9 +840,68 @@ const OrganisationDashboard = () => {
 
           {/* Success Rate Metrics */}
           <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-200">
-import {
             <h3 className="text-lg font-semibold text-gray-900 mb-6">Performance Metrics</h3>
-  Card,
+            
+            <div className="space-y-6">
+              <div className="text-center">
+                <p className="text-3xl font-bold text-green-600 mb-1">{dashboardStats.successRate}%</p>
+                <p className="text-sm text-gray-600">Overall Success Rate</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center p-4 bg-blue-50 rounded-lg">
+                  <p className="text-2xl font-bold text-blue-600">{dashboardStats.monthlyVerifications}</p>
+                  <p className="text-xs text-blue-700">This Month</p>
+                </div>
+                <div className="text-center p-4 bg-green-50 rounded-lg">
+                  <p className="text-2xl font-bold text-green-600">{Math.round(dashboardStats.monthlyVerifications * 0.942)}</p>
+                  <p className="text-xs text-green-700">Successful</p>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-600">Average Processing Time</span>
+                  <span className="font-medium text-gray-900">2.3 hours</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-600">Peak Usage Hours</span>
+                  <span className="font-medium text-gray-900">9 AM - 11 AM</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-600">Most Common Rejection</span>
+                  <span className="font-medium text-gray-900">Document Quality</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
-  CardContent,
+      {/* Help & Support Banner */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <div className="p-3 bg-blue-100 rounded-lg">
+              <HelpCircle className="w-6 h-6 text-blue-600" />
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900">Need help with verifications?</h3>
+              <p className="text-gray-600 text-sm">Our support team is available to assist you with any questions</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-3">
+            <button className="border border-blue-300 text-blue-700 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition-colors">
+              View Help Center
+            </button>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+              Contact Support
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default OrganisationDashboard
