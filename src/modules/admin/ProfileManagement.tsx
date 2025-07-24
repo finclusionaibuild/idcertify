@@ -25,6 +25,18 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { 
   User, 
+  Search,
+  Plus,
+  Edit,
+  Trash2,
+  FileText,
+  Settings,
+  Download,
+  Save,
+  X,
+  CheckCircle,
+  XCircle
+} from 'lucide-react';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
