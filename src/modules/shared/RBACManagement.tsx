@@ -7,6 +7,14 @@ import {
   Edit, 
   Trash2, 
   Save, 
+  Search,
+  Download,
+  MoreHorizontal,
+  User,
+  X,
+  CheckCircle,
+  XCircle
+} from 'lucide-react'
 import PeopleIcon from '@mui/icons-material/People';
 import SecurityIcon from '@mui/icons-material/Security';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
