@@ -30,8 +30,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
-import { 
-  MessageSquare, 
+import MessageSquareIcon from '@mui/icons-material/Chat';
 import UsersIcon from '@mui/icons-material/People';
 import MessageSquareIcon from '@mui/icons-material/Chat';
 import ClockIcon from '@mui/icons-material/Schedule';
