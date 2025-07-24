@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { 
-  Users, 
-  Gift, 
-  TrendingUp, 
-  DollarSign, 
-  Share2, 
-  Award, 
-  Calendar,
-  Filter,
-  Search,
-  Plus,
-  Eye,
-  Edit,
-  Trash2,
-  Copy,
-  ExternalLink
-} from 'lucide-react';
+  PeopleIcon,
+  CardGiftcardIcon,
+  TrendingUpIcon,
+  AttachMoneyIcon,
+  ShareIcon,
+  EmojiEventsIcon,
+  CalendarTodayIcon,
+  FilterListIcon,
+  SearchIcon,
+  AddIcon,
+  EditIcon,
+  DeleteIcon,
+  VisibilityIcon,
+  ContentCopyIcon,
+  LaunchIcon
+} from '@mui/icons-material';
 
 interface ReferralProgram {
   id: string;

@@ -5,7 +5,8 @@ import {
   Download, 
   RefreshCw, 
   Filter, 
-  Search, 
+  Search
+} from 'lucide-react';
 import SettingsIcon from '@mui/icons-material/Settings';
 import StorageIcon from '@mui/icons-material/Storage';
 import SecurityIcon from '@mui/icons-material/Security';
