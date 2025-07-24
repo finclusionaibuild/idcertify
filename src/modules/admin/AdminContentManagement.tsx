@@ -1,3 +1,20 @@
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Chip,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Grid,
+  Box,
+  IconButton,
+  Tooltip,
+  Alert
+} from '@mui/material';
 import React, { useState } from 'react';
 import { 
   Globe, 
@@ -692,34 +709,23 @@ const AdminContentManagement: React.FC = () => {
                     <button className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
                       Cancel
                     </button>
+  Card,
                     <button className="px-4 py-2 text-white bg-primary-600 rounded-lg hover:bg-primary-700 flex items-center gap-2">
-                      <Save className="w-4 h-4" />
-                      Save Changes
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div 
-                  className={`mx-auto bg-white rounded-lg shadow-medium overflow-hidden ${
-                    previewMode === 'desktop' ? 'max-w-6xl' : 
-                    previewMode === 'tablet' ? 'max-w-2xl' : 'max-w-sm'
-                  }`}
-                >
-                  <div className="p-6">
-                    <h1 className="text-3xl font-bold mb-4">{selectedPage.title}</h1>
-                    <div 
-                      className="prose max-w-none"
-                      dangerouslySetInnerHTML={{ __html: selectedPage.content }}
-                    />
-                  </div>
-                </div>
-              )}
+  CardContent,
             </div>
+  Typography,
           </div>
+  Button,
         </div>
+  TextField,
       )}
+  Select,
     </div>
+  MenuItem,
   );
+  FormControl,
 };
+  InputLabel,
 
+  Table,
 export default AdminContentManagement;

@@ -22,7 +22,6 @@ import {
   Bookmark as BookmarkIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';
-import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
 import PublicIcon from '@mui/icons-material/Public';
 import BrushIcon from '@mui/icons-material/Brush';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
