@@ -29,7 +29,9 @@ import {
   HelpCircle,
   Info,
   ArrowUpRight,
-  ArrowDownRight
+  ArrowDownRight,
+  Upload,
+  X
 } from 'lucide-react'
 import { useAuth } from "@shared/contexts/AuthContext";
 import { Link } from 'react-router-dom'
