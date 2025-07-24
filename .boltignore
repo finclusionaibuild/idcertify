@@ -12,4 +12,4 @@ src/**
 
 # Allow User module
 !src/modules/user/**
-!src/modules/admin/**
+#!src/modules/admin/**
