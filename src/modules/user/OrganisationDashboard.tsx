@@ -11,6 +11,7 @@ import {
   Search as SearchIcon,
   FilterList as FilterListIcon
 } from '@mui/icons-material';
+import {
   Plus,
   Eye,
   Settings,
@@ -45,6 +46,16 @@ import {
   HelpCircle,
   ArrowUpRight,
   ArrowDownRight,
+  Shield,
+  Clock,
+  Upload,
+  CheckCircle,
+  AlertTriangle,
+  BarChart3,
+  Users,
+  TrendingUp,
+  Search,
+  Download
 } from 'lucide-react'
 import BusinessIcon from '@mui/icons-material/Business';
 import PeopleIcon from '@mui/icons-material/People';
