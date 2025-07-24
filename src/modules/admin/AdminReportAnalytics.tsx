@@ -16,6 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import StorageIcon from '@mui/icons-material/Storage';
 import SettingsIcon from '@mui/icons-material/Settings';
+import {
   Clock,
   User,
   Building,
@@ -27,7 +28,15 @@ import SettingsIcon from '@mui/icons-material/Settings';
   Bell,
   ArrowUp,
   ArrowDown,
-  Settings
+  Settings,
+  Download,
+  RefreshCw,
+  FileText,
+  CheckCircle,
+  Eye,
+  DollarSign,
+  BarChart3,
+  AlertTriangle
 } from 'lucide-react'
 
 const AdminReportAnalytics = () => {
