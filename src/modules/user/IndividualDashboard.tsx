@@ -39,6 +39,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AddIcon from '@mui/icons-material/Add';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DownloadIcon from '@mui/icons-material/Download';
+import {
   ExternalLink,
   ChevronRight,
   Building,
@@ -51,7 +52,12 @@ import DownloadIcon from '@mui/icons-material/Download';
   FileText,
   Shield,
   Clock,
-  Wallet
+  Wallet,
+  XCircle,
+  Eye,
+  Upload,
+  MessageCircle,
+  AlertCircle
 } from 'lucide-react'
 import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from '../shared/lib/mockData'
 
@@ -203,7 +209,7 @@ const IndividualDashboard = () => {
             </div>
             
             <button className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors flex items-center mt-4">
-              <TrendingUp className="w-4 h-4 mr-2" />
+              <TrendingUpIcon className="w-4 h-4 mr-2" />
               Improve Trust Score
             </button>
           </div>
