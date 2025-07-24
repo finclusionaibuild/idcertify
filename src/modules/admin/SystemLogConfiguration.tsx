@@ -1,3 +1,12 @@
+  import {
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  TextField,
+  Select,
+  MenuItem,
   FormControl,
   InputLabel,
   Chip,
@@ -24,7 +33,17 @@ import {
   Download, 
   RefreshCw, 
   Filter, 
-  Search
+  Search,
+  Clock,
+  Globe,
+  Lock,
+  Database,
+  User,
+  Server,
+  Bell,
+  CheckCircle,
+  Save,
+  X
 } from 'lucide-react';
 import SettingsIcon from '@mui/icons-material/Settings';
 import StorageIcon from '@mui/icons-material/Storage';
@@ -620,19 +639,28 @@ const SystemLogConfiguration = () => {
                 <button 
                   onClick={() => setShowConfigModal(false)}
                   className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
-  Box,
                 >
-  Card,
+                  Cancel
+                </button>
+                <button 
+                  onClick={handleSaveConfig}
+                  disabled={loading}
+                  className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center disabled:opacity-50"
+                >
+                  {loading ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  ) : (
+                    <Save className="w-4 h-4 mr-2" />
+                  )}
+                  Save Configuration
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-  CardContent,
       )}
-  Typography,
     </div>
-  Button,
   )
-  TextField,
 }
-  Select,
 
-  MenuItem,
 export default SystemLogConfiguration
