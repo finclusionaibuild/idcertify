@@ -22,8 +22,7 @@ import {
   Car, 
   Plane, 
   TrendingUp, 
-  TrendingDown 
-} from 'lucide-react';
+  TrendingDown,
   ChevronRight,
   Plus,
   Eye,
@@ -33,13 +32,16 @@ import {
   X,
   ArrowRight,
   Building,
-  GraduationCap,
   MapPin,
   UserCheck,
-  Phone,
-  Mail,
-  CreditCard,
-  Zap
+  Zap,
+  Clock,
+  AlertCircle,
+  FileText,
+  Calendar,
+  Target,
+  BarChart3,
+  Award
 } from 'lucide-react'
 import { useAuth } from "@shared/contexts/AuthContext";
 import { getTrustScoreBadge } from "./lib/mockData";
