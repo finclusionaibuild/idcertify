@@ -1,3 +1,22 @@
+  FormControl,
+  InputLabel,
+  Chip,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Grid,
+  Alert,
+  Tooltip
+} from '@mui/material';
 import React, { useState } from 'react'
 import { 
   FileText, 
@@ -23,6 +42,19 @@ import DnsIcon from '@mui/icons-material/Dns';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import DescriptionIcon from '@mui/icons-material/Description';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import SearchIcon from '@mui/icons-material/Search';
+import DownloadIcon from '@mui/icons-material/Download';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import ErrorIcon from '@mui/icons-material/Error';
+import InfoIcon from '@mui/icons-material/Info';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import DatabaseIcon from '@mui/icons-material/Storage';
+import ShieldIcon from '@mui/icons-material/Shield';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const SystemLogConfiguration = () => {
   const [activeTab, setActiveTab] = useState<'logs' | 'settings' | 'retention'>('logs')
@@ -588,28 +620,19 @@ const SystemLogConfiguration = () => {
                 <button 
                   onClick={() => setShowConfigModal(false)}
                   className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+  Box,
                 >
-                  Cancel
-                </button>
-                <button 
-                  onClick={handleSaveConfig}
-                  disabled={loading}
-                  className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center disabled:opacity-50"
-                >
-                  {loading ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  ) : (
-                    <Save className="w-4 h-4 mr-2" />
-                  )}
-                  Save Configuration
-                </button>
-              </div>
-            </div>
-          </div>
+  Card,
         </div>
+  CardContent,
       )}
+  Typography,
     </div>
+  Button,
   )
+  TextField,
 }
+  Select,
 
+  MenuItem,
 export default SystemLogConfiguration

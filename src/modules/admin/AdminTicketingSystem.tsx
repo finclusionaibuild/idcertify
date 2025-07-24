@@ -9,20 +9,45 @@ import {
   WarningIcon,
   PersonIcon,
   CalendarTodayIcon,
-  VisibilityIcon,
-  EditIcon
-} from '@mui/icons-material';
-import {
-  Plus,
-  Search,
-  Filter,
-  Eye,
-  Edit,
-  User,
-  Calendar,
-  MessageSquare,
-  Trash2
-} from 'lucide-react';
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Chip,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Grid,
+  Alert,
+  Tooltip
+} from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import PersonIcon from '@mui/icons-material/Person';
+import LabelIcon from '@mui/icons-material/Label';
+import ChatIcon from '@mui/icons-material/Chat';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 interface TicketData {
   id: string;
