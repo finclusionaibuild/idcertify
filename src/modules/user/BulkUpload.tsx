@@ -35,7 +35,9 @@ import {
   Edit,
   ExternalLink,
   X,
-  FileText
+  FileText,
+  Upload
+} from 'lucide-react'
 import WarningIcon from '@mui/icons-material/Warning';
 import { useDropzone } from 'react-dropzone'
 
