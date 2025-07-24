@@ -19,7 +19,24 @@ import {
   Target,
   TrendingUp,
   Database,
-  Link as LinkIcon
+  Link as LinkIcon,
+  Shield,
+  Building,
+  GraduationCap,
+  MapPin,
+  UserCheck,
+  Eye,
+  Trash2,
+  Search,
+  Filter,
+  Clock,
+  CheckCircle,
+  XCircle,
+  RefreshCw,
+  Edit,
+  ExternalLink,
+  X,
+  FileText
 } from 'lucide-react'
 import { useDropzone } from 'react-dropzone'
 
