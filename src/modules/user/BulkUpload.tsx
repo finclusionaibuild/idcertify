@@ -1,8 +1,29 @@
 import React, { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { 
+  Upload, 
   FileSpreadsheet, 
   Download, 
+  Eye, 
+  CheckCircle, 
+  XCircle, 
+  Clock, 
+  AlertTriangle,
+  Users,
+  Shield,
+  Building,
+  GraduationCap,
+  MapPin,
+  UserCheck,
+  Search,
+  Filter,
+  RefreshCw,
+  ExternalLink,
+  FileText,
+  Trash2,
+  Edit,
+  Plus,
+  X,
   Info,
   Zap,
   Globe,
@@ -18,27 +39,8 @@ import {
   Target,
   TrendingUp,
   Database,
-  Link as LinkIcon,
-  Shield,
-  Building,
-  GraduationCap,
-  MapPin,
-  UserCheck,
-  Eye,
-  Trash2,
-  Search,
-  Filter,
-  Clock,
-  CheckCircle,
-  XCircle,
-  RefreshCw,
-  Edit,
-  ExternalLink,
-  X,
-  FileText,
-  Upload
+  Link as LinkIcon
 } from 'lucide-react'
-import WarningIcon from '@mui/icons-material/Warning';
 import { useDropzone } from 'react-dropzone'
 
 interface UploadJob {
@@ -912,6 +914,68 @@ const BulkUpload = () => {
               <div className="bg-gray-50 rounded-lg p-6">
                 <div className="flex items-center space-x-4">
                   <FileSpreadsheet className="w-12 h-12 text-blue-500" />
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900">{selectedJob.fileName}</h3>
+                    <p className="text-gray-600">Uploaded by {selectedJob.uploadedBy} on {selectedJob.uploadedOn}</p>
+                    <div className="flex items-center space-x-4 mt-2">
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(selectedJob.status)}`}>
+                        {selectedJob.status.replace('_', ' ').charAt(0).toUpperCase() + selectedJob.status.replace('_', ' ').slice(1)}
+                      </span>
+                      <span className="text-sm text-gray-600">
+                        {selectedJob.recordCount} records
+                      </span>
+                      <span className="text-sm text-gray-600">
+                        Progress: {selectedJob.progress}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Results Summary */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-8 h-8 text-green-500" />
+                    <div>
+                      <p className="text-2xl font-bold text-green-900">{selectedJob.successCount}</p>
+                      <p className="text-sm text-green-700">Successful</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <div className="flex items-center space-x-3">
+                    <XCircle className="w-8 h-8 text-red-500" />
+                    <div>
+                      <p className="text-2xl font-bold text-red-900">{selectedJob.errorCount}</p>
+                      <p className="text-sm text-red-700">Failed</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <div className="flex items-center space-x-3">
+                    <TrendingUp className="w-8 h-8 text-blue-500" />
+                    <div>
+                      <p className="text-2xl font-bold text-blue-900">
+                        {Math.round((selectedJob.successCount / selectedJob.recordCount) * 100)}%
+                      </p>
+                      <p className="text-sm text-blue-700">Success Rate</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Verification Types */}
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-3">Verification Types Performed</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedJob.verificationTypes.map((type, index) => (
+                    <span key={index} className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
+                      {type}
+                    </span>
+                  ))}
                 </div>
               </div>
 

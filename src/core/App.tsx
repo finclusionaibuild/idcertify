@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import HomeIcon from '@mui/icons-material/Home';
 import { AuthProvider } from '../modules/shared/contexts/AuthContext'
 import Layout from '../modules/shared/components/Layout'
 import AuthGuard from '../modules/shared/components/AuthGuard'
@@ -60,9 +59,6 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="p-4">
-          <HomeIcon className="text-primary-600" />
-        </div>
         <Routes>
           {/* Public routes */}
           <Route path="/auth" element={<Auth />} />
