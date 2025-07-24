@@ -18,14 +18,6 @@
 import React, { useState } from 'react';
 import { 
   Globe, 
-  Edit, 
-  Eye, 
-  Save, 
-  Plus, 
-  Trash2, 
-  Image, 
-  Type, 
-  Layout, 
 import DescriptionIcon from '@mui/icons-material/Description';
 import ImageIcon from '@mui/icons-material/Image';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
