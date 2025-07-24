@@ -40,7 +40,6 @@ import {
   Tooltip
 } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import {
   Clock,
   Wallet,

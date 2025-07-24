@@ -36,12 +36,10 @@ import {
   Alert,
   Tooltip
 } from '@mui/material';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import LabelIcon from '@mui/icons-material/Label';
 import ChatIcon from '@mui/icons-material/Chat';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 interface TicketData {
   id: string;
