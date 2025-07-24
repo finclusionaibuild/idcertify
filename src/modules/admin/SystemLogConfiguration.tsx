@@ -67,7 +67,6 @@ import InfoIcon from '@mui/icons-material/Info';
 import CancelIcon from '@mui/icons-material/Cancel';
 import DatabaseIcon from '@mui/icons-material/Storage';
 import ShieldIcon from '@mui/icons-material/Shield';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const SystemLogConfiguration = () => {
   const [activeTab, setActiveTab] = useState<'logs' | 'settings' | 'retention'>('logs')

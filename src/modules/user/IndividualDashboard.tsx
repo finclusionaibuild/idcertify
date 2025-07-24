@@ -40,7 +40,6 @@ import {
   Tooltip
 } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AddIcon from '@mui/icons-material/Add';

@@ -52,7 +52,7 @@
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions,
+  DialogActions
 } from '@mui/material';
 import Building2Icon from '@mui/icons-material/Business';
 import UsersIcon from '@mui/icons-material/People';
