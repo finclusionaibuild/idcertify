@@ -46,11 +46,8 @@ import {
   Award,
   Dna,
   HelpCircle,
-  Clock,
-  LogOut,
-  User
+  Clock
 } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
 
 interface NavigationItem {
   name: string;
@@ -187,8 +184,6 @@ export default function Layout() {
   const location = useLocation();
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const { logout, user } = useAuth();
 
   const toggleGroup = (groupName: string) => {
     setExpandedGroups(prev => 
@@ -361,47 +356,7 @@ export default function Layout() {
               </div>
               <span className="text-gray-900 font-bold">IDCertify</span>
             </div>
-            
-            {/* Top Navigation Settings */}
-            <div className="flex items-center space-x-4">
-              <div className="relative">
-                <button
-                  type="button"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-                  onClick={() => setSettingsOpen(!settingsOpen)}
-                >
-                  <User className="h-5 w-5" />
-                  <span className="hidden sm:block">{user?.name || 'User'}</span>
-                  <ChevronRight className={`h-4 w-4 transition-transform duration-200 ${settingsOpen ? 'rotate-90' : ''}`} />
-                </button>
-                
-                {/* Settings Dropdown */}
-                {settingsOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50">
-                    <div className="py-1">
-                      <Link
-                        to="/settings"
-                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
-                        onClick={() => setSettingsOpen(false)}
-                      >
-                        <Settings className="h-4 w-4 mr-3" />
-                        Settings
-                      </Link>
-                      <button
-                        onClick={() => {
-                          logout();
-                          setSettingsOpen(false);
-                        }}
-                        className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
-                      >
-                        <LogOut className="h-4 w-4 mr-3" />
-                        Logout
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+            <div className="w-6 h-6"></div> {/* Spacer for centering */}
           </div>
         </div>
 
