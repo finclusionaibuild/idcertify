@@ -1,5 +1,20 @@
 import React, { useState } from 'react'
-import { Search, Filter, Eye, CheckCircle, XCircle, Clock, AlertTriangle, Download, RefreshCw, Users, FileText, Calendar, MoreHorizontal } from 'lucide-react'
+import PeopleIcon from '@mui/icons-material/People';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import BlockIcon from '@mui/icons-material/Block';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import WarningIcon from '@mui/icons-material/Warning';
+import DescriptionIcon from '@mui/icons-material/Description';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import { RefreshCw, MoreHorizontal, Calendar } from 'lucide-react'
 
 const AdminBackgroundCheckManagement = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -68,10 +83,10 @@ const AdminBackgroundCheckManagement = () => {
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      completed: { color: 'bg-green-100 text-green-800', icon: CheckCircle },
-      in_progress: { color: 'bg-blue-100 text-blue-800', icon: Clock },
-      failed: { color: 'bg-red-100 text-red-800', icon: XCircle },
-      pending: { color: 'bg-yellow-100 text-yellow-800', icon: Clock }
+      completed: { color: 'bg-green-100 text-green-800', icon: CheckCircleIcon },
+      in_progress: { color: 'bg-blue-100 text-blue-800', icon: AccessTimeIcon },
+      failed: { color: 'bg-red-100 text-red-800', icon: CancelIcon },
+      pending: { color: 'bg-yellow-100 text-yellow-800', icon: AccessTimeIcon }
     }
     
     const config = statusConfig[status as keyof typeof statusConfig]
@@ -89,9 +104,9 @@ const AdminBackgroundCheckManagement = () => {
     if (!result) return <span className="text-gray-400">-</span>
     
     const resultConfig = {
-      clear: { color: 'bg-green-100 text-green-800', icon: CheckCircle },
-      discrepancy_found: { color: 'bg-red-100 text-red-800', icon: AlertTriangle },
-      pending_review: { color: 'bg-yellow-100 text-yellow-800', icon: Clock }
+      clear: { color: 'bg-green-100 text-green-800', icon: CheckCircleIcon },
+      discrepancy_found: { color: 'bg-red-100 text-red-800', icon: WarningIcon },
+      pending_review: { color: 'bg-yellow-100 text-yellow-800', icon: AccessTimeIcon }
     }
     
     const config = resultConfig[result as keyof typeof resultConfig]
@@ -134,7 +149,7 @@ const AdminBackgroundCheckManagement = () => {
         </div>
         <div className="flex space-x-3">
           <button className="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 flex items-center">
-            <Download className="w-4 h-4 mr-2" />
+            <DownloadIcon className="w-4 h-4 mr-2" />
             Export Report
           </button>
           <button className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 flex items-center">
@@ -149,7 +164,7 @@ const AdminBackgroundCheckManagement = () => {
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <div className="flex items-center">
             <div className="p-2 bg-blue-100 rounded-lg">
-              <FileText className="w-6 h-6 text-blue-600" />
+              <DescriptionIcon className="w-6 h-6 text-blue-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600">Total Checks</p>
@@ -161,7 +176,7 @@ const AdminBackgroundCheckManagement = () => {
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <div className="flex items-center">
             <div className="p-2 bg-green-100 rounded-lg">
-              <CheckCircle className="w-6 h-6 text-green-600" />
+              <CheckCircleIcon className="w-6 h-6 text-green-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600">Completed</p>
@@ -173,7 +188,7 @@ const AdminBackgroundCheckManagement = () => {
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <div className="flex items-center">
             <div className="p-2 bg-yellow-100 rounded-lg">
-              <Clock className="w-6 h-6 text-yellow-600" />
+              <AccessTimeIcon className="w-6 h-6 text-yellow-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600">In Progress</p>
@@ -185,7 +200,7 @@ const AdminBackgroundCheckManagement = () => {
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <div className="flex items-center">
             <div className="p-2 bg-red-100 rounded-lg">
-              <XCircle className="w-6 h-6 text-red-600" />
+              <CancelIcon className="w-6 h-6 text-red-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600">Failed</p>
@@ -200,7 +215,7 @@ const AdminBackgroundCheckManagement = () => {
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input
                 type="text"
                 placeholder="Search by name, email, or ID..."
@@ -313,7 +328,7 @@ const AdminBackgroundCheckManagement = () => {
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div className="flex items-center space-x-2">
                       <button className="text-primary-600 hover:text-primary-900">
-                        <Eye className="w-4 h-4" />
+                        <VisibilityIcon className="w-4 h-4" />
                       </button>
                       <button className="text-gray-400 hover:text-gray-600">
                         <MoreHorizontal className="w-4 h-4" />
@@ -329,7 +344,7 @@ const AdminBackgroundCheckManagement = () => {
 
       {filteredChecks.length === 0 && (
         <div className="text-center py-12">
-          <Search className="mx-auto h-12 w-12 text-gray-400" />
+          <SearchIcon className="mx-auto h-12 w-12 text-gray-400" />
           <h3 className="mt-2 text-sm font-medium text-gray-900">No background checks found</h3>
           <p className="mt-1 text-sm text-gray-500">
             Try adjusting your search criteria or filters.
