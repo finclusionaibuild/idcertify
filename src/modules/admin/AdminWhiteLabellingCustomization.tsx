@@ -1,9 +1,32 @@
 import React, { useState } from 'react'
-import PaletteIcon from '@mui/icons-material/Palette';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import SaveIcon from '@mui/icons-material/Save';
-import UploadIcon from '@mui/icons-material/Upload';
-import DownloadIcon from '@mui/icons-material/Download';
+import {
+  Palette as PaletteIcon,
+  Save as SaveIcon,
+  Upload as UploadIcon,
+  Visibility as VisibilityIcon,
+  Download as DownloadIcon,
+  Settings as SettingsIcon,
+  Image as ImageIcon,
+  TextFields as TextFieldsIcon,
+  ViewQuilt as ViewQuiltIcon,
+  Smartphone as SmartphoneIcon,
+  Monitor as MonitorIcon,
+  Tablet as TabletIcon,
+  Public as PublicIcon,
+  Code as CodeIcon,
+  Brush as BrushIcon,
+  Layers as LayersIcon,
+  Flash as FlashIcon,
+  Star as StarIcon,
+  Favorite as FavoriteIcon,
+  Bookmark as BookmarkIcon,
+  Share as ShareIcon,
+  ContentCopy as ContentCopyIcon,
+  Refresh as RefreshIcon,
+  Undo as UndoIcon,
+  Dashboard as DashboardIcon,
+  Notifications as NotificationsIcon
+} from "@mui/icons-material";
 import { 
   Type, 
   Image, 

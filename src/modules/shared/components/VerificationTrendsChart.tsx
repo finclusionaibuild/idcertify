@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Calendar, Download, RefreshCw } from 'lucide-react'
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import BarChartIcon from '@mui/icons-material/BarChart';
+import { 
+  TrendingUp as TrendingUpIcon, 
+  TrendingDown as TrendingDownIcon, 
+  BarChart as BarChartIcon 
+} from '@mui/icons-material';
 
 interface ChartDataPoint {
   month: string

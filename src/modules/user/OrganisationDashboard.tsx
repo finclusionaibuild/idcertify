@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { 
-  Search, 
-  Shield, 
-  Users, 
-  Clock, 
-  AlertTriangle,
-  CheckCircle,
-  TrendingUp,
-  BarChart3,
-  FileText,
-  Upload,
-  Download,
+import {
+  People as PeopleIcon,
+  Description as DescriptionIcon,
+  CheckCircle as CheckCircleIcon,
+  AccessTime as AccessTimeIcon,
+  Warning as WarningIcon,
+  TrendingUp as TrendingUpIcon,
+  BarChart as BarChartIcon,
+  Add as AddIcon,
+  Search as SearchIcon,
+  FilterList as FilterListIcon
+} from '@mui/icons-material';
   Plus,
   Eye,
   Settings,
