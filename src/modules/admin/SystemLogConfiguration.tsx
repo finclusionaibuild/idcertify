@@ -67,7 +67,6 @@ import InfoIcon from '@mui/icons-material/Info';
 import CancelIcon from '@mui/icons-material/Cancel';
 import DatabaseIcon from '@mui/icons-material/Storage';
 import ShieldIcon from '@mui/icons-material/Shield';
-import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const SystemLogConfiguration = () => {
