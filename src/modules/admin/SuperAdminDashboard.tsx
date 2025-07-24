@@ -17,6 +17,11 @@ import {
   Palette,
   Gift,
   Star,
+  Palette,
+  Gift,
+  Star,
+  ThumbsUp,
+  Layout,
   ThumbsUp,
   Layout,
   HardDrive,
@@ -102,6 +107,12 @@ const SuperAdminDashboard: React.FC = () => {
     { name: 'Developer Tools', icon: Code, path: '/admin/developer' },
     { name: 'Security Center', icon: Shield, path: '/admin/security' },
     { name: 'Database Management', icon: Database, path: '/admin/database' },
+    { name: 'White Label & Customization', icon: Palette, path: '/admin/whitelabel' },
+    { name: 'Referrals Management', icon: Gift, path: '/admin/referrals' },
+    { name: 'Reward Management', icon: Star, path: '/admin/rewards' },
+    { name: 'Ratings Management', icon: ThumbsUp, path: '/admin/ratings' },
+    { name: 'Document Management', icon: FileText, path: '/admin/documents' },
+    { name: 'Content Management', icon: Layout, path: '/admin/content' },
     { name: 'Email Templates', icon: Mail, path: '/admin/email-templates' },
     { name: 'Integration Management', icon: Zap, path: '/admin/integrations' },
     { name: 'Historical Data', icon: Archive, path: '/admin/historical-data' },
@@ -176,6 +187,12 @@ const SuperAdminDashboard: React.FC = () => {
             <Route path="/admin/health" element={<SystemHealthCheck />} />
             <Route path="/admin/security" element={<AdminSecurityCenter />} />
             
+            <Route path="/admin/whitelabel" element={<AdminWhiteLabelCustomization />} />
+            <Route path="/admin/referrals" element={<AdminReferralManagement />} />
+            <Route path="/admin/rewards" element={<AdminRewardManagement />} />
+            <Route path="/admin/ratings" element={<AdminRatingsManagement />} />
+            <Route path="/admin/documents" element={<AdminDocumentManagement />} />
+            <Route path="/admin/content" element={<AdminContentManagement />} />
             {/* Management Routes */}
             <Route path="/admin/settings" element={<AdminSystemSettings />} />
             <Route path="/admin/notifications" element={<AdminNotificationManagement />} />
