@@ -26,7 +26,6 @@ import FlashOnIcon from '@mui/icons-material/FlashOn';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import UndoIcon from '@mui/icons-material/Undo';
-import SaveIcon from '@mui/icons-material/Save';
 import UploadIcon from '@mui/icons-material/Upload';
 
 const AdminWhiteLabellingCustomization = () => {

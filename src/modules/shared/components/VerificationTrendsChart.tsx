@@ -7,7 +7,6 @@ import {
 } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useState } from 'react';
-import BarChartIcon from '@mui/icons-material/BarChart';
 import PeopleIcon from '@mui/icons-material/People';
 
 interface ChartDataPoint {
