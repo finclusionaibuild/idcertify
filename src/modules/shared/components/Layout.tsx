@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
-import { 
+import { Menu, X, Home, Users, Shield, FileText, Award, Database, Settings, BarChart3, UserCheck, Building, Briefcase, UserCog, Eye, TrendingUp, FolderOpen, CheckCircle, Microscope, User, LogOut, ChevronDown } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
   LayoutDashboard, 
   Users, 
   Building2, 
@@ -181,7 +182,14 @@ const navigationData: NavigationData = {
 };
 
 export default function Layout() {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
+  const { logout, user } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    setIsDropdownOpen(false);
+  };
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -288,6 +296,48 @@ export default function Layout() {
                   </div>
                   {isExpanded ? (
                     <ChevronDown className="w-4 h-4 transition-transform duration-200" />
+              
+              {/* User Settings Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="flex items-center space-x-2 px-3 py-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                >
+                  <User className="h-5 w-5" />
+                  <span className="text-sm font-medium">{user?.name || 'User'}</span>
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+
+                {/* Dropdown Menu */}
+                {isDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200">
+                    <Link
+                      to="/settings"
+                      className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      <Settings className="h-4 w-4 mr-3" />
+                      Settings
+                    </Link>
+                    <Link
+                      to="/profile"
+                      className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      <User className="h-4 w-4 mr-3" />
+                      Profile
+                    </Link>
+                    <hr className="my-1 border-gray-200" />
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                    >
+                      <LogOut className="h-4 w-4 mr-3" />
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
                   ) : (
                     <ChevronRight className="w-4 h-4 transition-transform duration-200" />
                   )}
@@ -336,6 +386,14 @@ export default function Layout() {
           </div>
         </div>
       </div>
+
+      {/* Click outside to close dropdown */}
+      {isDropdownOpen && (
+        <div
+          className="fixed inset-0 z-40"
+          onClick={() => setIsDropdownOpen(false)}
+        />
+      )}
 
       {/* Main content */}
       <div className="flex-1 flex flex-col lg:ml-0">
