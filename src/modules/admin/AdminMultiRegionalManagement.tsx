@@ -1,3 +1,5 @@
+  import React, { useState } from 'react';
+import {
   Card,
   CardContent,
   Typography,
@@ -53,6 +55,22 @@ import SearchIcon from '@mui/icons-material/Search';
 import DownloadIcon from '@mui/icons-material/Download';
 import UploadIcon from '@mui/icons-material/Upload';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+
+// Additional imports for missing icons
+import Globe from '@mui/icons-material/Public';
+import MapPin from '@mui/icons-material/LocationOn';
+import Users from '@mui/icons-material/People';
+import Shield from '@mui/icons-material/Security';
+import Database from '@mui/icons-material/Storage';
+import CheckCircle from '@mui/icons-material/CheckCircle';
+import Clock from '@mui/icons-material/AccessTime';
+import AlertTriangle from '@mui/icons-material/Warning';
+import Activity from '@mui/icons-material/Timeline';
+import Plus from '@mui/icons-material/Add';
+import Key from '@mui/icons-material/VpnKey';
+import Eye from '@mui/icons-material/Visibility';
+import Edit from '@mui/icons-material/Edit';
+import Trash2 from '@mui/icons-material/Delete';
 
 interface Region {
   id: string;
