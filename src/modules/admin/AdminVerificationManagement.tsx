@@ -82,7 +82,6 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ShieldIcon from '@mui/icons-material/Shield';
 import PersonIcon from '@mui/icons-material/Person';
 import BusinessIcon from '@mui/icons-material/Business';
-import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
