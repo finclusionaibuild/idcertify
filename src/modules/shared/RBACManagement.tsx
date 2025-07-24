@@ -18,24 +18,22 @@ import {
   Eye,
   EyeOff,
   Settings
-} from 'lucide-react'
-
-interface Role {
-  id: string
-  name: string
-  description: string
-  permissions: string[]
-  userCount: number
-  isDefault: boolean
-  createdAt: string
-}
-
-interface Permission {
-  id: string
-  name: string
-  description: string
-  category: string
-}
+import PeopleIcon from '@mui/icons-material/People';
+import SecurityIcon from '@mui/icons-material/Security';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import LockIcon from '@mui/icons-material/Lock';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import PersonOffIcon from '@mui/icons-material/PersonOff';
+import WarningIcon from '@mui/icons-material/Warning';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const RBACManagement = () => {
   const [activeTab, setActiveTab] = useState<'roles' | 'permissions' | 'assignments'>('roles')

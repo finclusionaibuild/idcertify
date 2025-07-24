@@ -10,18 +10,16 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import DownloadIcon from '@mui/icons-material/Download';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import AddIcon from '@mui/icons-material/Add';
-import { 
-  Shield, 
-  FileText, 
-  Clock,
-  Wallet,
-  Bell,
-  CheckCircle,
-  AlertCircle,
-  XCircle,
-  User,
-  Calendar,
-  ArrowRight,
+import PersonIcon from '@mui/icons-material/Person';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SecurityIcon from '@mui/icons-material/Security';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import SettingsIcon from '@mui/icons-material/Settings';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
   Plus,
   Eye,
   TrendingUp,

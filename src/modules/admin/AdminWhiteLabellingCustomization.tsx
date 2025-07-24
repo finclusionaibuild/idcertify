@@ -21,34 +21,32 @@ import {
   Favorite as FavoriteIcon,
   Bookmark as BookmarkIcon,
   Share as ShareIcon,
-  ContentCopy as ContentCopyIcon,
-  Refresh as RefreshIcon,
-  Undo as UndoIcon,
-  Dashboard as DashboardIcon,
-  Notifications as NotificationsIcon
-} from "@mui/icons-material";
-import { 
-  Type, 
-  Image, 
-  Globe, 
-  Mail, 
-  RefreshCw, 
-  Upload, 
-  Eye, 
-  X, 
-  CheckCircle, 
-  AlertTriangle, 
-  Info, 
-  Settings,
-  Code,
-  LayoutDashboard,
-  Bell,
-  User,
-  Building,
-  FileText,
-  Lock,
-  Users
-} from 'lucide-react'
+import PaletteIcon from '@mui/icons-material/Palette';
+import TextFieldsIcon from '@mui/icons-material/TextFields';
+import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
+import PublicIcon from '@mui/icons-material/Public';
+import BrushIcon from '@mui/icons-material/Brush';
+import FlashOnIcon from '@mui/icons-material/FlashOn';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import UndoIcon from '@mui/icons-material/Undo';
+import SaveIcon from '@mui/icons-material/Save';
+import UploadIcon from '@mui/icons-material/Upload';
+import DownloadIcon from '@mui/icons-material/Download';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PeopleIcon from '@mui/icons-material/People';
+import BusinessIcon from '@mui/icons-material/Business';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import StarIcon from '@mui/icons-material/Star';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const AdminWhiteLabellingCustomization = () => {
   const [activeTab, setActiveTab] = useState<'branding' | 'layout' | 'notifications' | 'domains' | 'advanced'>('branding')

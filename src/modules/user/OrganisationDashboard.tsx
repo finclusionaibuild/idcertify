@@ -119,18 +119,6 @@ interface VerificationJob {
   successCount: number
   failureCount: number
   progress: number
-  estimatedCompletion?: string
-}
-
-interface TeamActivity {
-  id: string
-  user: string
-  action: string
-  timestamp: string
-  type: 'verification' | 'upload' | 'approval' | 'system'
-  details?: string
-}
-
 interface TrustScoreAlert {
   id: string
   userId: string

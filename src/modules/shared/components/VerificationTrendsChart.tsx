@@ -10,7 +10,9 @@ interface ChartDataPoint {
   month: string
   value: number
   label: string
-}
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import PeopleIcon from '@mui/icons-material/People';
 
 const VerificationTrendsChart = () => {
   const [selectedTimeframe, setSelectedTimeframe] = useState('Monthly')
