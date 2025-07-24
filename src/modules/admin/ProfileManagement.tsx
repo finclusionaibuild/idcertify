@@ -27,32 +27,30 @@ import {
   User, 
   Mail, 
   Phone, 
-  Calendar, 
-  MapPin, 
-  Building, 
-  Shield, 
-  Edit, 
-  Save, 
-  X, 
-  Eye, 
-  EyeOff, 
-  CheckCircle, 
-  XCircle, 
-  Clock, 
-  AlertTriangle, 
-  Search, 
-  Filter, 
-  Download, 
-  Plus, 
-  Trash2, 
-  RefreshCw, 
-  Lock, 
-  Unlock, 
-  Settings, 
-  FileText, 
-  UserCheck, 
-  Award
-} from 'lucide-react'
+import PeopleIcon from '@mui/icons-material/People';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import AddIcon from '@mui/icons-material/Add';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import SecurityIcon from '@mui/icons-material/Security';
+import WarningIcon from '@mui/icons-material/Warning';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import PersonIcon from '@mui/icons-material/Person';
+import BusinessIcon from '@mui/icons-material/Business';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import SettingsIcon from '@mui/icons-material/Settings';
+import DescriptionIcon from '@mui/icons-material/Description';
 import { mockUsers } from "@shared/lib/mockData";
 
 

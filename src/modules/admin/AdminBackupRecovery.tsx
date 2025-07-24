@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
+import DnsIcon from '@mui/icons-material/Dns';
 import DownloadIcon from '@mui/icons-material/Download';
 import UploadIcon from '@mui/icons-material/Upload';
-import StorageIcon from '@mui/icons-material/Storage';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import WarningIcon from '@mui/icons-material/Warning';
-import { 
-  RefreshCw, 
-  Shield, 
-  XCircle,
-  Calendar,
-  Settings,
-  Play,
-  Pause,
-  RotateCcw,
-  HardDrive,
-  Cloud,
-  Server,
-  Archive,
-  FileText,
-  Eye,
-  Trash2
-} from 'lucide-react';
+import SettingsIcon from '@mui/icons-material/Settings';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import ArchiveIcon from '@mui/icons-material/Archive';
+import StorageIcon from '@mui/icons-material/Storage';
+import CloudIcon from '@mui/icons-material/Cloud';
+import SecurityIcon from '@mui/icons-material/Security';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface BackupJob {
   id: string;

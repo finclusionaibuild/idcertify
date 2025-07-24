@@ -56,16 +56,6 @@ import {
   TrendingUp,
   Search,
   Download
-} from 'lucide-react'
-import BusinessIcon from '@mui/icons-material/Business';
-import PeopleIcon from '@mui/icons-material/People';
-import DescriptionIcon from '@mui/icons-material/Description';
-import SecurityIcon from '@mui/icons-material/Security';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SettingsIcon from '@mui/icons-material/Settings';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import DownloadIcon from '@mui/icons-material/Download';
 import UploadIcon from '@mui/icons-material/Upload';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import WarningIcon from '@mui/icons-material/Warning';
