@@ -32,15 +32,13 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import { 
   MessageSquare, 
-  Search, 
-  Filter, 
-  Download, 
-  Plus, 
-  Eye, 
-  Edit, 
-  Trash2, 
-  MoreHorizontal, 
-  CheckCircle, 
+import UsersIcon from '@mui/icons-material/People';
+import MessageSquareIcon from '@mui/icons-material/Chat';
+import ClockIcon from '@mui/icons-material/Schedule';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import AlertTriangleIcon from '@mui/icons-material/Warning';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import ZapIcon from '@mui/icons-material/FlashOn';
   XCircle, 
   Clock, 
   User, 
