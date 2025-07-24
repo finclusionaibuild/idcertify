@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  Card,
-  CardContent,
-  Typography,
-  Box,
+  TrendingUpIcon,
+  TrendingDownIcon,
+  BarChartIcon
+} from '@mui/icons-material';
   Grid
 } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
