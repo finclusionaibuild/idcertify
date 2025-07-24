@@ -11,7 +11,21 @@ import {
   Alert,
   Button,
   IconButton,
-  Tooltip
+  Tooltip,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Tabs,
+  Tab,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon
 } from '@mui/material';
 import ActivityIcon from '@mui/icons-material/Timeline';
 import ServerIcon from '@mui/icons-material/Storage';
@@ -39,11 +53,11 @@ import DownloadIcon from '@mui/icons-material/Download';
 import UploadIcon from '@mui/icons-material/Upload';
 import BarChart3Icon from '@mui/icons-material/BarChart';
 import BellIcon from '@mui/icons-material/Notifications';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import {
   Search, 
   Info, 
-  Settings,
-  Bell
+  Settings
 } from 'lucide-react';
 
 const SystemHealthCheck = () => {
