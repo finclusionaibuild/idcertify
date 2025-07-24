@@ -6,24 +6,22 @@ import {
   RefreshCw, 
   Filter, 
   Search, 
-  Calendar, 
-  AlertTriangle, 
-  CheckCircle, 
-  Info, 
-  Save, 
-  X, 
-  Plus, 
-  Trash2, 
-  Edit, 
-  Eye, 
-  Clock, 
-  Server, 
-  Database, 
-  Globe, 
-  Lock, 
-  Bell,
-  User
-} from 'lucide-react'
+import SettingsIcon from '@mui/icons-material/Settings';
+import StorageIcon from '@mui/icons-material/Storage';
+import SecurityIcon from '@mui/icons-material/Security';
+import WarningIcon from '@mui/icons-material/Warning';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import SearchIcon from '@mui/icons-material/Search';
+import DownloadIcon from '@mui/icons-material/Download';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import DnsIcon from '@mui/icons-material/Dns';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import DescriptionIcon from '@mui/icons-material/Description';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const SystemLogConfiguration = () => {
   const [activeTab, setActiveTab] = useState<'logs' | 'settings' | 'retention'>('logs')

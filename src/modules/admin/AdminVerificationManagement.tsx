@@ -53,26 +53,24 @@ interface VerificationRequest {
   requesterName: string
   requesterType: 'individual' | 'organization'
   targetName: string
-  verificationType: string
-  status: 'pending' | 'in_progress' | 'approved' | 'rejected' | 'expired'
-  priority: 'low' | 'normal' | 'high' | 'urgent'
-  dateRequested: string
-  dateUpdated: string
-  assignedTo?: string
-  notes?: string
-  riskLevel: 'low' | 'medium' | 'high'
-}
-
-interface VerificationStats {
-  total: number
-  pending: number
-  inProgress: number
-  approved: number
-  rejected: number
-  expired: number
-  averageCompletionTime: string
-  successRate: number
-}
+import SecurityIcon from '@mui/icons-material/Security';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import WarningIcon from '@mui/icons-material/Warning';
+import PeopleIcon from '@mui/icons-material/People';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
 const AdminVerificationManagement = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'pending' | 'inProgress' | 'completed' | 'flagged'>('overview')

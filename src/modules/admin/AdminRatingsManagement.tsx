@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import { 
-  Star, 
-  ThumbsUp, 
-  ThumbsDown, 
-  MessageSquare, 
-  TrendingUp, 
-  Users, 
-  Filter,
-  Search,
-  Eye,
-  Flag,
-  Trash2,
-  BarChart3,
-  Award,
-  AlertTriangle
-} from 'lucide-react';
-
+import StarIcon from '@mui/icons-material/Star';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import PeopleIcon from '@mui/icons-material/People';
+import ChatIcon from '@mui/icons-material/Chat';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import SearchIcon from '@mui/icons-material/Search';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import FlagIcon from '@mui/icons-material/Flag';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import WarningIcon from '@mui/icons-material/Warning';
 interface Rating {
   id: string;
   userId: string;

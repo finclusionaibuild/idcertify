@@ -13,30 +13,8 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import PersonIcon from '@mui/icons-material/Person';
-import BusinessIcon from '@mui/icons-material/Business';
-import SecurityIcon from '@mui/icons-material/Security';
-import StarIcon from '@mui/icons-material/Star';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import DownloadIcon from '@mui/icons-material/Download';
-import UploadIcon from '@mui/icons-material/Upload';
-import SettingsIcon from '@mui/icons-material/Settings';
-import DescriptionIcon from '@mui/icons-material/Description';
-import { 
-  User, 
-  Search,
-  Plus,
-  Edit,
-  Trash2,
-  FileText,
-  Settings,
-  Download,
-  Save,
-  X,
-  CheckCircle,
-  XCircle
-} from 'lucide-react';
+import PeopleIcon from '@mui/icons-material/People';
+import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
