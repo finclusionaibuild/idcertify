@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { 
-  Upload, 
   FileSpreadsheet, 
   Download, 
   Info,
@@ -37,7 +36,6 @@ import {
   ExternalLink,
   X,
   FileText
-} from '@mui/icons-material'
 import WarningIcon from '@mui/icons-material/Warning';
 import { useDropzone } from 'react-dropzone'
 

@@ -38,7 +38,9 @@ import {
   MessageSquare,
   HelpCircle,
   FileCode,
-  Code
+  Code,
+  Copy,
+  EyeOff
 } from 'lucide-react'
 
 interface Integration {
