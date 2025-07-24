@@ -40,7 +40,13 @@ import {
   ChevronDown,
   ChevronRight,
   Menu,
-  X
+  X,
+  FileSearch,
+  CheckSquare,
+  Award,
+  Dna,
+  HelpCircle,
+  Clock
 } from 'lucide-react';
 
 interface NavigationItem {
@@ -149,6 +155,26 @@ const navigationData: NavigationData = {
         { name: 'Referral Management', path: '/admin/referral-management', icon: Users2 },
         { name: 'Reward Management', path: '/admin/reward-management', icon: Gift },
         { name: 'White Label Customization', path: '/admin/white-label-customization', icon: Palette }
+      ]
+    },
+    {
+      name: 'Super Admin Features',
+      icon: Shield,
+      children: [
+        { name: 'Employer Management', path: '/admin/employer-management', icon: Building2 },
+        { name: 'Employee Management System', path: '/admin/employee-management', icon: UserCheck },
+        { name: 'Background Check Management', path: '/admin/background-check-management', icon: FileSearch },
+        { name: 'Verification Management System', path: '/admin/verification-management', icon: CheckSquare },
+        { name: 'Trust Score Management System', path: '/admin/trust-score-management', icon: Award },
+        { name: 'Document Vault Management', path: '/admin/document-vault-management', icon: FolderOpen },
+        { name: 'Attestation Management System', path: '/admin/attestation-management', icon: FileText },
+        { name: 'Biobank Management System', path: '/admin/biobank-management', icon: Dna },
+        { name: 'SureAML Management System', path: '/admin/sure-aml-management', icon: AlertTriangle },
+        { name: 'SureCompliance Management System', path: '/admin/sure-compliance-management', icon: Shield },
+        { name: 'Data Monitoring Management System', path: '/admin/data-monitoring-management', icon: Activity },
+        { name: 'Company Management', path: '/admin/company-management', icon: Building2 },
+        { name: 'Help & Support', path: '/admin/help-support', icon: HelpCircle },
+        { name: 'Down Time Tracker System', path: '/admin/downtime-tracker', icon: Clock }
       ]
     }
   ]
