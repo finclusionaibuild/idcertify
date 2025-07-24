@@ -32,24 +32,56 @@ import {
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import DownloadIcon from '@mui/icons-material/Download';
 import {
-  ExternalLink,
-  ChevronRight,
-  Building,
-  Users,
-  Star,
-  Award,
-  Target,
-  Zap,
-  User,
-  FileText,
-  Shield,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Grid,
+  Box,
+  Chip,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton,
+  LinearProgress,
+  Alert,
+  Tabs,
+  Tab,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  Tooltip
+} from '@mui/material';
+import LaunchIcon from '@mui/icons-material/Launch';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SecurityIcon from '@mui/icons-material/Security';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AddIcon from '@mui/icons-material/Add';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import {
   Clock,
   Wallet,
   XCircle,
   Eye,
   Upload,
   MessageCircle,
-  AlertCircle
+  AlertCircle,
+  User,
+  FileText,
+  Shield,
+  Award,
+  Building,
+  ChevronRight,
+  Users
 } from 'lucide-react'
 import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from '../shared/lib/mockData'
 
