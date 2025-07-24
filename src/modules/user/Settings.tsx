@@ -29,32 +29,31 @@ import {
   Alert,
   Tooltip
 } from '@mui/material';
-import { 
-  User, 
-  Bell, 
-  Shield, 
-  CreditCard, 
-  Code, 
-  HelpCircle, 
-  Save, 
-  Eye, 
-  EyeOff, 
-  Edit, 
-  Trash2, 
-  Plus, 
-  Moon, 
-  Sun, 
-  Globe, 
-  Clock, 
-  Mail, 
-  MessageSquare, 
-  Phone, 
-  Lock, 
-  Key, 
-  Fingerprint, 
-  Landmark, 
-  Receipt 
-} from 'lucide-react';
+import PersonIcon from '@mui/icons-material/Person';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import SecurityIcon from '@mui/icons-material/Security';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import PublicIcon from '@mui/icons-material/Public';
+import SmartphoneIcon from '@mui/icons-material/Smartphone';
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import SaveIcon from '@mui/icons-material/Save';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckIcon from '@mui/icons-material/Check';
+import ErrorIcon from '@mui/icons-material/Error';
+import InfoIcon from '@mui/icons-material/Info';
+import SettingsIcon from '@mui/icons-material/Settings';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import WarningIcon from '@mui/icons-material/Warning';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HelpIcon from '@mui/icons-material/Help';
 import DescriptionIcon from '@mui/icons-material/Description';

@@ -31,7 +31,6 @@ import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import WarningIcon from '@mui/icons-material/Warning';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import PersonOffIcon from '@mui/icons-material/PersonOff';
 
 interface Role {
   id: string;
