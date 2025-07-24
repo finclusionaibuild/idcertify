@@ -129,13 +129,19 @@ const navigationData: NavigationData = {
       ]
     },
     {
-      name: 'Communication & Features',
+      name: 'Communication',
       icon: MessageSquare,
       children: [
         { name: 'Chat Management', path: '/admin/chat-management', icon: MessageSquare },
         { name: 'Email & Template Management', path: '/admin/email-template-management', icon: Mail },
         { name: 'Notification Management', path: '/admin/notification-management', icon: Bell },
-        { name: 'Ticketing System Management', path: '/admin/ticketing-system', icon: LifeBuoy },
+        { name: 'Ticketing System Management', path: '/admin/ticketing-system', icon: LifeBuoy }
+      ]
+    },
+    {
+      name: 'Features',
+      icon: Settings,
+      children: [
         { name: 'Content Management', path: '/admin/content-management', icon: FileText },
         { name: 'Document Management', path: '/admin/document-management', icon: FolderOpen },
         { name: 'Background Check Management', path: '/admin/background-check-management', icon: CheckCircle },
