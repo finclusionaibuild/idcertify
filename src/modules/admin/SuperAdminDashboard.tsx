@@ -8,9 +8,7 @@ import StorageIcon from '@mui/icons-material/Storage';
 import SecurityIcon from '@mui/icons-material/Security';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DescriptionIcon from '@mui/icons-material/Description';
-import PaymentIcon from '@mui/icons-material/Payment';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
-import WarningIcon from '@mui/icons-material/Warning';
 import ChatIcon from '@mui/icons-material/Chat';
 import PaletteIcon from '@mui/icons-material/Palette';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
@@ -18,224 +16,217 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import WebAssetIcon from '@mui/icons-material/WebAsset';
 import LogoutIcon from '@mui/icons-material/Logout';
+import ArticleIcon from '@mui/icons-material/Article';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import GavelIcon from '@mui/icons-material/Gavel';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import EmailIcon from '@mui/icons-material/Email';
+import BackupIcon from '@mui/icons-material/Backup';
+import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
+import HistoryIcon from '@mui/icons-material/History';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
 
-// Import existing admin components
-import AdminAnalytics from './AdminAnalytics';
+// Import existing components
 import AdminUserManagement from './AdminUserManagement';
-import RBACManagement from './RBACManagement';
-import SystemHealthCheck from './SystemHealthCheck';
+import AdminOrganisationManagement from './AdminOrganisationManagement';
 import AdminSystemSettings from './AdminSystemSettings';
 import AdminSecurityCenter from './AdminSecurityCenter';
-import AdminNotificationManagement from './AdminNotificationManagement';
+import AdminDatabaseManagement from './AdminDatabaseManagement';
 import AdminReportAnalytics from './AdminReportAnalytics';
-import SubscriptionManagement from './SubscriptionManagement';
-import AdminMultiRegionalManagement from './AdminMultiRegionalManagement';
 import KYC_KYB_Management from './KYC_KYB_Management';
-import AdminOrganisationManagement from './AdminOrganisationManagement';
-
-// Import new Super Admin feature components
-import AdminTicketingSystem from './AdminTicketingSystem';
-import AdminWhiteLabelCustomization from './AdminWhiteLabelCustomization';
+import AdminChatManagement from './AdminChatManagement';
+import RegionalManagement from './RegionalManagement';
+import AdminWhiteLabellingCustomization from './AdminWhiteLabellingCustomization';
 import AdminReferralManagement from './AdminReferralManagement';
 import AdminRewardManagement from './AdminRewardManagement';
 import AdminRatingsManagement from './AdminRatingsManagement';
-import AdminDocumentManagement from './AdminDocumentManagement';
 import AdminContentManagement from './AdminContentManagement';
-import AdminBackupRecovery from './AdminBackupRecovery';
-import AdminEmailTemplateManagement from './AdminEmailTemplateManagement';
+import AdminDocumentManagement from './AdminDocumentManagement';
+import AdminWalletManagement from './AdminWalletManagement';
+import AdminDisputeManagement from './AdminDisputeManagement';
+import AdminNotificationManagement from './AdminNotificationManagement';
 import AdminIntegrationManagement from './AdminIntegrationManagement';
+import AdminTransactionManagement from './AdminTransactionManagement';
+import AdminEmailTemplateManagement from './AdminEmailTemplateManagement';
+import AdminBackupRecovery from './AdminBackupRecovery';
+import AdminDeveloperTools from './AdminDeveloperTools';
 import AdminHistoricalDataManagement from './AdminHistoricalDataManagement';
 import AdminTicketingSystemManagement from './AdminTicketingSystemManagement';
-import AdminWhiteLabellingCustomization from './AdminWhiteLabellingCustomization';
-import AdminBackgroundCheckManagement from './AdminBackgroundCheckManagement';
+import SystemLogConfiguration from './SystemLogConfiguration';
 
-const SuperAdminDashboard: React.FC = () => {
+const SuperAdminDashboard = () => {
   const location = useLocation();
-
-  // Core navigation links
-  const coreNavigation = [
-    { name: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
-    { name: 'Analytics', icon: BarChart3, path: '/admin/analytics' },
-    { name: 'User Management', icon: Users, path: '/admin/users' },
-    { name: 'RBAC Management', icon: Shield, path: '/admin/rbac' },
-    { name: 'System Health', icon: Database, path: '/admin/health' },
-    { name: 'Security Center', icon: Shield, path: '/admin/security' },
-  ];
-
-  // Management navigation links
-  const managementNavigation = [
-    { name: 'Settings', icon: Settings, path: '/admin/settings' },
-    { name: 'Notifications', icon: Bell, path: '/admin/notifications' },
-    { name: 'Reports', icon: FileText, path: '/admin/reports' },
-    { name: 'Subscriptions', icon: CreditCard, path: '/admin/subscriptions' },
-    { name: 'Multi-Regional', icon: Globe, path: '/admin/multiregional' },
-    { name: 'KYC/KYB Management', icon: UserCheck, path: '/admin/kyc-kyb' },
-    { name: 'Organisation Management', icon: Building, path: '/admin/organisations' },
-  ];
 
   const coreManagementLinks = [
     { name: 'Dashboard', icon: DashboardIcon, path: '/admin' },
     { name: 'User Management', icon: PeopleIcon, path: '/admin/users' },
-    { name: 'Organisations', icon: BusinessIcon, path: '/admin/organisations' },
+    { name: 'Organisation Management', icon: BusinessIcon, path: '/admin/organisations' },
     { name: 'Regional Management', icon: PublicIcon, path: '/admin/regional' },
-    { name: 'Historical Data', icon: StorageIcon, path: '/admin/historical' },
+    { name: 'Database Management', icon: StorageIcon, path: '/admin/database' },
+    { name: 'Security Center', icon: SecurityIcon, path: '/admin/security' },
+    { name: 'System Settings', icon: SettingsIcon, path: '/admin/settings' },
+    { name: 'KYC/KYB Management', icon: VerifiedUserIcon, path: '/admin/kyc-kyb' },
+    { name: 'Chat Management', icon: ChatIcon, path: '/admin/chat' },
+    { name: 'Report & Analytics', icon: AnalyticsIcon, path: '/admin/analytics' },
   ];
 
   const advancedManagementLinks = [
-    { name: 'RBAC Management', icon: SecurityIcon, path: '/admin/rbac' },
-    { name: 'KYC/KYB Management', icon: VerifiedUserIcon, path: '/admin/kyc' },
-    { name: 'System Settings', icon: SettingsIcon, path: '/admin/settings' },
-    { name: 'Security Center', icon: SecurityIcon, path: '/admin/security' },
-    { name: 'Analytics & Reports', icon: DashboardIcon, path: '/admin/analytics' },
-    { name: 'Ticketing System', icon: ChatIcon, path: '/admin/tickets' },
     { name: 'White Label & Customization', icon: PaletteIcon, path: '/admin/whitelabel' },
     { name: 'Referrals Management', icon: CardGiftcardIcon, path: '/admin/referrals' },
     { name: 'Reward Management', icon: EmojiEventsIcon, path: '/admin/rewards' },
     { name: 'Ratings Management', icon: ThumbUpIcon, path: '/admin/ratings' },
     { name: 'Document Management', icon: DescriptionIcon, path: '/admin/documents' },
     { name: 'Content Management', icon: WebAssetIcon, path: '/admin/content' },
+    { name: 'News Management', icon: ArticleIcon, path: '/admin/news' },
+    { name: 'Wallet Management', icon: AccountBalanceWalletIcon, path: '/admin/wallets' },
+    { name: 'Dispute Management', icon: GavelIcon, path: '/admin/disputes' },
+    { name: 'Notification Management', icon: NotificationsIcon, path: '/admin/notifications' },
+    { name: 'Integration Management', icon: IntegrationInstructionsIcon, path: '/admin/integrations' },
+    { name: 'Transaction Management', icon: MonetizationOnIcon, path: '/admin/transactions' },
+    { name: 'Email Template Management', icon: EmailIcon, path: '/admin/email-templates' },
+    { name: 'Backup & Recovery', icon: BackupIcon, path: '/admin/backup' },
+    { name: 'Developer Tools', icon: DeveloperModeIcon, path: '/admin/developer' },
+    { name: 'Historical Data Management', icon: HistoryIcon, path: '/admin/historical' },
+    { name: 'Ticketing System', icon: ConfirmationNumberIcon, path: '/admin/ticketing' },
+    { name: 'System Logs', icon: SettingsIcon, path: '/admin/logs' },
   ];
 
-  // Advanced Management navigation links (New Features)
-  const advancedManagementNavigation = [
-    { name: 'Ticketing System', icon: Ticket, path: '/admin/ticketing' },
-    { name: 'White Label & Customization', icon: Palette, path: '/admin/whitelabel' },
-    { name: 'Referrals Management', icon: Gift, path: '/admin/referrals' },
-    { name: 'Reward Management', icon: Star, path: '/admin/rewards' },
-    { name: 'Ratings Management', icon: ThumbsUp, path: '/admin/ratings' },
-    { name: 'Document Management', icon: FileText, path: '/admin/documents' },
-    { name: 'Content Management', icon: Layout, path: '/admin/content' },
-    { name: 'Backup & Recovery', icon: HardDrive, path: '/admin/backup-recovery' },
-    { name: 'System Health Check', icon: Activity, path: '/admin/system-health' },
-    { name: 'Subscription Management', icon: CreditCard, path: '/admin/subscription' },
-    { name: 'System Log Configuration', icon: FileText, path: '/admin/system-log' },
-    { name: 'Profile Management', icon: User, path: '/admin/profile-management' },
-    { name: 'Developer Tools', icon: Code, path: '/admin/developer' },
-    { name: 'Security Center', icon: Shield, path: '/admin/security' },
-    { name: 'Database Management', icon: Database, path: '/admin/database' },
-    { name: 'White Label & Customization', icon: Palette, path: '/admin/whitelabel' },
-    { name: 'Referrals Management', icon: Gift, path: '/admin/referrals' },
-    { name: 'Reward Management', icon: Star, path: '/admin/rewards' },
-    { name: 'Ratings Management', icon: ThumbsUp, path: '/admin/ratings' },
-    { name: 'Document Management', icon: FileText, path: '/admin/documents' },
-    { name: 'Content Management', icon: Layout, path: '/admin/content' },
-    { name: 'Email Templates', icon: Mail, path: '/admin/email-templates' },
-    { name: 'Integration Management', icon: Zap, path: '/admin/integrations' },
-    { name: 'Historical Data', icon: Archive, path: '/admin/historical-data' },
-    { name: 'Ticketing System Mgmt', icon: MessageSquare, path: '/admin/ticketing-mgmt' },
-    { name: 'White Labelling', icon: Brush, path: '/admin/white-labelling' },
-    { name: 'Background Checks', icon: History, path: '/admin/background-checks' },
-  ];
+  const handleLogout = () => {
+    // Implement logout logic here
+    console.log('Logging out...');
+  };
 
-  const renderNavSection = (title: string, links: typeof coreNavigation) => (
-    <div className="mb-8">
-      <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-3 mb-3">
-        {title}
-      </h3>
-      <div className="space-y-1">
-        {links.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.path}
-            className={({ isActive }) =>
-              `group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
-                isActive
-                  ? 'bg-primary-100 text-primary-700 border-r-2 border-primary-500'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-              }`
-            }
-          >
-            <item.icon
-              className={`mr-3 h-5 w-5 transition-colors duration-200 ${
-                location.pathname === item.path
-                  ? 'text-primary-500'
-                  : 'text-gray-400 group-hover:text-gray-500'
-              }`}
-              aria-hidden="true"
-            />
-            {item.name}
-          </NavLink>
-        ))}
+  // Placeholder components for routes that don't have dedicated components yet
+  const NewsManagement = () => (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">News Management</h1>
+      <div className="bg-white rounded-lg shadow p-6">
+        <p className="text-gray-600">News management functionality will be implemented here.</p>
+      </div>
+    </div>
+  );
+
+  const DashboardOverview = () => (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Super Admin Dashboard</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-white rounded-lg shadow p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">System Overview</h3>
+          <p className="text-gray-600">Monitor system health and performance metrics.</p>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">User Statistics</h3>
+          <p className="text-gray-600">View user registration and activity trends.</p>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">Recent Activities</h3>
+          <p className="text-gray-600">Track recent system activities and changes.</p>
+        </div>
       </div>
     </div>
   );
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className="w-64 bg-white shadow-lg border-r border-gray-200">
-        <div className="flex flex-col h-full">
-          {/* Header */}
-          <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200">
-            <h1 className="text-xl font-bold text-gray-900">Super Admin</h1>
+      <div className="w-64 bg-white shadow-lg">
+        <div className="p-6">
+          <h2 className="text-xl font-bold text-gray-800">Super Admin</h2>
+        </div>
+        
+        <nav className="mt-6">
+          {/* Core Management Links */}
+          <div className="px-6 mb-4">
+            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Core Management</h3>
           </div>
+          {coreManagementLinks.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center px-6 py-3 text-sm font-medium transition-colors duration-200 ${
+                  isActive
+                    ? 'text-primary-600 bg-primary-50 border-r-2 border-primary-600'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`
+              }
+            >
+              <item.icon className="w-5 h-5 mr-3" />
+              {item.name}
+            </NavLink>
+          ))}
 
-          {/* Navigation */}
-          <nav className="flex-1 px-4 py-6 overflow-y-auto">
-            {renderNavSection('Core', coreNavigation)}
-            {renderNavSection('Management', managementNavigation)}
-            {renderNavSection('Advanced Management', advancedManagementNavigation)}
-          </nav>
+          {/* Advanced Management Links */}
+          <div className="px-6 mb-4 mt-8">
+            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Advanced Management</h3>
+          </div>
+          {advancedManagementLinks.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center px-6 py-3 text-sm font-medium transition-colors duration-200 ${
+                  isActive
+                    ? 'text-primary-600 bg-primary-50 border-r-2 border-primary-600'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`
+              }
+            >
+              <item.icon className="w-5 h-5 mr-3" />
+              {item.name}
+            </NavLink>
+          ))}
 
-          {/* Logout Button */}
-          <div className="p-4 border-t border-gray-200">
+          {/* Logout */}
+          <div className="px-6 mt-8">
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-3 w-full px-3 py-2 text-left text-gray-300 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+              className="flex items-center w-full px-0 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
-              <LogoutIcon className="h-5 w-5" />
-              <span>Logout</span>
+              <LogoutIcon className="w-5 h-5 mr-3" />
+              Logout
             </button>
           </div>
-        </div>
+        </nav>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-hidden">
-        <div className="h-full overflow-y-auto">
-          <Routes>
-            {/* Default Dashboard */}
-            <Route path="/admin" element={<AdminAnalytics />} />
-            
-            {/* Core Routes */}
-            <Route path="/admin/analytics" element={<AdminAnalytics />} />
-            <Route path="/admin/users" element={<AdminUserManagement />} />
-            <Route path="/admin/rbac" element={<RBACManagement />} />
-            <Route path="/admin/health" element={<SystemHealthCheck />} />
-            <Route path="/admin/security" element={<AdminSecurityCenter />} />
-            
-            <Route path="/admin/whitelabel" element={<AdminWhiteLabelCustomization />} />
-            <Route path="/admin/referrals" element={<AdminReferralManagement />} />
-            <Route path="/admin/rewards" element={<AdminRewardManagement />} />
-            <Route path="/admin/ratings" element={<AdminRatingsManagement />} />
-            <Route path="/admin/documents" element={<AdminDocumentManagement />} />
-            <Route path="/admin/content" element={<AdminContentManagement />} />
-            {/* Management Routes */}
-            <Route path="/admin/settings" element={<AdminSystemSettings />} />
-            <Route path="/admin/notifications" element={<AdminNotificationManagement />} />
-            <Route path="/admin/reports" element={<AdminReportAnalytics />} />
-            <Route path="/admin/subscriptions" element={<SubscriptionManagement />} />
-            <Route path="/admin/multiregional" element={<AdminMultiRegionalManagement />} />
-            <Route path="/admin/kyc-kyb" element={<KYC_KYB_Management />} />
-            <Route path="/admin/organisations" element={<AdminOrganisationManagement />} />
-            
-            {/* Advanced Management Routes (New Features) */}
-            <Route path="/admin/ticketing" element={<AdminTicketingSystem />} />
-            <Route path="/admin/whitelabel" element={<AdminWhiteLabelCustomization />} />
-            <Route path="/admin/referrals" element={<AdminReferralManagement />} />
-            <Route path="/admin/rewards" element={<AdminRewardManagement />} />
-            <Route path="/admin/ratings" element={<AdminRatingsManagement />} />
-            <Route path="/admin/documents" element={<AdminDocumentManagement />} />
-            <Route path="/admin/content" element={<AdminContentManagement />} />
-            <Route path="/admin/backup-recovery" element={<AdminBackupRecovery />} />
-            <Route path="/admin/email-templates" element={<AdminEmailTemplateManagement />} />
-            <Route path="/admin/integrations" element={<AdminIntegrationManagement />} />
-            <Route path="/admin/historical-data" element={<AdminHistoricalDataManagement />} />
-            <Route path="/admin/ticketing-mgmt" element={<AdminTicketingSystemManagement />} />
-            <Route path="/admin/white-labelling" element={<AdminWhiteLabellingCustomization />} />
-            <Route path="/admin/background-checks" element={<AdminBackgroundCheckManagement />} />
-          </Routes>
-        </div>
+      <div className="flex-1 overflow-auto">
+        <Routes>
+          <Route path="/admin" element={<DashboardOverview />} />
+          <Route path="/admin/users" element={<AdminUserManagement />} />
+          <Route path="/admin/organisations" element={<AdminOrganisationManagement />} />
+          <Route path="/admin/regional" element={<RegionalManagement />} />
+          <Route path="/admin/database" element={<AdminDatabaseManagement />} />
+          <Route path="/admin/security" element={<AdminSecurityCenter />} />
+          <Route path="/admin/settings" element={<AdminSystemSettings />} />
+          <Route path="/admin/kyc-kyb" element={<KYC_KYB_Management />} />
+          <Route path="/admin/chat" element={<AdminChatManagement />} />
+          <Route path="/admin/analytics" element={<AdminReportAnalytics />} />
+          
+          {/* Advanced Management Routes */}
+          <Route path="/admin/whitelabel" element={<AdminWhiteLabellingCustomization />} />
+          <Route path="/admin/referrals" element={<AdminReferralManagement />} />
+          <Route path="/admin/rewards" element={<AdminRewardManagement />} />
+          <Route path="/admin/ratings" element={<AdminRatingsManagement />} />
+          <Route path="/admin/documents" element={<AdminDocumentManagement />} />
+          <Route path="/admin/content" element={<AdminContentManagement />} />
+          <Route path="/admin/news" element={<NewsManagement />} />
+          <Route path="/admin/wallets" element={<AdminWalletManagement />} />
+          <Route path="/admin/disputes" element={<AdminDisputeManagement />} />
+          <Route path="/admin/notifications" element={<AdminNotificationManagement />} />
+          <Route path="/admin/integrations" element={<AdminIntegrationManagement />} />
+          <Route path="/admin/transactions" element={<AdminTransactionManagement />} />
+          <Route path="/admin/email-templates" element={<AdminEmailTemplateManagement />} />
+          <Route path="/admin/backup" element={<AdminBackupRecovery />} />
+          <Route path="/admin/developer" element={<AdminDeveloperTools />} />
+          <Route path="/admin/historical" element={<AdminHistoricalDataManagement />} />
+          <Route path="/admin/ticketing" element={<AdminTicketingSystemManagement />} />
+          <Route path="/admin/logs" element={<SystemLogConfiguration />} />
+        </Routes>
       </div>
     </div>
   );
