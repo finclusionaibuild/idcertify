@@ -195,7 +195,7 @@ export default function Layout() {
 
       {/* Sidebar */}
       <div className={`
-        fixed inset-y-0 left-0 z-50 w-80 bg-primary-600 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0
+        fixed inset-y-0 left-0 z-50 w-80 bg-primary-600 transform transition-transform duration-300 ease-in-out flex flex-col lg:translate-x-0 lg:static lg:inset-0
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="flex items-center justify-between h-16 px-6 bg-primary-700">
@@ -215,7 +215,7 @@ export default function Layout() {
           </button>
         </div>
 
-        <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+        <nav className="flex-1 px-4 py-6 space-y-2 flex-grow overflow-y-auto">
           {/* Standalone items */}
           {navigationData.standalone.map((item) => {
             const Icon = item.icon;
@@ -298,7 +298,7 @@ export default function Layout() {
         </nav>
 
         {/* User info at bottom */}
-        <div className="p-4 border-t border-primary-500">
+        <div className="p-4 border-t border-primary-500 flex-shrink-0">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
               <Users className="w-4 h-4 text-white" />
