@@ -24,7 +24,7 @@ import BackgroundCheck from '../modules/shared/BackgroundCheck'
 import VerificationRequests from '../modules/shared/VerificationRequests'
 
 // Import shared components
-import { Layout } from '../modules/shared/components/Layout'
+import Layout from '../modules/shared/components/Layout'
 import AuthGuard from '../modules/shared/components/AuthGuard'
 import OnboardingFlow from '../modules/shared/components/OnboardingFlow'
 import Auth from '../modules/user/Auth'
