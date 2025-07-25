@@ -5,7 +5,6 @@ import { useAuth } from '../contexts/AuthContext';
 import {
   LayoutDashboard, 
   Building2, 
-  Shield, 
   FileCheck, 
   UserCheck,
   UsersRound,
