@@ -7,8 +7,8 @@ import DemoLogin from '../modules/shared/DemoLogin'
 import Dashboard from '../modules/user/Dashboard'
 import Onboarding from '../modules/user/Onboarding'
 import VerificationRequests from '../modules/shared/VerificationRequests'
+import { AdminDashboard } from '../modules/admin/AdminDashboard';
 import TrustScore from '../modules/shared/TrustScore'
-import Attestation from '../modules/shared/Attestation'
 import Wallet from '../modules/shared/Wallet'
 import Biobank from '../modules/shared/Biobank'
 import OrganisationDashboard from '../modules/user/OrganisationDashboard'
@@ -63,6 +63,21 @@ import SystemLogConfiguration from '../modules/admin/SystemLogConfiguration'
 import ProfileManagement from '../modules/admin/ProfileManagement'
 
 
+// Dashboard Router Component
+const DashboardRouter = () => {
+  // In a real app, you'd get this from your auth context
+  // For demo purposes, we'll use a simple role check
+  const userRole = localStorage.getItem('userRole') || 'user';
+  
+  if (userRole === 'super-admin') {
+    return <SuperAdminDashboard />;
+  } else if (userRole === 'admin') {
+    return <AdminDashboard />;
+  } else {
+    return <Dashboard />;
+  }
+};
+
 function App() {
   return (
     <Router>
@@ -76,7 +91,7 @@ function App() {
               <Onboarding />
             </AuthGuard>
           } />
-          
+                    <Route path="/dashboard" element={<DashboardRouter />} />
           {/* Protected routes */}
           <Route path="/" element={
             <AuthGuard requireOnboarding={true}>
@@ -438,8 +453,6 @@ function App() {
                 <SureAMLManagement />
               </AuthGuard>
             } />
-
-            <Route path="admin/sure-compliance-management" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
                 <SureComplianceManagement />
               </AuthGuard>
