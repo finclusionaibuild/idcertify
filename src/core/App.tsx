@@ -81,6 +81,8 @@ function App() {
             {/* Public routes */}
             <Route path="/auth" element={<Auth />} />
             <Route path="/demo" element={<DemoLogin />} />
+            <Route path="/dashboard/individual" element={<Layout><IndividualDashboard /></Layout>} />
+            <Route path="/dashboard/organization" element={<Layout><OrganisationDashboard /></Layout>} />
             <Route path="/onboarding" element={
               <AuthGuard>
                 <Onboarding />
