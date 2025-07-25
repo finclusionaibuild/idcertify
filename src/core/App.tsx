@@ -61,6 +61,7 @@ import SystemHealthCheck from '../modules/admin/SystemHealthCheck'
 import SubscriptionManagement from '../modules/admin/SubscriptionManagement'
 import SystemLogConfiguration from '../modules/admin/SystemLogConfiguration'
 import ProfileManagement from '../modules/admin/ProfileManagement'
+import Attestation from '../modules/shared/Attestation'
 
 
 // Dashboard Router Component
