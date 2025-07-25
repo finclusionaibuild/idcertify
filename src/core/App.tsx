@@ -94,6 +94,7 @@ function App() {
                   <Layout />
                 </OnboardingFlow>
               </AuthGuard>
+            }>
               
               <Route path="/profile" element={<Settings />} />
               <Route path="/biobank" element={<Biobank />} />
