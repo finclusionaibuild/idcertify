@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from "@shared/contexts/AuthContext";
-import { useOnboarding } from '../shared/contexts/OnboardingContext';
 import LimitedAccessBanner from '../shared/components/LimitedAccessBanner';
 import FeatureGate from '../shared/components/FeatureGate';
 import { 
@@ -46,7 +45,6 @@ import OrganisationDashboard from './OrganisationDashboard'
 
 const Dashboard = () => {
   const { profile } = useAuth()
-  const { state } = useOnboarding();
   const [stats, setStats] = useState({
     documents: 0,
     verifications: 0,
