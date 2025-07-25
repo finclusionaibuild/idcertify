@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { Menu, X, Home, Users, Shield, FileText, Award, Database, Settings, BarChart3, UserCheck, Building, Briefcase, UserCog, Eye, TrendingUp, FolderOpen, CheckCircle, Microscope, User, LogOut, ChevronDown } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import {
   LayoutDashboard, 
-  Users, 
   Building2, 
   Shield, 
   FileCheck, 
