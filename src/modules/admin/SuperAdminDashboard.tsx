@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Users, 
   Building2, 
@@ -11,321 +11,461 @@ import {
   Globe, 
   DollarSign,
   MessageSquare,
-  Settings,
   BarChart3,
+  Settings,
   Clock,
-  Server,
-  Lock,
   FileText,
-  Zap,
   UserCheck,
-  Building,
-  Eye,
-  Award,
+  Lock,
   Briefcase,
-  HeadphonesIcon,
-  MonitorSpeaker
+  HeartHandshake,
+  Microscope,
+  Eye,
+  Gavel,
+  CreditCard,
+  Headphones,
+  Server,
+  Zap
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const SuperAdminDashboard: React.FC = () => {
-  const [selectedTimeframe, setSelectedTimeframe] = useState('7d');
-
-  // Mock data - replace with actual API calls
+const SuperAdminDashboard = () => {
+  // Mock data - in real app, this would come from API
   const platformStats = {
     totalUsers: 125847,
     totalOrganizations: 3421,
-    totalEmployers: 892,
-    totalEmployees: 45623,
     systemUptime: 99.97,
-    activeVerifications: 1247,
-    pendingTickets: 23,
-    criticalAlerts: 2
+    criticalAlerts: 3,
+    pendingVerifications: 1247,
+    monthlyRevenue: 2847392
   };
 
   const systemHealth = {
-    database: { status: 'healthy', uptime: 99.99 },
-    api: { status: 'healthy', uptime: 99.95 },
-    storage: { status: 'warning', uptime: 98.2 },
-    monitoring: { status: 'healthy', uptime: 100 }
+    database: 'healthy',
+    api: 'healthy',
+    storage: 'warning',
+    network: 'healthy'
   };
 
-  const complianceMetrics = {
-    kycCompliance: 94.2,
-    amlCompliance: 97.8,
-    gdprCompliance: 99.1,
-    overallTrustScore: 8.7
+  const recentActivities = [
+    { type: 'security', message: 'New security policy applied', time: '2 hours ago' },
+    { type: 'system', message: 'Database backup completed', time: '4 hours ago' },
+    { type: 'user', message: '1,247 new user registrations', time: '6 hours ago' },
+    { type: 'compliance', message: 'AML scan completed for 500 profiles', time: '8 hours ago' }
+  ];
+
+  const StatCard = ({ title, value, icon: Icon, trend, color = 'primary' }: any) => (
+    <div className="bg-white rounded-lg shadow-soft p-6 border border-gray-100">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm font-medium text-gray-600">{title}</p>
+          <p className={`text-2xl font-bold text-${color}-600 mt-1`}>{value}</p>
+          {trend && (
+            <p className="text-sm text-success-600 mt-1 flex items-center">
+              <TrendingUp className="w-4 h-4 mr-1" />
+              {trend}
+            </p>
+          )}
+        </div>
+        <div className={`p-3 bg-${color}-50 rounded-lg`}>
+          <Icon className={`w-6 h-6 text-${color}-600`} />
+        </div>
+      </div>
+    </div>
+  );
+
+  const QuickActionCard = ({ title, description, icon: Icon, link, color = 'primary' }: any) => (
+    <Link to={link} className="block">
+      <div className="bg-white rounded-lg shadow-soft p-6 border border-gray-100 hover:shadow-medium transition-shadow">
+        <div className="flex items-start space-x-4">
+          <div className={`p-3 bg-${color}-50 rounded-lg`}>
+            <Icon className={`w-6 h-6 text-${color}-600`} />
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-900">{title}</h3>
+            <p className="text-sm text-gray-600 mt-1">{description}</p>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+
+  const SystemHealthIndicator = ({ service, status }: any) => {
+    const getStatusColor = (status: string) => {
+      switch (status) {
+        case 'healthy': return 'success';
+        case 'warning': return 'warning';
+        case 'error': return 'error';
+        default: return 'gray';
+      }
+    };
+
+    return (
+      <div className="flex items-center justify-between py-2">
+        <span className="text-sm font-medium text-gray-700 capitalize">{service}</span>
+        <div className="flex items-center space-x-2">
+          <div className={`w-3 h-3 rounded-full bg-${getStatusColor(status)}-500`}></div>
+          <span className={`text-sm font-medium text-${getStatusColor(status)}-600 capitalize`}>
+            {status}
+          </span>
+        </div>
+      </div>
+    );
   };
-
-  const recentActivity = [
-    { type: 'security', message: 'New AML alert triggered for Company ABC', time: '2 min ago', severity: 'high' },
-    { type: 'system', message: 'Database backup completed successfully', time: '15 min ago', severity: 'info' },
-    { type: 'user', message: '47 new user registrations in the last hour', time: '1 hour ago', severity: 'info' },
-    { type: 'compliance', message: 'GDPR compliance check completed', time: '2 hours ago', severity: 'success' }
-  ];
-
-  const quickActions = [
-    { title: 'System Health', icon: Activity, link: '/admin/system-health', color: 'bg-green-500' },
-    { title: 'User Management', icon: Users, link: '/admin/user-management', color: 'bg-blue-500' },
-    { title: 'Security Center', icon: Shield, link: '/admin/security-center', color: 'bg-red-500' },
-    { title: 'Analytics', icon: BarChart3, link: '/admin/analytics', color: 'bg-purple-500' },
-    { title: 'Support Tickets', icon: HeadphonesIcon, link: '/admin/help-support', color: 'bg-orange-500' },
-    { title: 'System Settings', icon: Settings, link: '/admin/system-settings', color: 'bg-gray-500' }
-  ];
-
-  const managementSections = [
-    {
-      title: 'User & Organization Management',
-      items: [
-        { name: 'User Management', link: '/admin/user-management', icon: Users, count: platformStats.totalUsers },
-        { name: 'Organization Management', link: '/admin/organisation-management', icon: Building2, count: platformStats.totalOrganizations },
-        { name: 'Employer Management', link: '/admin/employer-management', icon: Briefcase, count: platformStats.totalEmployers },
-        { name: 'Employee Management', link: '/admin/employee-management', icon: UserCheck, count: platformStats.totalEmployees },
-        { name: 'Company Management', link: '/admin/company-management', icon: Building, count: platformStats.totalOrganizations },
-        { name: 'Profile Management', link: '/admin/profile-management', icon: Users, count: '∞' }
-      ]
-    },
-    {
-      title: 'Compliance & Security',
-      items: [
-        { name: 'SureAML Management', link: '/admin/sure-aml-management', icon: Shield, count: '24/7' },
-        { name: 'SureCompliance Management', link: '/admin/sure-compliance-management', icon: CheckCircle, count: '6 Standards' },
-        { name: 'Security Center', link: '/admin/security-center', icon: Lock, count: platformStats.criticalAlerts },
-        { name: 'KYC/KYB Management', link: '/admin/kyc-kyb-management', icon: FileText, count: platformStats.activeVerifications },
-        { name: 'Background Check Management', link: '/admin/background-check-management', icon: Eye, count: 'Active' },
-        { name: 'Trust Score Management', link: '/admin/trust-score-management', icon: Award, count: complianceMetrics.overallTrustScore }
-      ]
-    },
-    {
-      title: 'System & Infrastructure',
-      items: [
-        { name: 'System Health Check', link: '/admin/system-health-check', icon: Activity, count: `${platformStats.systemUptime}%` },
-        { name: 'Downtime Tracker', link: '/admin/downtime-tracker', icon: Clock, count: 'Live' },
-        { name: 'Data Monitoring', link: '/admin/data-monitoring-management', icon: MonitorSpeaker, count: 'Real-time' },
-        { name: 'Database Management', link: '/admin/database-management', icon: Database, count: 'Healthy' },
-        { name: 'System Log Configuration', link: '/admin/system-log-configuration', icon: FileText, count: 'Active' },
-        { name: 'Developer Tools', link: '/admin/developer-tools', icon: Zap, count: 'Available' }
-      ]
-    },
-    {
-      title: 'Platform Configuration',
-      items: [
-        { name: 'System Settings', link: '/admin/system-settings', icon: Settings, count: 'Global' },
-        { name: 'Integration Management', link: '/admin/integration-management', icon: Globe, count: 'APIs' },
-        { name: 'Email Template Management', link: '/admin/email-template-management', icon: FileText, count: 'Templates' },
-        { name: 'Notification Management', link: '/admin/notification-management', icon: MessageSquare, count: 'Live' },
-        { name: 'Multi-Regional Management', link: '/admin/multi-regional-management', icon: Globe, count: 'Regions' },
-        { name: 'White Label Customization', link: '/admin/white-label-customization', icon: Settings, count: 'Brands' }
-      ]
-    }
-  ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="bg-white rounded-lg shadow-soft p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Super Admin Dashboard</h1>
-              <p className="text-gray-600 mt-1">Complete platform oversight and management</p>
-            </div>
-            <div className="flex items-center space-x-4">
-              <select 
-                value={selectedTimeframe}
-                onChange={(e) => setSelectedTimeframe(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              >
-                <option value="24h">Last 24 Hours</option>
-                <option value="7d">Last 7 Days</option>
-                <option value="30d">Last 30 Days</option>
-                <option value="90d">Last 90 Days</option>
-              </select>
-            </div>
+    <div className="p-6 space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Super Admin Dashboard</h1>
+          <p className="text-gray-600 mt-1">Complete platform oversight and management</p>
+        </div>
+        <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 bg-success-50 px-3 py-2 rounded-lg">
+            <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
+            <span className="text-sm font-medium text-success-700">System Online</span>
           </div>
         </div>
+      </div>
 
-        {/* Platform Overview Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-lg shadow-soft p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Total Users</p>
-                <p className="text-3xl font-bold text-gray-900">{platformStats.totalUsers.toLocaleString()}</p>
-                <p className="text-sm text-green-600 mt-1">↗ +12.5% from last month</p>
-              </div>
-              <div className="p-3 bg-blue-100 rounded-full">
-                <Users className="w-6 h-6 text-blue-600" />
-              </div>
-            </div>
-          </div>
+      {/* Platform Overview Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+        <StatCard
+          title="Total Users"
+          value={platformStats.totalUsers.toLocaleString()}
+          icon={Users}
+          trend="+12.5% this month"
+          color="primary"
+        />
+        <StatCard
+          title="Organizations"
+          value={platformStats.totalOrganizations.toLocaleString()}
+          icon={Building2}
+          trend="+8.3% this month"
+          color="secondary"
+        />
+        <StatCard
+          title="System Uptime"
+          value={`${platformStats.systemUptime}%`}
+          icon={Activity}
+          trend="99.9% target"
+          color="success"
+        />
+        <StatCard
+          title="Critical Alerts"
+          value={platformStats.criticalAlerts}
+          icon={AlertTriangle}
+          color="error"
+        />
+        <StatCard
+          title="Pending Verifications"
+          value={platformStats.pendingVerifications.toLocaleString()}
+          icon={UserCheck}
+          color="warning"
+        />
+        <StatCard
+          title="Monthly Revenue"
+          value={`$${(platformStats.monthlyRevenue / 1000000).toFixed(1)}M`}
+          icon={DollarSign}
+          trend="+15.2% vs last month"
+          color="success"
+        />
+      </div>
 
-          <div className="bg-white rounded-lg shadow-soft p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Organizations</p>
-                <p className="text-3xl font-bold text-gray-900">{platformStats.totalOrganizations.toLocaleString()}</p>
-                <p className="text-sm text-green-600 mt-1">↗ +8.3% from last month</p>
-              </div>
-              <div className="p-3 bg-green-100 rounded-full">
-                <Building2 className="w-6 h-6 text-green-600" />
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-soft p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">System Uptime</p>
-                <p className="text-3xl font-bold text-gray-900">{platformStats.systemUptime}%</p>
-                <p className="text-sm text-green-600 mt-1">Excellent performance</p>
-              </div>
-              <div className="p-3 bg-green-100 rounded-full">
-                <Activity className="w-6 h-6 text-green-600" />
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-soft p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Critical Alerts</p>
-                <p className="text-3xl font-bold text-gray-900">{platformStats.criticalAlerts}</p>
-                <p className="text-sm text-orange-600 mt-1">Requires attention</p>
-              </div>
-              <div className="p-3 bg-orange-100 rounded-full">
-                <AlertTriangle className="w-6 h-6 text-orange-600" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* System Health Overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg shadow-soft p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">System Health Status</h3>
-            <div className="space-y-4">
-              {Object.entries(systemHealth).map(([service, data]) => (
-                <div key={service} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    <div className={`w-3 h-3 rounded-full ${
-                      data.status === 'healthy' ? 'bg-green-500' : 
-                      data.status === 'warning' ? 'bg-yellow-500' : 'bg-red-500'
-                    }`}></div>
-                    <span className="font-medium capitalize">{service}</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-sm font-medium">{data.uptime}%</span>
-                    <p className="text-xs text-gray-500 capitalize">{data.status}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-soft p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Compliance Metrics</h3>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-600">KYC Compliance</span>
-                <div className="flex items-center space-x-2">
-                  <div className="w-24 bg-gray-200 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: `${complianceMetrics.kycCompliance}%` }}></div>
-                  </div>
-                  <span className="text-sm font-medium">{complianceMetrics.kycCompliance}%</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-600">AML Compliance</span>
-                <div className="flex items-center space-x-2">
-                  <div className="w-24 bg-gray-200 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: `${complianceMetrics.amlCompliance}%` }}></div>
-                  </div>
-                  <span className="text-sm font-medium">{complianceMetrics.amlCompliance}%</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-600">GDPR Compliance</span>
-                <div className="flex items-center space-x-2">
-                  <div className="w-24 bg-gray-200 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: `${complianceMetrics.gdprCompliance}%` }}></div>
-                  </div>
-                  <span className="text-sm font-medium">{complianceMetrics.gdprCompliance}%</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between pt-2 border-t">
-                <span className="text-sm font-semibold text-gray-900">Overall Trust Score</span>
-                <span className="text-lg font-bold text-green-600">{complianceMetrics.overallTrustScore}/10</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="bg-white rounded-lg shadow-soft p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {quickActions.map((action, index) => (
-              <Link
-                key={index}
-                to={action.link}
-                className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-primary-300 hover:shadow-md transition-all duration-200"
-              >
-                <div className={`p-3 rounded-full ${action.color} mb-2`}>
-                  <action.icon className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-sm font-medium text-gray-900 text-center">{action.title}</span>
-              </Link>
+      {/* System Health & Recent Activities */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-white rounded-lg shadow-soft p-6 border border-gray-100">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <Server className="w-5 h-5 mr-2 text-primary-600" />
+            System Health Status
+          </h2>
+          <div className="space-y-2">
+            {Object.entries(systemHealth).map(([service, status]) => (
+              <SystemHealthIndicator key={service} service={service} status={status} />
             ))}
           </div>
+          <div className="mt-4 pt-4 border-t border-gray-100">
+            <Link to="/admin/system-health" className="text-primary-600 hover:text-primary-700 text-sm font-medium">
+              View Detailed Health Report →
+            </Link>
+          </div>
         </div>
 
-        {/* Management Sections */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {managementSections.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="bg-white rounded-lg shadow-soft p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">{section.title}</h3>
-              <div className="space-y-3">
-                {section.items.map((item, itemIndex) => (
-                  <Link
-                    key={itemIndex}
-                    to={item.link}
-                    className="flex items-center justify-between p-3 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-gray-50 transition-all duration-200"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <item.icon className="w-5 h-5 text-gray-600" />
-                      <span className="font-medium text-gray-900">{item.name}</span>
-                    </div>
-                    <span className="text-sm font-medium text-primary-600">{item.count}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Recent Activity */}
-        <div className="bg-white rounded-lg shadow-soft p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Platform Activity</h3>
+        <div className="bg-white rounded-lg shadow-soft p-6 border border-gray-100">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <Clock className="w-5 h-5 mr-2 text-primary-600" />
+            Recent Platform Activities
+          </h2>
           <div className="space-y-3">
-            {recentActivity.map((activity, index) => (
-              <div key={index} className="flex items-center space-x-4 p-3 rounded-lg bg-gray-50">
-                <div className={`w-2 h-2 rounded-full ${
-                  activity.severity === 'high' ? 'bg-red-500' :
-                  activity.severity === 'success' ? 'bg-green-500' : 'bg-blue-500'
+            {recentActivities.map((activity, index) => (
+              <div key={index} className="flex items-start space-x-3">
+                <div className={`w-2 h-2 rounded-full mt-2 ${
+                  activity.type === 'security' ? 'bg-error-500' :
+                  activity.type === 'system' ? 'bg-primary-500' :
+                  activity.type === 'user' ? 'bg-success-500' :
+                  'bg-warning-500'
                 }`}></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">{activity.message}</p>
+                  <p className="text-sm text-gray-900">{activity.message}</p>
                   <p className="text-xs text-gray-500">{activity.time}</p>
                 </div>
-                <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                  activity.severity === 'high' ? 'bg-red-100 text-red-800' :
-                  activity.severity === 'success' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'
-                }`}>
-                  {activity.type}
-                </span>
               </div>
             ))}
+          </div>
+          <div className="mt-4 pt-4 border-t border-gray-100">
+            <Link to="/admin/system-logs" className="text-primary-600 hover:text-primary-700 text-sm font-medium">
+              View All Activities →
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Management Sections */}
+      <div className="space-y-6">
+        {/* User & Organization Management */}
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+            <Users className="w-6 h-6 mr-2 text-primary-600" />
+            User & Organization Management
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <QuickActionCard
+              title="User Management"
+              description="Manage all platform users and permissions"
+              icon={Users}
+              link="/admin/user-management"
+              color="primary"
+            />
+            <QuickActionCard
+              title="Organization Management"
+              description="Oversee all registered organizations"
+              icon={Building2}
+              link="/admin/organisation-management"
+              color="secondary"
+            />
+            <QuickActionCard
+              title="Employer Management"
+              description="Manage individual & corporate employers"
+              icon={Briefcase}
+              link="/admin/employer-management"
+              color="accent"
+            />
+            <QuickActionCard
+              title="Employee System"
+              description="Comprehensive employee management"
+              icon={UserCheck}
+              link="/admin/employee-management"
+              color="success"
+            />
+          </div>
+        </div>
+
+        {/* Compliance & Security */}
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+            <Shield className="w-6 h-6 mr-2 text-error-600" />
+            Compliance & Security Management
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <QuickActionCard
+              title="KYC/KYB Management"
+              description="Know Your Customer/Business processes"
+              icon={UserCheck}
+              link="/admin/kyc-kyb-management"
+              color="primary"
+            />
+            <QuickActionCard
+              title="SureAML Management"
+              description="Anti-Money Laundering compliance"
+              icon={Shield}
+              link="/admin/sure-aml-management"
+              color="error"
+            />
+            <QuickActionCard
+              title="SureCompliance"
+              description="Multi-standard compliance tracking"
+              icon={Gavel}
+              link="/admin/sure-compliance-management"
+              color="warning"
+            />
+            <QuickActionCard
+              title="Background Checks"
+              description="Comprehensive background verification"
+              icon={Eye}
+              link="/admin/background-check-management"
+              color="secondary"
+            />
+            <QuickActionCard
+              title="Security Center"
+              description="Platform security management"
+              icon={Lock}
+              link="/admin/security-center"
+              color="error"
+            />
+            <QuickActionCard
+              title="Trust Score System"
+              description="Trust score algorithms and management"
+              icon={TrendingUp}
+              link="/admin/trust-score-management"
+              color="success"
+            />
+            <QuickActionCard
+              title="Document Vault"
+              description="Secure document storage management"
+              icon={FileText}
+              link="/admin/document-vault-management"
+              color="primary"
+            />
+            <QuickActionCard
+              title="Attestation System"
+              description="Digital attestation management"
+              icon={HeartHandshake}
+              link="/admin/attestation-management"
+              color="accent"
+            />
+          </div>
+        </div>
+
+        {/* System Operations */}
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+            <Settings className="w-6 h-6 mr-2 text-secondary-600" />
+            System Operations & Infrastructure
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <QuickActionCard
+              title="System Health"
+              description="Monitor system performance and health"
+              icon={Activity}
+              link="/admin/system-health"
+              color="success"
+            />
+            <QuickActionCard
+              title="Downtime Tracker"
+              description="Track and manage system downtime"
+              icon={Clock}
+              link="/admin/downtime-tracker"
+              color="error"
+            />
+            <QuickActionCard
+              title="Data Monitoring"
+              description="Real-time data monitoring and alerts"
+              icon={BarChart3}
+              link="/admin/data-monitoring-management"
+              color="primary"
+            />
+            <QuickActionCard
+              title="Database Management"
+              description="Database administration and optimization"
+              icon={Database}
+              link="/admin/database-management"
+              color="secondary"
+            />
+            <QuickActionCard
+              title="Backup & Recovery"
+              description="System backup and disaster recovery"
+              icon={Shield}
+              link="/admin/backup-recovery"
+              color="warning"
+            />
+            <QuickActionCard
+              title="Developer Tools"
+              description="API management and developer resources"
+              icon={Zap}
+              link="/admin/developer-tools"
+              color="accent"
+            />
+            <QuickActionCard
+              title="Integration Management"
+              description="Third-party integrations and APIs"
+              icon={Globe}
+              link="/admin/integration-management"
+              color="primary"
+            />
+            <QuickActionCard
+              title="System Settings"
+              description="Global system configuration"
+              icon={Settings}
+              link="/admin/system-settings"
+              color="secondary"
+            />
+          </div>
+        </div>
+
+        {/* Specialized Systems */}
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+            <Microscope className="w-6 h-6 mr-2 text-accent-600" />
+            Specialized Management Systems
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <QuickActionCard
+              title="Biobank Management"
+              description="Biometric data and storage management"
+              icon={Microscope}
+              link="/admin/biobank-management"
+              color="accent"
+            />
+            <QuickActionCard
+              title="Company Management"
+              description="Corporate entity management"
+              icon={Building2}
+              link="/admin/company-management"
+              color="primary"
+            />
+            <QuickActionCard
+              title="Verification Management"
+              description="Identity verification workflows"
+              icon={CheckCircle}
+              link="/admin/verification-management"
+              color="success"
+            />
+            <QuickActionCard
+              title="Transaction Management"
+              description="Financial transaction oversight"
+              icon={CreditCard}
+              link="/admin/transaction-management"
+              color="warning"
+            />
+          </div>
+        </div>
+
+        {/* Support & Analytics */}
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+            <Headphones className="w-6 h-6 mr-2 text-success-600" />
+            Support & Analytics
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <QuickActionCard
+              title="Help & Support"
+              description="Customer support and ticket management"
+              icon={Headphones}
+              link="/admin/help-support"
+              color="success"
+            />
+            <QuickActionCard
+              title="Analytics & Reports"
+              description="Platform analytics and reporting"
+              icon={BarChart3}
+              link="/admin/analytics"
+              color="primary"
+            />
+            <QuickActionCard
+              title="Chat Management"
+              description="Live chat and communication tools"
+              icon={MessageSquare}
+              link="/admin/chat-management"
+              color="secondary"
+            />
+            <QuickActionCard
+              title="Ticketing System"
+              description="Advanced ticketing and workflow"
+              icon={FileText}
+              link="/admin/ticketing-system"
+              color="accent"
+            />
           </div>
         </div>
       </div>
