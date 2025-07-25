@@ -1,421 +1,333 @@
 import React, { useState } from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import {
-  LayoutDashboard,
-  Users,
-  Building2,
-  Shield,
-  FileCheck,
-  Activity,
-  Settings,
-  Globe,
-  Database,
-  HardDrive,
-  CreditCard,
-  Wallet,
-  Lock,
-  CheckCircle,
-  AlertTriangle,
-  Code,
-  Plug,
-  BarChart3,
-  TrendingUp,
-  FileText,
+import { 
+  Users, 
+  Building2, 
+  Shield, 
+  Activity, 
+  AlertTriangle, 
+  CheckCircle, 
+  TrendingUp, 
+  Database, 
+  Globe, 
+  DollarSign,
   MessageSquare,
-  Star,
-  Gift,
-  Ticket,
-  Palette,
-  Search,
-  Mail,
+  Settings,
+  BarChart3,
+  Clock,
+  Server,
+  Lock,
+  FileText,
+  Zap,
   UserCheck,
-  ChevronDown,
-  ChevronRight,
-  History,
-  UserPlus
+  Building,
+  Eye,
+  Award,
+  Briefcase,
+  HeadphonesIcon,
+  MonitorSpeaker
 } from 'lucide-react';
-
-// Import all admin components
-import AdminAnalytics from './AdminAnalytics';
-import AdminApprovalWorkflow from './AdminApprovalWorkflow';
-import AdminBackgroundCheckManagement from './AdminBackgroundCheckManagement';
-import AdminBackupRecovery from './AdminBackupRecovery';
-import AdminChatManagement from './AdminChatManagement';
-import AdminContentManagement from './AdminContentManagement';
-import AdminDatabaseManagement from './AdminDatabaseManagement';
-import AdminDeveloperTools from './AdminDeveloperTools';
-import AdminDisputeManagement from './AdminDisputeManagement';
-import AdminDocumentManagement from './AdminDocumentManagement';
-import AdminEmailTemplateManagement from './AdminEmailTemplateManagement';
-import AdminEscrowManagement from './AdminEscrowManagement';
-import AdminHistoricalDataManagement from './AdminHistoricalDataManagement';
-import AdminIntegrationManagement from './AdminIntegrationManagement';
-import AdminMultiRegionalManagement from './AdminMultiRegionalManagement';
-import AdminNotificationManagement from './AdminNotificationManagement';
-import AdminOrganisationManagement from './AdminOrganisationManagement';
-import AdminRatingsManagement from './AdminRatingsManagement';
-import AdminReferralManagement from './AdminReferralManagement';
-import AdminReportAnalytics from './AdminReportAnalytics';
-import AdminRewardManagement from './AdminRewardManagement';
-import AdminSecurityCenter from './AdminSecurityCenter';
-import AdminSystemSettings from './AdminSystemSettings';
-import AdminTicketingSystem from './AdminTicketingSystem';
-import AdminTransactionManagement from './AdminTransactionManagement';
-import AdminUserManagement from './AdminUserManagement';
-import AdminVerificationManagement from './AdminVerificationManagement';
-import AdminWalletManagement from './AdminWalletManagement';
-import AdminWhiteLabelCustomization from './AdminWhiteLabelCustomization';
-import KYC_KYB_Management from './KYC_KYB_Management';
-import ProfileManagement from './ProfileManagement';
-import RBACManagement from './RBACManagement';
-import RegionalManagement from './RegionalManagement';
-import SubscriptionManagement from './SubscriptionManagement';
-import SystemHealthCheck from './SystemHealthCheck';
-import SystemLogConfiguration from './SystemLogConfiguration';
-import StaffManagement from '../user/StaffManagement';
-import TrustScoreAnalytics from '../user/TrustScoreAnalytics';
-
-interface NavigationItem {
-  name: string;
-  path: string;
-  icon: React.ComponentType<any>;
-}
-
-interface NavigationGroup {
-  name: string;
-  icon: React.ComponentType<any>;
-  children: NavigationItem[];
-}
+import { Link } from 'react-router-dom';
 
 const SuperAdminDashboard: React.FC = () => {
-  const location = useLocation();
-  const [expandedGroups, setExpandedGroups] = useState<string[]>(['User & Access Management']);
+  const [selectedTimeframe, setSelectedTimeframe] = useState('7d');
 
-  const toggleGroup = (groupName: string) => {
-    setExpandedGroups(prev => 
-      prev.includes(groupName) 
-        ? prev.filter(name => name !== groupName)
-        : [...prev, groupName]
-    );
+  // Mock data - replace with actual API calls
+  const platformStats = {
+    totalUsers: 125847,
+    totalOrganizations: 3421,
+    totalEmployers: 892,
+    totalEmployees: 45623,
+    systemUptime: 99.97,
+    activeVerifications: 1247,
+    pendingTickets: 23,
+    criticalAlerts: 2
   };
 
-  const navigationGroups: NavigationGroup[] = [
+  const systemHealth = {
+    database: { status: 'healthy', uptime: 99.99 },
+    api: { status: 'healthy', uptime: 99.95 },
+    storage: { status: 'warning', uptime: 98.2 },
+    monitoring: { status: 'healthy', uptime: 100 }
+  };
+
+  const complianceMetrics = {
+    kycCompliance: 94.2,
+    amlCompliance: 97.8,
+    gdprCompliance: 99.1,
+    overallTrustScore: 8.7
+  };
+
+  const recentActivity = [
+    { type: 'security', message: 'New AML alert triggered for Company ABC', time: '2 min ago', severity: 'high' },
+    { type: 'system', message: 'Database backup completed successfully', time: '15 min ago', severity: 'info' },
+    { type: 'user', message: '47 new user registrations in the last hour', time: '1 hour ago', severity: 'info' },
+    { type: 'compliance', message: 'GDPR compliance check completed', time: '2 hours ago', severity: 'success' }
+  ];
+
+  const quickActions = [
+    { title: 'System Health', icon: Activity, link: '/admin/system-health', color: 'bg-green-500' },
+    { title: 'User Management', icon: Users, link: '/admin/user-management', color: 'bg-blue-500' },
+    { title: 'Security Center', icon: Shield, link: '/admin/security-center', color: 'bg-red-500' },
+    { title: 'Analytics', icon: BarChart3, link: '/admin/analytics', color: 'bg-purple-500' },
+    { title: 'Support Tickets', icon: HeadphonesIcon, link: '/admin/help-support', color: 'bg-orange-500' },
+    { title: 'System Settings', icon: Settings, link: '/admin/system-settings', color: 'bg-gray-500' }
+  ];
+
+  const managementSections = [
     {
-      name: 'User & Access Management',
-      icon: Users,
-      children: [
-        { name: 'User Management', path: '/super-admin/user-management', icon: Users },
-        { name: 'Organisation Management', path: '/super-admin/organisation-management', icon: Building2 },
-        { name: 'RBAC Management', path: '/super-admin/rbac-management', icon: Shield },
-        { name: 'KYC/KYB Management', path: '/super-admin/kyc-kyb-management', icon: FileCheck },
-        { name: 'Profile Management', path: '/super-admin/profile-management', icon: UserCheck },
-        { name: 'Staff Management', path: '/super-admin/staff-management', icon: UserPlus },
+      title: 'User & Organization Management',
+      items: [
+        { name: 'User Management', link: '/admin/user-management', icon: Users, count: platformStats.totalUsers },
+        { name: 'Organization Management', link: '/admin/organisation-management', icon: Building2, count: platformStats.totalOrganizations },
+        { name: 'Employer Management', link: '/admin/employer-management', icon: Briefcase, count: platformStats.totalEmployers },
+        { name: 'Employee Management', link: '/admin/employee-management', icon: UserCheck, count: platformStats.totalEmployees },
+        { name: 'Company Management', link: '/admin/company-management', icon: Building, count: platformStats.totalOrganizations },
+        { name: 'Profile Management', link: '/admin/profile-management', icon: Users, count: '∞' }
       ]
     },
     {
-      name: 'System Operations & Configuration',
-      icon: Settings,
-      children: [
-        { name: 'System Health Check', path: '/super-admin/system-health', icon: Activity },
-        { name: 'System Log Configuration', path: '/super-admin/system-logs', icon: FileText },
-        { name: 'Regional Management', path: '/super-admin/regional-management', icon: Globe },
-        { name: 'Multi-Regional Management', path: '/super-admin/multi-regional-management', icon: Globe },
-        { name: 'Backup & Recovery', path: '/super-admin/backup-recovery', icon: HardDrive },
-        { name: 'Database Management', path: '/super-admin/database-management', icon: Database },
+      title: 'Compliance & Security',
+      items: [
+        { name: 'SureAML Management', link: '/admin/sure-aml-management', icon: Shield, count: '24/7' },
+        { name: 'SureCompliance Management', link: '/admin/sure-compliance-management', icon: CheckCircle, count: '6 Standards' },
+        { name: 'Security Center', link: '/admin/security-center', icon: Lock, count: platformStats.criticalAlerts },
+        { name: 'KYC/KYB Management', link: '/admin/kyc-kyb-management', icon: FileText, count: platformStats.activeVerifications },
+        { name: 'Background Check Management', link: '/admin/background-check-management', icon: Eye, count: 'Active' },
+        { name: 'Trust Score Management', link: '/admin/trust-score-management', icon: Award, count: complianceMetrics.overallTrustScore }
       ]
     },
     {
-      name: 'Financial Management',
-      icon: CreditCard,
-      children: [
-        { name: 'Subscription Management', path: '/super-admin/subscription-management', icon: CreditCard },
-        { name: 'Escrow Management', path: '/super-admin/escrow-management', icon: Lock },
-        { name: 'Wallet Management', path: '/super-admin/wallet-management', icon: Wallet },
-        { name: 'Transaction Management', path: '/super-admin/transaction-management', icon: CreditCard },
+      title: 'System & Infrastructure',
+      items: [
+        { name: 'System Health Check', link: '/admin/system-health-check', icon: Activity, count: `${platformStats.systemUptime}%` },
+        { name: 'Downtime Tracker', link: '/admin/downtime-tracker', icon: Clock, count: 'Live' },
+        { name: 'Data Monitoring', link: '/admin/data-monitoring-management', icon: MonitorSpeaker, count: 'Real-time' },
+        { name: 'Database Management', link: '/admin/database-management', icon: Database, count: 'Healthy' },
+        { name: 'System Log Configuration', link: '/admin/system-log-configuration', icon: FileText, count: 'Active' },
+        { name: 'Developer Tools', link: '/admin/developer-tools', icon: Zap, count: 'Available' }
       ]
     },
     {
-      name: 'Security & Compliance',
-      icon: Lock,
-      children: [
-        { name: 'Security Center', path: '/super-admin/security-center', icon: Lock },
-        { name: 'Approval Workflow', path: '/super-admin/approval-workflow', icon: CheckCircle },
-        { name: 'Dispute Management', path: '/super-admin/dispute-management', icon: AlertTriangle },
-        { name: 'Verification Management', path: '/super-admin/verification-management', icon: CheckCircle },
-      ]
-    },
-    {
-      name: 'Developer & Integrations',
-      icon: Code,
-      children: [
-        { name: 'Developer Tools', path: '/super-admin/developer-tools', icon: Code },
-        { name: 'Integration Management', path: '/super-admin/integration-management', icon: Plug },
-      ]
-    },
-    {
-      name: 'Data & Analytics',
-      icon: BarChart3,
-      children: [
-        { name: 'Historical Data Management', path: '/super-admin/historical-data', icon: History },
-        { name: 'Admin Analytics', path: '/super-admin/analytics', icon: BarChart3 },
-        { name: 'Report Analytics', path: '/super-admin/report-analytics', icon: TrendingUp },
-        { name: 'Trust Score Analytics', path: '/super-admin/trust-score-analytics', icon: TrendingUp },
-      ]
-    },
-    {
-      name: 'Content & Features',
-      icon: FileText,
-      children: [
-        { name: 'Background Check Management', path: '/super-admin/background-checks', icon: Search },
-        { name: 'Content Management', path: '/super-admin/content-management', icon: FileText },
-        { name: 'Document Management', path: '/super-admin/document-management', icon: FileText },
-        { name: 'Email Template Management', path: '/super-admin/email-templates', icon: Mail },
-        { name: 'Ratings Management', path: '/super-admin/ratings-management', icon: Star },
-        { name: 'Referral Management', path: '/super-admin/referral-management', icon: Users },
-        { name: 'Reward Management', path: '/super-admin/reward-management', icon: Gift },
-        { name: 'Ticketing System', path: '/super-admin/ticketing-system', icon: Ticket },
-        { name: 'White Label Customization', path: '/super-admin/white-label', icon: Palette },
-      ]
-    },
-    {
-      name: 'Communication & Notifications',
-      icon: MessageSquare,
-      children: [
-        { name: 'Chat Management', path: '/super-admin/chat-management', icon: MessageSquare },
-        { name: 'Notification Management', path: '/super-admin/notification-management', icon: Bell },
+      title: 'Platform Configuration',
+      items: [
+        { name: 'System Settings', link: '/admin/system-settings', icon: Settings, count: 'Global' },
+        { name: 'Integration Management', link: '/admin/integration-management', icon: Globe, count: 'APIs' },
+        { name: 'Email Template Management', link: '/admin/email-template-management', icon: FileText, count: 'Templates' },
+        { name: 'Notification Management', link: '/admin/notification-management', icon: MessageSquare, count: 'Live' },
+        { name: 'Multi-Regional Management', link: '/admin/multi-regional-management', icon: Globe, count: 'Regions' },
+        { name: 'White Label Customization', link: '/admin/white-label-customization', icon: Settings, count: 'Brands' }
       ]
     }
   ];
 
-  const isActiveLink = (path: string) => {
-    return location.pathname === path;
-  };
-
-  const isGroupActive = (group: NavigationGroup) => {
-    return group.children.some(child => isActiveLink(child.path));
-  };
-
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
-      <div className="w-80 bg-white shadow-lg border-r border-gray-200 overflow-y-auto">
-        <div className="p-6 border-b border-gray-200">
-          <h1 className="text-2xl font-bold text-gray-900">Super Admin</h1>
-          <p className="text-sm text-gray-600 mt-1">System Management Dashboard</p>
+    <div className="min-h-screen bg-gray-50 p-6">
+      <div className="max-w-7xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="bg-white rounded-lg shadow-soft p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Super Admin Dashboard</h1>
+              <p className="text-gray-600 mt-1">Complete platform oversight and management</p>
+            </div>
+            <div className="flex items-center space-x-4">
+              <select 
+                value={selectedTimeframe}
+                onChange={(e) => setSelectedTimeframe(e.target.value)}
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              >
+                <option value="24h">Last 24 Hours</option>
+                <option value="7d">Last 7 Days</option>
+                <option value="30d">Last 30 Days</option>
+                <option value="90d">Last 90 Days</option>
+              </select>
+            </div>
+          </div>
         </div>
 
-        <nav className="p-4 space-y-2">
-          {/* Dashboard - Always visible */}
-          <Link
-            to="/super-admin"
-            className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-              location.pathname === '/super-admin'
-                ? 'bg-primary-50 text-primary-700 border border-primary-200'
-                : 'text-gray-700 hover:bg-gray-50'
-            }`}
-          >
-            <LayoutDashboard className="w-5 h-5" />
-            <span className="font-medium">Dashboard</span>
-          </Link>
-
-          {/* Collapsible Groups */}
-          {navigationGroups.map((group) => {
-            const isExpanded = expandedGroups.includes(group.name);
-            const isActive = isGroupActive(group);
-            
-            return (
-              <div key={group.name} className="space-y-1">
-                {/* Group Header */}
-                <button
-                  onClick={() => toggleGroup(group.name)}
-                  className={`w-full flex items-center justify-between gap-3 px-4 py-3 rounded-lg transition-colors ${
-                    isActive
-                      ? 'bg-primary-50 text-primary-700 border border-primary-200'
-                      : 'text-gray-700 hover:bg-gray-50'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <group.icon className="w-5 h-5" />
-                    <span className="font-medium text-left">{group.name}</span>
-                  </div>
-                  {isExpanded ? (
-                    <ChevronDown className="w-4 h-4" />
-                  ) : (
-                    <ChevronRight className="w-4 h-4" />
-                  )}
-                </button>
-
-                {/* Group Children */}
-                {isExpanded && (
-                  <div className="ml-4 space-y-1 border-l-2 border-gray-100 pl-4">
-                    {group.children.map((item) => (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors text-sm ${
-                          isActiveLink(item.path)
-                            ? 'bg-primary-100 text-primary-800 font-medium'
-                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                        }`}
-                      >
-                        <item.icon className="w-4 h-4" />
-                        <span>{item.name}</span>
-                      </Link>
-                    ))}
-                  </div>
-                )}
+        {/* Platform Overview Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-white rounded-lg shadow-soft p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Total Users</p>
+                <p className="text-3xl font-bold text-gray-900">{platformStats.totalUsers.toLocaleString()}</p>
+                <p className="text-sm text-green-600 mt-1">↗ +12.5% from last month</p>
               </div>
-            );
-          })}
-        </nav>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 overflow-auto">
-        <Routes>
-          <Route path="/" element={
-            <div className="p-8">
-              <div className="max-w-7xl mx-auto">
-                <div className="mb-8">
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">Super Admin Dashboard</h1>
-                  <p className="text-gray-600">Comprehensive system management and oversight</p>
-                </div>
-
-                {/* Dashboard Overview Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  <div className="bg-white p-6 rounded-lg shadow-soft border border-gray-200">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-gray-600">Total Users</p>
-                        <p className="text-2xl font-bold text-gray-900">12,543</p>
-                      </div>
-                      <Users className="w-8 h-8 text-primary-600" />
-                    </div>
-                    <p className="text-xs text-green-600 mt-2">+12% from last month</p>
-                  </div>
-
-                  <div className="bg-white p-6 rounded-lg shadow-soft border border-gray-200">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-gray-600">Organizations</p>
-                        <p className="text-2xl font-bold text-gray-900">1,234</p>
-                      </div>
-                      <Building2 className="w-8 h-8 text-secondary-600" />
-                    </div>
-                    <p className="text-xs text-green-600 mt-2">+8% from last month</p>
-                  </div>
-
-                  <div className="bg-white p-6 rounded-lg shadow-soft border border-gray-200">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-gray-600">System Health</p>
-                        <p className="text-2xl font-bold text-gray-900">99.9%</p>
-                      </div>
-                      <Activity className="w-8 h-8 text-success-600" />
-                    </div>
-                    <p className="text-xs text-green-600 mt-2">All systems operational</p>
-                  </div>
-
-                  <div className="bg-white p-6 rounded-lg shadow-soft border border-gray-200">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-gray-600">Revenue</p>
-                        <p className="text-2xl font-bold text-gray-900">$45.2K</p>
-                      </div>
-                      <CreditCard className="w-8 h-8 text-accent-600" />
-                    </div>
-                    <p className="text-xs text-green-600 mt-2">+15% from last month</p>
-                  </div>
-                </div>
-
-                {/* Quick Actions */}
-                <div className="bg-white rounded-lg shadow-soft border border-gray-200 p-6">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <Link
-                      to="/super-admin/user-management"
-                      className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      <Users className="w-6 h-6 text-primary-600" />
-                      <div>
-                        <p className="font-medium text-gray-900">Manage Users</p>
-                        <p className="text-sm text-gray-600">View and manage user accounts</p>
-                      </div>
-                    </Link>
-
-                    <Link
-                      to="/super-admin/system-health"
-                      className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      <Activity className="w-6 h-6 text-success-600" />
-                      <div>
-                        <p className="font-medium text-gray-900">System Health</p>
-                        <p className="text-sm text-gray-600">Monitor system performance</p>
-                      </div>
-                    </Link>
-
-                    <Link
-                      to="/super-admin/analytics"
-                      className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      <BarChart3 className="w-6 h-6 text-secondary-600" />
-                      <div>
-                        <p className="font-medium text-gray-900">View Analytics</p>
-                        <p className="text-sm text-gray-600">Access detailed reports</p>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
+              <div className="p-3 bg-blue-100 rounded-full">
+                <Users className="w-6 h-6 text-blue-600" />
               </div>
             </div>
-          } />
-          
-          {/* All Routes */}
-          <Route path="/user-management" element={<AdminUserManagement />} />
-          <Route path="/organisation-management" element={<AdminOrganisationManagement />} />
-          <Route path="/rbac-management" element={<RBACManagement />} />
-          <Route path="/kyc-kyb-management" element={<KYC_KYB_Management />} />
-          <Route path="/profile-management" element={<ProfileManagement />} />
-          <Route path="/staff-management" element={<StaffManagement />} />
-          
-          <Route path="/system-health" element={<SystemHealthCheck />} />
-          <Route path="/system-logs" element={<SystemLogConfiguration />} />
-          <Route path="/regional-management" element={<RegionalManagement />} />
-          <Route path="/multi-regional-management" element={<AdminMultiRegionalManagement />} />
-          <Route path="/backup-recovery" element={<AdminBackupRecovery />} />
-          <Route path="/database-management" element={<AdminDatabaseManagement />} />
-          
-          <Route path="/subscription-management" element={<SubscriptionManagement />} />
-          <Route path="/escrow-management" element={<AdminEscrowManagement />} />
-          <Route path="/wallet-management" element={<AdminWalletManagement />} />
-          <Route path="/transaction-management" element={<AdminTransactionManagement />} />
-          
-          <Route path="/security-center" element={<AdminSecurityCenter />} />
-          <Route path="/approval-workflow" element={<AdminApprovalWorkflow />} />
-          <Route path="/dispute-management" element={<AdminDisputeManagement />} />
-          <Route path="/verification-management" element={<AdminVerificationManagement />} />
-          
-          <Route path="/developer-tools" element={<AdminDeveloperTools />} />
-          <Route path="/integration-management" element={<AdminIntegrationManagement />} />
-          
-          <Route path="/historical-data" element={<AdminHistoricalDataManagement />} />
-          <Route path="/analytics" element={<AdminAnalytics />} />
-          <Route path="/report-analytics" element={<AdminReportAnalytics />} />
-          <Route path="/trust-score-analytics" element={<TrustScoreAnalytics />} />
-          
-          <Route path="/background-checks" element={<AdminBackgroundCheckManagement />} />
-          <Route path="/content-management" element={<AdminContentManagement />} />
-          <Route path="/document-management" element={<AdminDocumentManagement />} />
-          <Route path="/email-templates" element={<AdminEmailTemplateManagement />} />
-          <Route path="/ratings-management" element={<AdminRatingsManagement />} />
-          <Route path="/referral-management" element={<AdminReferralManagement />} />
-          <Route path="/reward-management" element={<AdminRewardManagement />} />
-          <Route path="/ticketing-system" element={<AdminTicketingSystem />} />
-          <Route path="/white-label" element={<AdminWhiteLabelCustomization />} />
-          
-          <Route path="/chat-management" element={<AdminChatManagement />} />
-          <Route path="/notification-management" element={<AdminNotificationManagement />} />
-        </Routes>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-soft p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Organizations</p>
+                <p className="text-3xl font-bold text-gray-900">{platformStats.totalOrganizations.toLocaleString()}</p>
+                <p className="text-sm text-green-600 mt-1">↗ +8.3% from last month</p>
+              </div>
+              <div className="p-3 bg-green-100 rounded-full">
+                <Building2 className="w-6 h-6 text-green-600" />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-soft p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">System Uptime</p>
+                <p className="text-3xl font-bold text-gray-900">{platformStats.systemUptime}%</p>
+                <p className="text-sm text-green-600 mt-1">Excellent performance</p>
+              </div>
+              <div className="p-3 bg-green-100 rounded-full">
+                <Activity className="w-6 h-6 text-green-600" />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-soft p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Critical Alerts</p>
+                <p className="text-3xl font-bold text-gray-900">{platformStats.criticalAlerts}</p>
+                <p className="text-sm text-orange-600 mt-1">Requires attention</p>
+              </div>
+              <div className="p-3 bg-orange-100 rounded-full">
+                <AlertTriangle className="w-6 h-6 text-orange-600" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* System Health Overview */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="bg-white rounded-lg shadow-soft p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">System Health Status</h3>
+            <div className="space-y-4">
+              {Object.entries(systemHealth).map(([service, data]) => (
+                <div key={service} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-3 h-3 rounded-full ${
+                      data.status === 'healthy' ? 'bg-green-500' : 
+                      data.status === 'warning' ? 'bg-yellow-500' : 'bg-red-500'
+                    }`}></div>
+                    <span className="font-medium capitalize">{service}</span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-sm font-medium">{data.uptime}%</span>
+                    <p className="text-xs text-gray-500 capitalize">{data.status}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-soft p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Compliance Metrics</h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-600">KYC Compliance</span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-24 bg-gray-200 rounded-full h-2">
+                    <div className="bg-green-500 h-2 rounded-full" style={{ width: `${complianceMetrics.kycCompliance}%` }}></div>
+                  </div>
+                  <span className="text-sm font-medium">{complianceMetrics.kycCompliance}%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-600">AML Compliance</span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-24 bg-gray-200 rounded-full h-2">
+                    <div className="bg-green-500 h-2 rounded-full" style={{ width: `${complianceMetrics.amlCompliance}%` }}></div>
+                  </div>
+                  <span className="text-sm font-medium">{complianceMetrics.amlCompliance}%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-600">GDPR Compliance</span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-24 bg-gray-200 rounded-full h-2">
+                    <div className="bg-green-500 h-2 rounded-full" style={{ width: `${complianceMetrics.gdprCompliance}%` }}></div>
+                  </div>
+                  <span className="text-sm font-medium">{complianceMetrics.gdprCompliance}%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-2 border-t">
+                <span className="text-sm font-semibold text-gray-900">Overall Trust Score</span>
+                <span className="text-lg font-bold text-green-600">{complianceMetrics.overallTrustScore}/10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Actions */}
+        <div className="bg-white rounded-lg shadow-soft p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {quickActions.map((action, index) => (
+              <Link
+                key={index}
+                to={action.link}
+                className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-primary-300 hover:shadow-md transition-all duration-200"
+              >
+                <div className={`p-3 rounded-full ${action.color} mb-2`}>
+                  <action.icon className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-sm font-medium text-gray-900 text-center">{action.title}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Management Sections */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {managementSections.map((section, sectionIndex) => (
+            <div key={sectionIndex} className="bg-white rounded-lg shadow-soft p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">{section.title}</h3>
+              <div className="space-y-3">
+                {section.items.map((item, itemIndex) => (
+                  <Link
+                    key={itemIndex}
+                    to={item.link}
+                    className="flex items-center justify-between p-3 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-gray-50 transition-all duration-200"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <item.icon className="w-5 h-5 text-gray-600" />
+                      <span className="font-medium text-gray-900">{item.name}</span>
+                    </div>
+                    <span className="text-sm font-medium text-primary-600">{item.count}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Recent Activity */}
+        <div className="bg-white rounded-lg shadow-soft p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Platform Activity</h3>
+          <div className="space-y-3">
+            {recentActivity.map((activity, index) => (
+              <div key={index} className="flex items-center space-x-4 p-3 rounded-lg bg-gray-50">
+                <div className={`w-2 h-2 rounded-full ${
+                  activity.severity === 'high' ? 'bg-red-500' :
+                  activity.severity === 'success' ? 'bg-green-500' : 'bg-blue-500'
+                }`}></div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-gray-900">{activity.message}</p>
+                  <p className="text-xs text-gray-500">{activity.time}</p>
+                </div>
+                <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                  activity.severity === 'high' ? 'bg-red-100 text-red-800' :
+                  activity.severity === 'success' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'
+                }`}>
+                  {activity.type}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
