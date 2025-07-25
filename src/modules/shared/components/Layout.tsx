@@ -17,54 +17,55 @@ interface SidebarNavItem {
   title: string;
   icon: React.ComponentType<any>;
   items: SidebarItem[];
+  Award,
+  User,
 }
 
 // Individual Account Navigation
 const individualSidebarNavItems: SidebarNavItem[] = [
   {
     title: 'Dashboard',
+    title: 'Dashboard',
+    href: '/individual/dashboard',
     icon: LayoutDashboard,
-    items: [
-      { title: 'Overview', href: '/individual/dashboard' },
-      { title: 'Quick Actions', href: '/individual/quick-actions' },
-    ]
   },
   {
-    title: 'Identity & Verification',
+    title: 'Verification Requests',
+    href: '/verification-requests',
     icon: ShieldCheck,
-    items: [
-      { title: 'Document Vault', href: '/document-vault' },
-      { title: 'Verification Center', href: '/verification-center' },
-      { title: 'Trust Score', href: '/trust-score' },
-      { title: 'Background Check', href: '/background-check' },
-    ]
   },
   {
-    title: 'Attestations & Endorsements',
+    title: 'Attestation',
+    href: '/attestation',
+    icon: Users,
+  },
+  {
+    title: 'Trust Score',
+    href: '/trust-score',
     icon: Award,
-    items: [
-      { title: 'My Attestations', href: '/attestation-endorsement' },
-      { title: 'Request Attestation', href: '/request-attestation' },
-      { title: 'Endorsement History', href: '/endorsement-history' },
     ]
   },
   {
-    title: 'Financial Services',
+    title: 'Wallet',
+    href: '/wallet',
     icon: Wallet,
     items: [
-      { title: 'Wallet', href: '/wallet' },
-      { title: 'Transaction History', href: '/transactions' },
-      { title: 'Billing & Payments', href: '/billing' },
-    ]
   },
   {
-    title: 'Account Management',
+    title: 'Profile',
+    href: '/profile',
+    icon: User,
+  },
+  {
+    title: 'Biobank',
+    href: '/biobank',
+    icon: FileText,
+  },
+  {
+    title: 'Settings',
+    href: '/settings',
     icon: User,
     items: [
-      { title: 'Profile Settings', href: '/settings' },
-      { title: 'Privacy Controls', href: '/privacy' },
-      { title: 'API Keys', href: '/api-keys' },
-    ]
   }
 ];
 
