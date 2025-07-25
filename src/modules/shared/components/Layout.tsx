@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
-import { 
   Menu, X, ChevronDown, ChevronRight, Bell, User, LogOut,
   LayoutDashboard, FileText, ShieldCheck, CheckCircle, Wallet,
   Settings, Key, CreditCard, Building, Users, ClipboardList,
@@ -195,7 +194,9 @@ const sidebarNavItems: SidebarNavItem[] = [
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
-  const { userType } = useOnboarding();
+  
+  // Default to individual for now - you can implement user type detection later
+  const userType = 'individual';
   
   const location = useLocation();
 
