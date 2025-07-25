@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from "@shared/contexts/AuthContext";
+import { useOnboarding } from '../shared/contexts/OnboardingContext';
+import LimitedAccessBanner from '../shared/components/LimitedAccessBanner';
+import FeatureGate from '../shared/components/FeatureGate';
 import { 
   Shield, 
   FileText, 
@@ -43,6 +46,7 @@ import OrganisationDashboard from './OrganisationDashboard'
 
 const Dashboard = () => {
   const { profile } = useAuth()
+  const { state } = useOnboarding();
   const [stats, setStats] = useState({
     documents: 0,
     verifications: 0,
@@ -228,9 +232,11 @@ const Dashboard = () => {
   if (profile?.role === 'admin') {
     return (
       <div className="space-y-6">
+        <LimitedAccessBanner />
+        
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div>
+          <div data-tour="dashboard">
             <h1 className="text-2xl font-bold text-gray-900">
               Hey, {getUserName()}
             </h1>
@@ -261,7 +267,11 @@ const Dashboard = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {getDashboardCards().map((card, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+            <div 
+              key={index} 
+              className="bg-white rounded-lg shadow-sm p-6 border border-gray-200"
+              data-tour={index === 1 ? "trust-score" : undefined}
+            >
               <div className="flex items-center justify-between mb-2">
                 <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{card.title}</p>
                 {card.action && (
@@ -286,52 +296,56 @@ const Dashboard = () => {
           {/* Left Column - Charts */}
           <div className="lg:col-span-2 space-y-6">
             {/* Enhanced Verification Trends Chart */}
-            <VerificationTrendsChart />
+            <FeatureGate feature="trust-score">
+              <VerificationTrendsChart />
+            </FeatureGate>
 
             {/* Fraud & Risk Snapshot */}
-            <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">Fraud & Risk Snapshot</h3>
-                  <p className="text-sm text-gray-500">as of 14 May 2021, 09:41 PM</p>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                    <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
+            <FeatureGate feature="trust-score">
+              <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">Fraud & Risk Snapshot</h3>
+                    <p className="text-sm text-gray-500">as of 14 May 2021, 09:41 PM</p>
                   </div>
-                  <button className="text-sm text-red-600 hover:text-red-700">
-                    View & Address →
-                  </button>
                 </div>
                 
-                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
-                    <span className="text-sm text-gray-700">2 guarantor inconsistencies</span>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                      <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
+                    </div>
+                    <button className="text-sm text-red-600 hover:text-red-700">
+                      View & Address →
+                    </button>
                   </div>
-                  <button className="text-sm text-red-600 hover:text-red-700">
-                    View & Address →
-                  </button>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                    <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
+                  
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                      <span className="text-sm text-gray-700">2 guarantor inconsistencies</span>
+                    </div>
+                    <button className="text-sm text-red-600 hover:text-red-700">
+                      View & Address →
+                    </button>
                   </div>
-                  <button className="text-sm text-red-600 hover:text-red-700">
-                    View & Address →
-                  </button>
+                  
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                      <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
+                    </div>
+                    <button className="text-sm text-red-600 hover:text-red-700">
+                      View & Address →
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </FeatureGate>
 
             {/* System Users */}
-            <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+            <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200" data-tour="documents">
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">System Users</h3>
