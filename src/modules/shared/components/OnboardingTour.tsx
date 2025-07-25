@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { X, ArrowRight, ArrowLeft } from 'lucide-react'
+import React, { useState, useEffect } from 'react'
+import { useOnboarding } from '../contexts/OnboardingContext'
+import { X, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react'
 
 interface OnboardingTourProps {
   isOpen: boolean
@@ -7,27 +8,68 @@ interface OnboardingTourProps {
 }
 
 const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose }) => {
-  const [currentStep, setCurrentStep] = useState(0)
+  const { state, completeTour, setCurrentStep } = useOnboarding()
+  const [currentStepLocal, setCurrentStepLocal] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
 
-  // Define tour steps
-  const tourSteps = [
-    {
-      title: 'Welcome to IDCertify',
-      description: 'This tour will guide you through the onboarding process and help you understand how to use our platform.'
-    },
-    {
-      title: 'Step 1: Identity Verification',
-      description: 'First, we\'ll verify your identity using your BVN. This helps us ensure the security of our platform.'
-    },
-    {
-      title: 'Step 2: Additional Verification',
-      description: 'Next, we\'ll verify your NIN to complete your identity verification process.'
-    },
-    {
-      title: 'Step 3: Dashboard Access',
-      description: 'Once verification is complete, you\'ll gain access to your personalized dashboard with all platform features.'
+  const handleComplete = () => {
+    completeTour()
+    setCurrentStep('kyc-prompt')
+    setIsVisible(false)
+    setTimeout(() => {
+      onClose()
+    }, 300)
+  }
+
+  const handleSkip = () => {
+    completeTour()
+    setCurrentStep('kyc-prompt')
+    setIsVisible(false)
+    setTimeout(() => {
+      onClose()
+    }, 300)
+  }
+
+  // Tour steps based on user type
+  const getTourSteps = () => {
+    const baseSteps = [
+      {
+        target: '[data-tour="dashboard"]',
+        title: 'Welcome to Your Dashboard',
+        content: 'This is your main hub where you can see all your verification activities and important updates.',
+      },
+      {
+        target: '[data-tour="trust-score"]',
+        title: 'Trust Score',
+        content: 'Your trust score reflects your verification level. Complete more verifications to increase it.',
+      },
+      {
+        target: '[data-tour="documents"]',
+        title: 'Document Vault',
+        content: 'Securely store and manage your verification documents here.',
+      },
+    ]
+
+    if (state.userType === 'organization') {
+      return [
+        ...baseSteps,
+        {
+          target: '[data-tour="staff"]',
+          title: 'Staff Management',
+          content: 'Manage your team members and their verification status from here.',
+        },
+        {
+          target: '[data-tour="bulk-upload"]',
+          title: 'Bulk Operations',
+          content: 'Upload multiple documents or manage bulk verifications efficiently.',
+        },
+      ]
     }
-  ]
+
+    return baseSteps
+  }
+
+  const tourSteps = getTourSteps()
 
   const nextStep = () => {
     if (currentStep < tourSteps.length - 1) {
@@ -44,7 +86,7 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose }) => {
     }
   }
 
-  if (!isOpen) return null
+  if (!isOpen || !isVisible) return null
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
