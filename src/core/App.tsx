@@ -1,507 +1,184 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { AuthProvider } from '../modules/shared/contexts/AuthContext'
-import Layout from '../modules/shared/components/Layout'
-import AuthGuard from '../modules/shared/components/AuthGuard'
-import Auth from '../modules/user/Auth'
-import DemoLogin from '../modules/shared/DemoLogin'
-import Dashboard from '../modules/user/Dashboard'
-import Onboarding from '../modules/user/Onboarding'
-import VerificationRequests from '../modules/shared/VerificationRequests'
-import TrustScore from '../modules/shared/TrustScore'
-import Attestation from '../modules/shared/Attestation'
-import Wallet from '../modules/shared/Wallet'
-import Biobank from '../modules/shared/Biobank'
-import OrganisationDashboard from '../modules/user/OrganisationDashboard'
-import BackgroundCheck from '../modules/shared/BackgroundCheck'
-import VerificationCenter from '../modules/user/VerificationCenter'
-import TrustScoreAnalytics from '../modules/user/TrustScoreAnalytics'
-import AttestationEndorsement from '../modules/user/AttestationEndorsement'
-import BulkUpload from '../modules/user/BulkUpload'
-import BulkHistoricalUpload from '../modules/user/BulkHistoricalUpload'
-import CompanyProfile from '../modules/user/CompanyProfile'
-import StaffManagement from '../modules/user/StaffManagement'
-import DocumentVault from '../modules/user/DocumentVault'
-import Billing from '../modules/user/Billing'
-import ApiKeys from '../modules/user/ApiKeys'
-import Settings from '../modules/user/Settings'
-import AdminVerificationManagement from '../modules/admin/AdminVerificationManagement'
-import AdminUserManagement from '../modules/admin/AdminUserManagement'
-import AdminOrganisationManagement from '../modules/admin/AdminOrganisationManagement'
-import KYC_KYB_Management from '../modules/admin/KYC_KYB_Management'
-import AdminSystemSettings from '../modules/admin/AdminSystemSettings'
-import AdminHistoricalDataManagement from '../modules/admin/AdminHistoricalDataManagement'
-import AdminAnalytics from '../modules/admin/AdminAnalytics'
-import SuperAdminDashboard from '../modules/admin/SuperAdminDashboard'
-import EmployerManagement from '../modules/admin/EmployerManagement'
-import EmployeeManagementSystem from '../modules/admin/EmployeeManagementSystem'
-import SureAMLManagement from '../modules/admin/SureAMLManagement'
-import SureComplianceManagement from '../modules/admin/SureComplianceManagement'
-import DataMonitoringManagement from '../modules/admin/DataMonitoringManagement'
-import CompanyManagement from '../modules/admin/CompanyManagement'
-import HelpSupport from '../modules/admin/HelpSupport'
-import DownTimeTracker from '../modules/admin/DownTimeTracker'
-import AdminTransactionManagement from '../modules/admin/AdminTransactionManagement'
-import AdminApprovalWorkflow from '../modules/admin/AdminApprovalWorkflow'
-import RBACManagement from '../modules/shared/RBACManagement'
-import RegionalManagement from '../modules/admin/RegionalManagement'
-import AdminIntegrationManagement from '../modules/admin/AdminIntegrationManagement'
-import AdminDeveloperTools from '../modules/admin/AdminDeveloperTools'
-import AdminSecurityCenter from '../modules/admin/AdminSecurityCenter'
-import AdminDatabaseManagement from '../modules/admin/AdminDatabaseManagement'
-import AdminWalletManagement from '../modules/admin/AdminWalletManagement'
-import AdminEscrowManagement from '../modules/admin/AdminEscrowManagement'
-import AdminBackgroundCheckManagement from '../modules/admin/AdminBackgroundCheckManagement'
-import AdminReportAnalytics from '../modules/admin/AdminReportAnalytics'
-import AdminDisputeManagement from '../modules/admin/AdminDisputeManagement'
-import AdminChatManagement from '../modules/admin/AdminChatManagement'
-import AdminEmailTemplateManagement from '../modules/admin/AdminEmailTemplateManagement'
-import AdminNotificationManagement from '../modules/admin/AdminNotificationManagement'
-import AdminTicketingSystemManagement from '../modules/admin/AdminTicketingSystemManagement'
-import SystemHealthCheck from '../modules/admin/SystemHealthCheck'
-import SubscriptionManagement from '../modules/admin/SubscriptionManagement'
-import SystemLogConfiguration from '../modules/admin/SystemLogConfiguration'
-import ProfileManagement from '../modules/admin/ProfileManagement'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from '../modules/shared/contexts/AuthContext';
+import AuthGuard from '../modules/shared/components/AuthGuard';
+import Layout from '../modules/shared/components/Layout';
+import DemoLogin from '../modules/shared/DemoLogin';
 
+// User modules
+import IndividualDashboard from '../modules/user/IndividualDashboard';
+import OrganisationDashboard from '../modules/user/OrganisationDashboard';
+import Dashboard from '../modules/user/Dashboard';
+import DocumentVault from '../modules/user/DocumentVault';
+import VerificationCenter from '../modules/user/VerificationCenter';
+import TrustScoreAnalytics from '../modules/user/TrustScoreAnalytics';
+import AttestationEndorsement from '../modules/user/AttestationEndorsement';
+import BulkUpload from '../modules/user/BulkUpload';
+import BulkHistoricalUpload from '../modules/user/BulkHistoricalUpload';
+import CompanyProfile from '../modules/user/CompanyProfile';
+import StaffManagement from '../modules/user/StaffManagement';
+import Settings from '../modules/user/Settings';
+import Onboarding from '../modules/user/Onboarding';
+import Auth from '../modules/user/Auth';
+import Wallet from '../modules/user/Wallet';
+import ApiKeys from '../modules/user/ApiKeys';
+import Billing from '../modules/user/Billing';
+
+// Admin modules
+import SuperAdminDashboard from '../modules/admin/SuperAdminDashboard';
+import AdminUserManagement from '../modules/admin/AdminUserManagement';
+import AdminOrganisationManagement from '../modules/admin/AdminOrganisationManagement';
+import AdminVerificationManagement from '../modules/admin/AdminVerificationManagement';
+import AdminReportAnalytics from '../modules/admin/AdminReportAnalytics';
+import AdminSystemSettings from '../modules/admin/AdminSystemSettings';
+import AdminSecurityCenter from '../modules/admin/AdminSecurityCenter';
+import AdminBackupRecovery from '../modules/admin/AdminBackupRecovery';
+import AdminDeveloperTools from '../modules/admin/AdminDeveloperTools';
+import AdminAnalytics from '../modules/admin/AdminAnalytics';
+import CompanyManagement from '../modules/admin/CompanyManagement';
+import ProfileManagement from '../modules/admin/ProfileManagement';
+import KYC_KYB_Management from '../modules/admin/KYC_KYB_Management';
+import SureAMLManagement from '../modules/admin/SureAMLManagement';
+import SureComplianceManagement from '../modules/admin/SureComplianceManagement';
+import RegionalManagement from '../modules/admin/RegionalManagement';
+import EmployerManagement from '../modules/admin/EmployerManagement';
+import SystemHealthCheck from '../modules/admin/SystemHealthCheck';
+import DownTimeTracker from '../modules/admin/DownTimeTracker';
+import RBACManagement from '../modules/admin/RBACManagement';
+import HelpSupport from '../modules/admin/HelpSupport';
+import SubscriptionManagement from '../modules/admin/SubscriptionManagement';
+import SystemLogConfiguration from '../modules/admin/SystemLogConfiguration';
+import DataMonitoringManagement from '../modules/admin/DataMonitoringManagement';
+import EmployeeManagementSystem from '../modules/admin/EmployeeManagementSystem';
+import AdminChatManagement from '../modules/admin/AdminChatManagement';
+import AdminTicketingSystem from '../modules/admin/AdminTicketingSystem';
+import AdminApprovalWorkflow from '../modules/admin/AdminApprovalWorkflow';
+import AdminEscrowManagement from '../modules/admin/AdminEscrowManagement';
+import AdminWalletManagement from '../modules/admin/AdminWalletManagement';
+import AdminRewardManagement from '../modules/admin/AdminRewardManagement';
+import AdminContentManagement from '../modules/admin/AdminContentManagement';
+import AdminDisputeManagement from '../modules/admin/AdminDisputeManagement';
+import AdminRatingsManagement from '../modules/admin/AdminRatingsManagement';
+import AdminReferralManagement from '../modules/admin/AdminReferralManagement';
+import AdminTransactionManagement from '../modules/admin/AdminTransactionManagement';
+import AdminNotificationManagement from '../modules/admin/AdminNotificationManagement';
+import AdminIntegrationManagement from '../modules/admin/AdminIntegrationManagement';
+import AdminDatabaseManagement from '../modules/admin/AdminDatabaseManagement';
+import AdminDocumentManagement from '../modules/admin/AdminDocumentManagement';
+import AdminEmailTemplateManagement from '../modules/admin/AdminEmailTemplateManagement';
+import AdminMultiRegionalManagement from '../modules/admin/AdminMultiRegionalManagement';
+import AdminWhiteLabelCustomization from '../modules/admin/AdminWhiteLabelCustomization';
+import AdminHistoricalDataManagement from '../modules/admin/AdminHistoricalDataManagement';
+import AdminBackgroundCheckManagement from '../modules/admin/AdminBackgroundCheckManagement';
+import AdminTicketingSystemManagement from '../modules/admin/AdminTicketingSystemManagement';
+import AdminWhiteLabellingCustomization from '../modules/admin/AdminWhiteLabellingCustomization';
+
+// Shared modules
+import VerificationRequests from '../modules/shared/VerificationRequests';
+import TrustScore from '../modules/shared/TrustScore';
+import Attestation from '../modules/shared/Attestation';
+import BackgroundCheck from '../modules/shared/BackgroundCheck';
+import Biobank from '../modules/shared/Biobank';
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
+    <AuthProvider>
+      <Router>
         <Routes>
           {/* Public routes */}
+          <Route path="/login" element={<DemoLogin />} />
           <Route path="/auth" element={<Auth />} />
-          <Route path="/demo" element={<DemoLogin />} />
-          <Route path="/onboarding" element={
-            <AuthGuard>
-              <Onboarding />
-            </AuthGuard>
-          } />
           
           {/* Protected routes */}
           <Route path="/" element={
-            <AuthGuard requireOnboarding={true}>
+            <AuthGuard>
               <Layout />
             </AuthGuard>
           }>
+            {/* Default redirect */}
             <Route index element={<Navigate to="/dashboard" replace />} />
+            
+            {/* User routes */}
             <Route path="dashboard" element={<Dashboard />} />
-            
-            {/* Individual routes */}
-            <Route path="profile" element={
-              <AuthGuard roles={['individual']} requireOnboarding={true}>
-                <div className="text-center py-12">
-                  <h2 className="text-2xl font-bold text-gray-900">Profile Management</h2>
-                  <p className="text-gray-600 mt-2">Complete your profile information and manage your identity verification status.</p>
-                </div>
-              </AuthGuard>
-            } />
-            
-            <Route path="biobank" element={
-              <AuthGuard roles={['individual']} requireOnboarding={true}>
-                <Biobank />
-              </AuthGuard>
-            } />
-            
-            <Route path="verification-requests" element={
-              <AuthGuard roles={['individual']} requireOnboarding={true}>
-                <VerificationRequests />
-              </AuthGuard>
-            } />
-            
-            <Route path="trust-score" element={
-              <AuthGuard roles={['individual']} requireOnboarding={true}>
-                <TrustScore />
-              </AuthGuard>
-            } />
-            
-            <Route path="attestation" element={
-              <AuthGuard roles={['individual']} requireOnboarding={true}>
-                <Attestation />
-              </AuthGuard>
-            } />
-            
-            <Route path="wallet" element={
-              <AuthGuard roles={['individual']} requireOnboarding={true}>
-                <Wallet />
-              </AuthGuard>
-            } />
-            
-            {/* Organisation routes */}
-            <Route path="organisation/dashboard" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <OrganisationDashboard />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/verifications" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <VerificationCenter />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/profile" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <CompanyProfile />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/staff" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true} permissions={['staff.manage']}>
-                <StaffManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/background-check" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <BackgroundCheck />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/bulk-upload" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <BulkUpload />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/bulk-historical-upload" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <BulkHistoricalUpload />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/attestation-endorsement" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <AttestationEndorsement />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/risk-monitoring" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <div className="text-center py-12">
-                  <h2 className="text-2xl font-bold text-gray-900">Risk Monitoring</h2>
-                  <p className="text-gray-600 mt-2">Monitor and assess risk factors across your verification portfolio.</p>
-                </div>
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/trust-score" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <TrustScoreAnalytics />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/documents" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <DocumentVault />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/billing" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <Billing />
-              </AuthGuard>
-            } />
-            
-            <Route path="organisation/api" element={
-              <AuthGuard roles={['organisation']} requireOnboarding={true}>
-                <ApiKeys />
-              </AuthGuard>
-            } />
+            <Route path="individual-dashboard" element={<IndividualDashboard />} />
+            <Route path="organisation-dashboard" element={<OrganisationDashboard />} />
+            <Route path="document-vault" element={<DocumentVault />} />
+            <Route path="verification-center" element={<VerificationCenter />} />
+            <Route path="trust-score-analytics" element={<TrustScoreAnalytics />} />
+            <Route path="attestation-endorsement" element={<AttestationEndorsement />} />
+            <Route path="bulk-upload" element={<BulkUpload />} />
+            <Route path="bulk-historical-upload" element={<BulkHistoricalUpload />} />
+            <Route path="company-profile" element={<CompanyProfile />} />
+            <Route path="staff-management" element={<StaffManagement />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="onboarding" element={<Onboarding />} />
+            <Route path="wallet" element={<Wallet />} />
+            <Route path="api-keys" element={<ApiKeys />} />
+            <Route path="billing" element={<Billing />} />
             
             {/* Admin routes */}
-            <Route path="admin/users" element={
-              <AuthGuard roles={['admin']} permissions={['users.manage']}>
-                <AdminUserManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/organisations" element={
-              <AuthGuard roles={['admin']} permissions={['organisations.manage']}>
-                <AdminOrganisationManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/verifications" element={
-              <AuthGuard roles={['admin']} permissions={['verifications.manage']}>
-                <AdminVerificationManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/system" element={
-              <AuthGuard roles={['admin']} permissions={['settings.manage']}>
-                <AdminSystemSettings />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/analytics" element={
-              <AuthGuard roles={['admin']} permissions={['analytics.view']}>
-                <AdminAnalytics />
-              </AuthGuard>
-            } />
-            
-            {/* KYC/KYB Management */}
-            <Route path="admin/kyc-kyb" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <KYC_KYB_Management />
-              </AuthGuard>
-            } />
-            
-            {/* Super Admin routes */}
-            <Route path="admin/super" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SuperAdminDashboard />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/regions" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <RegionalManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/bulk-historical" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <BulkHistoricalUpload />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/rbac" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <RBACManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/approval-workflow" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminApprovalWorkflow />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/historical-data" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminHistoricalDataManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/transactions" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminTransactionManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/integrations" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminIntegrationManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/developer" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminDeveloperTools />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/security" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminSecurityCenter />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/system-health" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SystemHealthCheck />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/subscription" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SubscriptionManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/system-log" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SystemLogConfiguration />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/profile-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <ProfileManagement />
-              </AuthGuard>
-            } />
-            
-            <Route path="admin/database" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminDatabaseManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/wallet-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminWalletManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/escrow-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminEscrowManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/background-check-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminBackgroundCheckManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/report-analytics-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminReportAnalytics />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/dispute-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminDisputeManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/chat-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminChatManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/email-template-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminEmailTemplateManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/notification-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminNotificationManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/ticketing-system-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminTicketingSystemManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/employer-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <EmployerManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/employee-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <EmployeeManagementSystem />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/verification-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <VerificationRequests />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/trust-score-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <TrustScore />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/document-vault-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <DocumentVault />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/attestation-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <Attestation />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/biobank-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <Biobank />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/sure-aml-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SureAMLManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/sure-compliance-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SureComplianceManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/data-monitoring-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <DataMonitoringManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/company-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <CompanyManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/help-support" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <HelpSupport />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/downtime-tracker" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <DownTimeTracker />
-              </AuthGuard>
-            } />
+            <Route path="admin/dashboard" element={<SuperAdminDashboard />} />
+            <Route path="admin/user-management" element={<AdminUserManagement />} />
+            <Route path="admin/organisation-management" element={<AdminOrganisationManagement />} />
+            <Route path="admin/verification-management" element={<AdminVerificationManagement />} />
+            <Route path="admin/report-analytics" element={<AdminReportAnalytics />} />
+            <Route path="admin/system-settings" element={<AdminSystemSettings />} />
+            <Route path="admin/security-center" element={<AdminSecurityCenter />} />
+            <Route path="admin/backup-recovery" element={<AdminBackupRecovery />} />
+            <Route path="admin/developer-tools" element={<AdminDeveloperTools />} />
+            <Route path="admin/analytics" element={<AdminAnalytics />} />
+            <Route path="admin/company-management" element={<CompanyManagement />} />
+            <Route path="admin/profile-management" element={<ProfileManagement />} />
+            <Route path="admin/kyc-kyb-management" element={<KYC_KYB_Management />} />
+            <Route path="admin/sure-aml-management" element={<SureAMLManagement />} />
+            <Route path="admin/sure-compliance-management" element={<SureComplianceManagement />} />
+            <Route path="admin/regional-management" element={<RegionalManagement />} />
+            <Route path="admin/employer-management" element={<EmployerManagement />} />
+            <Route path="admin/system-health-check" element={<SystemHealthCheck />} />
+            <Route path="admin/downtime-tracker" element={<DownTimeTracker />} />
+            <Route path="admin/rbac-management" element={<RBACManagement />} />
+            <Route path="admin/help-support" element={<HelpSupport />} />
+            <Route path="admin/subscription-management" element={<SubscriptionManagement />} />
+            <Route path="admin/system-log-configuration" element={<SystemLogConfiguration />} />
+            <Route path="admin/data-monitoring-management" element={<DataMonitoringManagement />} />
+            <Route path="admin/employee-management-system" element={<EmployeeManagementSystem />} />
+            <Route path="admin/chat-management" element={<AdminChatManagement />} />
+            <Route path="admin/ticketing-system" element={<AdminTicketingSystem />} />
+            <Route path="admin/approval-workflow" element={<AdminApprovalWorkflow />} />
+            <Route path="admin/escrow-management" element={<AdminEscrowManagement />} />
+            <Route path="admin/wallet-management" element={<AdminWalletManagement />} />
+            <Route path="admin/reward-management" element={<AdminRewardManagement />} />
+            <Route path="admin/content-management" element={<AdminContentManagement />} />
+            <Route path="admin/dispute-management" element={<AdminDisputeManagement />} />
+            <Route path="admin/ratings-management" element={<AdminRatingsManagement />} />
+            <Route path="admin/referral-management" element={<AdminReferralManagement />} />
+            <Route path="admin/transaction-management" element={<AdminTransactionManagement />} />
+            <Route path="admin/notification-management" element={<AdminNotificationManagement />} />
+            <Route path="admin/integration-management" element={<AdminIntegrationManagement />} />
+            <Route path="admin/database-management" element={<AdminDatabaseManagement />} />
+            <Route path="admin/document-management" element={<AdminDocumentManagement />} />
+            <Route path="admin/email-template-management" element={<AdminEmailTemplateManagement />} />
+            <Route path="admin/multi-regional-management" element={<AdminMultiRegionalManagement />} />
+            <Route path="admin/white-label-customization" element={<AdminWhiteLabelCustomization />} />
+            <Route path="admin/historical-data-management" element={<AdminHistoricalDataManagement />} />
+            <Route path="admin/background-check-management" element={<AdminBackgroundCheckManagement />} />
+            <Route path="admin/ticketing-system-management" element={<AdminTicketingSystemManagement />} />
+            <Route path="admin/white-labelling-customization" element={<AdminWhiteLabellingCustomization />} />
             
             {/* Shared routes */}
-            <Route path="notifications" element={
-              <div className="text-center py-12">
-                <h2 className="text-2xl font-bold text-gray-900">Notifications</h2>
-                <p className="text-gray-600 mt-2">Stay updated with your latest notifications and system alerts.</p>
-              </div>
-            } />
-            
-            <Route path="settings" element={<Settings />} />
+            <Route path="verification-requests" element={<VerificationRequests />} />
+            <Route path="trust-score" element={<TrustScore />} />
+            <Route path="attestation" element={<Attestation />} />
+            <Route path="background-check" element={<BackgroundCheck />} />
+            <Route path="biobank" element={<Biobank />} />
           </Route>
           
-          {/* Unauthorized page */}
-          <Route path="/unauthorized" element={
-            <div className="min-h-screen flex items-center justify-center bg-gray-50">
-              <div className="text-center">
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">Access Denied</h1>
-                <p className="text-gray-600 mb-8">You don't have permission to access this page.</p>
-                <button
-                  onClick={() => window.history.back()}
-                  className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700"
-                >
-                  Go Back
-                </button>
-              </div>
-            </div>
-          } />
-          
-          {/* Catch all route - redirect to demo page */}
-          <Route path="*" element={<Navigate to="/demo" replace />} />
+          {/* Catch all route */}
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
-      </AuthProvider>
-    </Router>
-  )
+      </Router>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
