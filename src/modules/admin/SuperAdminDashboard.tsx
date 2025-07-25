@@ -1,473 +1,421 @@
-import React from 'react';
-import { 
-  Users, 
-  Building2, 
-  Shield, 
-  Activity, 
-  AlertTriangle, 
-  CheckCircle, 
-  TrendingUp, 
-  Database, 
-  Globe, 
-  DollarSign,
-  MessageSquare,
-  BarChart3,
+import React, { useState } from 'react';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import {
+  LayoutDashboard,
+  Users,
+  Building2,
+  Shield,
+  FileCheck,
+  Activity,
   Settings,
-  Clock,
-  FileText,
-  UserCheck,
-  Lock,
-  Briefcase,
-  HeartHandshake,
-  Microscope,
-  Eye,
-  Gavel,
+  Globe,
+  Database,
+  HardDrive,
   CreditCard,
-  Headphones,
-  Server,
-  Zap
+  Wallet,
+  Lock,
+  CheckCircle,
+  AlertTriangle,
+  Code,
+  Plug,
+  BarChart3,
+  TrendingUp,
+  FileText,
+  MessageSquare,
+  Star,
+  Gift,
+  Ticket,
+  Palette,
+  Search,
+  Mail,
+  UserCheck,
+  ChevronDown,
+  ChevronRight,
+  History,
+  UserPlus
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-const SuperAdminDashboard = () => {
-  // Mock data - in real app, this would come from API
-  const platformStats = {
-    totalUsers: 125847,
-    totalOrganizations: 3421,
-    systemUptime: 99.97,
-    criticalAlerts: 3,
-    pendingVerifications: 1247,
-    monthlyRevenue: 2847392
-  };
+// Import all admin components
+import AdminAnalytics from './AdminAnalytics';
+import AdminApprovalWorkflow from './AdminApprovalWorkflow';
+import AdminBackgroundCheckManagement from './AdminBackgroundCheckManagement';
+import AdminBackupRecovery from './AdminBackupRecovery';
+import AdminChatManagement from './AdminChatManagement';
+import AdminContentManagement from './AdminContentManagement';
+import AdminDatabaseManagement from './AdminDatabaseManagement';
+import AdminDeveloperTools from './AdminDeveloperTools';
+import AdminDisputeManagement from './AdminDisputeManagement';
+import AdminDocumentManagement from './AdminDocumentManagement';
+import AdminEmailTemplateManagement from './AdminEmailTemplateManagement';
+import AdminEscrowManagement from './AdminEscrowManagement';
+import AdminHistoricalDataManagement from './AdminHistoricalDataManagement';
+import AdminIntegrationManagement from './AdminIntegrationManagement';
+import AdminMultiRegionalManagement from './AdminMultiRegionalManagement';
+import AdminNotificationManagement from './AdminNotificationManagement';
+import AdminOrganisationManagement from './AdminOrganisationManagement';
+import AdminRatingsManagement from './AdminRatingsManagement';
+import AdminReferralManagement from './AdminReferralManagement';
+import AdminReportAnalytics from './AdminReportAnalytics';
+import AdminRewardManagement from './AdminRewardManagement';
+import AdminSecurityCenter from './AdminSecurityCenter';
+import AdminSystemSettings from './AdminSystemSettings';
+import AdminTicketingSystem from './AdminTicketingSystem';
+import AdminTransactionManagement from './AdminTransactionManagement';
+import AdminUserManagement from './AdminUserManagement';
+import AdminVerificationManagement from './AdminVerificationManagement';
+import AdminWalletManagement from './AdminWalletManagement';
+import AdminWhiteLabelCustomization from './AdminWhiteLabelCustomization';
+import KYC_KYB_Management from './KYC_KYB_Management';
+import ProfileManagement from './ProfileManagement';
+import RBACManagement from './RBACManagement';
+import RegionalManagement from './RegionalManagement';
+import SubscriptionManagement from './SubscriptionManagement';
+import SystemHealthCheck from './SystemHealthCheck';
+import SystemLogConfiguration from './SystemLogConfiguration';
+import StaffManagement from '../user/StaffManagement';
+import TrustScoreAnalytics from '../user/TrustScoreAnalytics';
 
-  const systemHealth = {
-    database: 'healthy',
-    api: 'healthy',
-    storage: 'warning',
-    network: 'healthy'
-  };
+interface NavigationItem {
+  name: string;
+  path: string;
+  icon: React.ComponentType<any>;
+}
 
-  const recentActivities = [
-    { type: 'security', message: 'New security policy applied', time: '2 hours ago' },
-    { type: 'system', message: 'Database backup completed', time: '4 hours ago' },
-    { type: 'user', message: '1,247 new user registrations', time: '6 hours ago' },
-    { type: 'compliance', message: 'AML scan completed for 500 profiles', time: '8 hours ago' }
-  ];
+interface NavigationGroup {
+  name: string;
+  icon: React.ComponentType<any>;
+  children: NavigationItem[];
+}
 
-  const StatCard = ({ title, value, icon: Icon, trend, color = 'primary' }: any) => (
-    <div className="bg-white rounded-lg shadow-soft p-6 border border-gray-100">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm font-medium text-gray-600">{title}</p>
-          <p className={`text-2xl font-bold text-${color}-600 mt-1`}>{value}</p>
-          {trend && (
-            <p className="text-sm text-success-600 mt-1 flex items-center">
-              <TrendingUp className="w-4 h-4 mr-1" />
-              {trend}
-            </p>
-          )}
-        </div>
-        <div className={`p-3 bg-${color}-50 rounded-lg`}>
-          <Icon className={`w-6 h-6 text-${color}-600`} />
-        </div>
-      </div>
-    </div>
-  );
+const SuperAdminDashboard: React.FC = () => {
+  const location = useLocation();
+  const [expandedGroups, setExpandedGroups] = useState<string[]>(['User & Access Management']);
 
-  const QuickActionCard = ({ title, description, icon: Icon, link, color = 'primary' }: any) => (
-    <Link to={link} className="block">
-      <div className="bg-white rounded-lg shadow-soft p-6 border border-gray-100 hover:shadow-medium transition-shadow">
-        <div className="flex items-start space-x-4">
-          <div className={`p-3 bg-${color}-50 rounded-lg`}>
-            <Icon className={`w-6 h-6 text-${color}-600`} />
-          </div>
-          <div>
-            <h3 className="font-semibold text-gray-900">{title}</h3>
-            <p className="text-sm text-gray-600 mt-1">{description}</p>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-
-  const SystemHealthIndicator = ({ service, status }: any) => {
-    const getStatusColor = (status: string) => {
-      switch (status) {
-        case 'healthy': return 'success';
-        case 'warning': return 'warning';
-        case 'error': return 'error';
-        default: return 'gray';
-      }
-    };
-
-    return (
-      <div className="flex items-center justify-between py-2">
-        <span className="text-sm font-medium text-gray-700 capitalize">{service}</span>
-        <div className="flex items-center space-x-2">
-          <div className={`w-3 h-3 rounded-full bg-${getStatusColor(status)}-500`}></div>
-          <span className={`text-sm font-medium text-${getStatusColor(status)}-600 capitalize`}>
-            {status}
-          </span>
-        </div>
-      </div>
+  const toggleGroup = (groupName: string) => {
+    setExpandedGroups(prev => 
+      prev.includes(groupName) 
+        ? prev.filter(name => name !== groupName)
+        : [...prev, groupName]
     );
   };
 
+  const navigationGroups: NavigationGroup[] = [
+    {
+      name: 'User & Access Management',
+      icon: Users,
+      children: [
+        { name: 'User Management', path: '/super-admin/user-management', icon: Users },
+        { name: 'Organisation Management', path: '/super-admin/organisation-management', icon: Building2 },
+        { name: 'RBAC Management', path: '/super-admin/rbac-management', icon: Shield },
+        { name: 'KYC/KYB Management', path: '/super-admin/kyc-kyb-management', icon: FileCheck },
+        { name: 'Profile Management', path: '/super-admin/profile-management', icon: UserCheck },
+        { name: 'Staff Management', path: '/super-admin/staff-management', icon: UserPlus },
+      ]
+    },
+    {
+      name: 'System Operations & Configuration',
+      icon: Settings,
+      children: [
+        { name: 'System Health Check', path: '/super-admin/system-health', icon: Activity },
+        { name: 'System Log Configuration', path: '/super-admin/system-logs', icon: FileText },
+        { name: 'Regional Management', path: '/super-admin/regional-management', icon: Globe },
+        { name: 'Multi-Regional Management', path: '/super-admin/multi-regional-management', icon: Globe },
+        { name: 'Backup & Recovery', path: '/super-admin/backup-recovery', icon: HardDrive },
+        { name: 'Database Management', path: '/super-admin/database-management', icon: Database },
+      ]
+    },
+    {
+      name: 'Financial Management',
+      icon: CreditCard,
+      children: [
+        { name: 'Subscription Management', path: '/super-admin/subscription-management', icon: CreditCard },
+        { name: 'Escrow Management', path: '/super-admin/escrow-management', icon: Lock },
+        { name: 'Wallet Management', path: '/super-admin/wallet-management', icon: Wallet },
+        { name: 'Transaction Management', path: '/super-admin/transaction-management', icon: CreditCard },
+      ]
+    },
+    {
+      name: 'Security & Compliance',
+      icon: Lock,
+      children: [
+        { name: 'Security Center', path: '/super-admin/security-center', icon: Lock },
+        { name: 'Approval Workflow', path: '/super-admin/approval-workflow', icon: CheckCircle },
+        { name: 'Dispute Management', path: '/super-admin/dispute-management', icon: AlertTriangle },
+        { name: 'Verification Management', path: '/super-admin/verification-management', icon: CheckCircle },
+      ]
+    },
+    {
+      name: 'Developer & Integrations',
+      icon: Code,
+      children: [
+        { name: 'Developer Tools', path: '/super-admin/developer-tools', icon: Code },
+        { name: 'Integration Management', path: '/super-admin/integration-management', icon: Plug },
+      ]
+    },
+    {
+      name: 'Data & Analytics',
+      icon: BarChart3,
+      children: [
+        { name: 'Historical Data Management', path: '/super-admin/historical-data', icon: History },
+        { name: 'Admin Analytics', path: '/super-admin/analytics', icon: BarChart3 },
+        { name: 'Report Analytics', path: '/super-admin/report-analytics', icon: TrendingUp },
+        { name: 'Trust Score Analytics', path: '/super-admin/trust-score-analytics', icon: TrendingUp },
+      ]
+    },
+    {
+      name: 'Content & Features',
+      icon: FileText,
+      children: [
+        { name: 'Background Check Management', path: '/super-admin/background-checks', icon: Search },
+        { name: 'Content Management', path: '/super-admin/content-management', icon: FileText },
+        { name: 'Document Management', path: '/super-admin/document-management', icon: FileText },
+        { name: 'Email Template Management', path: '/super-admin/email-templates', icon: Mail },
+        { name: 'Ratings Management', path: '/super-admin/ratings-management', icon: Star },
+        { name: 'Referral Management', path: '/super-admin/referral-management', icon: Users },
+        { name: 'Reward Management', path: '/super-admin/reward-management', icon: Gift },
+        { name: 'Ticketing System', path: '/super-admin/ticketing-system', icon: Ticket },
+        { name: 'White Label Customization', path: '/super-admin/white-label', icon: Palette },
+      ]
+    },
+    {
+      name: 'Communication & Notifications',
+      icon: MessageSquare,
+      children: [
+        { name: 'Chat Management', path: '/super-admin/chat-management', icon: MessageSquare },
+        { name: 'Notification Management', path: '/super-admin/notification-management', icon: Bell },
+      ]
+    }
+  ];
+
+  const isActiveLink = (path: string) => {
+    return location.pathname === path;
+  };
+
+  const isGroupActive = (group: NavigationGroup) => {
+    return group.children.some(child => isActiveLink(child.path));
+  };
+
   return (
-    <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Super Admin Dashboard</h1>
-          <p className="text-gray-600 mt-1">Complete platform oversight and management</p>
+    <div className="flex h-screen bg-gray-50">
+      {/* Sidebar */}
+      <div className="w-80 bg-white shadow-lg border-r border-gray-200 overflow-y-auto">
+        <div className="p-6 border-b border-gray-200">
+          <h1 className="text-2xl font-bold text-gray-900">Super Admin</h1>
+          <p className="text-sm text-gray-600 mt-1">System Management Dashboard</p>
         </div>
-        <div className="flex items-center space-x-3">
-          <div className="flex items-center space-x-2 bg-success-50 px-3 py-2 rounded-lg">
-            <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium text-success-700">System Online</span>
-          </div>
-        </div>
+
+        <nav className="p-4 space-y-2">
+          {/* Dashboard - Always visible */}
+          <Link
+            to="/super-admin"
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+              location.pathname === '/super-admin'
+                ? 'bg-primary-50 text-primary-700 border border-primary-200'
+                : 'text-gray-700 hover:bg-gray-50'
+            }`}
+          >
+            <LayoutDashboard className="w-5 h-5" />
+            <span className="font-medium">Dashboard</span>
+          </Link>
+
+          {/* Collapsible Groups */}
+          {navigationGroups.map((group) => {
+            const isExpanded = expandedGroups.includes(group.name);
+            const isActive = isGroupActive(group);
+            
+            return (
+              <div key={group.name} className="space-y-1">
+                {/* Group Header */}
+                <button
+                  onClick={() => toggleGroup(group.name)}
+                  className={`w-full flex items-center justify-between gap-3 px-4 py-3 rounded-lg transition-colors ${
+                    isActive
+                      ? 'bg-primary-50 text-primary-700 border border-primary-200'
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <group.icon className="w-5 h-5" />
+                    <span className="font-medium text-left">{group.name}</span>
+                  </div>
+                  {isExpanded ? (
+                    <ChevronDown className="w-4 h-4" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4" />
+                  )}
+                </button>
+
+                {/* Group Children */}
+                {isExpanded && (
+                  <div className="ml-4 space-y-1 border-l-2 border-gray-100 pl-4">
+                    {group.children.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors text-sm ${
+                          isActiveLink(item.path)
+                            ? 'bg-primary-100 text-primary-800 font-medium'
+                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        }`}
+                      >
+                        <item.icon className="w-4 h-4" />
+                        <span>{item.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </nav>
       </div>
 
-      {/* Platform Overview Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-        <StatCard
-          title="Total Users"
-          value={platformStats.totalUsers.toLocaleString()}
-          icon={Users}
-          trend="+12.5% this month"
-          color="primary"
-        />
-        <StatCard
-          title="Organizations"
-          value={platformStats.totalOrganizations.toLocaleString()}
-          icon={Building2}
-          trend="+8.3% this month"
-          color="secondary"
-        />
-        <StatCard
-          title="System Uptime"
-          value={`${platformStats.systemUptime}%`}
-          icon={Activity}
-          trend="99.9% target"
-          color="success"
-        />
-        <StatCard
-          title="Critical Alerts"
-          value={platformStats.criticalAlerts}
-          icon={AlertTriangle}
-          color="error"
-        />
-        <StatCard
-          title="Pending Verifications"
-          value={platformStats.pendingVerifications.toLocaleString()}
-          icon={UserCheck}
-          color="warning"
-        />
-        <StatCard
-          title="Monthly Revenue"
-          value={`$${(platformStats.monthlyRevenue / 1000000).toFixed(1)}M`}
-          icon={DollarSign}
-          trend="+15.2% vs last month"
-          color="success"
-        />
-      </div>
+      {/* Main Content */}
+      <div className="flex-1 overflow-auto">
+        <Routes>
+          <Route path="/" element={
+            <div className="p-8">
+              <div className="max-w-7xl mx-auto">
+                <div className="mb-8">
+                  <h1 className="text-3xl font-bold text-gray-900 mb-2">Super Admin Dashboard</h1>
+                  <p className="text-gray-600">Comprehensive system management and oversight</p>
+                </div>
 
-      {/* System Health & Recent Activities */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow-soft p-6 border border-gray-100">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <Server className="w-5 h-5 mr-2 text-primary-600" />
-            System Health Status
-          </h2>
-          <div className="space-y-2">
-            {Object.entries(systemHealth).map(([service, status]) => (
-              <SystemHealthIndicator key={service} service={service} status={status} />
-            ))}
-          </div>
-          <div className="mt-4 pt-4 border-t border-gray-100">
-            <Link to="/admin/system-health" className="text-primary-600 hover:text-primary-700 text-sm font-medium">
-              View Detailed Health Report →
-            </Link>
-          </div>
-        </div>
+                {/* Dashboard Overview Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                  <div className="bg-white p-6 rounded-lg shadow-soft border border-gray-200">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-gray-600">Total Users</p>
+                        <p className="text-2xl font-bold text-gray-900">12,543</p>
+                      </div>
+                      <Users className="w-8 h-8 text-primary-600" />
+                    </div>
+                    <p className="text-xs text-green-600 mt-2">+12% from last month</p>
+                  </div>
 
-        <div className="bg-white rounded-lg shadow-soft p-6 border border-gray-100">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <Clock className="w-5 h-5 mr-2 text-primary-600" />
-            Recent Platform Activities
-          </h2>
-          <div className="space-y-3">
-            {recentActivities.map((activity, index) => (
-              <div key={index} className="flex items-start space-x-3">
-                <div className={`w-2 h-2 rounded-full mt-2 ${
-                  activity.type === 'security' ? 'bg-error-500' :
-                  activity.type === 'system' ? 'bg-primary-500' :
-                  activity.type === 'user' ? 'bg-success-500' :
-                  'bg-warning-500'
-                }`}></div>
-                <div className="flex-1">
-                  <p className="text-sm text-gray-900">{activity.message}</p>
-                  <p className="text-xs text-gray-500">{activity.time}</p>
+                  <div className="bg-white p-6 rounded-lg shadow-soft border border-gray-200">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-gray-600">Organizations</p>
+                        <p className="text-2xl font-bold text-gray-900">1,234</p>
+                      </div>
+                      <Building2 className="w-8 h-8 text-secondary-600" />
+                    </div>
+                    <p className="text-xs text-green-600 mt-2">+8% from last month</p>
+                  </div>
+
+                  <div className="bg-white p-6 rounded-lg shadow-soft border border-gray-200">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-gray-600">System Health</p>
+                        <p className="text-2xl font-bold text-gray-900">99.9%</p>
+                      </div>
+                      <Activity className="w-8 h-8 text-success-600" />
+                    </div>
+                    <p className="text-xs text-green-600 mt-2">All systems operational</p>
+                  </div>
+
+                  <div className="bg-white p-6 rounded-lg shadow-soft border border-gray-200">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-gray-600">Revenue</p>
+                        <p className="text-2xl font-bold text-gray-900">$45.2K</p>
+                      </div>
+                      <CreditCard className="w-8 h-8 text-accent-600" />
+                    </div>
+                    <p className="text-xs text-green-600 mt-2">+15% from last month</p>
+                  </div>
+                </div>
+
+                {/* Quick Actions */}
+                <div className="bg-white rounded-lg shadow-soft border border-gray-200 p-6">
+                  <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <Link
+                      to="/super-admin/user-management"
+                      className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      <Users className="w-6 h-6 text-primary-600" />
+                      <div>
+                        <p className="font-medium text-gray-900">Manage Users</p>
+                        <p className="text-sm text-gray-600">View and manage user accounts</p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/super-admin/system-health"
+                      className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      <Activity className="w-6 h-6 text-success-600" />
+                      <div>
+                        <p className="font-medium text-gray-900">System Health</p>
+                        <p className="text-sm text-gray-600">Monitor system performance</p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/super-admin/analytics"
+                      className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      <BarChart3 className="w-6 h-6 text-secondary-600" />
+                      <div>
+                        <p className="font-medium text-gray-900">View Analytics</p>
+                        <p className="text-sm text-gray-600">Access detailed reports</p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-          <div className="mt-4 pt-4 border-t border-gray-100">
-            <Link to="/admin/system-logs" className="text-primary-600 hover:text-primary-700 text-sm font-medium">
-              View All Activities →
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Management Sections */}
-      <div className="space-y-6">
-        {/* User & Organization Management */}
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-            <Users className="w-6 h-6 mr-2 text-primary-600" />
-            User & Organization Management
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            <QuickActionCard
-              title="User Management"
-              description="Manage all platform users and permissions"
-              icon={Users}
-              link="/admin/user-management"
-              color="primary"
-            />
-            <QuickActionCard
-              title="Organization Management"
-              description="Oversee all registered organizations"
-              icon={Building2}
-              link="/admin/organisation-management"
-              color="secondary"
-            />
-            <QuickActionCard
-              title="Employer Management"
-              description="Manage individual & corporate employers"
-              icon={Briefcase}
-              link="/admin/employer-management"
-              color="accent"
-            />
-            <QuickActionCard
-              title="Employee System"
-              description="Comprehensive employee management"
-              icon={UserCheck}
-              link="/admin/employee-management"
-              color="success"
-            />
-          </div>
-        </div>
-
-        {/* Compliance & Security */}
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-            <Shield className="w-6 h-6 mr-2 text-error-600" />
-            Compliance & Security Management
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            <QuickActionCard
-              title="KYC/KYB Management"
-              description="Know Your Customer/Business processes"
-              icon={UserCheck}
-              link="/admin/kyc-kyb-management"
-              color="primary"
-            />
-            <QuickActionCard
-              title="SureAML Management"
-              description="Anti-Money Laundering compliance"
-              icon={Shield}
-              link="/admin/sure-aml-management"
-              color="error"
-            />
-            <QuickActionCard
-              title="SureCompliance"
-              description="Multi-standard compliance tracking"
-              icon={Gavel}
-              link="/admin/sure-compliance-management"
-              color="warning"
-            />
-            <QuickActionCard
-              title="Background Checks"
-              description="Comprehensive background verification"
-              icon={Eye}
-              link="/admin/background-check-management"
-              color="secondary"
-            />
-            <QuickActionCard
-              title="Security Center"
-              description="Platform security management"
-              icon={Lock}
-              link="/admin/security-center"
-              color="error"
-            />
-            <QuickActionCard
-              title="Trust Score System"
-              description="Trust score algorithms and management"
-              icon={TrendingUp}
-              link="/admin/trust-score-management"
-              color="success"
-            />
-            <QuickActionCard
-              title="Document Vault"
-              description="Secure document storage management"
-              icon={FileText}
-              link="/admin/document-vault-management"
-              color="primary"
-            />
-            <QuickActionCard
-              title="Attestation System"
-              description="Digital attestation management"
-              icon={HeartHandshake}
-              link="/admin/attestation-management"
-              color="accent"
-            />
-          </div>
-        </div>
-
-        {/* System Operations */}
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-            <Settings className="w-6 h-6 mr-2 text-secondary-600" />
-            System Operations & Infrastructure
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            <QuickActionCard
-              title="System Health"
-              description="Monitor system performance and health"
-              icon={Activity}
-              link="/admin/system-health"
-              color="success"
-            />
-            <QuickActionCard
-              title="Downtime Tracker"
-              description="Track and manage system downtime"
-              icon={Clock}
-              link="/admin/downtime-tracker"
-              color="error"
-            />
-            <QuickActionCard
-              title="Data Monitoring"
-              description="Real-time data monitoring and alerts"
-              icon={BarChart3}
-              link="/admin/data-monitoring-management"
-              color="primary"
-            />
-            <QuickActionCard
-              title="Database Management"
-              description="Database administration and optimization"
-              icon={Database}
-              link="/admin/database-management"
-              color="secondary"
-            />
-            <QuickActionCard
-              title="Backup & Recovery"
-              description="System backup and disaster recovery"
-              icon={Shield}
-              link="/admin/backup-recovery"
-              color="warning"
-            />
-            <QuickActionCard
-              title="Developer Tools"
-              description="API management and developer resources"
-              icon={Zap}
-              link="/admin/developer-tools"
-              color="accent"
-            />
-            <QuickActionCard
-              title="Integration Management"
-              description="Third-party integrations and APIs"
-              icon={Globe}
-              link="/admin/integration-management"
-              color="primary"
-            />
-            <QuickActionCard
-              title="System Settings"
-              description="Global system configuration"
-              icon={Settings}
-              link="/admin/system-settings"
-              color="secondary"
-            />
-          </div>
-        </div>
-
-        {/* Specialized Systems */}
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-            <Microscope className="w-6 h-6 mr-2 text-accent-600" />
-            Specialized Management Systems
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            <QuickActionCard
-              title="Biobank Management"
-              description="Biometric data and storage management"
-              icon={Microscope}
-              link="/admin/biobank-management"
-              color="accent"
-            />
-            <QuickActionCard
-              title="Company Management"
-              description="Corporate entity management"
-              icon={Building2}
-              link="/admin/company-management"
-              color="primary"
-            />
-            <QuickActionCard
-              title="Verification Management"
-              description="Identity verification workflows"
-              icon={CheckCircle}
-              link="/admin/verification-management"
-              color="success"
-            />
-            <QuickActionCard
-              title="Transaction Management"
-              description="Financial transaction oversight"
-              icon={CreditCard}
-              link="/admin/transaction-management"
-              color="warning"
-            />
-          </div>
-        </div>
-
-        {/* Support & Analytics */}
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-            <Headphones className="w-6 h-6 mr-2 text-success-600" />
-            Support & Analytics
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            <QuickActionCard
-              title="Help & Support"
-              description="Customer support and ticket management"
-              icon={Headphones}
-              link="/admin/help-support"
-              color="success"
-            />
-            <QuickActionCard
-              title="Analytics & Reports"
-              description="Platform analytics and reporting"
-              icon={BarChart3}
-              link="/admin/analytics"
-              color="primary"
-            />
-            <QuickActionCard
-              title="Chat Management"
-              description="Live chat and communication tools"
-              icon={MessageSquare}
-              link="/admin/chat-management"
-              color="secondary"
-            />
-            <QuickActionCard
-              title="Ticketing System"
-              description="Advanced ticketing and workflow"
-              icon={FileText}
-              link="/admin/ticketing-system"
-              color="accent"
-            />
-          </div>
-        </div>
+            </div>
+          } />
+          
+          {/* All Routes */}
+          <Route path="/user-management" element={<AdminUserManagement />} />
+          <Route path="/organisation-management" element={<AdminOrganisationManagement />} />
+          <Route path="/rbac-management" element={<RBACManagement />} />
+          <Route path="/kyc-kyb-management" element={<KYC_KYB_Management />} />
+          <Route path="/profile-management" element={<ProfileManagement />} />
+          <Route path="/staff-management" element={<StaffManagement />} />
+          
+          <Route path="/system-health" element={<SystemHealthCheck />} />
+          <Route path="/system-logs" element={<SystemLogConfiguration />} />
+          <Route path="/regional-management" element={<RegionalManagement />} />
+          <Route path="/multi-regional-management" element={<AdminMultiRegionalManagement />} />
+          <Route path="/backup-recovery" element={<AdminBackupRecovery />} />
+          <Route path="/database-management" element={<AdminDatabaseManagement />} />
+          
+          <Route path="/subscription-management" element={<SubscriptionManagement />} />
+          <Route path="/escrow-management" element={<AdminEscrowManagement />} />
+          <Route path="/wallet-management" element={<AdminWalletManagement />} />
+          <Route path="/transaction-management" element={<AdminTransactionManagement />} />
+          
+          <Route path="/security-center" element={<AdminSecurityCenter />} />
+          <Route path="/approval-workflow" element={<AdminApprovalWorkflow />} />
+          <Route path="/dispute-management" element={<AdminDisputeManagement />} />
+          <Route path="/verification-management" element={<AdminVerificationManagement />} />
+          
+          <Route path="/developer-tools" element={<AdminDeveloperTools />} />
+          <Route path="/integration-management" element={<AdminIntegrationManagement />} />
+          
+          <Route path="/historical-data" element={<AdminHistoricalDataManagement />} />
+          <Route path="/analytics" element={<AdminAnalytics />} />
+          <Route path="/report-analytics" element={<AdminReportAnalytics />} />
+          <Route path="/trust-score-analytics" element={<TrustScoreAnalytics />} />
+          
+          <Route path="/background-checks" element={<AdminBackgroundCheckManagement />} />
+          <Route path="/content-management" element={<AdminContentManagement />} />
+          <Route path="/document-management" element={<AdminDocumentManagement />} />
+          <Route path="/email-templates" element={<AdminEmailTemplateManagement />} />
+          <Route path="/ratings-management" element={<AdminRatingsManagement />} />
+          <Route path="/referral-management" element={<AdminReferralManagement />} />
+          <Route path="/reward-management" element={<AdminRewardManagement />} />
+          <Route path="/ticketing-system" element={<AdminTicketingSystem />} />
+          <Route path="/white-label" element={<AdminWhiteLabelCustomization />} />
+          
+          <Route path="/chat-management" element={<AdminChatManagement />} />
+          <Route path="/notification-management" element={<AdminNotificationManagement />} />
+        </Routes>
       </div>
     </div>
   );
