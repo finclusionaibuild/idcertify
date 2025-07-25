@@ -94,12 +94,10 @@ function App() {
                   <Layout />
                 </OnboardingFlow>
               </AuthGuard>
-            }>
-              <Route index element={<Navigate to="/individual/dashboard" replace />} />
               
-              {/* Individual Account Routes */}
-              <Route path="individual/dashboard" element={<IndividualDashboard />} />
-              <Route path="individual/quick-actions" element={<div className="p-6"><h1 className="text-2xl font-bold">Quick Actions</h1><p>Individual quick actions coming soon...</p></div>} />
+              <Route path="/profile" element={<Settings />} />
+              <Route path="/biobank" element={<Biobank />} />
+              <Route path="/verification-requests" element={<VerificationRequests />} />
               
               {/* Organization Account Routes */}
               <Route path="organization/dashboard" element={<OrganisationDashboard />} />

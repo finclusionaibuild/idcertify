@@ -16,15 +16,13 @@ interface SidebarItem {
 interface SidebarNavItem {
   title: string;
   icon: React.ComponentType<any>;
-  items: SidebarItem[];
-  Award,
-  User,
+  href?: string;
+  items?: SidebarItem[];
 }
 
 // Individual Account Navigation
 const individualSidebarNavItems: SidebarNavItem[] = [
   {
-    title: 'Dashboard',
     title: 'Dashboard',
     href: '/individual/dashboard',
     icon: LayoutDashboard,
@@ -43,13 +41,11 @@ const individualSidebarNavItems: SidebarNavItem[] = [
     title: 'Trust Score',
     href: '/trust-score',
     icon: Award,
-    ]
   },
   {
     title: 'Wallet',
     href: '/wallet',
     icon: Wallet,
-    items: [
   },
   {
     title: 'Profile',
@@ -64,8 +60,7 @@ const individualSidebarNavItems: SidebarNavItem[] = [
   {
     title: 'Settings',
     href: '/settings',
-    icon: User,
-    items: [
+    icon: Settings,
   }
 ];
 
@@ -230,37 +225,53 @@ export default function Layout() {
           
           return (
             <div key={item.title}>
-              <button
-                onClick={() => toggleExpanded(item.title)}
-                className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors"
-              >
-                <div className="flex items-center space-x-3">
-                  <Icon className="w-5 h-5" />
+              {item.href ? (
+                <Link
+                  to={item.href}
+                  className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                    location.pathname === item.href
+                      ? 'text-white bg-primary-600'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                  }`}
+                >
+                  <Icon className="w-5 h-5 mr-3" />
                   <span>{item.title}</span>
-                </div>
-                {isExpanded ? (
-                  <ChevronDown className="w-4 h-4" />
-                ) : (
-                  <ChevronRight className="w-4 h-4" />
-                )}
-              </button>
-              
-              {isExpanded && (
-                <div className="mt-2 space-y-1">
-                  {item.items.map((subItem) => (
-                    <Link
-                      key={subItem.title}
-                      to={subItem.href}
-                      className={`block px-3 py-2 ml-8 text-sm rounded-md transition-colors ${
-                        location.pathname === subItem.href
-                          ? 'text-white bg-primary-600'
-                          : 'text-gray-400 hover:text-white hover:bg-gray-700'
-                      }`}
-                    >
-                      {subItem.title}
-                    </Link>
-                  ))}
-                </div>
+                </Link>
+              ) : (
+                <>
+                  <button
+                    onClick={() => toggleExpanded(item.title)}
+                    className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Icon className="w-5 h-5" />
+                      <span>{item.title}</span>
+                    </div>
+                    {isExpanded ? (
+                      <ChevronDown className="w-4 h-4" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4" />
+                    )}
+                  </button>
+                  
+                  {isExpanded && item.items && (
+                    <div className="mt-2 space-y-1">
+                      {item.items.map((subItem) => (
+                        <Link
+                          key={subItem.title}
+                          to={subItem.href}
+                          className={`block px-3 py-2 ml-8 text-sm rounded-md transition-colors ${
+                            location.pathname === subItem.href
+                              ? 'text-white bg-primary-600'
+                              : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                          }`}
+                        >
+                          {subItem.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
               )}
             </div>
           );
