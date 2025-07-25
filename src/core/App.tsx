@@ -7,7 +7,7 @@ import DemoLogin from '../modules/shared/DemoLogin'
 import Dashboard from '../modules/user/Dashboard'
 import Onboarding from '../modules/user/Onboarding'
 import VerificationRequests from '../modules/shared/VerificationRequests'
-import { AdminDashboard } from '../modules/admin/AdminDashboard';
+import AdminDashboard from '../modules/admin/AdminDashboard';
 import TrustScore from '../modules/shared/TrustScore'
 import Wallet from '../modules/shared/Wallet'
 import Biobank from '../modules/shared/Biobank'
