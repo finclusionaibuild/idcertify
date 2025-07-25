@@ -67,8 +67,6 @@ const DemoLogin = () => {
       borderColor: 'border-purple-200',
       hoverColor: 'hover:border-purple-300',
       features: [
-      // Store role in localStorage for dashboard routing
-      localStorage.setItem('userRole', roleId);
         'Manage all users and organisations',
         'Review verification requests',
         'Configure system settings',
