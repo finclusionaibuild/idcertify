@@ -122,8 +122,20 @@ const Onboarding = () => {
       console.error('Error validating business registration:', error)
     } finally {
       setLoading(false)
+import { useNavigate } from 'react-router-dom';
     }
   }
+
+  const navigate = useNavigate();
+
+  const handleContinue = () => {
+    navigate('/individual/dashboard');
+  };
+
+  const handleTakeTour = () => {
+    // Navigate to dashboard with tour parameter
+    navigate('/individual/dashboard?tour=true');
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 flex items-center justify-center p-4">
@@ -433,32 +445,8 @@ const Onboarding = () => {
                 </div>
               </div>
               
-              <div className="flex items-center space-x-4">
+              Welcome to your digital identity verification platform. Click continue to access your dashboard and start managing your identity verification.
                 <button
-                  onClick={handlePrevStep}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
-                >
-                  Back
-                </button>
-                <button
-                  onClick={completeTier3KYB}
-                  disabled={!formData.businessName || !formData.registrationNumber || loading}
-                  className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {loading ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  ) : (
-                    <>
-                      Verify Business
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-          )}
-          
-          {/* Final Step - Completion */}
           {((currentStep === 3 && profile?.role === 'individual') || 
             (currentStep === 4 && profile?.role === 'organisation')) && (
             <div className="space-y-6">
@@ -467,7 +455,7 @@ const Onboarding = () => {
                   <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
                 <h2 className="text-xl font-semibold text-gray-900">Verification Complete!</h2>
-                <p className="text-gray-600 mt-2">
+              Your digital identity verification platform is ready to use. Access your dashboard to manage your documents, view your trust score, and handle verification requests.
                   Thank you for completing the verification process. You now have access to all features of the platform.
                 </p>
               </div>
@@ -475,9 +463,9 @@ const Onboarding = () => {
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                 <div className="flex items-start space-x-3">
                   <Info className="w-5 h-5 text-green-600 mt-0.5" />
-                  <div>
+                  <h3 className="font-medium text-blue-900 mb-1">Getting Started</h3>
                     <p className="text-sm font-medium text-green-900">What's Next?</p>
-                    <p className="text-sm text-green-700 mt-1">
+                    Take a tour to familiarize yourself with the platform features, or continue directly to your dashboard to start using IDCertify.
                       You'll be redirected to your dashboard where you can start using all the features of IDCertify.
                       If you have any questions, our support team is available to help.
                     </p>
@@ -488,11 +476,13 @@ const Onboarding = () => {
               <button
                 onClick={completeOnboarding}
                 disabled={loading}
-                className="w-full bg-primary-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={handleTakeTour}
+                className="flex-1 bg-white border border-primary-600 text-primary-600 px-6 py-3 rounded-lg font-medium hover:bg-primary-50 transition-colors duration-200 flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                ) : (
+                onClick={handleContinue}
+                className="flex-1 bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center gap-2"
                   <>
                     Go to Dashboard
                     <ArrowRight className="w-5 h-5 ml-2" />
