@@ -11,5 +11,5 @@ src/**
 !src/modules/shared/**
 
 # Allow User module
-!src/modules/user/**
-#!src/modules/admin/**
+#!src/modules/user/**
+!src/modules/admin/**
