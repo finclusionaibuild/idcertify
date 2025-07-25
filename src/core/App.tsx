@@ -1,29 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from '../modules/shared/contexts/AuthContext'
 import { OnboardingProvider } from '../modules/shared/contexts/OnboardingContext'
-
-// Import all dashboard components
-import IndividualDashboard from '../modules/user/IndividualDashboard'
-import OrganisationDashboard from '../modules/user/OrganisationDashboard'
-
-// Import feature components
-import DocumentVault from '../modules/user/DocumentVault'
-import TrustScore from '../modules/shared/TrustScore'
-import VerificationCenter from '../modules/user/VerificationCenter'
-import Wallet from '../modules/shared/Wallet'
-import Settings from '../modules/user/Settings'
-import ApiKeys from '../modules/user/ApiKeys'
-import Billing from '../modules/user/Billing'
-import AttestationEndorsement from '../modules/user/AttestationEndorsement'
-import BulkUpload from '../modules/user/BulkUpload'
-import BulkHistoricalUpload from '../modules/user/BulkHistoricalUpload'
-import CompanyProfile from '../modules/user/CompanyProfile'
-import StaffManagement from '../modules/user/StaffManagement'
-import TrustScoreAnalytics from '../modules/user/TrustScoreAnalytics'
-import BackgroundCheck from '../modules/shared/BackgroundCheck'
-import VerificationRequests from '../modules/shared/VerificationRequests'
-
-// Import shared components
 import Layout from '../modules/shared/components/Layout'
 import AuthGuard from '../modules/shared/components/AuthGuard'
 import OnboardingFlow from '../modules/shared/components/OnboardingFlow'
@@ -31,8 +8,24 @@ import Auth from '../modules/user/Auth'
 import DemoLogin from '../modules/shared/DemoLogin'
 import Dashboard from '../modules/user/Dashboard'
 import Onboarding from '../modules/user/Onboarding'
+import VerificationRequests from '../modules/shared/VerificationRequests'
+import TrustScore from '../modules/shared/TrustScore'
 import Attestation from '../modules/shared/Attestation'
+import Wallet from '../modules/shared/Wallet'
 import Biobank from '../modules/shared/Biobank'
+import OrganisationDashboard from '../modules/user/OrganisationDashboard'
+import BackgroundCheck from '../modules/shared/BackgroundCheck'
+import VerificationCenter from '../modules/user/VerificationCenter'
+import TrustScoreAnalytics from '../modules/user/TrustScoreAnalytics'
+import AttestationEndorsement from '../modules/user/AttestationEndorsement'
+import BulkUpload from '../modules/user/BulkUpload'
+import BulkHistoricalUpload from '../modules/user/BulkHistoricalUpload'
+import CompanyProfile from '../modules/user/CompanyProfile'
+import StaffManagement from '../modules/user/StaffManagement'
+import DocumentVault from '../modules/user/DocumentVault'
+import Billing from '../modules/user/Billing'
+import ApiKeys from '../modules/user/ApiKeys'
+import Settings from '../modules/user/Settings'
 import AdminVerificationManagement from '../modules/admin/AdminVerificationManagement'
 import AdminUserManagement from '../modules/admin/AdminUserManagement'
 import AdminOrganisationManagement from '../modules/admin/AdminOrganisationManagement'
@@ -95,48 +88,7 @@ function App() {
                 </OnboardingFlow>
               </AuthGuard>
             }>
-              
-              <Route path="/profile" element={<Settings />} />
-              <Route path="/biobank" element={<Biobank />} />
-              <Route path="/verification-requests" element={<VerificationRequests />} />
-              
-              {/* Organization Account Routes */}
-              <Route path="organization/dashboard" element={<OrganisationDashboard />} />
-              
-              {/* Shared Feature Routes */}
-              <Route path="document-vault" element={<DocumentVault />} />
-              <Route path="verification-center" element={<VerificationCenter />} />
-              <Route path="trust-score" element={<TrustScore />} />
-              <Route path="trust-score-analytics" element={<TrustScoreAnalytics />} />
-              <Route path="background-check" element={<BackgroundCheck />} />
-              <Route path="attestation-endorsement" element={<AttestationEndorsement />} />
-              <Route path="wallet" element={<Wallet />} />
-              <Route path="billing" element={<Billing />} />
-              <Route path="settings" element={<Settings />} />
-              <Route path="api-keys" element={<ApiKeys />} />
-              
-              {/* Organization Specific Routes */}
-              <Route path="company-profile" element={<CompanyProfile />} />
-              <Route path="staff-management" element={<StaffManagement />} />
-              <Route path="bulk-upload" element={<BulkUpload />} />
-              <Route path="bulk-historical-upload" element={<BulkHistoricalUpload />} />
-              <Route path="verification-requests" element={<VerificationRequests />} />
-              
-              {/* Placeholder routes for future implementation */}
-              <Route path="request-attestation" element={<div className="p-6"><h1 className="text-2xl font-bold">Request Attestation</h1><p>Feature coming soon...</p></div>} />
-              <Route path="endorsement-history" element={<div className="p-6"><h1 className="text-2xl font-bold">Endorsement History</h1><p>Feature coming soon...</p></div>} />
-              <Route path="transactions" element={<div className="p-6"><h1 className="text-2xl font-bold">Transaction History</h1><p>Feature coming soon...</p></div>} />
-              <Route path="privacy" element={<div className="p-6"><h1 className="text-2xl font-bold">Privacy Controls</h1><p>Feature coming soon...</p></div>} />
-              <Route path="departments" element={<div className="p-6"><h1 className="text-2xl font-bold">Departments</h1><p>Feature coming soon...</p></div>} />
-              <Route path="compliance" element={<div className="p-6"><h1 className="text-2xl font-bold">Compliance Dashboard</h1><p>Feature coming soon...</p></div>} />
-              <Route path="audit-logs" element={<div className="p-6"><h1 className="text-2xl font-bold">Audit Logs</h1><p>Feature coming soon...</p></div>} />
-              <Route path="usage-analytics" element={<div className="p-6"><h1 className="text-2xl font-bold">Usage Analytics</h1><p>Feature coming soon...</p></div>} />
-              <Route path="cost-management" element={<div className="p-6"><h1 className="text-2xl font-bold">Cost Management</h1><p>Feature coming soon...</p></div>} />
-              <Route path="webhooks" element={<div className="p-6"><h1 className="text-2xl font-bold">Webhooks</h1><p>Feature coming soon...</p></div>} />
-              <Route path="developer-tools" element={<div className="p-6"><h1 className="text-2xl font-bold">Developer Tools</h1><p>Feature coming soon...</p></div>} />
-              <Route path="user-permissions" element={<div className="p-6"><h1 className="text-2xl font-bold">User Permissions</h1><p>Feature coming soon...</p></div>} />
-              <Route path="security-settings" element={<div className="p-6"><h1 className="text-2xl font-bold">Security Settings</h1><p>Feature coming soon...</p></div>} />
-              
+              <Route index element={<Navigate to="/dashboard" replace />} />
               <Route path="dashboard" element={<Dashboard />} />
               
               {/* Individual routes */}
@@ -155,9 +107,27 @@ function App() {
                 </AuthGuard>
               } />
               
+              <Route path="verification-requests" element={
+                <AuthGuard roles={['individual']} requireOnboarding={true}>
+                  <VerificationRequests />
+                </AuthGuard>
+              } />
+              
+              <Route path="trust-score" element={
+                <AuthGuard roles={['individual']} requireOnboarding={true}>
+                  <TrustScore />
+                </AuthGuard>
+              } />
+              
               <Route path="attestation" element={
                 <AuthGuard roles={['individual']} requireOnboarding={true}>
                   <Attestation />
+                </AuthGuard>
+              } />
+              
+              <Route path="wallet" element={
+                <AuthGuard roles={['individual']} requireOnboarding={true}>
+                  <Wallet />
                 </AuthGuard>
               } />
               
@@ -186,6 +156,30 @@ function App() {
                 </AuthGuard>
               } />
               
+              <Route path="organisation/background-check" element={
+                <AuthGuard roles={['organisation']} requireOnboarding={true}>
+                  <BackgroundCheck />
+                </AuthGuard>
+              } />
+              
+              <Route path="organisation/bulk-upload" element={
+                <AuthGuard roles={['organisation']} requireOnboarding={true}>
+                  <BulkUpload />
+                </AuthGuard>
+              } />
+              
+              <Route path="organisation/bulk-historical-upload" element={
+                <AuthGuard roles={['organisation']} requireOnboarding={true}>
+                  <BulkHistoricalUpload />
+                </AuthGuard>
+              } />
+              
+              <Route path="organisation/attestation-endorsement" element={
+                <AuthGuard roles={['organisation']} requireOnboarding={true}>
+                  <AttestationEndorsement />
+                </AuthGuard>
+              } />
+              
               <Route path="organisation/risk-monitoring" element={
                 <AuthGuard roles={['organisation']} requireOnboarding={true}>
                   <div className="text-center py-12">
@@ -195,9 +189,27 @@ function App() {
                 </AuthGuard>
               } />
               
+              <Route path="organisation/trust-score" element={
+                <AuthGuard roles={['organisation']} requireOnboarding={true}>
+                  <TrustScoreAnalytics />
+                </AuthGuard>
+              } />
+              
               <Route path="organisation/documents" element={
                 <AuthGuard roles={['organisation']} requireOnboarding={true}>
                   <DocumentVault />
+                </AuthGuard>
+              } />
+              
+              <Route path="organisation/billing" element={
+                <AuthGuard roles={['organisation']} requireOnboarding={true}>
+                  <Billing />
+                </AuthGuard>
+              } />
+              
+              <Route path="organisation/api" element={
+                <AuthGuard roles={['organisation']} requireOnboarding={true}>
+                  <ApiKeys />
                 </AuthGuard>
               } />
               
@@ -469,6 +481,8 @@ function App() {
                   <p className="text-gray-600 mt-2">Stay updated with your latest notifications and system alerts.</p>
                 </div>
               } />
+              
+              <Route path="settings" element={<Settings />} />
             </Route>
             
             {/* Unauthorized page */}

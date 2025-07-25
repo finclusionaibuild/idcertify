@@ -1,344 +1,373 @@
 import React, { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { 
-  Menu, X, ChevronDown, ChevronRight, Bell, User, LogOut,
-  LayoutDashboard, FileText, ShieldCheck, CheckCircle, Wallet,
-  Settings, Key, CreditCard, Building, Users, ClipboardList,
-  Upload, BarChart3, Award, UserCheck, Globe, Briefcase
+  LayoutDashboard, 
+  Users, 
+  Building2, 
+  Shield, 
+  FileCheck, 
+  UserCheck,
+  UsersRound,
+  Settings,
+  Database,
+  Globe,
+  MapPin,
+  HardDrive,
+  Activity,
+  CreditCard,
+  Wallet,
+  ArrowLeftRight,
+  ShieldCheck,
+  GitBranch,
+  AlertTriangle,
+  CheckCircle,
+  Code,
+  Plug,
+  BarChart3,
+  TrendingUp,
+  FileBarChart,
+  Target,
+  MessageSquare,
+  FileText,
+  FolderOpen,
+  Mail,
+  Bell,
+  LifeBuoy,
+  Star,
+  Gift,
+  Users2,
+  Palette,
+  ChevronDown,
+  ChevronRight,
+  Menu,
+  X,
+  FileSearch,
+  CheckSquare,
+  Award,
+  Dna,
+  HelpCircle,
+  Clock
 } from 'lucide-react';
-import { useOnboarding } from '../contexts/OnboardingContext';
 
-interface SidebarItem {
-  title: string;
-  href: string;
-}
-
-interface SidebarNavItem {
-  title: string;
+interface NavigationItem {
+  name: string;
+  path: string;
   icon: React.ComponentType<any>;
-  items: SidebarItem[];
 }
 
-// Individual Account Navigation
-const individualSidebarNavItems: SidebarNavItem[] = [
-  {
-    title: 'Dashboard',
-    icon: LayoutDashboard,
-    items: [
-      { title: 'Dashboard', href: '/individual/dashboard' }
-    ]
-  },
-  {
-    title: 'Verification Requests',
-    icon: ShieldCheck,
-    items: [
-      { title: 'Verification Requests', href: '/verification-requests' }
-    ]
-  },
-  {
-    title: 'Attestation',
-    icon: Users,
-    items: [
-      { title: 'Attestation', href: '/attestation' }
-    ]
-  },
-  {
-    title: 'Trust Score',
-    icon: Award,
-    items: [
-      { title: 'Trust Score', href: '/trust-score' }
-    ]
-  },
-  {
-    title: 'Wallet',
-    icon: Wallet,
-    items: [
-      { title: 'Wallet', href: '/wallet' }
-    ]
-  },
-  {
-    title: 'Profile',
-    icon: User,
-    items: [
-      { title: 'Profile', href: '/profile' }
-    ]
-  },
-  {
-    title: 'Biobank',
-    icon: FileText,
-    items: [
-      { title: 'Biobank', href: '/biobank' }
-    ]
-  },
-  {
-    title: 'Settings',
-    icon: Settings,
-    items: [
-      { title: 'Settings', href: '/settings' }
-    ]
-  }
-];
+interface NavigationGroup {
+  name: string;
+  icon: React.ComponentType<any>;
+  children: NavigationItem[];
+}
 
-// Organization Account Navigation
-const organizationSidebarNavItems: SidebarNavItem[] = [
-  {
-    title: 'Dashboard',
-    icon: LayoutDashboard,
-    items: [
-      { title: 'Organization Overview', href: '/organization/dashboard' },
-      { title: 'Analytics', href: '/trust-score-analytics' },
-    ]
-  },
-  {
-    title: 'Company Management',
-    icon: Building,
-    items: [
-      { title: 'Company Profile', href: '/company-profile' },
-      { title: 'Staff Management', href: '/staff-management' },
-      { title: 'Departments', href: '/departments' },
-    ]
-  },
-  {
-    title: 'Verification Services',
-    icon: CheckCircle,
-    items: [
-      { title: 'Verification Requests', href: '/verification-requests' },
-      { title: 'Bulk Upload', href: '/bulk-upload' },
-      { title: 'Historical Data', href: '/bulk-historical-upload' },
-      { title: 'Background Checks', href: '/background-check' },
-    ]
-  },
-  {
-    title: 'Trust & Compliance',
-    icon: ShieldCheck,
-    items: [
-      { title: 'Trust Score Management', href: '/trust-score' },
-      { title: 'Compliance Dashboard', href: '/compliance' },
-      { title: 'Audit Logs', href: '/audit-logs' },
-    ]
-  },
-  {
-    title: 'Financial Management',
-    icon: CreditCard,
-    items: [
-      { title: 'Billing & Subscriptions', href: '/billing' },
-      { title: 'Usage Analytics', href: '/usage-analytics' },
-      { title: 'Cost Management', href: '/cost-management' },
-    ]
-  },
-  {
-    title: 'Integration & API',
-    icon: Globe,
-    items: [
-      { title: 'API Management', href: '/api-keys' },
-      { title: 'Webhooks', href: '/webhooks' },
-      { title: 'Developer Tools', href: '/developer-tools' },
-    ]
-  },
-  {
-    title: 'Settings',
-    icon: Settings,
-    items: [
-      { title: 'Organization Settings', href: '/settings' },
-      { title: 'User Permissions', href: '/user-permissions' },
-      { title: 'Security Settings', href: '/security-settings' },
-    ]
-  }
-];
+interface NavigationData {
+  standalone: NavigationItem[];
+  groups: NavigationGroup[];
+}
 
-const sidebarNavItems: SidebarNavItem[] = [
-  {
-    title: 'User & Access Management',
-    icon: Users,
-    items: [
-      { title: 'User Management', href: '/admin/user-management' },
-      { title: 'Organisation Management', href: '/admin/organisation-management' },
-      { title: 'RBAC Management', href: '/admin/rbac-management' },
-      { title: 'KYC/KYB Management', href: '/admin/kyc-kyb-management' },
-      { title: 'Profile Management', href: '/admin/profile-management' },
-      { title: 'Staff Management', href: '/admin/staff-management' }
-    ]
-  },
-  {
-    title: 'System Operations',
-    icon: Settings,
-    items: [
-      { title: 'System Health Check', href: '/admin/system-health-check' },
-      { title: 'System Settings', href: '/admin/system-settings' },
-      { title: 'Database Management', href: '/admin/database-management' },
-      { title: 'Regional Management', href: '/admin/regional-management' },
-      { title: 'Backup & Recovery', href: '/admin/backup-recovery' }
-    ]
-  },
-  {
-    title: 'Financial Management',
-    icon: CreditCard,
-    items: [
-      { title: 'Subscription Management', href: '/admin/subscription-management' },
-      { title: 'Transaction Management', href: '/admin/transaction-management' },
-      { title: 'Escrow Management', href: '/admin/escrow-management' },
-      { title: 'Wallet Management', href: '/admin/wallet-management' }
-    ]
-  },
-  {
-    title: 'Security & Compliance',
-    icon: ShieldCheck,
-    items: [
-      { title: 'Security Center', href: '/admin/security-center' },
-      { title: 'Approval Workflows', href: '/admin/approval-workflow' },
-      { title: 'Dispute Management', href: '/admin/dispute-management' },
-      { title: 'Verification Oversight', href: '/admin/verification-management' }
-    ]
-  }
-];
+const navigationData: NavigationData = {
+  standalone: [
+    { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard }
+  ],
+  groups: [
+    {
+      name: 'User & Access Management',
+      icon: Users,
+      children: [
+        { name: 'User Management', path: '/admin/user-management', icon: Users },
+        { name: 'Organisation Management', path: '/admin/organisation-management', icon: Building2 },
+        { name: 'RBAC Management', path: '/admin/rbac-management', icon: Shield },
+        { name: 'KYC/KYB Management', path: '/admin/kyc-kyb-management', icon: FileCheck },
+        { name: 'Profile Management', path: '/admin/profile-management', icon: UserCheck },
+        { name: 'Staff Management', path: '/admin/staff-management', icon: UsersRound }
+      ]
+    },
+    {
+      name: 'System Operations & Configuration',
+      icon: Settings,
+      children: [
+        { name: 'System Health Check', path: '/admin/system-health-check', icon: Activity },
+        { name: 'System Settings', path: '/admin/system-settings', icon: Settings },
+        { name: 'System Log Configuration', path: '/admin/system-log-configuration', icon: FileText },
+        { name: 'Database Management', path: '/admin/database-management', icon: Database },
+        { name: 'Regional Management', path: '/admin/regional-management', icon: Globe },
+        { name: 'Multi-Regional Management', path: '/admin/multi-regional-management', icon: MapPin },
+        { name: 'Backup & Recovery', path: '/admin/backup-recovery', icon: HardDrive }
+      ]
+    },
+    {
+      name: 'Financial Management',
+      icon: CreditCard,
+      children: [
+        { name: 'Subscription Management', path: '/admin/subscription-management', icon: CreditCard },
+        { name: 'Transaction Management', path: '/admin/transaction-management', icon: ArrowLeftRight },
+        { name: 'Escrow Management', path: '/admin/escrow-management', icon: Wallet },
+        { name: 'Wallet Management', path: '/admin/wallet-management', icon: Wallet }
+      ]
+    },
+    {
+      name: 'Security & Compliance',
+      icon: ShieldCheck,
+      children: [
+        { name: 'Security Center', path: '/admin/security-center', icon: ShieldCheck },
+        { name: 'Approval Workflows', path: '/admin/approval-workflow', icon: GitBranch },
+        { name: 'Dispute Management', path: '/admin/dispute-management', icon: AlertTriangle },
+        { name: 'Verification Oversight', path: '/admin/verification-management', icon: CheckCircle }
+      ]
+    },
+    {
+      name: 'Developer & Integrations',
+      icon: Code,
+      children: [
+        { name: 'Developer Tools', path: '/admin/developer-tools', icon: Code },
+        { name: 'Integration Management', path: '/admin/integration-management', icon: Plug }
+      ]
+    },
+    {
+      name: 'Data & Analytics',
+      icon: BarChart3,
+      children: [
+        { name: 'Analytics', path: '/admin/analytics', icon: BarChart3 },
+        { name: 'Report & Analytics Management', path: '/admin/report-analytics', icon: TrendingUp },
+        { name: 'Historical Data Management', path: '/admin/historical-data-management', icon: FileBarChart },
+        { name: 'Trust Score Analytics', path: '/admin/trust-score-analytics', icon: Target }
+      ]
+    },
+    {
+      name: 'Communication',
+      icon: MessageSquare,
+      children: [
+        { name: 'Chat Management', path: '/admin/chat-management', icon: MessageSquare },
+        { name: 'Email & Template Management', path: '/admin/email-template-management', icon: Mail },
+        { name: 'Notification Management', path: '/admin/notification-management', icon: Bell },
+        { name: 'Ticketing System Management', path: '/admin/ticketing-system', icon: LifeBuoy }
+      ]
+    },
+    {
+      name: 'Features',
+      icon: Settings,
+      children: [
+        { name: 'Content Management', path: '/admin/content-management', icon: FileText },
+        { name: 'Document Management', path: '/admin/document-management', icon: FolderOpen },
+        { name: 'Background Check Management', path: '/admin/background-check-management', icon: CheckCircle },
+        { name: 'Ratings Management', path: '/admin/ratings-management', icon: Star },
+        { name: 'Referral Management', path: '/admin/referral-management', icon: Users2 },
+        { name: 'Reward Management', path: '/admin/reward-management', icon: Gift },
+        { name: 'White Label Customization', path: '/admin/white-label-customization', icon: Palette }
+      ]
+    },
+    {
+      name: 'Super Admin Features',
+      icon: Shield,
+      children: [
+        { name: 'Employer Management', path: '/admin/employer-management', icon: Building2 },
+        { name: 'Employee Management System', path: '/admin/employee-management', icon: UserCheck },
+        { name: 'Background Check Management', path: '/admin/background-check-management', icon: FileSearch },
+        { name: 'Verification Management System', path: '/admin/verification-management', icon: CheckSquare },
+        { name: 'Trust Score Management System', path: '/admin/trust-score-management', icon: Award },
+        { name: 'Document Vault Management', path: '/admin/document-vault-management', icon: FolderOpen },
+        { name: 'Attestation Management System', path: '/admin/attestation-management', icon: FileText },
+        { name: 'Biobank Management System', path: '/admin/biobank-management', icon: Dna },
+        { name: 'SureAML Management System', path: '/admin/sure-aml-management', icon: AlertTriangle },
+        { name: 'SureCompliance Management System', path: '/admin/sure-compliance-management', icon: Shield },
+        { name: 'Data Monitoring Management System', path: '/admin/data-monitoring-management', icon: Activity },
+        { name: 'Company Management', path: '/admin/company-management', icon: Building2 },
+        { name: 'Help & Support', path: '/admin/help-support', icon: HelpCircle },
+        { name: 'Down Time Tracker System', path: '/admin/downtime-tracker', icon: Clock }
+      ]
+    }
+  ]
+};
 
 export default function Layout() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [expandedItems, setExpandedItems] = useState<string[]>([]);
-  const { userType } = useOnboarding();
-  
   const location = useLocation();
+  const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
-
-  const toggleExpanded = (title: string) => {
-    if (expandedItems.includes(title)) {
-      setExpandedItems(expandedItems.filter(item => item !== title));
-    } else {
-      setExpandedItems([...expandedItems, title]);
-    }
+  const toggleGroup = (groupName: string) => {
+    setExpandedGroups(prev => 
+      prev.includes(groupName) 
+        ? prev.filter(name => name !== groupName)
+        : [...prev, groupName]
+    );
   };
 
-  // Get navigation items based on user type
-  const getNavigationItems = () => {
-    if (userType === 'individual') return individualSidebarNavItems;
-    if (userType === 'organization') return organizationSidebarNavItems;
-    // Default to admin navigation for admin users or fallback
-    return sidebarNavItems;
-  };
+  const isGroupExpanded = (groupName: string) => expandedGroups.includes(groupName);
 
-  const SidebarContent = () => (
-    <div className="flex flex-col h-full">
-      {/* Logo */}
-      <div className="flex items-center justify-between h-16 px-6 bg-gray-800">
-        <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-sm">ID</span>
-          </div>
-          <span className="text-white font-bold text-lg">IDCertify</span>
-        </div>
-        <button onClick={toggleSidebar} className="lg:hidden text-gray-400 hover:text-white">
-          <X className="w-6 h-6" />
-        </button>
-      </div>
+  const isActiveLink = (path: string) => location.pathname === path;
 
-      {/* Navigation */}
-      <nav className="flex-1 px-4 py-6 space-y-2">
-        {getNavigationItems().map((item) => {
-          const isExpanded = expandedItems.includes(item.title);
-          const Icon = item.icon;
-          
-          return (
-            <div key={item.title}>
-              <button
-                onClick={() => toggleExpanded(item.title)}
-                className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors"
-              >
-                <div className="flex items-center space-x-3">
-                  <Icon className="w-5 h-5" />
-                  <span>{item.title}</span>
-                </div>
-                {isExpanded ? (
-                  <ChevronDown className="w-4 h-4" />
-                ) : (
-                  <ChevronRight className="w-4 h-4" />
-                )}
-              </button>
-              
-              {isExpanded && (
-                <div className="mt-2 space-y-1">
-                  {item.items.map((subItem) => (
-                    <Link
-                      key={subItem.title}
-                      to={subItem.href}
-                      className={`block px-3 py-2 ml-8 text-sm rounded-md transition-colors ${
-                        location.pathname === subItem.href
-                          ? 'text-white bg-primary-600'
-                          : 'text-gray-400 hover:text-white hover:bg-gray-700'
-                      }`}
-                    >
-                      {subItem.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </nav>
+  const isGroupActive = (group: NavigationGroup) => 
+    group.children.some(child => isActiveLink(child.path));
 
-      {/* User Profile */}
-      <div className="p-4 border-t border-gray-700">
-        <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-            <User className="w-4 h-4 text-gray-300" />
-          </div>
-          <div className="flex-1">
-            <p className="text-sm font-medium text-white">Admin User</p>
-            <p className="text-xs text-gray-400">admin@idcertify.com</p>
-          </div>
-          <button className="text-gray-400 hover:text-white">
-            <LogOut className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+  // Auto-expand groups that contain the current active page
+  React.useEffect(() => {
+    navigationData.groups.forEach(group => {
+      if (isGroupActive(group) && !isGroupExpanded(group.name)) {
+        setExpandedGroups(prev => [...prev, group.name]);
+      }
+    });
+  }, [location.pathname]);
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Mobile sidebar overlay */}
+    <div className="min-h-screen bg-gray-50 flex">
+      {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden"
-          onClick={toggleSidebar}
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar */}
-      <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-gray-900 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        <SidebarContent />
+      <div className={`
+        fixed inset-y-0 left-0 z-50 w-80 bg-primary-600 transform transition-transform duration-300 ease-in-out flex flex-col lg:translate-x-0 lg:static lg:inset-0
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}>
+        <div className="flex items-center justify-between h-16 px-6 bg-primary-700">
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <div className="w-6 h-6 bg-primary-600 rounded-full flex items-center justify-center">
+                <div className="w-3 h-3 bg-white rounded-full"></div>
+              </div>
+            </div>
+            <span className="text-white font-bold text-lg">IDCertify</span>
+          </div>
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="lg:hidden text-white hover:text-gray-200 transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        <nav className="flex-1 px-4 py-6 space-y-2 flex-grow overflow-y-auto">
+          {/* Standalone items */}
+          {navigationData.standalone.map((item) => {
+            const Icon = item.icon;
+            const tourAttr = item.name === 'Staff Management' ? { 'data-tour': 'staff' } : 
+                            item.name === 'Bulk Upload' ? { 'data-tour': 'bulk-upload' } : {};
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                {...tourAttr}
+                className={`
+                  flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200
+                  ${isActiveLink(item.path)
+                    ? 'bg-primary-700 text-white shadow-lg'
+                    : 'text-primary-100 hover:bg-primary-700 hover:text-white'
+                  }
+                `}
+                onClick={() => setSidebarOpen(false)}
+              >
+                <Icon className="w-5 h-5 mr-3 flex-shrink-0" />
+                {item.name}
+              </Link>
+            );
+          })}
+
+          {/* Grouped items */}
+          {navigationData.groups.map((group) => {
+            const GroupIcon = group.icon;
+            const isExpanded = isGroupExpanded(group.name);
+            const isActive = isGroupActive(group);
+
+            return (
+              <div key={group.name} className="space-y-1">
+                <button
+                  onClick={() => toggleGroup(group.name)}
+                  className={`
+                    w-full flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200
+                    ${isActive
+                      ? 'bg-primary-700 text-white shadow-lg'
+                      : 'text-primary-100 hover:bg-primary-700 hover:text-white'
+                    }
+                  `}
+                >
+                  <div className="flex items-center text-left">
+                    <GroupIcon className="w-5 h-5 mr-3 flex-shrink-0" />
+                    {group.name}
+                  </div>
+                  {isExpanded ? (
+                    <ChevronDown className="w-4 h-4 transition-transform duration-200" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4 transition-transform duration-200" />
+                  )}
+                </button>
+
+                {/* Group children */}
+                {isExpanded && (
+                  <div className="ml-4 space-y-1 animate-slide-up">
+                    {group.children.map((child) => {
+                      const ChildIcon = child.icon;
+                      const tourAttr = child.name === 'Staff Management' ? { 'data-tour': 'staff' } : 
+                                      child.name === 'Bulk Upload' ? { 'data-tour': 'bulk-upload' } : {};
+                      return (
+                        <Link
+                          key={child.path}
+                          to={child.path}
+                          {...tourAttr}
+                          className={`
+                            flex items-center px-4 py-2 text-sm rounded-lg transition-all duration-200
+                            ${isActiveLink(child.path)
+                              ? 'bg-primary-800 text-white shadow-md border-l-4 border-white'
+                              : 'text-primary-200 hover:bg-primary-700 hover:text-white'
+                            }
+                          `}
+                          onClick={() => setSidebarOpen(false)}
+                        >
+                          <ChildIcon className="w-4 h-4 mr-3 flex-shrink-0" />
+                          {child.name}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </nav>
+
+        {/* User info at bottom */}
+        <div className="p-4 border-t border-primary-500 flex-shrink-0">
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+              <Users className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <p className="text-white font-medium text-sm">Super Admin</p>
+              <p className="text-primary-200 text-xs">Admin</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Top bar */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
-          <div className="flex items-center justify-between h-16 px-6">
+      <div className="flex-1 flex flex-col lg:ml-0">
+        {/* Mobile header */}
+        <div className="block lg:hidden bg-white shadow-sm border-b border-gray-200">
+          <div className="flex items-center justify-between h-16 px-4">
             <button
-              onClick={toggleSidebar}
-              className="text-gray-600 hover:text-gray-900 lg:hidden"
+              onClick={() => setSidebarOpen(true)}
+              className="text-gray-600 hover:text-gray-900 transition-colors"
             >
               <Menu className="w-6 h-6" />
             </button>
-            
-            <div className="flex items-center space-x-4">
-              <button className="text-gray-600 hover:text-gray-900">
-                <Bell className="w-6 h-6" />
-              </button>
-              <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                <User className="w-4 h-4 text-gray-600" />
+            <div className="flex items-center space-x-2">
+              <div className="w-6 h-6 bg-primary-600 rounded-full flex items-center justify-center">
+                <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                </div>
               </div>
+              <span className="text-gray-900 font-bold">IDCertify</span>
             </div>
+            <div className="w-6 h-6"></div> {/* Spacer for centering */}
           </div>
-        </header>
+        </div>
 
         {/* Page content */}
-        <main className="flex-1 overflow-auto p-6">
+        <main className="flex-1 p-6 overflow-auto">
           <Outlet />
         </main>
       </div>
