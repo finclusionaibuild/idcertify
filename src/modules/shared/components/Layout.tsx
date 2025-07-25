@@ -340,7 +340,7 @@ export default function Layout() {
       {/* Main content */}
       <div className="flex-1 flex flex-col lg:ml-0">
         {/* Mobile header */}
-        <div className="lg:hidden bg-white shadow-sm border-b border-gray-200">
+        <div className="block lg:hidden bg-white shadow-sm border-b border-gray-200">
           <div className="flex items-center justify-between h-16 px-4">
             <button
               onClick={() => setSidebarOpen(true)}
