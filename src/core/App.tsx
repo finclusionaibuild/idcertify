@@ -453,6 +453,8 @@ function App() {
                 <SureAMLManagement />
               </AuthGuard>
             } />
+
+            <Route path="admin/sure-compliance-management" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
                 <SureComplianceManagement />
               </AuthGuard>
