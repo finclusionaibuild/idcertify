@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import FeatureGate from '../shared/components/FeatureGate'
 import { 
   FileText, 
   Upload, 
@@ -374,7 +375,7 @@ const DocumentVault = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div>
+        <div data-tour="documents">
           <h1 className="text-2xl font-bold text-gray-900">Document Vault</h1>
           <p className="text-gray-600 mt-1">Securely store and manage verification documents</p>
         </div>
@@ -387,13 +388,15 @@ const DocumentVault = () => {
             <FolderPlus className="w-4 h-4 mr-2" />
             New Folder
           </button>
-          <button 
-            onClick={() => setShowUploadModal(true)}
-            className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center"
-          >
-            <Upload className="w-4 h-4 mr-2" />
-            Upload Documents
-          </button>
+          <FeatureGate feature="document-upload">
+            <button 
+              onClick={() => setShowUploadModal(true)}
+              className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center"
+            >
+              <Upload className="w-4 h-4 mr-2" />
+              Upload Documents
+            </button>
+          </FeatureGate>
         </div>
       </div>
 
@@ -766,73 +769,81 @@ const DocumentVault = () => {
               </div>
             </div>
             
-            <div className="p-6">
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary-400 transition-colors">
+            <FeatureGate feature="document-upload" fallback={
+              <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
                 <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-lg font-medium text-gray-900 mb-2">Drop files here or click to browse</p>
-                <p className="text-gray-600 mb-4">Support for PDF, images, spreadsheets, and documents up to 10MB</p>
-                <button className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
-                  Choose Files
-                </button>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Document Upload Locked</h3>
+                <p className="text-gray-600">Complete KYC Tier 1 verification to upload documents</p>
               </div>
-              
-              <div className="mt-6 space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                    {categories.map(category => (
-                      <option key={category} value={category}>
-                        {category.charAt(0).toUpperCase() + category.slice(1)}
-                      </option>
-                    ))}
-                  </select>
+            }>
+              <div className="p-6">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary-400 transition-colors">
+                  <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                  <p className="text-lg font-medium text-gray-900 mb-2">Drop files here or click to browse</p>
+                  <p className="text-gray-600 mb-4">Support for PDF, images, spreadsheets, and documents up to 10MB</p>
+                  <button className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                    Choose Files
+                  </button>
                 </div>
                 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Folder</label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                    <option value="">Select Folder</option>
-                    {folders.map(folder => (
-                      <option key={folder.id} value={folder.id}>{folder.name}</option>
-                    ))}
-                  </select>
+                <div className="mt-6 space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                      {categories.map(category => (
+                        <option key={category} value={category}>
+                          {category.charAt(0).toUpperCase() + category.slice(1)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Folder</label>
+                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                      <option value="">Select Folder</option>
+                      {folders.map(folder => (
+                        <option key={folder.id} value={folder.id}>{folder.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Access Level</label>
+                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                      {accessLevels.map(level => (
+                        <option key={level} value={level}>
+                          {level.charAt(0).toUpperCase() + level.slice(1)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  <div className="flex items-center space-x-4">
+                    <label className="flex items-center">
+                      <input type="checkbox" className="text-primary-600 focus:ring-primary-500" />
+                      <span className="ml-2 text-sm text-gray-700">Encrypt document</span>
+                    </label>
+                    <label className="flex items-center">
+                      <input type="checkbox" className="text-primary-600 focus:ring-primary-500" />
+                      <span className="ml-2 text-sm text-gray-700">Auto-verify</span>
+                    </label>
+                  </div>
                 </div>
                 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Access Level</label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                    {accessLevels.map(level => (
-                      <option key={level} value={level}>
-                        {level.charAt(0).toUpperCase() + level.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <label className="flex items-center">
-                    <input type="checkbox" className="text-primary-600 focus:ring-primary-500" />
-                    <span className="ml-2 text-sm text-gray-700">Encrypt document</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="text-primary-600 focus:ring-primary-500" />
-                    <span className="ml-2 text-sm text-gray-700">Auto-verify</span>
-                  </label>
+                <div className="flex items-center justify-end space-x-3 mt-6 pt-4 border-t">
+                  <button 
+                    onClick={() => setShowUploadModal(false)}
+                    className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                    Upload Documents
+                  </button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-end space-x-3 mt-6 pt-4 border-t">
-                <button 
-                  onClick={() => setShowUploadModal(false)}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
-                  Upload Documents
-                </button>
-              </div>
-            </div>
+            </FeatureGate>
           </div>
         </div>
       )}

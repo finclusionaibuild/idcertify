@@ -245,10 +245,13 @@ export default function Layout() {
           {/* Standalone items */}
           {navigationData.standalone.map((item) => {
             const Icon = item.icon;
+            const tourAttr = item.name === 'Staff Management' ? { 'data-tour': 'staff' } : 
+                            item.name === 'Bulk Upload' ? { 'data-tour': 'bulk-upload' } : {};
             return (
               <Link
                 key={item.path}
                 to={item.path}
+                {...tourAttr}
                 className={`
                   flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200
                   ${isActiveLink(item.path)
@@ -298,10 +301,13 @@ export default function Layout() {
                   <div className="ml-4 space-y-1 animate-slide-up">
                     {group.children.map((child) => {
                       const ChildIcon = child.icon;
+                      const tourAttr = child.name === 'Staff Management' ? { 'data-tour': 'staff' } : 
+                                      child.name === 'Bulk Upload' ? { 'data-tour': 'bulk-upload' } : {};
                       return (
                         <Link
                           key={child.path}
                           to={child.path}
+                          {...tourAttr}
                           className={`
                             flex items-center px-4 py-2 text-sm rounded-lg transition-all duration-200
                             ${isActiveLink(child.path)
