@@ -80,7 +80,14 @@ function App() {
           <Routes>
             {/* Public routes */}
             <Route path="/auth" element={<Auth />} />
-            <Route path="/onboarding" element={<Navigate to="/individual/dashboard" replace />} />
+            <Route path="/demo" element={<DemoLogin />} />
+            <Route path="/onboarding" element={
+              <AuthGuard>
+                <Onboarding />
+              </AuthGuard>
+            } />
+            
+            {/* Protected routes */}
             <Route path="/" element={
               <AuthGuard requireOnboarding={true}>
                 <OnboardingFlow>
@@ -481,7 +488,7 @@ function App() {
             } />
             
             {/* Catch all route - redirect to demo page */}
-            <Route path="/" element={<Navigate to="/individual/dashboard" replace />} />
+            <Route path="*" element={<Navigate to="/demo" replace />} />
           </Routes>
         </Router>
       </OnboardingProvider>
