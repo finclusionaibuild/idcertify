@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Link, useLocation, Outlet } from 'react-router-dom';
-import { Menu, X, Home, Users, FileText, Settings, Shield, BarChart3, Wallet, Building, User, Bell, LogOut, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import {
   LayoutDashboard, 
-  Users, 
   Building2, 
   Shield, 
   FileCheck, 
@@ -47,7 +46,10 @@ import {
   Award,
   Dna,
   HelpCircle,
-  Clock
+  Clock,
+  User,
+  LogOut,
+  Users
 } from 'lucide-react';
 
 interface NavigationItem {
@@ -183,6 +185,8 @@ const navigationData: NavigationData = {
 
 export default function Layout() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -200,6 +204,15 @@ export default function Layout() {
     setProfileDropdownOpen(!profileDropdownOpen);
   };
 
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+
   const isGroupExpanded = (groupName: string) => expandedGroups.includes(groupName);
 
   const isActiveLink = (path: string) => location.pathname === path;
@@ -208,7 +221,7 @@ export default function Layout() {
     group.children.some(child => isActiveLink(child.path));
 
   // Auto-expand groups that contain the current active page
-  React.useEffect(() => {
+  useEffect(() => {
     navigationData.groups.forEach(group => {
       if (isGroupActive(group) && !isGroupExpanded(group.name)) {
         setExpandedGroups(prev => [...prev, group.name]);
