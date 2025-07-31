@@ -186,7 +186,7 @@ const navigationData: NavigationData = {
 export default function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user, signOut } = useAuth();
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -206,7 +206,7 @@ export default function Layout() {
 
   const handleLogout = async () => {
     try {
-      await logout();
+      await signOut();
       navigate('/login');
     } catch (error) {
       console.error('Logout failed:', error);
