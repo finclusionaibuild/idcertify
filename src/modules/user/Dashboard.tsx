@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from "@shared/contexts/AuthContext";
-import LimitedAccessBanner from '../shared/components/LimitedAccessBanner';
-import FeatureGate from '../shared/components/FeatureGate';
 import { 
   Shield, 
   FileText, 
@@ -230,7 +228,6 @@ const Dashboard = () => {
   if (profile?.role === 'admin') {
     return (
       <div className="space-y-6">
-        <LimitedAccessBanner />
         
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -294,53 +291,49 @@ const Dashboard = () => {
           {/* Left Column - Charts */}
           <div className="lg:col-span-2 space-y-6">
             {/* Enhanced Verification Trends Chart */}
-            <FeatureGate feature="trust-score">
-              <VerificationTrendsChart />
-            </FeatureGate>
+            <VerificationTrendsChart />
 
             {/* Fraud & Risk Snapshot */}
-            <FeatureGate feature="trust-score">
-              <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Fraud & Risk Snapshot</h3>
-                    <p className="text-sm text-gray-500">as of 14 May 2021, 09:41 PM</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                      <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
-                    </div>
-                    <button className="text-sm text-red-600 hover:text-red-700">
-                      View & Address →
-                    </button>
-                  </div>
-                  
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
-                      <span className="text-sm text-gray-700">2 guarantor inconsistencies</span>
-                    </div>
-                    <button className="text-sm text-red-600 hover:text-red-700">
-                      View & Address →
-                    </button>
-                  </div>
-                  
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                      <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
-                    </div>
-                    <button className="text-sm text-red-600 hover:text-red-700">
-                      View & Address →
-                    </button>
-                  </div>
+            <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">Fraud & Risk Snapshot</h3>
+                  <p className="text-sm text-gray-500">as of 14 May 2021, 09:41 PM</p>
                 </div>
               </div>
-            </FeatureGate>
+              
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                    <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
+                  </div>
+                  <button className="text-sm text-red-600 hover:text-red-700">
+                    View & Address →
+                  </button>
+                </div>
+                
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                    <span className="text-sm text-gray-700">2 guarantor inconsistencies</span>
+                  </div>
+                  <button className="text-sm text-red-600 hover:text-red-700">
+                    View & Address →
+                  </button>
+                </div>
+                
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                    <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
+                  </div>
+                  <button className="text-sm text-red-600 hover:text-red-700">
+                    View & Address →
+                  </button>
+                </div>
+              </div>
+            </div>
 
             {/* System Users */}
             <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200" data-tour="documents">
