@@ -14,15 +14,7 @@ const DemoLogin = () => {
     
     try {
       await signIn(email, 'demo-password')
-      
-      // Redirect based on user type
-      if (userType === 'individual') {
-        navigate('/individual')
-      } else if (userType === 'organisation') {
-        navigate('/organisation')
-      } else {
-        navigate('/dashboard')
-      }
+      navigate('/dashboard')
     } catch (error) {
       console.error('Demo login error:', error)
     } finally {
