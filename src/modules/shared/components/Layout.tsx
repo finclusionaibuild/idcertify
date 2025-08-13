@@ -49,7 +49,14 @@ import {
   Clock,
   User,
   LogOut,
-  Users
+  Users,
+  BarChart,
+  FileText as FileTextIcon,
+  User as UserIcon,
+  Award as AwardIcon,
+  Wallet as WalletIcon,
+  Settings as SettingsIcon,
+  Dna as DnaIcon
 } from 'lucide-react';
 
 interface NavigationItem {
@@ -69,7 +76,63 @@ interface NavigationData {
   groups: NavigationGroup[];
 }
 
-const navigationData: NavigationData = {
+// Individual user navigation
+const individualNavigation: NavigationData = {
+  standalone: [
+    { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard }
+  ],
+  groups: [
+    {
+      name: 'Identity & Verification',
+      icon: Shield,
+      children: [
+        { name: 'Verification Requests', path: '/verification-requests', icon: FileCheck },
+        { name: 'Attestation', path: '/attestation', icon: UserCheck },
+        { name: 'Trust Score', path: '/trust-score', icon: Award },
+        { name: 'Wallet', path: '/wallet', icon: Wallet },
+        { name: 'Profile', path: '/profile', icon: UserIcon },
+        { name: 'Biobank', path: '/biobank', icon: Dna },
+        { name: 'Settings', path: '/settings', icon: Settings }
+      ]
+    }
+  ]
+};
+
+// Organisation user navigation
+const organisationNavigation: NavigationData = {
+  standalone: [
+    { name: 'Dashboard', path: '/organisation/dashboard', icon: LayoutDashboard }
+  ],
+  groups: [
+    {
+      name: 'Verification Management',
+      icon: Shield,
+      children: [
+        { name: 'Verification Center', path: '/organisation/verifications', icon: FileCheck },
+        { name: 'Background Check', path: '/organisation/background-check', icon: CheckCircle },
+        { name: 'Bulk Upload', path: '/organisation/bulk-upload', icon: FileText },
+        { name: 'Bulk Historical Upload', path: '/organisation/bulk-historical-upload', icon: FileText },
+        { name: 'Attestation Endorsement', path: '/organisation/attestation-endorsement', icon: UserCheck }
+      ]
+    },
+    {
+      name: 'Organisation Management',
+      icon: Building2,
+      children: [
+        { name: 'Company Profile', path: '/organisation/profile', icon: Building2 },
+        { name: 'Staff Management', path: '/organisation/staff', icon: Users },
+        { name: 'Risk Monitoring', path: '/organisation/risk-monitoring', icon: Activity },
+        { name: 'Trust Score Analytics', path: '/organisation/trust-score', icon: Award },
+        { name: 'Documents', path: '/organisation/documents', icon: FolderOpen },
+        { name: 'Billing', path: '/organisation/billing', icon: CreditCard },
+        { name: 'API Keys', path: '/organisation/api', icon: Code }
+      ]
+    }
+  ]
+};
+
+// Admin navigation (existing)
+const adminNavigation: NavigationData = {
   standalone: [
     { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard }
   ],
@@ -186,10 +249,28 @@ const navigationData: NavigationData = {
 export default function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, signOut } = useAuth();
+  const { user, profile, signOut } = useAuth();
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+
+  // Get navigation data based on user role
+  const getNavigationData = (): NavigationData => {
+    if (!profile) return individualNavigation; // Default fallback
+    
+    switch (profile.role) {
+      case 'individual':
+        return individualNavigation;
+      case 'organisation':
+        return organisationNavigation;
+      case 'admin':
+        return adminNavigation;
+      default:
+        return individualNavigation;
+    }
+  };
+
+  const navigationData = getNavigationData();
 
   const toggleGroup = (groupName: string) => {
     setExpandedGroups(prev => 
@@ -228,6 +309,24 @@ export default function Layout() {
       }
     });
   }, [location.pathname]);
+
+  // Get user display info
+  const getUserDisplayInfo = () => {
+    if (!profile) return { name: 'User', role: 'User' };
+    
+    const roleDisplayNames = {
+      individual: 'Individual',
+      organisation: 'Organisation',
+      admin: 'Admin'
+    };
+    
+    return {
+      name: profile.first_name ? `${profile.first_name} ${profile.last_name || ''}`.trim() : profile.email,
+      role: roleDisplayNames[profile.role] || 'User'
+    };
+  };
+
+  const userInfo = getUserDisplayInfo();
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
@@ -353,11 +452,11 @@ export default function Layout() {
         <div className="p-4 border-t border-primary-500 flex-shrink-0">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
-              <Users className="w-4 h-4 text-white" />
+              <User className="w-4 h-4 text-white" />
             </div>
             <div>
-              <p className="text-white font-medium text-sm">Super Admin</p>
-              <p className="text-primary-200 text-xs">Admin</p>
+              <p className="text-white font-medium text-sm">{userInfo.name}</p>
+              <p className="text-primary-200 text-xs">{userInfo.role}</p>
             </div>
           </div>
         </div>
@@ -386,7 +485,7 @@ export default function Layout() {
                 <User className="h-4 w-4 text-white" />
               </div>
               <span className="hidden md:block text-sm font-medium">
-                {user?.name || 'User'}
+                {userInfo.name}
               </span>
               <ChevronDown className="h-4 w-4" />
             </button>
@@ -395,7 +494,7 @@ export default function Layout() {
             {profileDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
                 <div className="px-4 py-2 border-b border-gray-100">
-                  <p className="text-sm font-medium text-gray-900">{user?.name || 'User'}</p>
+                  <p className="text-sm font-medium text-gray-900">{userInfo.name}</p>
                   <p className="text-xs text-gray-500">{user?.email || 'user@example.com'}</p>
                 </div>
                 <Link
