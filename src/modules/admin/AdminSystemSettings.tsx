@@ -323,7 +323,7 @@ const AdminSystemSettings = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Config
           </button>
@@ -737,10 +737,11 @@ const AdminSystemSettings = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {activeTab === 'logs' && (
@@ -756,7 +757,7 @@ const AdminSystemSettings = () => {
                   <option>Info</option>
                   <option>Debug</option>
                 </select>
-                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Export Logs
                 </button>
@@ -843,16 +844,22 @@ const AdminSystemSettings = () => {
                 <button className="border border-gray-300 rounded-lg p-2 text-gray-600 hover:bg-gray-50">
                   <ChevronRight className="w-5 h-5" />
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {/* Add Trust Score Rule Modal */}
       {showAddRuleModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Add Trust Score Rule</h2>
@@ -945,7 +952,7 @@ const AdminSystemSettings = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowAddRuleModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -955,10 +962,11 @@ const AdminSystemSettings = () => {
                 >
                   Add Rule
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {/* System Health Panel */}

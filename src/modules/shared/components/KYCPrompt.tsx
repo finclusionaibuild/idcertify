@@ -50,9 +50,10 @@ const KYCPrompt: React.FC = () => {
   ];
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6 border-b border-gray-200">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full max-h-[90vh] flex flex-col">
+        {/* Header - Fixed */}
+        <div className="p-6 border-b border-gray-200 bg-white rounded-t-2xl flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
@@ -72,7 +73,8 @@ const KYCPrompt: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-6">
+        {/* Content - Scrollable */}
+        <div className="flex-1 overflow-y-auto p-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
           <div className="grid md:grid-cols-3 gap-6 mb-6">
             {kycTiers.map((tier) => (
               <div
@@ -98,58 +100,59 @@ const KYCPrompt: React.FC = () => {
                       : 'border-gray-300'
                   }`}>
                     {selectedTier === tier.id && (
-                      <div className="w-full h-full rounded-full bg-white scale-50"></div>
+                      <div className="w-full h-full bg-white rounded-full scale-75"></div>
                     )}
                   </div>
                 </div>
                 
-                <p className="text-sm text-gray-600 mb-4">{tier.description}</p>
+                <p className="text-sm text-gray-600 mb-3">{tier.description}</p>
                 
-                <div className="space-y-3">
-                  <div>
-                    <h4 className="text-xs font-medium text-gray-700 mb-1">Requirements:</h4>
-                    <ul className="text-xs text-gray-600 space-y-1">
-                      {tier.requirements.map((req, index) => (
-                        <li key={index} className="flex items-center space-x-1">
-                          <FileText className="w-3 h-3" />
-                          <span>{req}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-xs font-medium text-gray-700 mb-1">Unlocks:</h4>
-                    <ul className="text-xs text-gray-600 space-y-1">
-                      {tier.features.map((feature, index) => (
-                        <li key={index} className="flex items-center space-x-1">
-                          <CheckCircle className="w-3 h-3 text-success-500" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="pt-2 border-t border-gray-100">
-                    <span className="text-xs text-gray-500">Time: {tier.time}</span>
-                  </div>
+                <div className="mb-3">
+                  <h4 className="text-xs font-medium text-gray-700 mb-2">Requirements:</h4>
+                  <ul className="space-y-1">
+                    {tier.requirements.map((req, index) => (
+                      <li key={index} className="flex items-center text-xs text-gray-600">
+                        <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
+                        {req}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="mb-3">
+                  <h4 className="text-xs font-medium text-gray-700 mb-2">Features:</h4>
+                  <ul className="space-y-1">
+                    {tier.features.map((feature, index) => (
+                      <li key={index} className="flex items-center text-xs text-gray-600">
+                        <CheckCircle className="w-3 h-3 text-primary-500 mr-2 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="text-xs text-gray-500">
+                  Estimated time: {tier.time}
                 </div>
               </div>
             ))}
           </div>
-
-          <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+        </div>
+        
+        {/* Action Buttons - Fixed at Bottom */}
+        <div className="p-6 border-t border-gray-200 bg-white rounded-b-2xl flex-shrink-0">
+          <div className="flex items-center justify-end space-x-3">
             <button
               onClick={handleSkip}
-              className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+              className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
             >
               Skip for now
             </button>
             <button
               onClick={handleStartKYC}
-              className="inline-flex items-center px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+              className="flex items-center px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
             >
-              Start {kycTiers.find(t => t.id === selectedTier)?.name}
+              Start Verification
               <ArrowRight className="w-4 h-4 ml-2" />
             </button>
           </div>

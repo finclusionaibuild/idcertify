@@ -316,7 +316,7 @@ const VerificationCenter = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <Link to="/organisation/bulk-upload" className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <Link to="/organisation/bulk-upload" className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Upload className="w-4 h-4 mr-2" />
             Bulk Upload
           </Link>
@@ -507,10 +507,11 @@ const VerificationCenter = () => {
                   <ExternalLink className="w-5 h-5 text-green-600 mr-3" />
                   <span className="text-sm">API Documentation</span>
                 </Link>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {activeTab === 'requests' && (
@@ -556,7 +557,7 @@ const VerificationCenter = () => {
                   <option value="low">Low</option>
                 </select>
                 
-                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Export
                 </button>
@@ -807,7 +808,7 @@ const VerificationCenter = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setActiveTab('overview')}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -818,10 +819,11 @@ const VerificationCenter = () => {
                   <Send className="w-4 h-4 mr-2" />
                   Submit Verification Request
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {/* Real-time Status & Alerts */}
@@ -874,8 +876,13 @@ const VerificationCenter = () => {
 
       {/* New Request Modal */}
       {showNewRequestModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">New Verification Request</h2>
@@ -1011,7 +1018,7 @@ const VerificationCenter = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowNewRequestModal(false)}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1022,16 +1029,22 @@ const VerificationCenter = () => {
                   <Send className="w-4 h-4 mr-2" />
                   Submit Verification Request
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {/* Request Details Modal */}
       {selectedRequest && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Verification Request Details</h2>
@@ -1108,17 +1121,18 @@ const VerificationCenter = () => {
               )}
 
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Download Result
                 </button>
                 <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
                   Re-request
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
     </div>
   )

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SelectDropdown } from '../../shared/components/FormComponents'
 import { useOnboarding } from '../contexts/OnboardingContext';
 import { Building2, User, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
 
@@ -30,7 +31,7 @@ const QuickOnboarding: React.FC = () => {
 
   if (state.currentStep === 'welcome') {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
         <div className="bg-white rounded-xl p-8 max-w-md w-full mx-4 animate-slide-up">
           <div className="text-center mb-6">
             <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -72,7 +73,7 @@ const QuickOnboarding: React.FC = () => {
 
   if (state.currentStep === 'quick-setup') {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
         <div className="bg-white rounded-xl p-8 max-w-lg w-full mx-4 animate-slide-up">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Quick Setup</h2>

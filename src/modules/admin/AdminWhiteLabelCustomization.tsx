@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   Palette, 
   Upload, 
@@ -53,7 +54,8 @@ const AdminWhiteLabelCustomization: React.FC = () => {
       contactEmail: 'support@techcorp.com',
       contactPhone: '+1-555-0123',
       website: 'https://techcorp.com',
-      customCSS: '/* Custom styles */\n.header { border-radius: 8px; }',
+      customCSS: '/* Custom styles */
+.header { border-radius: 8px; }',
       footerText: '© 2024 TechCorp Solutions. All rights reserved.',
       loginPageBackground: '/api/placeholder/1920/1080',
       dashboardTheme: 'light',

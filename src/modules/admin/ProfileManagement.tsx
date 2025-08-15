@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   User, 
   Mail, 
@@ -29,7 +30,7 @@ import {
   UserCheck, 
   Award
 } from 'lucide-react'
-import { mockUsers } from "@shared/lib/mockData";
+import { mockUsers } from "../shared/lib/mockData";
 
 
 const ProfileManagement = () => {
@@ -217,7 +218,7 @@ const ProfileManagement = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Configuration
           </button>
@@ -382,16 +383,17 @@ const ProfileManagement = () => {
               </div>
               
               <div className="flex items-center space-x-3">
-                <select 
+                <SelectDropdown
                   value={selectedUserType}
-                  onChange={(e) => setSelectedUserType(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                >
-                  <option value="all">All User Types</option>
-                  <option value="individual">Individual</option>
-                  <option value="organisation">Organisation</option>
-                  <option value="admin">Admin</option>
-                </select>
+                  onChange={setSelectedUserType}
+                  options={[
+                    { value: 'all', label: 'All User Types' },
+                    { value: 'individual', label: 'Individual' },
+                    { value: 'organisation', label: 'Organisation' },
+                    { value: 'admin', label: 'Admin' }
+                  ]}
+                  size="sm"
+                />
               </div>
             </div>
           </div>
@@ -666,30 +668,38 @@ const ProfileManagement = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Required Verification Fields
                   </label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" multiple size={3}>
+                  <div className="w-full px-3 py-2 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-primary-500 focus-within:border-primary-500 min-h-[80px] max-h-[120px] overflow-y-auto">
                     {profileFields.map(field => (
-                      <option key={field.id} value={field.id}>{field.name}</option>
+                      <div key={field.id} className="flex items-center space-x-2 py-1">
+                        <input type="checkbox" id={field.id} className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <label htmlFor={field.id} className="text-sm text-gray-700">{field.name}</label>
+                      </div>
                     ))}
-                  </select>
+                  </div>
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Verification Method
                   </label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                    <option>Document Upload</option>
-                    <option>Third-Party Verification</option>
-                    <option>Manual Review</option>
-                    <option>Hybrid Approach</option>
-                  </select>
+                  <SelectDropdown
+                    value="document_upload"
+                    onChange={() => {}}
+                    options={[
+                      { value: 'document_upload', label: 'Document Upload' },
+                      { value: 'third_party_verification', label: 'Third-Party Verification' },
+                      { value: 'manual_review', label: 'Manual Review' },
+                      { value: 'hybrid_approach', label: 'Hybrid Approach' }
+                    ]}
+                    size="md"
+                  />
                 </div>
               </div>
             </div>
             
             {/* Save Button */}
             <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-              <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+              <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
                 Reset to Defaults
               </button>
               <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center">
@@ -703,8 +713,8 @@ const ProfileManagement = () => {
 
       {/* Edit Field Modal */}
       {showEditFieldModal && selectedField && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Edit Profile Field</h2>
@@ -737,35 +747,39 @@ const ProfileManagement = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Field Type *
                   </label>
-                  <select 
-                    defaultValue={selectedField.type}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  >
-                    <option value="text">Text</option>
-                    <option value="email">Email</option>
-                    <option value="tel">Phone</option>
-                    <option value="date">Date</option>
-                    <option value="textarea">Text Area</option>
-                    <option value="select">Select</option>
-                    <option value="checkbox">Checkbox</option>
-                    <option value="radio">Radio</option>
-                    <option value="file">File</option>
-                  </select>
+                  <SelectDropdown
+                    value={selectedField.type}
+                    onChange={() => {}}
+                    options={[
+                      { value: 'text', label: 'Text' },
+                      { value: 'email', label: 'Email' },
+                      { value: 'tel', label: 'Phone' },
+                      { value: 'date', label: 'Date' },
+                      { value: 'textarea', label: 'Text Area' },
+                      { value: 'select', label: 'Select' },
+                      { value: 'checkbox', label: 'Checkbox' },
+                      { value: 'radio', label: 'Radio' },
+                      { value: 'file', label: 'File' }
+                    ]}
+                    size="md"
+                  />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     User Type *
                   </label>
-                  <select 
-                    defaultValue={selectedField.userType}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  >
-                    <option value="all">All Users</option>
-                    <option value="individual">Individual</option>
-                    <option value="organisation">Organisation</option>
-                    <option value="admin">Admin</option>
-                  </select>
+                  <SelectDropdown
+                    value={selectedField.userType}
+                    onChange={() => {}}
+                    options={[
+                      { value: 'all', label: 'All Users' },
+                      { value: 'individual', label: 'Individual' },
+                      { value: 'organisation', label: 'Organisation' },
+                      { value: 'admin', label: 'Admin' }
+                    ]}
+                    size="md"
+                  />
                 </div>
                 
                 <div>
@@ -842,7 +856,7 @@ const ProfileManagement = () => {
                     setShowEditFieldModal(false)
                     setSelectedField(null)
                   }}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -866,8 +880,8 @@ const ProfileManagement = () => {
 
       {/* Add Field Modal */}
       {showAddFieldModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Add New Profile Field</h2>
@@ -986,7 +1000,7 @@ const ProfileManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowAddFieldModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>

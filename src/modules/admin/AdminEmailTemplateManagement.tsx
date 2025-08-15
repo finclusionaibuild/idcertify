@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { Mail, Plus, Edit, Trash2, Eye, Send, Save, X } from 'lucide-react';
 
 interface EmailTemplate {

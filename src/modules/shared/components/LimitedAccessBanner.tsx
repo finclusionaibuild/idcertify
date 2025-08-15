@@ -1,9 +1,16 @@
 import React from 'react';
 import { useOnboarding } from '../contexts/OnboardingContext';
+import { useAuth } from '../contexts/AuthContext';
 import { AlertCircle, Shield, ArrowRight } from 'lucide-react';
 
 const LimitedAccessBanner: React.FC = () => {
   const { state, setCurrentStep } = useOnboarding();
+  const { profile, isKYCRequired } = useAuth();
+
+  // Don't show banner for Admin and Super Admin users
+  if (!isKYCRequired()) {
+    return null;
+  }
 
   if (!state.showLimitedAccess || state.kycTier !== 'none') {
     return null;

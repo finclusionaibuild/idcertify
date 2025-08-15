@@ -200,7 +200,7 @@ const KYC_KYB_Management = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export
           </button>
@@ -328,7 +328,7 @@ const KYC_KYB_Management = () => {
               <option value="high">High Risk</option>
             </select>
             
-            <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+            <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
               <Filter className="w-4 h-4 mr-2" />
               More Filters
             </button>
@@ -451,8 +451,13 @@ const KYC_KYB_Management = () => {
 
       {/* Detail Modal */}
       {showDetailModal && selectedRecord && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">KYC/KYB Details</h2>
@@ -568,16 +573,15 @@ const KYC_KYB_Management = () => {
                       )}
                       Approve
                     </button>
-                  </>
                 ) : (
                   <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
                     Download Report
                   </button>
                 )}
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
       )}
     </div>
   )

@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Scrollbar Styles */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f3f4f6;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+  
+  .scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+  }
+  
+  .scrollbar-track-gray-100::-webkit-scrollbar-track {
+    background: #f3f4f6;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -9,6 +44,7 @@
   
   body {
     @apply bg-background text-foreground;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
@@ -98,8 +134,83 @@
   @apply bg-gray-300 rounded-full;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400;
+/* Modal-specific scrollbar styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Ensure modal scrollbars don't overflow rounded corners */
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: #d1d5db;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background: transparent;
+}
+
+/* Sidebar Navigation Connector Lines */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  position: relative;
+  padding-left: 25px;
+}
+
+/* Style each submenu item */
+.submenu li {
+  position: relative;
+}
+
+/* 1. The CURVED "L" shaped connector */
+.submenu li::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -15px;
+  width: 14px;
+  height: 22px;
+  
+  /* Create the L-shape using borders */
+  border-left: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+  
+  /* The magic: curve the corner */
+  border-bottom-left-radius: 8px;
+}
+
+/* 2. The VERTICAL line segment connecting items */
+.submenu li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -15px;
+  
+  /* This is the line that continues downwards */
+  width: 1px;
+  height: 100%;
+  background-color: #d3d3d3;
+}
+
+/* 3. Remove the continuing line on the LAST item */
+.submenu li:last-child::after {
+  display: none;
 }
 
 /* Loading animations */

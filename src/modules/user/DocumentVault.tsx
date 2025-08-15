@@ -383,7 +383,7 @@ const DocumentVault = () => {
         <div className="flex items-center space-x-3">
           <button 
             onClick={() => setShowCreateFolderModal(true)}
-            className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center"
+            className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center"
           >
             <FolderPlus className="w-4 h-4 mr-2" />
             New Folder
@@ -526,13 +526,13 @@ const DocumentVault = () => {
             <div className="flex items-center border border-gray-300 rounded-lg">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 ${viewMode === 'grid' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:text-gray-800'}`}
+                className={`p-2 ${viewMode === 'grid' ? 'bg-primary-600 text-white' : 'bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200'}`}
               >
                 <Grid className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 ${viewMode === 'list' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:text-gray-800'}`}
+                className={`p-2 ${viewMode === 'list' ? 'bg-primary-600 text-white' : 'bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200'}`}
               >
                 <List className="w-4 h-4" />
               </button>
@@ -560,7 +560,7 @@ const DocumentVault = () => {
               </select>
               <button
                 onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-                className="p-1 text-gray-600 hover:text-gray-800"
+                className="p-1 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
               >
                 {sortOrder === 'asc' ? <SortAsc className="w-4 h-4" /> : <SortDesc className="w-4 h-4" />}
               </button>
@@ -621,10 +621,10 @@ const DocumentVault = () => {
                     >
                       View
                     </button>
-                    <button className="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded">
+                    <button className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 border border-gray-300 rounded">
                       <Download className="w-4 h-4" />
                     </button>
-                    <button className="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded">
+                    <button className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 border border-gray-300 rounded">
                       <Share2 className="w-4 h-4" />
                     </button>
                   </div>
@@ -755,8 +755,13 @@ const DocumentVault = () => {
 
       {/* Upload Modal */}
       {showUploadModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Upload Documents</h2>
@@ -834,7 +839,7 @@ const DocumentVault = () => {
                 <div className="flex items-center justify-end space-x-3 mt-6 pt-4 border-t">
                   <button 
                     onClick={() => setShowUploadModal(false)}
-                    className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                    className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                   >
                     Cancel
                   </button>
@@ -850,8 +855,13 @@ const DocumentVault = () => {
 
       {/* Create Folder Modal */}
       {showCreateFolderModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Create New Folder</h2>
@@ -909,7 +919,7 @@ const DocumentVault = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowCreateFolderModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -925,16 +935,22 @@ const DocumentVault = () => {
                   )}
                   Create Folder
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {/* Document Details Modal */}
       {showDocumentModal && selectedDocument && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Document Details</h2>
@@ -1068,11 +1084,11 @@ const DocumentVault = () => {
 
               {/* Actions */}
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Download
                 </button>
-                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Share2 className="w-4 h-4 mr-2" />
                   Share
                 </button>
@@ -1080,10 +1096,11 @@ const DocumentVault = () => {
                   <Edit className="w-4 h-4 mr-2" />
                   Edit Details
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
     </div>
   )

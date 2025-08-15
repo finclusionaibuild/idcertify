@@ -142,7 +142,7 @@ const Auth = () => {
 
         {/* Demo Login Section */}
         {isLogin && (
-          <div className="bg-white rounded-lg shadow-xl p-6 mb-6">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 p-6 mb-6">
             <div className="flex items-center justify-center mb-4">
               <Zap className="w-5 h-5 text-yellow-500 mr-2" />
               <h3 className="text-lg font-semibold text-gray-900">Quick Demo Access</h3>
@@ -181,7 +181,7 @@ const Auth = () => {
         )}
 
         {/* Regular Auth form */}
-        <div className="bg-white rounded-lg shadow-xl p-8">
+        <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 p-8">
           {!isLogin && (
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-3">
@@ -273,22 +273,21 @@ const Auth = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         Industry
                       </label>
-                      <select
-                        name="industry"
-                        value={formData.industry}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                        required
-                      >
-                        <option value="">Select Industry</option>
-                        <option value="financial-services">Financial Services</option>
-                        <option value="healthcare">Healthcare</option>
-                        <option value="education">Education</option>
-                        <option value="government">Government</option>
-                        <option value="technology">Technology</option>
-                        <option value="retail">Retail</option>
-                        <option value="other">Other</option>
-                      </select>
+                      <SelectDropdown
+              value={formData.industry}
+              onChange={handleInputChange}
+              options={[
+                { value: '', label: 'Select Industry' },
+                { value: 'financial-services', label: 'Financial Services' },
+                { value: 'healthcare', label: 'Healthcare' },
+                { value: 'education', label: 'Education' },
+                { value: 'government', label: 'Government' },
+                { value: 'technology', label: 'Technology' },
+                { value: 'retail', label: 'Retail' },
+                { value: 'other', label: 'Other' }
+              ]}
+              size="sm"
+            />
                     </div>
                   </>
                 )}

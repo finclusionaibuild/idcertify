@@ -96,7 +96,7 @@ const AdminReportAnalytics = () => {
         </div>
 
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Data
           </button>

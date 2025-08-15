@@ -474,7 +474,7 @@ const AdminApprovalWorkflow = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export
           </button>
@@ -630,7 +630,7 @@ const AdminApprovalWorkflow = () => {
               </>
             )}
             
-            <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+            <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
               <Filter className="w-4 h-4 mr-2" />
               More Filters
             </button>
@@ -670,7 +670,7 @@ const AdminApprovalWorkflow = () => {
                           setSelectedWorkflow(workflow)
                           setShowEditModal(true)
                         }}
-                        className="p-2 text-gray-600 hover:text-gray-800 rounded hover:bg-gray-100"
+                        className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 rounded hover:bg-gray-100"
                       >
                         <Edit className="w-4 h-4" />
                       </button>
@@ -680,7 +680,7 @@ const AdminApprovalWorkflow = () => {
                           setSelectedWorkflow(workflow)
                           setShowDeleteModal(true)
                         }}
-                        className="p-2 text-gray-600 hover:text-gray-800 rounded hover:bg-gray-100"
+                        className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 rounded hover:bg-gray-100"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -715,10 +715,10 @@ const AdminApprovalWorkflow = () => {
                             <h5 className="font-medium text-gray-900">{step.name}</h5>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <button className="p-1 text-gray-600 hover:text-gray-800 rounded hover:bg-gray-100">
+                            <button className="p-1 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 rounded hover:bg-gray-100">
                               <Edit className="w-4 h-4" />
                             </button>
-                            <button className="p-1 text-gray-600 hover:text-gray-800 rounded hover:bg-gray-100">
+                            <button className="p-1 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 rounded hover:bg-gray-100">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           </div>
@@ -1055,7 +1055,7 @@ const AdminApprovalWorkflow = () => {
             </div>
             
             <div className="flex items-center justify-end space-x-3 mt-6 pt-4 border-t">
-              <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+              <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
                 Reset to Defaults
               </button>
               <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center">
@@ -1104,8 +1104,13 @@ const AdminApprovalWorkflow = () => {
 
       {/* Create Workflow Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Create New Workflow</h2>
@@ -1210,7 +1215,7 @@ const AdminApprovalWorkflow = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowCreateModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1226,16 +1231,22 @@ const AdminApprovalWorkflow = () => {
                   )}
                   Create Workflow
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {/* Edit Workflow Modal */}
       {showEditModal && selectedWorkflow && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Edit Workflow</h2>
@@ -1328,7 +1339,7 @@ const AdminApprovalWorkflow = () => {
                     setShowEditModal(false)
                     setSelectedWorkflow(null)
                   }}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1344,16 +1355,22 @@ const AdminApprovalWorkflow = () => {
                   )}
                   Save Changes
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && selectedWorkflow && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Confirm Deletion</h2>
@@ -1384,7 +1401,7 @@ const AdminApprovalWorkflow = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowDeleteModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1400,10 +1417,10 @@ const AdminApprovalWorkflow = () => {
                   )}
                   Delete Workflow
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
       )}
     </div>
   )

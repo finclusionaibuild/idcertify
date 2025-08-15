@@ -47,8 +47,11 @@ const AdminWhiteLabellingCustomization = () => {
     sidebarPosition: 'left', // 'left' | 'right'
     headerVisibility: true,
     footerVisibility: true,
-    customCss: '/* Add your custom CSS here */\nbody { font-family: "Inter", sans-serif; }',
-    customJs: '/* Add your custom JavaScript here */\nconsole.log("Platform loaded!");'
+    customCss: '/* Add your custom CSS here */
+body { font-family: "Inter", sans-serif;
+import { SelectDropdown } from '../shared/components/FormComponents' }',
+    customJs: '/* Add your custom JavaScript here */
+console.log("Platform loaded!");'
   })
 
   // Mock notification settings (simplified, linked to AdminNotificationManagement)
@@ -137,7 +140,7 @@ const AdminWhiteLabellingCustomization = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <RefreshCw className="w-4 h-4 mr-2" />
             Preview Changes
           </button>
@@ -616,7 +619,6 @@ const AdminWhiteLabellingCustomization = () => {
                     Verify DNS Configuration
                   </button>
                 </div>
-              </>
             )}
           </div>
           
