@@ -609,10 +609,11 @@ const SystemLogConfiguration = () => {
                   )}
                   Save Configuration
                 </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+        </>
       )}
     </div>
   )

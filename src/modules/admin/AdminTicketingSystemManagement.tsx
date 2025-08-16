@@ -442,7 +442,6 @@ const AdminTicketingSystemManagement = () => {
       </div>
     </div>
   </div>
-        </>
       )}
 
       {/* All Tickets Tab */}

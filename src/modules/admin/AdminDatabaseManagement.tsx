@@ -504,7 +504,6 @@ const AdminDatabaseManagement = () => {
       </div>
     </div>
   </div>
-        </>
       )}
 
       {activeTab === 'tables' && (
@@ -785,7 +784,6 @@ const AdminDatabaseManagement = () => {
       </div>
     </div>
   </div>
-        </>
       )}
 
       {activeTab === 'maintenance' && (
@@ -897,7 +895,6 @@ const AdminDatabaseManagement = () => {
       </div>
     </div>
   </div>
-        </>
       )}
 
       {/* Table Detail Modal */}

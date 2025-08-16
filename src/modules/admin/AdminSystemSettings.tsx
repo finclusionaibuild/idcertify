@@ -741,7 +741,6 @@ const AdminSystemSettings = () => {
       </div>
     </div>
   </div>
-        </>
       )}
 
       {activeTab === 'logs' && (

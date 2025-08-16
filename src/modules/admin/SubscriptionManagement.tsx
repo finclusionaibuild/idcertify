@@ -629,7 +629,6 @@ const SubscriptionManagement = () => {
       </div>
     </div>
   </div>
-        </>
       )}
 
       {/* Add Subscription Modal */}

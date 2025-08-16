@@ -279,7 +279,6 @@ const RBACManagement = () => {
                               <span className="ml-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
                                 Default
                               </span>
-                            )}
                           </div>
                         </div>
                       </td>
@@ -298,12 +297,10 @@ const RBACManagement = () => {
                                 {perm.split('.').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join('.')}
                               </span>
                             ))
-                          )}
                           {role.permissions.length > 2 && !role.permissions.includes('all') && (
                             <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">
                               +{role.permissions.length - 2} more
                             </span>
-                          )}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -344,7 +341,6 @@ const RBACManagement = () => {
             </div>
           </div>
         </div>
-      )}
 
       {/* Permissions Tab */}
       {activeTab === 'permissions' && (
@@ -372,7 +368,6 @@ const RBACManagement = () => {
             </div>
           </div>
         </div>
-      )}
 
       {/* User Assignments Tab */}
       {activeTab === 'assignments' && (
@@ -459,7 +454,6 @@ const RBACManagement = () => {
                           <CheckCircle className="w-5 h-5 text-green-500" />
                         ) : (
                           <XCircle className="w-5 h-5 text-red-500" />
-                        )}
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                           user.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
                         }`}>
@@ -486,7 +480,6 @@ const RBACManagement = () => {
             </table>
           </div>
         </div>
-      )}
 
       {/* Add Role Modal */}
       {showAddRoleModal && (
@@ -587,15 +580,12 @@ const RBACManagement = () => {
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                   ) : (
                     <Plus className="w-4 h-4 mr-2" />
-                  )}
                   Create Role
                 </button>
         </div>
       </div>
     </div>
   </div>
-        </>
-      )}
 
       {/* Edit Role Modal */}
       {showEditRoleModal && selectedRole && (
@@ -715,13 +705,13 @@ const RBACManagement = () => {
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                   ) : (
                     <Save className="w-4 h-4 mr-2" />
-                  )}
                   Save Changes
                 </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+        </>
       )}
     </div>
   )

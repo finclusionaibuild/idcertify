@@ -368,7 +368,6 @@ const AdminVerificationManagement = () => {
                 <span className="bg-gray-100 text-gray-600 text-xs rounded-full px-2 py-1">
                   {tab.count}
                 </span>
-              )}
             </button>
           ))}
         </nav>
@@ -467,7 +466,6 @@ const AdminVerificationManagement = () => {
             </div>
           </div>
         </div>
-      )}
 
       {activeTab !== 'overview' && (
         <div className="space-y-6">
@@ -577,7 +575,6 @@ const AdminVerificationManagement = () => {
                               <Building className="w-4 h-4 text-gray-600 mr-2" />
                             ) : (
                               <User className="w-4 h-4 text-gray-600 mr-2" />
-                            )}
                             <span className="text-sm font-medium text-gray-900">{request.requesterName}</span>
                           </div>
                           <div className="flex items-center mt-1">
@@ -637,7 +634,6 @@ const AdminVerificationManagement = () => {
             </div>
           </div>
         </div>
-      )}
 
       {/* Verification Detail Modal */}
       {showDetailModal && selectedVerification && (
@@ -687,7 +683,6 @@ const AdminVerificationManagement = () => {
                         <Building className="w-4 h-4 text-gray-600 mr-2" />
                       ) : (
                         <User className="w-4 h-4 text-gray-600 mr-2" />
-                      )}
                       <p className="font-medium text-gray-900">{selectedVerification.requesterName}</p>
                     </div>
                   </div>
@@ -731,7 +726,6 @@ const AdminVerificationManagement = () => {
                       </div>
                     ) : (
                       <p className="text-gray-600">Not assigned to any staff member</p>
-                    )}
                   </div>
                   <button 
                     onClick={() => {
@@ -755,7 +749,6 @@ const AdminVerificationManagement = () => {
                   <div className="p-4 border border-gray-200 border-dashed rounded-lg text-center">
                     <p className="text-gray-500">No notes available</p>
                   </div>
-                )}
               </div>
 
               {/* Action Buttons */}
@@ -768,13 +761,10 @@ const AdminVerificationManagement = () => {
                   <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
                     Take Action
                   </button>
-                )}
         </div>
       </div>
     </div>
   </div>
-        </>
-      )}
 
       {/* Assign Staff Modal */}
       {showAssignModal && (

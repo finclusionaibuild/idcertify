@@ -282,7 +282,6 @@ const KYC_KYB_Management = () => {
                 <span className="ml-2 bg-gray-100 text-gray-600 text-xs rounded-full px-2 py-1">
                   {tab.count}
                 </span>
-              )}
             </button>
           ))}
         </nav>
@@ -378,7 +377,6 @@ const KYC_KYB_Management = () => {
                           <User className="w-5 h-5 text-white" />
                         ) : (
                           <Building className="w-5 h-5 text-white" />
-                        )}
                       </div>
                       <div>
                         <div className="text-sm font-medium text-gray-900">{record.name}</div>
@@ -446,7 +444,6 @@ const KYC_KYB_Management = () => {
               Try adjusting your search or filter criteria
             </p>
           </div>
-        )}
       </div>
 
       {/* Detail Modal */}
@@ -479,7 +476,6 @@ const KYC_KYB_Management = () => {
                       <User className="w-8 h-8 text-white" />
                     ) : (
                       <Building className="w-8 h-8 text-white" />
-                    )}
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900">{selectedRecord.name}</h3>
@@ -558,7 +554,6 @@ const KYC_KYB_Management = () => {
                         <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-700 mr-2"></div>
                       ) : (
                         <XCircle className="w-4 h-4 mr-2" />
-                      )}
                       Reject
                     </button>
                     <button 
@@ -570,18 +565,17 @@ const KYC_KYB_Management = () => {
                         <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                       ) : (
                         <CheckCircle className="w-4 h-4 mr-2" />
-                      )}
                       Approve
                     </button>
                 ) : (
                   <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
                     Download Report
                   </button>
-                )}
         </div>
       </div>
     </div>
   </div>
+        </>
       )}
     </div>
   )

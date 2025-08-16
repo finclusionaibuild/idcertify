@@ -584,7 +584,6 @@ const TrustScore = () => {
                           ))}
                         </div>
                       </div>
-                    )}
                     
                     <button
                       onClick={() => handleStartImprovement(recommendation.id)}
@@ -600,7 +599,6 @@ const TrustScore = () => {
     </div>
   </div>
         </>
-      )}
 
       {/* Individual Improvement Detail Modal */}
       {selectedImprovement && (
@@ -670,7 +668,8 @@ const TrustScore = () => {
                           ))}
                         </div>
                       </div>
-                    )}
+                    
+                    </div>
                     
                     <div className="flex items-center space-x-3 pt-4 border-t">
                       <button 
@@ -693,6 +692,7 @@ const TrustScore = () => {
             })()}
           </div>
         </div>
+        </>
       )}
     </div>
   )

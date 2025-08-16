@@ -931,7 +931,6 @@ const AdminNotificationManagement = () => {
       </div>
     </div>
   </div>
-        </>
       )}
 
       {/* Create/Edit Template Modal */}
@@ -1074,6 +1073,7 @@ const AdminNotificationManagement = () => {
       </div>
     </div>
   </div>
+        </>
       )}
     </div>
   )

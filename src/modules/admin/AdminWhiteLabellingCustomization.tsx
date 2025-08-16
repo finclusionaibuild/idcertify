@@ -47,11 +47,8 @@ const AdminWhiteLabellingCustomization = () => {
     sidebarPosition: 'left', // 'left' | 'right'
     headerVisibility: true,
     footerVisibility: true,
-    customCss: '/* Add your custom CSS here */
-body { font-family: "Inter", sans-serif;
-import { SelectDropdown } from '../shared/components/FormComponents' }',
-    customJs: '/* Add your custom JavaScript here */
-console.log("Platform loaded!");'
+    customCss: '/* Add your custom CSS here */\nbody { font-family: "Inter", sans-serif; }',
+    customJs: '/* Add your custom JavaScript here */\nconsole.log("Platform loaded!");'
   })
 
   // Mock notification settings (simplified, linked to AdminNotificationManagement)
@@ -157,7 +154,6 @@ console.log("Platform loaded!");'
           <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
           <p className="text-green-800">{successMessage}</p>
         </div>
-      )}
 
       {/* Tabs */}
       <div className="border-b border-gray-200">
@@ -335,12 +331,10 @@ console.log("Platform loaded!");'
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
                 <Save className="w-4 h-4 mr-2" />
-              )}
               Save Branding
             </button>
           </div>
         </div>
-      )}
 
       {/* Layout Tab */}
       {activeTab === 'layout' && (
@@ -444,12 +438,10 @@ console.log("Platform loaded!");'
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
                 <Save className="w-4 h-4 mr-2" />
-              )}
               Save Layout
             </button>
           </div>
         </div>
-      )}
 
       {/* Notifications Tab */}
       {activeTab === 'notifications' && (
@@ -536,12 +528,10 @@ console.log("Platform loaded!");'
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
                 <Save className="w-4 h-4 mr-2" />
-              )}
               Save Notifications
             </button>
           </div>
         </div>
-      )}
 
       {/* Domains Tab */}
       {activeTab === 'domains' && (
@@ -619,8 +609,7 @@ console.log("Platform loaded!");'
                     Verify DNS Configuration
                   </button>
                 </div>
-            )}
-          </div>
+              </div>
           
           <div className="flex items-center justify-end space-x-3 pt-4 border-t mt-6">
             <button 
@@ -632,12 +621,10 @@ console.log("Platform loaded!");'
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
                 <Save className="w-4 h-4 mr-2" />
-              )}
               Save Domains
             </button>
           </div>
         </div>
-      )}
 
       {/* Advanced Tab */}
       {activeTab === 'advanced' && (
@@ -677,7 +664,6 @@ console.log("Platform loaded!");'
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                 ) : (
                   <Save className="w-4 h-4 mr-2" />
-                )}
                 Save Advanced Settings
               </button>
             </div>

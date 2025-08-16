@@ -395,12 +395,14 @@ const AdminHistoricalDataManagement = () => {
                   <Edit className="w-4 h-4 mr-2" />
                   Edit Record
                 </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+        </>
       )}
     </div>
+  </div>
   )
 }
 

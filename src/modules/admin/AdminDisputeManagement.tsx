@@ -598,10 +598,11 @@ const AdminDisputeManagement = () => {
                     Resolve Dispute
                   </button>
                 )}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+        </>
       )}
     </div>
   )

@@ -463,7 +463,6 @@ const DocumentVault = () => {
                 <span className="bg-gray-100 text-gray-600 text-xs rounded-full px-2 py-1">
                   {tab.count}
                 </span>
-              )}
             </button>
           ))}
         </nav>
@@ -724,9 +723,7 @@ const DocumentVault = () => {
                 </table>
               </div>
             </div>
-          )}
         </div>
-      )}
 
       {activeTab === 'folders' && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -751,7 +748,6 @@ const DocumentVault = () => {
             </div>
           ))}
         </div>
-      )}
 
       {/* Upload Modal */}
       {showUploadModal && (
@@ -851,7 +847,6 @@ const DocumentVault = () => {
             </FeatureGate>
           </div>
         </div>
-      )}
 
       {/* Create Folder Modal */}
       {showCreateFolderModal && (
@@ -932,7 +927,6 @@ const DocumentVault = () => {
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                   ) : (
                     <FolderPlus className="w-4 h-4 mr-2" />
-                  )}
                   Create Folder
                 </button>
         </div>
@@ -940,7 +934,6 @@ const DocumentVault = () => {
     </div>
   </div>
         </>
-      )}
 
       {/* Document Details Modal */}
       {showDocumentModal && selectedDocument && (
@@ -978,7 +971,6 @@ const DocumentVault = () => {
                   </div>
                   {selectedDocument.description && (
                     <p className="text-gray-700 mt-2">{selectedDocument.description}</p>
-                  )}
                 </div>
                 <div className="flex items-center space-x-2">
                   {selectedDocument.isStarred && <Star className="w-5 h-5 text-yellow-500 fill-current" />}
