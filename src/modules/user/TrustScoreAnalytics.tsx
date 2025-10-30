@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   Shield, 
   TrendingUp, 
@@ -352,11 +351,11 @@ const TrustScoreAnalytics = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <RefreshCw className="w-4 h-4 mr-2" />
             Refresh
           </button>
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Report
           </button>
@@ -569,7 +568,7 @@ const TrustScoreAnalytics = () => {
                   <option value="high">High Risk</option>
                 </select>
                 
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
                   <Filter className="w-4 h-4 mr-2" />
                   More Filters
                 </button>
@@ -898,7 +897,7 @@ const TrustScoreAnalytics = () => {
             <p className="text-gray-600">Download reports or integrate trust score monitoring via API</p>
           </div>
           <div className="flex items-center space-x-3">
-            <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+            <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
               <Download className="w-4 h-4 mr-2" />
               Export CSV/PDF Report
             </button>
@@ -912,8 +911,8 @@ const TrustScoreAnalytics = () => {
 
       {/* User Profile Modal */}
       {selectedUser && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Trust Score Profile</h2>
@@ -1003,7 +1002,7 @@ const TrustScoreAnalytics = () => {
               </div>
 
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
+                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
                   Send Reminder
                 </button>
                 <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">

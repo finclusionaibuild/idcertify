@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from "../shared/contexts/AuthContext";
-import { SelectDropdown } from '../shared/components/FormComponents'
-import { useOnboarding } from '../shared/contexts/OnboardingContext';
-import LimitedAccessBanner from '../shared/components/LimitedAccessBanner';
-import FeatureGate from '../shared/components/FeatureGate';
+import { useAuth } from "@shared/contexts/AuthContext";
 import { 
   Shield, 
   FileText, 
@@ -40,14 +36,13 @@ import {
   ArrowDown,
   MoreHorizontal
 } from 'lucide-react'
-import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from "../shared/lib/mockData";
-import VerificationTrendsChart from "../shared/components/VerificationTrendsChart";
+import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from "@shared/lib/mockData";
+import VerificationTrendsChart from "@shared/components/VerificationTrendsChart";
 import IndividualDashboard from './IndividualDashboard'
 import OrganisationDashboard from './OrganisationDashboard'
 
 const Dashboard = () => {
   const { profile } = useAuth()
-  const { state } = useOnboarding();
   const [stats, setStats] = useState({
     documents: 0,
     verifications: 0,
@@ -233,26 +228,40 @@ const Dashboard = () => {
   if (profile?.role === 'admin') {
     return (
       <div className="space-y-6">
-        <LimitedAccessBanner />
-        
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div data-tour="dashboard">
+          <div>
             <h1 className="text-2xl font-bold text-gray-900">
               Hey, {getUserName()}
             </h1>
             <p className="text-gray-500 text-sm">Monday, 24 February 2024</p>
+          </div>
+          
+          <div className="flex items-center space-x-4">
+            <div className="relative">
+              <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="What service are looking for today?"
+                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 w-80"
+              />
+            </div>
+            <button className="p-2 text-gray-400 hover:text-gray-600">
+              <MessageSquare className="w-5 h-5" />
+            </button>
+            <button className="p-2 text-gray-400 hover:text-gray-600">
+              <Bell className="w-5 h-5" />
+            </button>
+            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-sm font-medium">O</span>
+            </div>
           </div>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {getDashboardCards().map((card, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-lg shadow-sm p-6 border border-gray-200"
-              data-tour={index === 1 ? "trust-score" : undefined}
-            >
+            <div key={index} className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
               <div className="flex items-center justify-between mb-2">
                 <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{card.title}</p>
                 {card.action && (
@@ -277,56 +286,52 @@ const Dashboard = () => {
           {/* Left Column - Charts */}
           <div className="lg:col-span-2 space-y-6">
             {/* Enhanced Verification Trends Chart */}
-            <FeatureGate feature="trust-score">
-              <VerificationTrendsChart />
-            </FeatureGate>
+            <VerificationTrendsChart />
 
             {/* Fraud & Risk Snapshot */}
-            <FeatureGate feature="trust-score">
-              <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Fraud & Risk Snapshot</h3>
-                    <p className="text-sm text-gray-500">as of 14 May 2021, 09:41 PM</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                      <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
-                    </div>
-                    <button className="text-sm text-red-600 hover:text-red-700">
-                      View & Address →
-                    </button>
-                  </div>
-                  
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
-                      <span className="text-sm text-gray-700">2 guarantor inconsistencies</span>
-                    </div>
-                    <button className="text-sm text-red-600 hover:text-red-700">
-                      View & Address →
-                    </button>
-                  </div>
-                  
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                      <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
-                    </div>
-                    <button className="text-sm text-red-600 hover:text-red-700">
-                      View & Address →
-                    </button>
-                  </div>
+            <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">Fraud & Risk Snapshot</h3>
+                  <p className="text-sm text-gray-500">as of 14 May 2021, 09:41 PM</p>
                 </div>
               </div>
-            </FeatureGate>
+              
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                    <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
+                  </div>
+                  <button className="text-sm text-red-600 hover:text-red-700">
+                    View & Address →
+                  </button>
+                </div>
+                
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                    <span className="text-sm text-gray-700">2 guarantor inconsistencies</span>
+                  </div>
+                  <button className="text-sm text-red-600 hover:text-red-700">
+                    View & Address →
+                  </button>
+                </div>
+                
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                    <span className="text-sm text-gray-700">5 flagged passport mismatches</span>
+                  </div>
+                  <button className="text-sm text-red-600 hover:text-red-700">
+                    View & Address →
+                  </button>
+                </div>
+              </div>
+            </div>
 
             {/* System Users */}
-            <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200" data-tour="documents">
+            <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">System Users</h3>

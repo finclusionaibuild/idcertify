@@ -1,11 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { AuthProvider, useAuth } from '../modules/shared/contexts/AuthContext'
-import { OnboardingProvider } from '../modules/shared/contexts/OnboardingContext'
-import { ToastProvider } from '../modules/shared/contexts/ToastContext'
-import { NotificationProvider } from '../modules/shared/contexts/NotificationContext'
+import { AuthProvider } from '../modules/shared/contexts/AuthContext'
 import Layout from '../modules/shared/components/Layout'
 import AuthGuard from '../modules/shared/components/AuthGuard'
-import OnboardingFlow from '../modules/shared/components/OnboardingFlow'
 import Auth from '../modules/user/Auth'
 import DemoLogin from '../modules/shared/DemoLogin'
 import Dashboard from '../modules/user/Dashboard'
@@ -36,14 +32,6 @@ import AdminSystemSettings from '../modules/admin/AdminSystemSettings'
 import AdminHistoricalDataManagement from '../modules/admin/AdminHistoricalDataManagement'
 import AdminAnalytics from '../modules/admin/AdminAnalytics'
 import SuperAdminDashboard from '../modules/admin/SuperAdminDashboard'
-import EmployerManagement from '../modules/admin/EmployerManagement'
-import EmployeeManagementSystem from '../modules/admin/EmployeeManagementSystem'
-import SureAMLManagement from '../modules/admin/SureAMLManagement'
-import SureComplianceManagement from '../modules/admin/SureComplianceManagement'
-import DataMonitoringManagement from '../modules/admin/DataMonitoringManagement'
-import CompanyManagement from '../modules/admin/CompanyManagement'
-import HelpSupport from '../modules/admin/HelpSupport'
-import DownTimeTracker from '../modules/admin/DownTimeTracker'
 import AdminTransactionManagement from '../modules/admin/AdminTransactionManagement'
 import AdminApprovalWorkflow from '../modules/admin/AdminApprovalWorkflow'
 import RBACManagement from '../modules/shared/RBACManagement'
@@ -65,22 +53,12 @@ import SystemHealthCheck from '../modules/admin/SystemHealthCheck'
 import SubscriptionManagement from '../modules/admin/SubscriptionManagement'
 import SystemLogConfiguration from '../modules/admin/SystemLogConfiguration'
 import ProfileManagement from '../modules/admin/ProfileManagement'
-import BackupRecovery from '../modules/admin/BackupRecovery'
-import AdminContentManagement from '../modules/admin/AdminContentManagement'
-import AdminRatingsManagement from '../modules/admin/AdminRatingsManagement'
-import AdminReferralManagement from '../modules/admin/AdminReferralManagement'
-import AdminRewardManagement from '../modules/admin/AdminRewardManagement'
-import AdminWhiteLabelCustomization from '../modules/admin/AdminWhiteLabelCustomization'
-import Notifications from '../modules/shared/pages/Notifications'
-import HelpCenter from '../modules/shared/pages/HelpCenter'
 
-// Wrapper component to access auth context
-const AppContent: React.FC = () => {
-  const { profile } = useAuth();
-  
+
+function App() {
   return (
-    <OnboardingProvider userProfile={profile}>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Routes>
           {/* Public routes */}
           <Route path="/auth" element={<Auth />} />
@@ -94,26 +72,11 @@ const AppContent: React.FC = () => {
           {/* Protected routes */}
           <Route path="/" element={
             <AuthGuard requireOnboarding={true}>
-              <OnboardingFlow>
-                <Layout />
-              </OnboardingFlow>
+              <Layout />
             </AuthGuard>
           }>
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
-            
-            {/* Shared routes for all users */}
-            <Route path="notifications" element={
-              <AuthGuard roles={['individual', 'organisation', 'admin']}>
-                <Notifications />
-              </AuthGuard>
-            } />
-
-            <Route path="help" element={
-              <AuthGuard roles={['individual', 'organisation', 'admin']}>
-                <HelpCenter />
-              </AuthGuard>
-            } />
             
             {/* Individual routes */}
             <Route path="profile" element={
@@ -353,12 +316,6 @@ const AppContent: React.FC = () => {
                 <SystemLogConfiguration />
               </AuthGuard>
             } />
-
-            <Route path="admin/backup-recovery" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <BackupRecovery />
-              </AuthGuard>
-            } />
             
             <Route path="admin/profile-management" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
@@ -425,113 +382,28 @@ const AppContent: React.FC = () => {
                 <AdminTicketingSystemManagement />
               </AuthGuard>
             } />
-
-            <Route path="admin/employer-management" element={
+            
+            <Route path="admin/system-health" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <EmployerManagement />
+                <SystemHealthCheck />
               </AuthGuard>
             } />
-
-            <Route path="admin/employee-management" element={
+            
+            <Route path="admin/subscription" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <EmployeeManagementSystem />
+                <SubscriptionManagement />
               </AuthGuard>
             } />
-
-            <Route path="admin/verification-management" element={
+            
+            <Route path="admin/system-log" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <VerificationRequests />
+                <SystemLogConfiguration />
               </AuthGuard>
             } />
-
-            <Route path="admin/trust-score-management" element={
+            
+            <Route path="admin/profile-management" element={
               <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <TrustScore />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/document-vault-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <DocumentVault />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/attestation-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <Attestation />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/biobank-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <Biobank />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/sure-aml-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SureAMLManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/sure-compliance-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <SureComplianceManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/data-monitoring-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <DataMonitoringManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/company-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <CompanyManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/help-support" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <HelpSupport />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/downtime-tracker" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <DownTimeTracker />
-              </AuthGuard>
-            } />
-
-            {/* Feature Management Routes */}
-            <Route path="admin/content-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminContentManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/ratings-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminRatingsManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/referral-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminReferralManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/reward-management" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminRewardManagement />
-              </AuthGuard>
-            } />
-
-            <Route path="admin/white-label-customization" element={
-              <AuthGuard roles={['admin']} permissions={['admin.super']}>
-                <AdminWhiteLabelCustomization />
+                <ProfileManagement />
               </AuthGuard>
             } />
             
@@ -565,20 +437,8 @@ const AppContent: React.FC = () => {
           {/* Catch all route - redirect to demo page */}
           <Route path="*" element={<Navigate to="/demo" replace />} />
         </Routes>
-      </Router>
-    </OnboardingProvider>
-  );
-};
-
-function App() {
-  return (
-    <AuthProvider>
-      <NotificationProvider>
-        <ToastProvider>
-          <AppContent />
-        </ToastProvider>
-      </NotificationProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   )
 }
 

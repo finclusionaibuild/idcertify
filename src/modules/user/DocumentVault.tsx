@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import FeatureGate from '../shared/components/FeatureGate'
 import { 
   FileText, 
   Upload, 
@@ -375,7 +374,7 @@ const DocumentVault = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div data-tour="documents">
+        <div>
           <h1 className="text-2xl font-bold text-gray-900">Document Vault</h1>
           <p className="text-gray-600 mt-1">Securely store and manage verification documents</p>
         </div>
@@ -383,20 +382,18 @@ const DocumentVault = () => {
         <div className="flex items-center space-x-3">
           <button 
             onClick={() => setShowCreateFolderModal(true)}
-            className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center"
+            className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center"
           >
             <FolderPlus className="w-4 h-4 mr-2" />
             New Folder
           </button>
-          <FeatureGate feature="document-upload">
-            <button 
-              onClick={() => setShowUploadModal(true)}
-              className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center"
-            >
-              <Upload className="w-4 h-4 mr-2" />
-              Upload Documents
-            </button>
-          </FeatureGate>
+          <button 
+            onClick={() => setShowUploadModal(true)}
+            className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center"
+          >
+            <Upload className="w-4 h-4 mr-2" />
+            Upload Documents
+          </button>
         </div>
       </div>
 
@@ -463,6 +460,7 @@ const DocumentVault = () => {
                 <span className="bg-gray-100 text-gray-600 text-xs rounded-full px-2 py-1">
                   {tab.count}
                 </span>
+              )}
             </button>
           ))}
         </nav>
@@ -525,13 +523,13 @@ const DocumentVault = () => {
             <div className="flex items-center border border-gray-300 rounded-lg">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 ${viewMode === 'grid' ? 'bg-primary-600 text-white' : 'bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200'}`}
+                className={`p-2 ${viewMode === 'grid' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:text-gray-800'}`}
               >
                 <Grid className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 ${viewMode === 'list' ? 'bg-primary-600 text-white' : 'bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200'}`}
+                className={`p-2 ${viewMode === 'list' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:text-gray-800'}`}
               >
                 <List className="w-4 h-4" />
               </button>
@@ -559,7 +557,7 @@ const DocumentVault = () => {
               </select>
               <button
                 onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-                className="p-1 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                className="p-1 text-gray-600 hover:text-gray-800"
               >
                 {sortOrder === 'asc' ? <SortAsc className="w-4 h-4" /> : <SortDesc className="w-4 h-4" />}
               </button>
@@ -620,10 +618,10 @@ const DocumentVault = () => {
                     >
                       View
                     </button>
-                    <button className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 border border-gray-300 rounded">
+                    <button className="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded">
                       <Download className="w-4 h-4" />
                     </button>
-                    <button className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 border border-gray-300 rounded">
+                    <button className="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded">
                       <Share2 className="w-4 h-4" />
                     </button>
                   </div>
@@ -723,7 +721,9 @@ const DocumentVault = () => {
                 </table>
               </div>
             </div>
+          )}
         </div>
+      )}
 
       {activeTab === 'folders' && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -748,16 +748,12 @@ const DocumentVault = () => {
             </div>
           ))}
         </div>
+      )}
 
       {/* Upload Modal */}
       {showUploadModal && (
-        <>
-          {/* Backdrop - Full screen overlay */}
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-          
-          {/* Modal Container - Centered on screen */}
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Upload Documents</h2>
@@ -770,93 +766,81 @@ const DocumentVault = () => {
               </div>
             </div>
             
-            <FeatureGate feature="document-upload" fallback={
-              <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+            <div className="p-6">
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary-400 transition-colors">
                 <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Document Upload Locked</h3>
-                <p className="text-gray-600">Complete KYC Tier 1 verification to upload documents</p>
+                <p className="text-lg font-medium text-gray-900 mb-2">Drop files here or click to browse</p>
+                <p className="text-gray-600 mb-4">Support for PDF, images, spreadsheets, and documents up to 10MB</p>
+                <button className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                  Choose Files
+                </button>
               </div>
-            }>
-              <div className="p-6">
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary-400 transition-colors">
-                  <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-lg font-medium text-gray-900 mb-2">Drop files here or click to browse</p>
-                  <p className="text-gray-600 mb-4">Support for PDF, images, spreadsheets, and documents up to 10MB</p>
-                  <button className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
-                    Choose Files
-                  </button>
+              
+              <div className="mt-6 space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                    {categories.map(category => (
+                      <option key={category} value={category}>
+                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 
-                <div className="mt-6 space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                      {categories.map(category => (
-                        <option key={category} value={category}>
-                          {category.charAt(0).toUpperCase() + category.slice(1)}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Folder</label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                      <option value="">Select Folder</option>
-                      {folders.map(folder => (
-                        <option key={folder.id} value={folder.id}>{folder.name}</option>
-                      ))}
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Access Level</label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                      {accessLevels.map(level => (
-                        <option key={level} value={level}>
-                          {level.charAt(0).toUpperCase() + level.slice(1)}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4">
-                    <label className="flex items-center">
-                      <input type="checkbox" className="text-primary-600 focus:ring-primary-500" />
-                      <span className="ml-2 text-sm text-gray-700">Encrypt document</span>
-                    </label>
-                    <label className="flex items-center">
-                      <input type="checkbox" className="text-primary-600 focus:ring-primary-500" />
-                      <span className="ml-2 text-sm text-gray-700">Auto-verify</span>
-                    </label>
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Folder</label>
+                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                    <option value="">Select Folder</option>
+                    {folders.map(folder => (
+                      <option key={folder.id} value={folder.id}>{folder.name}</option>
+                    ))}
+                  </select>
                 </div>
                 
-                <div className="flex items-center justify-end space-x-3 mt-6 pt-4 border-t">
-                  <button 
-                    onClick={() => setShowUploadModal(false)}
-                    className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
-                  >
-                    Cancel
-                  </button>
-                  <button className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
-                    Upload Documents
-                  </button>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Access Level</label>
+                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                    {accessLevels.map(level => (
+                      <option key={level} value={level}>
+                        {level.charAt(0).toUpperCase() + level.slice(1)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <label className="flex items-center">
+                    <input type="checkbox" className="text-primary-600 focus:ring-primary-500" />
+                    <span className="ml-2 text-sm text-gray-700">Encrypt document</span>
+                  </label>
+                  <label className="flex items-center">
+                    <input type="checkbox" className="text-primary-600 focus:ring-primary-500" />
+                    <span className="ml-2 text-sm text-gray-700">Auto-verify</span>
+                  </label>
                 </div>
               </div>
-            </FeatureGate>
+              
+              <div className="flex items-center justify-end space-x-3 mt-6 pt-4 border-t">
+                <button 
+                  onClick={() => setShowUploadModal(false)}
+                  className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                  Upload Documents
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+      )}
 
       {/* Create Folder Modal */}
       {showCreateFolderModal && (
-        <>
-          {/* Backdrop - Full screen overlay */}
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-          
-          {/* Modal Container - Centered on screen */}
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Create New Folder</h2>
@@ -914,7 +898,7 @@ const DocumentVault = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowCreateFolderModal(false)}
-                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
                   Cancel
                 </button>
@@ -927,23 +911,19 @@ const DocumentVault = () => {
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                   ) : (
                     <FolderPlus className="w-4 h-4 mr-2" />
+                  )}
                   Create Folder
                 </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-        </>
+      )}
 
       {/* Document Details Modal */}
       {showDocumentModal && selectedDocument && (
-        <>
-          {/* Backdrop - Full screen overlay */}
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-          
-          {/* Modal Container - Centered on screen */}
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Document Details</h2>
@@ -971,6 +951,7 @@ const DocumentVault = () => {
                   </div>
                   {selectedDocument.description && (
                     <p className="text-gray-700 mt-2">{selectedDocument.description}</p>
+                  )}
                 </div>
                 <div className="flex items-center space-x-2">
                   {selectedDocument.isStarred && <Star className="w-5 h-5 text-yellow-500 fill-current" />}
@@ -1076,11 +1057,11 @@ const DocumentVault = () => {
 
               {/* Actions */}
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Download
                 </button>
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
                   <Share2 className="w-4 h-4 mr-2" />
                   Share
                 </button>
@@ -1088,11 +1069,10 @@ const DocumentVault = () => {
                   <Edit className="w-4 h-4 mr-2" />
                   Edit Details
                 </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-        </>
       )}
     </div>
   )

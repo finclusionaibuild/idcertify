@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   Award, 
   Gift, 
@@ -356,7 +355,7 @@ const AdminRewardManagement: React.FC = () => {
                         <Edit className="w-4 h-4 inline mr-1" />
                         Edit
                       </button>
-                      <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
+                      <button className="text-gray-600 hover:text-gray-800 text-sm">
                         <Settings className="w-4 h-4 inline mr-1" />
                         Configure
                       </button>
