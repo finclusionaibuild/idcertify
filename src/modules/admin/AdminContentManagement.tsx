@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   Globe, 
   Edit, 
@@ -416,7 +415,7 @@ const AdminContentManagement: React.FC = () => {
                         <Edit className="w-4 h-4 inline mr-1" />
                         Edit
                       </button>
-                      <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
+                      <button className="text-gray-600 hover:text-gray-800 text-sm">
                         <Copy className="w-4 h-4 inline mr-1" />
                         Duplicate
                       </button>
@@ -565,8 +564,8 @@ const AdminContentManagement: React.FC = () => {
 
       {/* Page Detail/Edit Modal */}
       {selectedPage && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-hard max-w-6xl w-full mx-4 flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-hard max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b">
               <div className="flex justify-between items-start">
                 <div>

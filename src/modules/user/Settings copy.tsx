@@ -243,16 +243,16 @@ const Settings = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Language
                   </label>
-                  <SelectDropdown
-              value={formData.language}
-              onChange={handleInputChange}
-              options={[
-                { value: 'english', label: 'English' },
-                { value: 'french', label: 'French' },
-                { value: 'spanish', label: 'Spanish' }
-              ]}
-              size="sm"
-            />
+                  <select
+                    name="language"
+                    value={formData.language}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  >
+                    <option value="english">English</option>
+                    <option value="french">French</option>
+                    <option value="spanish">Spanish</option>
+                  </select>
                 </div>
                 
                 <div>
@@ -648,7 +648,7 @@ const Settings = () => {
                   <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
                     Accept All
                   </button>
-                  <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
+                  <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
                     Save Preferences
                   </button>
                 </div>

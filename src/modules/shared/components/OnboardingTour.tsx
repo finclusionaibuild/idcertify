@@ -89,8 +89,8 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose }) => {
   if (!isOpen || !isVisible) return null
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full p-6 relative">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6 relative">
         {/* Close button */}
         <button 
           onClick={onClose}

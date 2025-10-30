@@ -285,7 +285,7 @@ const AdminVerificationManagement = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Report
           </button>
@@ -368,6 +368,7 @@ const AdminVerificationManagement = () => {
                 <span className="bg-gray-100 text-gray-600 text-xs rounded-full px-2 py-1">
                   {tab.count}
                 </span>
+              )}
             </button>
           ))}
         </nav>
@@ -466,6 +467,7 @@ const AdminVerificationManagement = () => {
             </div>
           </div>
         </div>
+      )}
 
       {activeTab !== 'overview' && (
         <div className="space-y-6">
@@ -522,7 +524,7 @@ const AdminVerificationManagement = () => {
                   <option value="high">High Risk</option>
                 </select>
                 
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Export
                 </button>
@@ -575,6 +577,7 @@ const AdminVerificationManagement = () => {
                               <Building className="w-4 h-4 text-gray-600 mr-2" />
                             ) : (
                               <User className="w-4 h-4 text-gray-600 mr-2" />
+                            )}
                             <span className="text-sm font-medium text-gray-900">{request.requesterName}</span>
                           </div>
                           <div className="flex items-center mt-1">
@@ -634,16 +637,12 @@ const AdminVerificationManagement = () => {
             </div>
           </div>
         </div>
+      )}
 
       {/* Verification Detail Modal */}
       {showDetailModal && selectedVerification && (
-        <>
-          {/* Backdrop - Full screen overlay */}
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-          
-          {/* Modal Container - Centered on screen */}
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Verification Request Details</h2>
@@ -683,6 +682,7 @@ const AdminVerificationManagement = () => {
                         <Building className="w-4 h-4 text-gray-600 mr-2" />
                       ) : (
                         <User className="w-4 h-4 text-gray-600 mr-2" />
+                      )}
                       <p className="font-medium text-gray-900">{selectedVerification.requesterName}</p>
                     </div>
                   </div>
@@ -726,6 +726,7 @@ const AdminVerificationManagement = () => {
                       </div>
                     ) : (
                       <p className="text-gray-600">Not assigned to any staff member</p>
+                    )}
                   </div>
                   <button 
                     onClick={() => {
@@ -749,11 +750,12 @@ const AdminVerificationManagement = () => {
                   <div className="p-4 border border-gray-200 border-dashed rounded-lg text-center">
                     <p className="text-gray-500">No notes available</p>
                   </div>
+                )}
               </div>
 
               {/* Action Buttons */}
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Export Details
                 </button>
@@ -761,20 +763,17 @@ const AdminVerificationManagement = () => {
                   <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">
                     Take Action
                   </button>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+      )}
 
       {/* Assign Staff Modal */}
       {showAssignModal && (
-        <>
-          {/* Backdrop - Full screen overlay */}
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-          
-          {/* Modal Container - Centered on screen */}
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Assign Verification</h2>
@@ -818,7 +817,7 @@ const AdminVerificationManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowAssignModal(false)}
-                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
                   Cancel
                 </button>
@@ -828,11 +827,10 @@ const AdminVerificationManagement = () => {
                 >
                   Assign
                 </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-        </>
       )}
 
       {/* System Status Panel */}

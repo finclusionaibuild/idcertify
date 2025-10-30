@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   Users, 
   Search, 
@@ -212,7 +211,7 @@ const AdminUserManagement = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Users
           </button>
@@ -287,53 +286,49 @@ const AdminUserManagement = () => {
           </div>
           
           <div className="flex items-center space-x-3">
-            <SelectDropdown
+            <select 
               value={filters.role}
-              onChange={(value) => handleFilterChange('role', value)}
-              options={[
-                { value: 'all', label: 'All Roles' },
-                { value: 'individual', label: 'Individual' },
-                { value: 'organisation', label: 'Organisation' },
-                { value: 'admin', label: 'Admin' }
-              ]}
-              size="sm"
-            />
+              onChange={(e) => handleFilterChange('role', e.target.value)}
+              className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+            >
+              <option value="all">All Roles</option>
+              <option value="individual">Individual</option>
+              <option value="organisation">Organisation</option>
+              <option value="admin">Admin</option>
+            </select>
             
-            <SelectDropdown
+            <select 
               value={filters.status}
-              onChange={(value) => handleFilterChange('status', value)}
-              options={[
-                { value: 'all', label: 'All Status' },
-                { value: 'active', label: 'Active' },
-                { value: 'inactive', label: 'Inactive' }
-              ]}
-              size="sm"
-            />
+              onChange={(e) => handleFilterChange('status', e.target.value)}
+              className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+            >
+              <option value="all">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
             
-            <SelectDropdown
+            <select 
               value={filters.trustScore}
-              onChange={(value) => handleFilterChange('trustScore', value)}
-              options={[
-                { value: 'all', label: 'All Trust Scores' },
-                { value: 'high', label: 'High (80+)' },
-                { value: 'medium', label: 'Medium (50-79)' },
-                { value: 'low', label: 'Low (0-49)' }
-              ]}
-              size="sm"
-            />
+              onChange={(e) => handleFilterChange('trustScore', e.target.value)}
+              className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+            >
+              <option value="all">All Trust Scores</option>
+              <option value="high">High (80+)</option>
+              <option value="medium">Medium (50-79)</option>
+              <option value="low">Low (0-49)</option>
+            </select>
             
-            <SelectDropdown
+            <select 
               value={filters.kycStatus}
-              onChange={(value) => handleFilterChange('kycStatus', value)}
-              options={[
-                { value: 'all', label: 'All KYC Status' },
-                { value: 'verified', label: 'Verified' },
-                { value: 'pending', label: 'Pending' },
-                { value: 'in_progress', label: 'In Progress' },
-                { value: 'rejected', label: 'Rejected' }
-              ]}
-              size="sm"
-            />
+              onChange={(e) => handleFilterChange('kycStatus', e.target.value)}
+              className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+            >
+              <option value="all">All KYC Status</option>
+              <option value="verified">Verified</option>
+              <option value="pending">Pending</option>
+              <option value="in_progress">In Progress</option>
+              <option value="rejected">Rejected</option>
+            </select>
           </div>
         </div>
       </div>
@@ -518,8 +513,8 @@ const AdminUserManagement = () => {
 
       {/* User Detail Modal */}
       {showUserModal && selectedUser && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">User Details</h2>
@@ -691,7 +686,7 @@ const AdminUserManagement = () => {
                     setShowUserModal(false)
                     setSelectedUser(null)
                   }}
-                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
                   Close
                 </button>
@@ -717,8 +712,8 @@ const AdminUserManagement = () => {
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && selectedUser && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Confirm Deletion</h2>
@@ -749,7 +744,7 @@ const AdminUserManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowDeleteModal(false)}
-                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
                   Cancel
                 </button>

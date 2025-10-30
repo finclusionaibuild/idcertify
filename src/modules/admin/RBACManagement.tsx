@@ -170,7 +170,7 @@ const RBACManagement = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export
           </button>
@@ -279,6 +279,7 @@ const RBACManagement = () => {
                               <span className="ml-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
                                 Default
                               </span>
+                            )}
                           </div>
                         </div>
                       </td>
@@ -297,10 +298,12 @@ const RBACManagement = () => {
                                 {perm.split('.').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join('.')}
                               </span>
                             ))
+                          )}
                           {role.permissions.length > 2 && !role.permissions.includes('all') && (
                             <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">
                               +{role.permissions.length - 2} more
                             </span>
+                          )}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -341,6 +344,7 @@ const RBACManagement = () => {
             </div>
           </div>
         </div>
+      )}
 
       {/* Permissions Tab */}
       {activeTab === 'permissions' && (
@@ -368,6 +372,7 @@ const RBACManagement = () => {
             </div>
           </div>
         </div>
+      )}
 
       {/* User Assignments Tab */}
       {activeTab === 'assignments' && (
@@ -454,6 +459,7 @@ const RBACManagement = () => {
                           <CheckCircle className="w-5 h-5 text-green-500" />
                         ) : (
                           <XCircle className="w-5 h-5 text-red-500" />
+                        )}
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                           user.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
                         }`}>
@@ -480,16 +486,12 @@ const RBACManagement = () => {
             </table>
           </div>
         </div>
+      )}
 
       {/* Add Role Modal */}
       {showAddRoleModal && (
-        <>
-          {/* Backdrop - Full screen overlay */}
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-          
-          {/* Modal Container - Centered on screen */}
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Add New Role</h2>
@@ -567,7 +569,7 @@ const RBACManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowAddRoleModal(false)}
-                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
                   Cancel
                 </button>
@@ -580,22 +582,19 @@ const RBACManagement = () => {
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                   ) : (
                     <Plus className="w-4 h-4 mr-2" />
+                  )}
                   Create Role
                 </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+      )}
 
       {/* Edit Role Modal */}
       {showEditRoleModal && selectedRole && (
-        <>
-          {/* Backdrop - Full screen overlay */}
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-          
-          {/* Modal Container - Centered on screen */}
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Edit Role: {selectedRole.name}</h2>
@@ -692,7 +691,7 @@ const RBACManagement = () => {
                     setShowEditRoleModal(false)
                     setSelectedRole(null)
                   }}
-                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
                   Cancel
                 </button>
@@ -705,13 +704,13 @@ const RBACManagement = () => {
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                   ) : (
                     <Save className="w-4 h-4 mr-2" />
+                  )}
                   Save Changes
                 </button>
               </div>
             </div>
           </div>
         </div>
-        </>
       )}
     </div>
   )
