@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   Users, 
   Gift, 
@@ -321,7 +320,7 @@ const AdminReferralManagement: React.FC = () => {
                         <Copy className="w-4 h-4 inline mr-1" />
                         Copy Link
                       </button>
-                      <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
+                      <button className="text-gray-600 hover:text-gray-800 text-sm">
                         <ExternalLink className="w-4 h-4 inline mr-1" />
                         Preview
                       </button>

@@ -255,7 +255,7 @@ const AdminDatabaseManagement = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Schema
           </button>
@@ -500,10 +500,10 @@ const AdminDatabaseManagement = () => {
                     <span className="text-gray-900">30 days</span>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
       )}
 
       {activeTab === 'tables' && (
@@ -547,7 +547,7 @@ const AdminDatabaseManagement = () => {
                   <option value="critical">Critical</option>
                 </select>
                 
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
                   <Filter className="w-4 h-4 mr-2" />
                   More Filters
                 </button>
@@ -780,10 +780,10 @@ const AdminDatabaseManagement = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
       )}
 
       {activeTab === 'maintenance' && (
@@ -891,21 +891,16 @@ const AdminDatabaseManagement = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
       )}
 
       {/* Table Detail Modal */}
       {showTableModal && selectedTable && (
-        <>
-          {/* Backdrop - Full screen overlay */}
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-          
-          {/* Modal Container - Centered on screen */}
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Table Details: {selectedTable.name}</h2>
@@ -1059,7 +1054,7 @@ const AdminDatabaseManagement = () => {
 
               {/* Action Buttons */}
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Export Schema
                 </button>
@@ -1067,22 +1062,16 @@ const AdminDatabaseManagement = () => {
                   <Settings className="w-4 h-4 mr-2" />
                   Manage Table
                 </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-        </>
       )}
 
       {/* Backup Modal */}
       {showBackupModal && (
-        <>
-          {/* Backdrop - Full screen overlay */}
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-          
-          {/* Modal Container - Centered on screen */}
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Create Database Backup</h2>
@@ -1143,7 +1132,7 @@ const AdminDatabaseManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowBackupModal(false)}
-                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
                   Cancel
                 </button>
@@ -1159,11 +1148,10 @@ const AdminDatabaseManagement = () => {
                   )}
                   Start Backup
                 </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-        </>
       )}
     </div>
   )

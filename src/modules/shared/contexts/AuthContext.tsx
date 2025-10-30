@@ -10,7 +10,6 @@ interface AuthContextType {
   signOut: () => Promise<void>
   updateProfile: (updates: Partial<UserProfile>) => Promise<void>
   checkPermission: (permission: string) => boolean
-  isKYCRequired: () => boolean
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -149,18 +148,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return false
   }
 
-  const isKYCRequired = (): boolean => {
-    if (!profile) return true
-    
-    // Admin and Super Admin don't need KYC
-    if (profile.role === 'admin') {
-      return false
-    }
-    
-    // Individual and Organisation users need KYC
-    return profile.role === 'individual' || profile.role === 'organisation'
-  }
-
   const value = {
     user,
     profile,
@@ -170,7 +157,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     signOut,
     updateProfile,
     checkPermission,
-    isKYCRequired,
   }
 
   return (

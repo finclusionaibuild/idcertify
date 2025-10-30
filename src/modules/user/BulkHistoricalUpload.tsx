@@ -237,7 +237,7 @@ const BulkHistoricalUpload = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <HelpCircle className="w-4 h-4 mr-2" />
             Help Guide
           </button>
@@ -625,7 +625,7 @@ const BulkHistoricalUpload = () => {
                   <option>Failed</option>
                 </select>
                 
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Export
                 </button>

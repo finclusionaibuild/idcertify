@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   MessageSquare, 
   Search, 
@@ -250,7 +249,7 @@ const AdminChatManagement = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Logs
           </button>
@@ -365,32 +364,30 @@ const AdminChatManagement = () => {
             </div>
             
             <div className="flex items-center space-x-3">
-              <SelectDropdown
+              <select 
                 value={selectedStatus}
-                onChange={setSelectedStatus}
-                options={[
-                  { value: 'all', label: 'All Status' },
-                  { value: 'active', label: 'Active' },
-                  { value: 'closed', label: 'Closed' },
-                  { value: 'archived', label: 'Archived' }
-                ]}
-                size="sm"
-              />
+                onChange={(e) => setSelectedStatus(e.target.value)}
+                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              >
+                <option value="all">All Status</option>
+                <option value="active">Active</option>
+                <option value="closed">Closed</option>
+                <option value="archived">Archived</option>
+              </select>
               
-              <SelectDropdown
+              <select 
                 value={selectedCategory}
-                onChange={setSelectedCategory}
-                options={[
-                  { value: 'all', label: 'All Categories' },
-                  { value: 'support', label: 'Support' },
-                  { value: 'verification', label: 'Verification' },
-                  { value: 'dispute', label: 'Dispute' },
-                  { value: 'general', label: 'General' }
-                ]}
-                size="sm"
-              />
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              >
+                <option value="all">All Categories</option>
+                <option value="support">Support</option>
+                <option value="verification">Verification</option>
+                <option value="dispute">Dispute</option>
+                <option value="general">General</option>
+              </select>
               
-              <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+              <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
                 <Filter className="w-4 h-4 mr-2" />
                 More Filters
               </button>
@@ -644,17 +641,12 @@ const AdminChatManagement = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Default Chat Assignment
                 </label>
-                <SelectDropdown
-                  value="round_robin"
-                  onChange={() => {}}
-                  options={[
-                    { value: 'round_robin', label: 'Round Robin' },
-                    { value: 'least_busy', label: 'Least Busy Agent' },
-                    { value: 'skill_based', label: 'Skill Based' },
-                    { value: 'manual', label: 'Manual Assignment' }
-                  ]}
-                  size="sm"
-                />
+                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                  <option value="round_robin">Round Robin</option>
+                  <option value="least_busy">Least Busy Agent</option>
+                  <option value="skill_based">Skill Based</option>
+                  <option value="manual">Manual Assignment</option>
+                </select>
               </div>
             </div>
             
@@ -705,7 +697,7 @@ const AdminChatManagement = () => {
             </div>
             
             <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-              <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
+              <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
                 Reset to Defaults
               </button>
               <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center">
@@ -719,8 +711,8 @@ const AdminChatManagement = () => {
 
       {/* Chat Detail Modal */}
       {showChatModal && selectedSession && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Chat Session: {selectedSession.id}</h2>
@@ -816,7 +808,7 @@ const AdminChatManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowChatModal(false)}
-                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
                   Close
                 </button>

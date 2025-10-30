@@ -90,7 +90,7 @@ export default {
         border: '#e2e8f0',
       },
       fontFamily: {
-        sans: ['SF Pro Display', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'soft': '0 2px 8px 0 rgba(0, 0, 0, 0.05)',

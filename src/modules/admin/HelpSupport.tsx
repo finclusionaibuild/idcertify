@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { SelectDropdown } from '../shared/components/FormComponents'
 import { HelpCircle, MessageSquare, FileText, Video, Search, Filter, Plus, Eye, Clock, CheckCircle } from 'lucide-react';
 
 interface SupportTicket {

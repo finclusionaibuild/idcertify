@@ -41,7 +41,7 @@ const AdminWalletManagement = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Report
           </button>
@@ -233,7 +233,7 @@ const AdminWalletManagement = () => {
                 <option value="90days">Last 90 days</option>
                 <option value="all">All time</option>
               </select>
-              <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+              <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
                 <Filter className="w-4 h-4 mr-2" />
                 Filter
               </button>
@@ -416,7 +416,7 @@ const AdminWalletManagement = () => {
             </div>
             
             <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-              <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
+              <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
                 Reset to Defaults
               </button>
               <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors">

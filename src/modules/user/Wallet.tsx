@@ -222,7 +222,7 @@ const Wallet = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center p-4">
         <div className="max-w-md w-full">
-          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 p-8 text-center">
+          <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
             <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
               <WalletIcon className="w-10 h-10 text-white" />
             </div>
@@ -286,7 +286,7 @@ const Wallet = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center p-4">
         <div className="max-w-md w-full">
-          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 p-8">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
             <div className="text-center mb-6">
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Building className="w-8 h-8 text-white" />
@@ -357,7 +357,7 @@ const Wallet = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export
           </button>
@@ -576,7 +576,7 @@ const Wallet = () => {
                     className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 w-64"
                   />
                 </div>
-                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
+                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
                   <Filter className="w-4 h-4 mr-2" />
                   Filter
                 </button>
