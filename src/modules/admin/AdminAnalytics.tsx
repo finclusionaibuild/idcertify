@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   BarChart3, 
   TrendingUp, 
@@ -97,22 +98,23 @@ const AdminAnalytics = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <select 
+          <SelectDropdown
             value={selectedTimeframe}
-            onChange={(e) => setSelectedTimeframe(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-          >
-            <option value="7days">Last 7 days</option>
-            <option value="30days">Last 30 days</option>
-            <option value="90days">Last 90 days</option>
-            <option value="1year">Last year</option>
-            <option value="all">All time</option>
-          </select>
+            onChange={setSelectedTimeframe}
+            options={[
+              { value: '7days', label: 'Last 7 days' },
+              { value: '30days', label: 'Last 30 days' },
+              { value: '90days', label: 'Last 90 days' },
+              { value: '1year', label: 'Last year' },
+              { value: 'all', label: 'All time' }
+            ]}
+            size="sm"
+          />
           
           <button 
             onClick={refreshData}
             disabled={isLoading}
-            className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center disabled:opacity-50"
+            className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center disabled:opacity-50"
           >
             {isLoading ? (
               <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-700 mr-2"></div>
@@ -122,7 +124,7 @@ const AdminAnalytics = () => {
             Refresh
           </button>
           
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Report
           </button>
@@ -200,15 +202,16 @@ const AdminAnalytics = () => {
           <h2 className="text-lg font-semibold text-gray-900">User Growth</h2>
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
-              <select 
+              <SelectDropdown
                 value={selectedChart}
-                onChange={(e) => setSelectedChart(e.target.value)}
-                className="border border-gray-300 rounded px-3 py-1 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-              >
-                <option value="line">Line Chart</option>
-                <option value="bar">Bar Chart</option>
-                <option value="area">Area Chart</option>
-              </select>
+                onChange={setSelectedChart}
+                options={[
+                  { value: 'line', label: 'Line Chart' },
+                  { value: 'bar', label: 'Bar Chart' },
+                  { value: 'area', label: 'Area Chart' }
+                ]}
+                size="sm"
+              />
             </div>
             <button className="border border-gray-300 text-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-50 transition-colors flex items-center">
               <Download className="w-4 h-4 mr-1" />
@@ -397,11 +400,16 @@ const AdminAnalytics = () => {
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-lg font-semibold text-gray-900">Revenue Overview</h2>
           <div className="flex items-center space-x-3">
-            <select className="border border-gray-300 rounded px-3 py-1 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-              <option>Monthly</option>
-              <option>Quarterly</option>
-              <option>Yearly</option>
-            </select>
+            <SelectDropdown
+              value="monthly"
+              onChange={() => {}}
+              options={[
+                { value: 'monthly', label: 'Monthly' },
+                { value: 'quarterly', label: 'Quarterly' },
+                { value: 'yearly', label: 'Yearly' }
+              ]}
+              size="sm"
+            />
             <button className="border border-gray-300 text-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-50 transition-colors flex items-center">
               <Download className="w-4 h-4 mr-1" />
               Export

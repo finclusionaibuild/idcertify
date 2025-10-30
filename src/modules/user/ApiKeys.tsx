@@ -295,7 +295,7 @@ const ApiKeys = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <ExternalLink className="w-4 h-4 mr-2" />
             API Documentation
           </button>
@@ -475,7 +475,7 @@ const ApiKeys = () => {
                         setSelectedApiKey(apiKey)
                         setShowEditModal(true)
                       }}
-                      className="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded"
+                      className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 border border-gray-300 rounded"
                     >
                       <Edit className="w-4 h-4" />
                     </button>
@@ -500,13 +500,13 @@ const ApiKeys = () => {
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => toggleKeyVisibility(apiKey.id)}
-                        className="p-2 text-gray-600 hover:text-gray-800"
+                        className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                       >
                         {showKeys[apiKey.id] ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                       <button
                         onClick={() => copyToClipboard(apiKey.key)}
-                        className="p-2 text-gray-600 hover:text-gray-800"
+                        className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                       >
                         <Copy className="w-4 h-4" />
                       </button>
@@ -638,10 +638,11 @@ const ApiKeys = () => {
                     <span className="text-sm font-medium text-gray-900">{endpoint.calls.toLocaleString()}</span>
                   </div>
                 ))}
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {activeTab === 'docs' && (
@@ -722,12 +723,13 @@ const ApiKeys = () => {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <h5 className="font-medium text-gray-900">JavaScript/Node.js</h5>
-                    <button className="text-gray-600 hover:text-gray-800">
+                    <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
                       <Copy className="w-4 h-4" />
                     </button>
                   </div>
                   <pre className="bg-gray-800 text-gray-100 p-4 rounded-lg text-sm font-mono overflow-x-auto">
                     {`const axios = require('axios');
+import { SelectDropdown } from '../shared/components/FormComponents'
 
 const verifyIdentity = async (data) => {
   const response = await axios.post(
@@ -749,7 +751,7 @@ const verifyIdentity = async (data) => {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <h5 className="font-medium text-gray-900">Python</h5>
-                    <button className="text-gray-600 hover:text-gray-800">
+                    <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
                       <Copy className="w-4 h-4" />
                     </button>
                   </div>
@@ -771,10 +773,11 @@ def verify_identity(data):
     return response.json()`}
                   </pre>
                 </div>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {activeTab === 'webhooks' && (
@@ -847,7 +850,7 @@ def verify_identity(data):
                     <button className="text-primary-600 hover:text-primary-700 text-sm font-medium">
                       Edit
                     </button>
-                    <button className="text-gray-600 hover:text-gray-800 text-sm font-medium">
+                    <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 font-medium">
                       Test
                     </button>
                     <button className="text-red-600 hover:text-red-700 text-sm font-medium">
@@ -875,16 +878,22 @@ def verify_identity(data):
                     Webhook Documentation
                   </button>
                 </div>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {/* Create API Key Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Create New API Key</h2>
@@ -993,7 +1002,7 @@ def verify_identity(data):
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowCreateModal(false)}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1009,16 +1018,22 @@ def verify_identity(data):
                   )}
                   Create API Key
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
 
       {/* Edit API Key Modal */}
       {showEditModal && selectedApiKey && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Edit API Key</h2>
@@ -1117,7 +1132,7 @@ def verify_identity(data):
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowEditModal(false)}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1133,10 +1148,11 @@ def verify_identity(data):
                   )}
                   Save Changes
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+        </>
       )}
     </div>
   )

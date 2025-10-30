@@ -31,7 +31,8 @@ import {
   CreditCard,
   Zap
 } from 'lucide-react'
-import { useAuth } from "@shared/contexts/AuthContext";
+import { useAuth } from "./contexts/AuthContext";
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { getTrustScoreBadge } from "./lib/mockData";
 
 const TrustScore = () => {
@@ -278,7 +279,7 @@ const TrustScore = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Report
           </button>
@@ -517,8 +518,8 @@ const TrustScore = () => {
 
       {/* Improvement Modal */}
       {showImprovementModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Improve Your Trust Score</h2>
@@ -598,8 +599,8 @@ const TrustScore = () => {
 
       {/* Individual Improvement Detail Modal */}
       {selectedImprovement && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             {(() => {
               const recommendation = improvementRecommendations.find(r => r.id === selectedImprovement)
               if (!recommendation) return null

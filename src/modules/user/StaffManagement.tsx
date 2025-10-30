@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   Users, 
   Plus, 
@@ -314,7 +315,7 @@ const StaffManagement = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Upload className="w-4 h-4 mr-2" />
             Import Staff
           </button>
@@ -501,41 +502,46 @@ const StaffManagement = () => {
               </div>
               
               <div className="flex items-center space-x-3">
-                <select 
+                <SelectDropdown
                   value={selectedDepartment}
-                  onChange={(e) => setSelectedDepartment(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                >
-                  <option value="all">All Departments</option>
-                  {departments.map(dept => (
-                    <option key={dept} value={dept}>{dept}</option>
-                  ))}
-                </select>
+                  onChange={setSelectedDepartment}
+                  options={[
+                    { value: 'all', label: 'All Departments' },
+                    ...departments.map(dept => ({
+                      value: dept,
+                      label: dept
+                    }))
+                  ]}
+                  size="sm"
+                />
                 
-                <select 
+                <SelectDropdown
                   value={selectedStatus}
-                  onChange={(e) => setSelectedStatus(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                >
-                  <option value="all">All Status</option>
-                  <option value="active">Active</option>
-                  <option value="inactive">Inactive</option>
-                  <option value="pending">Pending</option>
-                  <option value="suspended">Suspended</option>
-                </select>
+                  onChange={setSelectedStatus}
+                  options={[
+                    { value: 'all', label: 'All Status' },
+                    { value: 'active', label: 'Active' },
+                    { value: 'inactive', label: 'Inactive' },
+                    { value: 'pending', label: 'Pending' },
+                    { value: 'suspended', label: 'Suspended' }
+                  ]}
+                  size="sm"
+                />
                 
-                <select 
+                <SelectDropdown
                   value={selectedRole}
-                  onChange={(e) => setSelectedRole(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                >
-                  <option value="all">All Roles</option>
-                  {roles.map(role => (
-                    <option key={role} value={role}>{role.charAt(0).toUpperCase() + role.slice(1)}</option>
-                  ))}
-                </select>
+                  onChange={setSelectedRole}
+                  options={[
+                    { value: 'all', label: 'All Roles' },
+                    ...roles.map(role => ({
+                      value: role,
+                      label: role.charAt(0).toUpperCase() + role.slice(1)
+                    }))
+                  ]}
+                  size="sm"
+                />
                 
-                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Export
                 </button>
@@ -783,8 +789,8 @@ const StaffManagement = () => {
 
       {/* Add Staff Modal */}
       {showAddStaffModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Add New Staff Member</h2>
@@ -851,16 +857,18 @@ const StaffManagement = () => {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Department *</label>
-                  <select
+                  <SelectDropdown
                     value={newStaffData.department}
-                    onChange={(e) => setNewStaffData(prev => ({ ...prev, department: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  >
-                    <option value="">Select Department</option>
-                    {departments.map(dept => (
-                      <option key={dept} value={dept}>{dept}</option>
-                    ))}
-                  </select>
+                    onChange={(value) => setNewStaffData(prev => ({ ...prev, department: value }))}
+                    options={[
+                      { value: '', label: 'Select Department' },
+                      ...departments.map(dept => ({
+                        value: dept,
+                        label: dept
+                      }))
+                    ]}
+                    size="md"
+                  />
                 </div>
                 
                 <div>
@@ -921,7 +929,7 @@ const StaffManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowAddStaffModal(false)}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -945,8 +953,8 @@ const StaffManagement = () => {
 
       {/* Edit Staff Modal */}
       {showEditStaffModal && selectedStaff && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Edit Staff Member</h2>
@@ -1066,7 +1074,7 @@ const StaffManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowEditStaffModal(false)}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>

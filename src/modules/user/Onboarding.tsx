@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from "@shared/contexts/AuthContext";
+import { useAuth } from "../shared/contexts/AuthContext";
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   Shield, 
   User, 
@@ -13,7 +14,7 @@ import {
   HelpCircle,
   AlertTriangle
 } from 'lucide-react'
-import OnboardingTour from "@shared/components/OnboardingTour";
+import OnboardingTour from "../shared/components/OnboardingTour";
 
 const Onboarding = () => {
   const { profile, updateProfile } = useAuth()
@@ -133,7 +134,7 @@ const Onboarding = () => {
         onClose={() => setShowTour(false)} 
       />
       
-      <div className="max-w-3xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div className="max-w-3xl w-full bg-white rounded-2xl shadow-2xl border-2 border-gray-200 overflow-hidden">
         {/* Header */}
         <div className="bg-primary-600 p-6 text-white">
           <div className="flex items-center space-x-3 mb-4">
@@ -259,7 +260,7 @@ const Onboarding = () => {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={handlePrevStep}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Back
                 </button>
@@ -335,7 +336,7 @@ const Onboarding = () => {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={handlePrevStep}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Back
                 </button>
@@ -383,16 +384,16 @@ const Onboarding = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Registration Type
                   </label>
-                  <select
-                    name="registrationType"
-                    value={formData.registrationType}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  >
-                    <option value="business_name">Business Name Registration</option>
-                    <option value="cac">CAC Registration (RC Number)</option>
-                    <option value="other">Other Government Registration</option>
-                  </select>
+                  <SelectDropdown
+              value={formData.registrationType}
+              onChange={handleInputChange}
+              options={[
+                { value: 'business_name', label: 'Business Name Registration' },
+                { value: 'cac', label: 'CAC Registration (RC Number)' },
+                { value: 'other', label: 'Other Government Registration' }
+              ]}
+              size="sm"
+            />
                 </div>
                 
                 <div>
@@ -436,7 +437,7 @@ const Onboarding = () => {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={handlePrevStep}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Back
                 </button>
