@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from "@shared/contexts/AuthContext";
+import { useAuth } from "../shared/contexts/AuthContext";
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { useOnboarding } from '../shared/contexts/OnboardingContext';
 import LimitedAccessBanner from '../shared/components/LimitedAccessBanner';
 import FeatureGate from '../shared/components/FeatureGate';
@@ -39,8 +40,8 @@ import {
   ArrowDown,
   MoreHorizontal
 } from 'lucide-react'
-import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from "@shared/lib/mockData";
-import VerificationTrendsChart from "@shared/components/VerificationTrendsChart";
+import { getTrustScoreBadge, mockDocuments, mockVerificationRequests, mockTransactions } from "../shared/lib/mockData";
+import VerificationTrendsChart from "../shared/components/VerificationTrendsChart";
 import IndividualDashboard from './IndividualDashboard'
 import OrganisationDashboard from './OrganisationDashboard'
 
@@ -241,26 +242,6 @@ const Dashboard = () => {
               Hey, {getUserName()}
             </h1>
             <p className="text-gray-500 text-sm">Monday, 24 February 2024</p>
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            <div className="relative">
-              <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="What service are looking for today?"
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 w-80"
-              />
-            </div>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <MessageSquare className="w-5 h-5" />
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <Bell className="w-5 h-5" />
-            </button>
-            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-              <span className="text-white text-sm font-medium">O</span>
-            </div>
           </div>
         </div>
 

@@ -137,7 +137,7 @@ const AdminWhiteLabellingCustomization = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <RefreshCw className="w-4 h-4 mr-2" />
             Preview Changes
           </button>
@@ -154,7 +154,6 @@ const AdminWhiteLabellingCustomization = () => {
           <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
           <p className="text-green-800">{successMessage}</p>
         </div>
-      )}
 
       {/* Tabs */}
       <div className="border-b border-gray-200">
@@ -332,12 +331,10 @@ const AdminWhiteLabellingCustomization = () => {
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
                 <Save className="w-4 h-4 mr-2" />
-              )}
               Save Branding
             </button>
           </div>
         </div>
-      )}
 
       {/* Layout Tab */}
       {activeTab === 'layout' && (
@@ -441,12 +438,10 @@ const AdminWhiteLabellingCustomization = () => {
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
                 <Save className="w-4 h-4 mr-2" />
-              )}
               Save Layout
             </button>
           </div>
         </div>
-      )}
 
       {/* Notifications Tab */}
       {activeTab === 'notifications' && (
@@ -533,12 +528,10 @@ const AdminWhiteLabellingCustomization = () => {
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
                 <Save className="w-4 h-4 mr-2" />
-              )}
               Save Notifications
             </button>
           </div>
         </div>
-      )}
 
       {/* Domains Tab */}
       {activeTab === 'domains' && (
@@ -616,9 +609,7 @@ const AdminWhiteLabellingCustomization = () => {
                     Verify DNS Configuration
                   </button>
                 </div>
-              </>
-            )}
-          </div>
+              </div>
           
           <div className="flex items-center justify-end space-x-3 pt-4 border-t mt-6">
             <button 
@@ -630,12 +621,10 @@ const AdminWhiteLabellingCustomization = () => {
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               ) : (
                 <Save className="w-4 h-4 mr-2" />
-              )}
               Save Domains
             </button>
           </div>
         </div>
-      )}
 
       {/* Advanced Tab */}
       {activeTab === 'advanced' && (
@@ -675,7 +664,6 @@ const AdminWhiteLabellingCustomization = () => {
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                 ) : (
                   <Save className="w-4 h-4 mr-2" />
-                )}
                 Save Advanced Settings
               </button>
             </div>

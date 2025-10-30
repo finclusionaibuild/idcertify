@@ -474,7 +474,7 @@ const AdminApprovalWorkflow = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export
           </button>
@@ -628,9 +628,8 @@ const AdminApprovalWorkflow = () => {
                   <option value="low">Low</option>
                 </select>
               </>
-            )}
             
-            <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+            <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
               <Filter className="w-4 h-4 mr-2" />
               More Filters
             </button>
@@ -670,7 +669,7 @@ const AdminApprovalWorkflow = () => {
                           setSelectedWorkflow(workflow)
                           setShowEditModal(true)
                         }}
-                        className="p-2 text-gray-600 hover:text-gray-800 rounded hover:bg-gray-100"
+                        className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 rounded hover:bg-gray-100"
                       >
                         <Edit className="w-4 h-4" />
                       </button>
@@ -680,7 +679,7 @@ const AdminApprovalWorkflow = () => {
                           setSelectedWorkflow(workflow)
                           setShowDeleteModal(true)
                         }}
-                        className="p-2 text-gray-600 hover:text-gray-800 rounded hover:bg-gray-100"
+                        className="p-2 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 rounded hover:bg-gray-100"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -688,7 +687,6 @@ const AdminApprovalWorkflow = () => {
                         <ChevronUp className="w-5 h-5 text-gray-400" />
                       ) : (
                         <ChevronDown className="w-5 h-5 text-gray-400" />
-                      )}
                     </div>
                   </div>
                 </div>
@@ -715,10 +713,10 @@ const AdminApprovalWorkflow = () => {
                             <h5 className="font-medium text-gray-900">{step.name}</h5>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <button className="p-1 text-gray-600 hover:text-gray-800 rounded hover:bg-gray-100">
+                            <button className="p-1 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 rounded hover:bg-gray-100">
                               <Edit className="w-4 h-4" />
                             </button>
-                            <button className="p-1 text-gray-600 hover:text-gray-800 rounded hover:bg-gray-100">
+                            <button className="p-1 bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 rounded hover:bg-gray-100">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           </div>
@@ -758,7 +756,6 @@ const AdminApprovalWorkflow = () => {
                                     ))}
                                   </ul>
                                 </div>
-                              )}
                               
                               {step.actions.onReject?.length && (
                                 <div className="bg-red-50 p-2 rounded">
@@ -769,7 +766,6 @@ const AdminApprovalWorkflow = () => {
                                     ))}
                                   </ul>
                                 </div>
-                              )}
                               
                               {step.actions.onTimeout?.length && (
                                 <div className="bg-yellow-50 p-2 rounded">
@@ -780,10 +776,8 @@ const AdminApprovalWorkflow = () => {
                                     ))}
                                   </ul>
                                 </div>
-                              )}
                             </div>
                           </div>
-                        )}
                       </div>
                     ))}
                     
@@ -804,11 +798,9 @@ const AdminApprovalWorkflow = () => {
                     </div>
                   </div>
                 </div>
-              )}
             </div>
           ))}
         </div>
-      )}
 
       {/* Approval Requests */}
       {activeTab === 'requests' && (
@@ -905,7 +897,6 @@ const AdminApprovalWorkflow = () => {
             </table>
           </div>
         </div>
-      )}
 
       {/* Analytics */}
       {activeTab === 'analytics' && (
@@ -1017,7 +1008,6 @@ const AdminApprovalWorkflow = () => {
             </div>
           </div>
         </div>
-      )}
 
       {/* Settings */}
       {activeTab === 'settings' && (
@@ -1049,13 +1039,12 @@ const AdminApprovalWorkflow = () => {
                       defaultValue={setting.value as string | number}
                       className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     />
-                  )}
                 </div>
               ))}
             </div>
             
             <div className="flex items-center justify-end space-x-3 mt-6 pt-4 border-t">
-              <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+              <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
                 Reset to Defaults
               </button>
               <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center">
@@ -1100,12 +1089,16 @@ const AdminApprovalWorkflow = () => {
             </div>
           </div>
         </div>
-      )}
 
       {/* Create Workflow Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Create New Workflow</h2>
@@ -1210,7 +1203,7 @@ const AdminApprovalWorkflow = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowCreateModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1223,19 +1216,22 @@ const AdminApprovalWorkflow = () => {
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                   ) : (
                     <Plus className="w-4 h-4 mr-2" />
-                  )}
                   Create Workflow
                 </button>
-              </div>
-            </div>
-          </div>
         </div>
-      )}
+      </div>
+    </div>
+  </div>
 
       {/* Edit Workflow Modal */}
       {showEditModal && selectedWorkflow && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Edit Workflow</h2>
@@ -1328,7 +1324,7 @@ const AdminApprovalWorkflow = () => {
                     setShowEditModal(false)
                     setSelectedWorkflow(null)
                   }}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1341,72 +1337,76 @@ const AdminApprovalWorkflow = () => {
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                   ) : (
                     <Save className="w-4 h-4 mr-2" />
-                  )}
                   Save Changes
                 </button>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        </>
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && selectedWorkflow && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
-            <div className="p-6 border-b border-gray-200">
-              <div className="flex items-center justify-between">
-                <h2 className="text-xl font-bold text-gray-900">Confirm Deletion</h2>
-                <button 
-                  onClick={() => setShowDeleteModal(false)}
-                  className="text-gray-400 hover:text-gray-600"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-            </div>
-            
-            <div className="p-6 space-y-4">
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start space-x-3">
-                <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
-                <div>
-                  <p className="font-medium text-red-800">Warning: This action cannot be undone</p>
-                  <p className="text-sm text-red-700 mt-1">
-                    Deleting this workflow will remove all associated configurations and may impact existing approval processes.
-                  </p>
+        <>
+          {/* Backdrop - Full screen overlay */}
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
+          
+          {/* Modal Container - Centered on screen */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full">
+              <div className="p-6 border-b border-gray-200">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-xl font-bold text-gray-900">Confirm Deletion</h2>
+                  <button 
+                    onClick={() => setShowDeleteModal(false)}
+                    className="text-gray-400 hover:text-gray-600"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
                 </div>
               </div>
               
-              <p className="text-gray-700">
-                Are you sure you want to delete the workflow <span className="font-medium">{selectedWorkflow.name}</span>?
-              </p>
-              
-              <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-                <button 
-                  onClick={() => setShowDeleteModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button 
-                  onClick={handleDeleteWorkflow}
-                  disabled={loading}
-                  className="bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors flex items-center disabled:opacity-50"
-                >
-                  {loading ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  ) : (
-                    <Trash2 className="w-4 h-4 mr-2" />
-                  )}
-                  Delete Workflow
-                </button>
+              <div className="p-6 space-y-4">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start space-x-3">
+                  <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-red-800">Warning: This action cannot be undone</p>
+                    <p className="text-sm text-red-700 mt-1">
+                      Deleting this workflow will remove all associated configurations and may impact existing approval processes.
+                    </p>
+                  </div>
+                </div>
+                
+                <p className="text-gray-700">
+                  Are you sure you want to delete the workflow <span className="font-medium">{selectedWorkflow.name}</span>?
+                </p>
+                
+                <div className="flex items-center justify-end space-x-3 pt-4 border-t">
+                  <button 
+                    onClick={() => setShowDeleteModal(false)}
+                    className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    onClick={handleDeleteWorkflow}
+                    disabled={loading}
+                    className="bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors flex items-center disabled:opacity-50"
+                  >
+                    {loading ? (
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    ) : (
+                      <Trash2 className="w-4 h-4 mr-2" />
+                    Delete Workflow
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   )
 }
 
 export default AdminApprovalWorkflow
+

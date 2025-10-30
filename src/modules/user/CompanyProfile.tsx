@@ -35,7 +35,8 @@ import {
   Bell,
   HelpCircle
 } from 'lucide-react'
-import { useAuth } from "@shared/contexts/AuthContext";
+import { useAuth } from "../shared/contexts/AuthContext";
+import { SelectDropdown } from '../shared/components/FormComponents'
 
 interface CompanyInfo {
   companyName: string
@@ -174,7 +175,7 @@ const CompanyProfile = () => {
             <>
               <button 
                 onClick={() => setIsEditing(false)}
-                className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center"
+                className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center"
               >
                 <X className="w-4 h-4 mr-2" />
                 Cancel

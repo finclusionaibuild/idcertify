@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   Puzzle, 
   Search, 
@@ -510,7 +511,7 @@ const AdminIntegrationManagement = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Export Config
           </button>
@@ -691,44 +692,47 @@ const AdminIntegrationManagement = () => {
               </div>
               
               <div className="flex items-center space-x-3">
-                <select 
+                <SelectDropdown
                   value={selectedType}
-                  onChange={(e) => setSelectedType(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                >
-                  <option value="all">All Types</option>
-                  <option value="payment">Payment</option>
-                  <option value="identity">Identity</option>
-                  <option value="communication">Communication</option>
-                  <option value="storage">Storage</option>
-                  <option value="analytics">Analytics</option>
-                  <option value="other">Other</option>
-                </select>
+                  onChange={setSelectedType}
+                  options={[
+                    { value: 'all', label: 'All Types' },
+                    { value: 'payment', label: 'Payment' },
+                    { value: 'identity', label: 'Identity' },
+                    { value: 'communication', label: 'Communication' },
+                    { value: 'storage', label: 'Storage' },
+                    { value: 'analytics', label: 'Analytics' },
+                    { value: 'other', label: 'Other' }
+                  ]}
+                  size="sm"
+                />
                 
-                <select 
+                <SelectDropdown
                   value={selectedStatus}
-                  onChange={(e) => setSelectedStatus(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                >
-                  <option value="all">All Status</option>
-                  <option value="active">Active</option>
-                  <option value="inactive">Inactive</option>
-                  <option value="pending">Pending</option>
-                  <option value="failed">Failed</option>
-                </select>
+                  onChange={setSelectedStatus}
+                  options={[
+                    { value: 'all', label: 'All Status' },
+                    { value: 'active', label: 'Active' },
+                    { value: 'inactive', label: 'Inactive' },
+                    { value: 'pending', label: 'Pending' },
+                    { value: 'failed', label: 'Failed' }
+                  ]}
+                  size="sm"
+                />
                 
-                <select 
+                <SelectDropdown
                   value={selectedEnvironment}
-                  onChange={(e) => setSelectedEnvironment(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                >
-                  <option value="all">All Environments</option>
-                  <option value="production">Production</option>
-                  <option value="staging">Staging</option>
-                  <option value="development">Development</option>
-                </select>
+                  onChange={setSelectedEnvironment}
+                  options={[
+                    { value: 'all', label: 'All Environments' },
+                    { value: 'production', label: 'Production' },
+                    { value: 'staging', label: 'Staging' },
+                    { value: 'development', label: 'Development' }
+                  ]}
+                  size="sm"
+                />
                 
-                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Filter className="w-4 h-4 mr-2" />
                   More Filters
                 </button>
@@ -881,31 +885,47 @@ const AdminIntegrationManagement = () => {
               </div>
               
               <div className="flex items-center space-x-3">
-                <select className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                  <option>All Integrations</option>
-                  {integrations.map(integration => (
-                    <option key={integration.id} value={integration.id}>{integration.name}</option>
-                  ))}
-                </select>
+                <SelectDropdown
+                  value=""
+                  onChange={() => {}}
+                  options={[
+                    { value: 'all', label: 'All Integrations' },
+                    ...integrations.map(integration => ({
+                      value: integration.id,
+                      label: integration.name
+                    }))
+                  ]}
+                  size="sm"
+                />
                 
-                <select className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                  <option>All Events</option>
-                  <option>API Key Rotation</option>
-                  <option>Webhook Received</option>
-                  <option>Configuration Update</option>
-                  <option>Authentication</option>
-                  <option>Data Sync</option>
-                </select>
+                <SelectDropdown
+                  value=""
+                  onChange={() => {}}
+                  options={[
+                    { value: 'all', label: 'All Events' },
+                    { value: 'api_key_rotation', label: 'API Key Rotation' },
+                    { value: 'webhook_received', label: 'Webhook Received' },
+                    { value: 'configuration_update', label: 'Configuration Update' },
+                    { value: 'authentication', label: 'Authentication' },
+                    { value: 'data_sync', label: 'Data Sync' }
+                  ]}
+                  size="sm"
+                />
                 
-                <select className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                  <option>All Status</option>
-                  <option>Success</option>
-                  <option>Error</option>
-                  <option>Warning</option>
-                  <option>Info</option>
-                </select>
+                <SelectDropdown
+                  value=""
+                  onChange={() => {}}
+                  options={[
+                    { value: 'all', label: 'All Status' },
+                    { value: 'success', label: 'Success' },
+                    { value: 'error', label: 'Error' },
+                    { value: 'warning', label: 'Warning' },
+                    { value: 'info', label: 'Info' }
+                  ]}
+                  size="sm"
+                />
                 
-                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Calendar className="w-4 h-4 mr-2" />
                   Date Range
                 </button>
@@ -1066,14 +1086,15 @@ const AdminIntegrationManagement = () => {
                           <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
                         </label>
                       ) : setting.type === 'select' ? (
-                        <select 
-                          defaultValue={setting.value as string}
-                          className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                        >
-                          {setting.options?.map(option => (
-                            <option key={option} value={option}>{option.charAt(0).toUpperCase() + option.slice(1)}</option>
-                          ))}
-                        </select>
+                        <SelectDropdown
+                          value={setting.value as string}
+                          onChange={() => {}}
+                          options={setting.options?.map(option => ({
+                            value: option,
+                            label: option.charAt(0).toUpperCase() + option.slice(1)
+                          })) || []}
+                          size="sm"
+                        />
                       ) : (
                         <input
                           type={setting.type}
@@ -1087,7 +1108,7 @@ const AdminIntegrationManagement = () => {
               </div>
               
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
-                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
                   Reset to Defaults
                 </button>
                 <button className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center">
@@ -1179,8 +1200,8 @@ const AdminIntegrationManagement = () => {
 
       {/* Integration Detail Modal */}
       {showIntegrationDetailModal && selectedIntegration && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-4xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Integration Details</h2>
@@ -1263,7 +1284,7 @@ const AdminIntegrationManagement = () => {
                       <div className="flex items-center justify-between mb-2">
                         <p className="font-medium text-gray-900">API Key</p>
                         <div className="flex items-center space-x-2">
-                          <button className="text-gray-600 hover:text-gray-800">
+                          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
                             <Copy className="w-4 h-4" />
                           </button>
                           <button className="text-primary-600 hover:text-primary-700 text-sm font-medium">
@@ -1282,7 +1303,7 @@ const AdminIntegrationManagement = () => {
                       <div className="flex items-center justify-between mb-2">
                         <p className="font-medium text-gray-900">Secret Key</p>
                         <div className="flex items-center space-x-2">
-                          <button className="text-gray-600 hover:text-gray-800">
+                          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
                             <Copy className="w-4 h-4" />
                           </button>
                           <button className="text-primary-600 hover:text-primary-700 text-sm font-medium">
@@ -1306,7 +1327,7 @@ const AdminIntegrationManagement = () => {
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-medium text-gray-900">Webhook URL</p>
                       <div className="flex items-center space-x-2">
-                        <button className="text-gray-600 hover:text-gray-800">
+                        <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200">
                           <Copy className="w-4 h-4" />
                         </button>
                         <button className="text-primary-600 hover:text-primary-700 text-sm font-medium">
@@ -1371,7 +1392,7 @@ const AdminIntegrationManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowIntegrationDetailModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Close
                 </button>
@@ -1405,8 +1426,8 @@ const AdminIntegrationManagement = () => {
 
       {/* Add Integration Modal */}
       {showAddIntegrationModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Add New Integration</h2>
@@ -1450,26 +1471,36 @@ const AdminIntegrationManagement = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Type *
                     </label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                      <option value="">Select Type</option>
-                      <option value="payment">Payment</option>
-                      <option value="identity">Identity</option>
-                      <option value="communication">Communication</option>
-                      <option value="storage">Storage</option>
-                      <option value="analytics">Analytics</option>
-                      <option value="other">Other</option>
-                    </select>
+                    <SelectDropdown
+                      value=""
+                      onChange={() => {}}
+                      options={[
+                        { value: '', label: 'Select Type' },
+                        { value: 'payment', label: 'Payment' },
+                        { value: 'identity', label: 'Identity' },
+                        { value: 'communication', label: 'Communication' },
+                        { value: 'storage', label: 'Storage' },
+                        { value: 'analytics', label: 'Analytics' },
+                        { value: 'other', label: 'Other' }
+                      ]}
+                      size="md"
+                    />
                   </div>
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Environment *
                     </label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                      <option value="production">Production</option>
-                      <option value="staging">Staging</option>
-                      <option value="development">Development</option>
-                    </select>
+                    <SelectDropdown
+                      value="production"
+                      onChange={() => {}}
+                      options={[
+                        { value: 'production', label: 'Production' },
+                        { value: 'staging', label: 'Staging' },
+                        { value: 'development', label: 'Development' }
+                      ]}
+                      size="md"
+                    />
                   </div>
                   
                   <div className="md:col-span-2">
@@ -1563,7 +1594,7 @@ const AdminIntegrationManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowAddIntegrationModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1587,8 +1618,8 @@ const AdminIntegrationManagement = () => {
 
       {/* Edit Integration Modal */}
       {showEditIntegrationModal && selectedIntegration && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full flex flex-col">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Edit Integration</h2>
@@ -1635,46 +1666,52 @@ const AdminIntegrationManagement = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Type *
                     </label>
-                    <select 
-                      defaultValue={selectedIntegration.type}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                    >
-                      <option value="payment">Payment</option>
-                      <option value="identity">Identity</option>
-                      <option value="communication">Communication</option>
-                      <option value="storage">Storage</option>
-                      <option value="analytics">Analytics</option>
-                      <option value="other">Other</option>
-                    </select>
+                    <SelectDropdown
+                      value={selectedIntegration.type}
+                      onChange={() => {}}
+                      options={[
+                        { value: 'payment', label: 'Payment' },
+                        { value: 'identity', label: 'Identity' },
+                        { value: 'communication', label: 'Communication' },
+                        { value: 'storage', label: 'Storage' },
+                        { value: 'analytics', label: 'Analytics' },
+                        { value: 'other', label: 'Other' }
+                      ]}
+                      size="md"
+                    />
                   </div>
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Status *
                     </label>
-                    <select 
-                      defaultValue={selectedIntegration.status}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                    >
-                      <option value="active">Active</option>
-                      <option value="inactive">Inactive</option>
-                      <option value="pending">Pending</option>
-                      <option value="failed">Failed</option>
-                    </select>
+                    <SelectDropdown
+                      value={selectedIntegration.status}
+                      onChange={() => {}}
+                      options={[
+                        { value: 'active', label: 'Active' },
+                        { value: 'inactive', label: 'Inactive' },
+                        { value: 'pending', label: 'Pending' },
+                        { value: 'failed', label: 'Failed' }
+                      ]}
+                      size="md"
+                    />
                   </div>
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Environment *
                     </label>
-                    <select 
-                      defaultValue={selectedIntegration.environment}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                    >
-                      <option value="production">Production</option>
-                      <option value="staging">Staging</option>
-                      <option value="development">Development</option>
-                    </select>
+                    <SelectDropdown
+                      value={selectedIntegration.environment}
+                      onChange={() => {}}
+                      options={[
+                        { value: 'production', label: 'Production' },
+                        { value: 'staging', label: 'Staging' },
+                        { value: 'development', label: 'Development' }
+                      ]}
+                      size="md"
+                    />
                   </div>
                   
                   <div className="md:col-span-2">
@@ -1757,7 +1794,7 @@ const AdminIntegrationManagement = () => {
                     setShowEditIntegrationModal(false)
                     setSelectedIntegration(null)
                   }}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
@@ -1781,8 +1818,8 @@ const AdminIntegrationManagement = () => {
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && selectedIntegration && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-gray-900">Confirm Deletion</h2>
@@ -1813,7 +1850,7 @@ const AdminIntegrationManagement = () => {
               <div className="flex items-center justify-end space-x-3 pt-4 border-t">
                 <button 
                   onClick={() => setShowDeleteModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>

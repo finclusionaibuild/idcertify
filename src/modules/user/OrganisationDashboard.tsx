@@ -300,23 +300,6 @@ const OrganisationDashboard = () => {
             Monitor verification activity, manage requests, and track trust signals across your organisation
           </p>
         </div>
-        
-        <div className="flex items-center space-x-4">
-          <div className="relative">
-            <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search verifications, users..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 w-80"
-            />
-          </div>
-          <button className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">
-            <Bell className="w-5 h-5" />
-          </button>
-          <button className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">
-            <Settings className="w-5 h-5" />
-          </button>
-        </div>
       </div>
 
       {/* Summary Cards */}
@@ -647,7 +630,7 @@ const OrganisationDashboard = () => {
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-gray-900">Bulk Verification Job Tracker</h3>
               <div className="flex items-center space-x-3">
-                <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Export
                 </button>
@@ -758,7 +741,7 @@ const OrganisationDashboard = () => {
                   <option>Verifier</option>
                   <option>Viewer</option>
                 </select>
-                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Filter className="w-4 h-4 mr-2" />
                   Filter
                 </button>

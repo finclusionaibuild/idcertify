@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Building2, Users, Shield, Search, Filter, Plus, Eye, FileEdit as Edit, Trash2, Star } from 'lucide-react';
+import { SelectDropdown } from '../shared/components/FormComponents'
+import { Building2, Users, Shield, Search, Filter, Plus, Eye, Edit, Trash2, Star } from 'lucide-react';
 
 interface Employer {
   id: string;
@@ -173,25 +174,27 @@ export default function EmployerManagement() {
             </div>
           </div>
           <div className="flex gap-4">
-            <select
+            <SelectDropdown
               value={filterType}
-              onChange={(e) => setFilterType(e.target.value as any)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            >
-              <option value="All">All Types</option>
-              <option value="Individual">Individual</option>
-              <option value="Corporate">Corporate</option>
-            </select>
-            <select
+              onChange={(value) => setFilterType(value as any)}
+              options={[
+                { value: 'All', label: 'All Types' },
+                { value: 'Individual', label: 'Individual' },
+                { value: 'Corporate', label: 'Corporate' }
+              ]}
+              size="sm"
+            />
+            <SelectDropdown
               value={filterTier}
-              onChange={(e) => setFilterTier(e.target.value as any)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            >
-              <option value="All">All Tiers</option>
-              <option value="Basic">Basic</option>
-              <option value="Premium">Premium</option>
-              <option value="Enterprise">Enterprise</option>
-            </select>
+              onChange={(value) => setFilterTier(value as any)}
+              options={[
+                { value: 'All', label: 'All Tiers' },
+                { value: 'Basic', label: 'Basic' },
+                { value: 'Premium', label: 'Premium' },
+                { value: 'Enterprise', label: 'Enterprise' }
+              ]}
+              size="sm"
+            />
           </div>
         </div>
       </div>

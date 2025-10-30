@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { SelectDropdown } from '../shared/components/FormComponents'
 import { 
   CreditCard, 
   Download, 
@@ -34,9 +35,10 @@ import {
   Award,
   Target,
   TrendingUp,
-  Settings
+  Settings,
+  Mail
 } from 'lucide-react'
-import { useAuth } from "@shared/contexts/AuthContext";
+import { useAuth } from "../shared/contexts/AuthContext";
 
 interface SubscriptionPlan {
   id: string
@@ -305,7 +307,7 @@ const Billing = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center">
+          <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
             <Download className="w-4 h-4 mr-2" />
             Download Invoices
           </button>
@@ -715,13 +717,18 @@ const Billing = () => {
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-gray-900">Invoices & Billing History</h3>
               <div className="flex items-center space-x-3">
-                <select className="border border-gray-300 rounded px-3 py-1 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                  <option>All Time</option>
-                  <option>Last 3 Months</option>
-                  <option>Last 6 Months</option>
-                  <option>Last Year</option>
-                </select>
-                <button className="border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                <SelectDropdown
+                  value="all-time"
+                  onChange={() => {}}
+                  options={[
+                    { value: 'all-time', label: 'All Time' },
+                    { value: 'last-3-months', label: 'Last 3 Months' },
+                    { value: 'last-6-months', label: 'Last 6 Months' },
+                    { value: 'last-year', label: 'Last Year' }
+                  ]}
+                  size="sm"
+                />
+                <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 flex items-center">
                   <Download className="w-4 h-4 mr-2" />
                   Export All
                 </button>
@@ -850,7 +857,7 @@ const Billing = () => {
                         Set as Default
                       </button>
                     )}
-                    <button className="text-gray-600 hover:text-gray-800 text-sm font-medium">
+                    <button className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200 font-medium">
                       Edit
                     </button>
                     <button className="text-red-600 hover:text-red-700 text-sm font-medium">
@@ -910,26 +917,28 @@ const Billing = () => {
 
       {/* Change Plan Modal */}
       {showChangePlanModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-gray-200">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-2xl w-full max-h-[85vh] flex flex-col mx-4">
+            {/* Header - Fixed */}
+            <div className="p-4 border-b border-gray-200 bg-white rounded-t-2xl flex-shrink-0">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-bold text-gray-900">Change Subscription Plan</h2>
+                <h2 className="text-lg font-bold text-gray-900">Change Subscription Plan</h2>
                 <button 
                   onClick={() => setShowChangePlanModal(false)}
                   className="text-gray-400 hover:text-gray-600"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
             </div>
             
-            <div className="p-6 space-y-6">
-              <div className="space-y-4">
+            {/* Content - Scrollable */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+              <div className="space-y-3">
                 {subscriptionPlans.map((plan) => (
                   <label
                     key={plan.id}
-                    className={`flex items-start p-4 border-2 rounded-lg cursor-pointer transition-colors ${
+                    className={`flex items-start p-3 border-2 rounded-lg cursor-pointer transition-colors ${
                       selectedPlan === plan.id
                         ? 'border-primary-500 bg-primary-50'
                         : 'border-gray-200 hover:border-gray-300'
@@ -973,9 +982,9 @@ const Billing = () => {
                 ))}
               </div>
               
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
                 <div className="flex items-start space-x-3">
-                  <Info className="w-5 h-5 text-yellow-600 mt-0.5" />
+                  <Info className="w-4 h-4 text-yellow-600 mt-0.5" />
                   <div>
                     <p className="text-sm font-medium text-yellow-900">Changing plans?</p>
                     <p className="text-sm text-yellow-700 mt-1">
@@ -984,18 +993,21 @@ const Billing = () => {
                   </div>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-end space-x-3 pt-4 border-t">
+            </div>
+            
+            {/* Action Buttons - Fixed at Bottom */}
+            <div className="p-4 border-t border-gray-200 bg-white rounded-b-2xl flex-shrink-0">
+              <div className="flex items-center justify-end space-x-3">
                 <button 
                   onClick={() => setShowChangePlanModal(false)}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
                 <button 
                   onClick={handleChangePlan}
                   disabled={!selectedPlan || (selectedPlan === subscriptionData.currentPlan) || loading}
-                  className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center disabled:opacity-50"
+                  className="bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center disabled:opacity-50"
                 >
                   {loading ? (
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
@@ -1012,24 +1024,26 @@ const Billing = () => {
 
       {/* Add Payment Method Modal */}
       {showAddPaymentModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full">
-            <div className="p-6 border-b border-gray-200">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 max-w-md w-full max-h-[85vh] flex flex-col mx-4">
+            {/* Header - Fixed */}
+            <div className="p-4 border-b border-gray-200 bg-white rounded-t-2xl flex-shrink-0">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-bold text-gray-900">Add Payment Method</h2>
+                <h2 className="text-lg font-bold text-gray-900">Add Payment Method</h2>
                 <button 
                   onClick={() => setShowAddPaymentModal(false)}
                   className="text-gray-400 hover:text-gray-600"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
             </div>
             
-            <div className="p-6 space-y-6">
-              <div className="space-y-4">
+            {/* Content - Scrollable */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+              <div className="space-y-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Card Number
                   </label>
                   <input
@@ -1039,9 +1053,9 @@ const Billing = () => {
                   />
                 </div>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       Expiry Date
                     </label>
                     <input
@@ -1051,7 +1065,7 @@ const Billing = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       CVC
                     </label>
                     <input
@@ -1063,7 +1077,7 @@ const Billing = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Cardholder Name
                   </label>
                   <input
@@ -1085,17 +1099,20 @@ const Billing = () => {
                 </div>
               </div>
               
-              <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="bg-gray-50 p-3 rounded-lg">
                 <div className="flex items-center space-x-2 text-sm text-gray-600">
                   <Lock className="w-4 h-4" />
                   <span>Your payment information is secure and encrypted</span>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-end space-x-3 pt-4 border-t">
+            </div>
+            
+            {/* Action Buttons - Fixed at Bottom */}
+            <div className="p-4 border-t border-gray-200 bg-white rounded-b-2xl flex-shrink-0">
+              <div className="flex items-center justify-end space-x-3">
                 <button 
                   onClick={() => setShowAddPaymentModal(false)}
-                  className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="bg-pink-50 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-pink-100 transition-colors border-2 border-pink-200"
                 >
                   Cancel
                 </button>
